@@ -194,6 +194,7 @@ class Notebook(object):
 def get_api(request, snippet):
   from notebook.connectors.dataeng import DataEngApi
   from notebook.connectors.hiveserver2 import HS2Api
+  from notebook.connectors.elasticsearch import ElasticsearchApi
   from notebook.connectors.jdbc import JdbcApi
   from notebook.connectors.rdbms import RdbmsApi
   from notebook.connectors.oozie_batch import OozieApi
@@ -218,6 +219,8 @@ def get_api(request, snippet):
 
   if interface == 'hiveserver2':
     return HS2Api(user=request.user, request=request)
+  elif interface == 'elasticsearch':
+    return ElasticsearchApi(user=request.user, request=request)
   elif interface == 'oozie':
     return OozieApi(user=request.user, request=request)
   elif interface == 'livy':
