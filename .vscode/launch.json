@@ -1,0 +1,69 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "HUE Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "/home/teld-hue/teld.hue/build/env/bin/python2.7",
+            "program": "${workspaceRoot}/build/env/bin/hue",
+            "args": [
+                "runserver",
+                "0.0.0.0:8000",
+                "--noreload"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging"
+            ]
+        },
+        /*
+        {
+            "name": "Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config.python.pythonPath}",
+            "program": "${workspaceRoot}/manage.py",
+            "args": [
+                "runserver",
+                "--noreload"
+            ],
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging"
+            ]
+        }
+        */
+        {
+            // https://github.com/DonJayamanne/pythonVSCode/wiki/Debugging-Django
+            "name": "Django",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            //"pythonPath": "${config:python.pythonPath}",
+            "pythonPath": "/home/teld-hue/teld.hue/build/env/bin/python2.7",
+            //"program": "${workspaceRoot}/manage.py",
+            "program": "${workspaceRoot}/build/env/bin/hue",
+            "cwd": "",
+            "args": [
+                "runserver",
+                "--noreload"//,/*没有--noreload无法进入Django*/
+                //"--nothreading" /*有--nothreadingDjango的代码断点无效*/
+            ],
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput",
+                "DjangoDebugging"
+            ]
+        }
+    ]
+}
