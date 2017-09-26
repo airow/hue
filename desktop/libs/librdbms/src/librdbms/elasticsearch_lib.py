@@ -19,131 +19,79 @@ import logging
 import os
 import sys
 
-from notebook.conf import DBPROXY_EXTRA_CLASSPATH
+import urllib
+import pandas as pd
+import urllib2
+import json
 
 LOG = logging.getLogger(__name__)
 
 
-try:
-  from py4j.java_gateway import JavaGateway, JavaObject
-except ImportError, e:
-  LOG.exception('Failed to import py4j')
-
-
 def query_and_fetch(db, statement, n=None):
   data = None
-  try:
-    db.connect()
-    curs = db.cursor()
-
-    try:
-      if curs.execute(statement):
-        data = curs.fetchmany(n)
-      meta = curs.description
-      return data, meta
-    finally:
-      curs.close()
-  finally:
-    db.close()
-
+  statement = statement.rstrip(';')
+  statement = statement.replace('.','/')
+  data = db.execute_statement(statement,n)
+  print data
+  return data
 
 class ElasticsearchClient():
 
-  def __init__(self, host, url, username, password):
-    if 'py4j' not in sys.modules:
-      raise Exception('Required py4j module is not imported.')
+  def __init__(self, options):
+    self.options = options
+    self.url = self.options['url']
+    self.queryUrl = self.options['queryUrl']
 
-    classpath = os.environ.get('CLASSPATH', '')
-    if DBPROXY_EXTRA_CLASSPATH.get():
-      classpath = '%s:%s' % (DBPROXY_EXTRA_CLASSPATH.get(), classpath)
+  def execute_statement(self, statement, n=None):
+    test_data = {'sql': statement}
+    test_data_urlencode = urllib.urlencode(test_data)
+    requrl = self.queryUrl
+    req = urllib2.Request(url=requrl, data=test_data_urlencode)
+    res_data = urllib2.urlopen(req)
+    res = res_data.read()
+    data = json.loads(res);
+    return data, res
 
-    self.gateway = JavaGateway.launch_gateway(classpath=classpath)
+  def catAliases(self):
+    parsed = pd.read_table(self.url + '/_cat/aliases?v', sep=r'\s+')
+    alias = parsed['alias']
+    index = parsed['index']
+    return alias, index
 
-    self.jdbc_driver = driver_name
-    self.db_url = url
-    self.username = username
-    self.password = password
+  def _mappings(self, alias):
+    requrl = self.url + "/"+alias+"/_mappings"
+    req = urllib2.Request(url=requrl)
+    res_data = urllib2.urlopen(req)
+    res = res_data.read()
+    data = json.loads(res);
+    return data, res
 
-    self.conn = None
+  def get_databases(self):        
+    alias,index = self.catAliases()
+    #databases = [row for row in alias.tolist())] if False else ['huebyeshuebyes']
+    databases = list(set(index.tolist()))
+    return databases
 
-  def connect(self):
-    if self.conn is None:
-      self.gateway.jvm.Class.forName(self.jdbc_driver)
-      self.conn = self.gateway.jvm.java.sql.DriverManager.getConnection(self.db_url, self.username, self.password)
-
-  def cursor(self):
-    return Cursor(self.conn)
-
-  def close(self):
-    if self.conn is not None:
-      self.conn.close()
-      self.conn = None
+  def get_tables(self, database):
+    databaseMappings = self._mappings(database)
+    mappings = databaseMappings[0][database]["mappings"]
+    tables = [key for key in mappings if key != '_default_' ]
+    return tables
 
 
-class Cursor():
-  """Similar to DB-API 2.0 Cursor interface"""
+  def get_columns(self, database, table, names_only=False):
+    databaseMappings = self._mappings(database)
+    mappings = databaseMappings[0][database]["mappings"]
+    properties = mappings[table].get("properties")
 
-  def __init__(self, conn):
-    self.conn = conn
-    self.stmt = None
-    self.rs = None
-    self._meta = None
-
-  def execute(self, statement):
-    self.stmt = self.conn.createStatement()
-    has_rs = self.stmt.execute(statement)
-
-    if has_rs:
-      self.rs = self.stmt.getResultSet()
-      self._meta = self.rs.getMetaData()
+    if names_only:
+      columns = [key for key in properties]
     else:
-      self._meta = self.stmt.getUpdateCount()
+      columns = [dict(name=key, type=properties[key]['type'], comment='') for key in properties]
+    return columns 
 
-    return has_rs
 
-  def fetchmany(self, n=None):
-    res = []
-
-    while self.rs.next() and (n is None or n > 0):
-      row = []
-      for c in xrange(self._meta.getColumnCount()):
-        cell = self.rs.getObject(c + 1)
-
-        if isinstance(cell, JavaObject):
-          cell = str(cell) # DATETIME
-        row.append(cell)
-
-      res.append(row)
-      if n is not None:
-        n -= 1
-
-    return res
-
-  def fetchall(self, n=None):
-    return self.fetchmany()
-
-  @property
-  def description(self):
-    if not self.rs:
-      return self._meta
-    else:
-      return [[
-        self._meta.getColumnName(i),
-        self._meta.getColumnTypeName(i) + '_TYPE',
-        self._meta.getColumnDisplaySize(i),
-        self._meta.getColumnDisplaySize(i),
-        self._meta.getPrecision(i),
-        self._meta.getScale(i),
-        self._meta.isNullable(i),
-      ] for i in xrange(1, self._meta.getColumnCount() + 1)]
-
-  def close(self):
-    self._meta = None
-
-    if self.rs is not None:
-      self.rs.close()
-      self.rs = None
-
-    if self.stmt is not None:
-      self.stmt.close()
-      self.stmt = None
+  def get_sample_data(self, database, table, column=None, limit=100):
+    column = '`%s`' % column if column else '*'
+    statement = "SELECT %s FROM `%s`.`%s` LIMIT %d" % (column, database, table, limit)
+    return self.execute_statement(statement)

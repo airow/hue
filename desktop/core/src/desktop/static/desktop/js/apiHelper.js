@@ -944,9 +944,13 @@ var ApiHelper = (function () {
           var cleanDatabases = [];
           databases.forEach(function (database) {
             // Blacklist of system databases
-            if (database !== '_impala_builtins') {
-              // Ensure lower case
-              cleanDatabases.push(database.toLowerCase());
+            if (database !== '_impala_builtins') {              
+              if(options.sourceType === 'elasticsearch'){
+                cleanDatabases.push(database);
+              }else{
+                // Ensure lower case
+                cleanDatabases.push(database.toLowerCase());
+              }              
             }
           });
           self.lastKnownDatabases[options.sourceType] = cleanDatabases;

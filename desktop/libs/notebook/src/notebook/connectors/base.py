@@ -220,7 +220,7 @@ def get_api(request, snippet):
   if interface == 'hiveserver2':
     return HS2Api(user=request.user, request=request)
   elif interface == 'elasticsearch':
-    return ElasticsearchApi(user=request.user, request=request)
+    return ElasticsearchApi(request.user, interpreter=interpreter)
   elif interface == 'oozie':
     return OozieApi(user=request.user, request=request)
   elif interface == 'livy':

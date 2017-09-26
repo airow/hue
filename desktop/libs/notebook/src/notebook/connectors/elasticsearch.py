@@ -25,7 +25,6 @@ from librdbms.elasticsearch_lib import ElasticsearchClient, query_and_fetch
 
 from notebook.connectors.base import Api, QueryError, AuthenticationRequired
 
-
 LOG = logging.getLogger(__name__)
 
 
@@ -59,22 +58,18 @@ class ElasticsearchApi(Api):
 
     if self.cache_key in API_CACHE:
       self.db = API_CACHE[self.cache_key]
-    elif 'password' in self.options:
-      username = self.options.get('user') or user.username
-      self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options['driver'], self.options['url'], username, self.options['password'])
+    else:        
+      self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
 
   def create_session(self, lang=None, properties=None):
     global API_CACHE
-    props = super(JdbcApi, self).create_session(lang, properties)
+    props = super(ElasticsearchApi, self).create_session(lang, properties)
 
     properties = dict([(p['name'], p['value']) for p in properties]) if properties is not None else {}
     props['properties'] = {} # We don't store passwords
 
     if self.db is None:
-      if 'password' in properties:
-        user = properties.get('user') or self.options.get('user')
-        props['properties'] = {'user': user}
-        self.db = API_CACHE[self.cache_key] = Jdbc(self.options['driver'], self.options['url'], user, properties.pop('password'))
+      self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
 
     if self.db is None:
       raise AuthenticationRequired()
@@ -86,20 +81,21 @@ class ElasticsearchApi(Api):
     if self.db is None:
       raise AuthenticationRequired()
 
-    data, description = query_and_fetch(self.db, snippet['statement'], 1000)
-    has_result_set = data is not None
+    resultSet = query_and_fetch(self.db, snippet['statement'], 1000)
+    has_result_set = resultSet is not None
+    data = resultSet[0]
 
     return {
       'sync': True,
       'has_result_set': has_result_set,
       'result': {
         'has_more': False,
-        'data': data if has_result_set else [],
+        'data': [row.values() for row in data] if has_result_set else [],
         'meta': [{
-          'name': col[0],
-          'type': col[1],
+          'name': col,
+          'type': '',
           'comment': ''
-        } for col in description] if has_result_set else [],
+        } for col in data[0].keys()] if has_result_set else [],
         'type': 'table'
       }
     }
@@ -140,15 +136,18 @@ class ElasticsearchApi(Api):
     if database is None:
       response['databases'] = assist.get_databases()
     elif table is None:
-      response['tables'] = assist.get_tables(database)
+      tables_meta = []
+      for t in assist.get_tables(database):
+        tables_meta.append({'name': t, 'type': 'Table', 'comment': ''})
+      response['tables_meta'] = tables_meta
+    elif column is None:
+      columns = assist.get_columns(database, table)
+      response['columns'] = [col['name'] for col in columns]
+      response['extended_columns'] = columns
     else:
       columns = assist.get_columns(database, table)
-      response['columns'] = [col[0] for col in columns]
-      response['extended_columns'] = [{
-        'name': col[0],
-        'type': col[1],
-        'comment': col[5]
-      } for col in columns]
+      response['name'] = next((col['name'] for col in columns if column == col['name']), '')
+      response['type'] = next((col['type'] for col in columns if column == col['name']), '')
 
     response['status'] = 0
     return response
@@ -182,15 +181,15 @@ class Assist():
     self.db = db
 
   def get_databases(self):
-    databases, description = query_and_fetch(self.db, 'SHOW DATABASES')
+    databases = self.db.get_databases()
     return databases
 
-  def get_tables(self, database, table_names=[]):
-    tables, description = query_and_fetch(self.db, 'SHOW TABLES')
+  def get_tables(self, database):
+    tables = self.db.get_tables(database)
     return tables
 
   def get_columns(self, database, table):
-    columns, description = query_and_fetch(self.db, 'SHOW COLUMNS FROM %s.%s' % (database, table))
+    columns = self.db.get_columns(database, table)
     return columns
 
   def get_sample_data(self, database, table, column=None):
