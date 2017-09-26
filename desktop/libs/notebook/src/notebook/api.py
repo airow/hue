@@ -112,7 +112,8 @@ def _execute_notebook(request, notebook, snippet):
         history = _historify(notebook, request.user)
         notebook = Notebook(document=history).get_data()
 
-      response['handle'] = get_api(request, snippet).execute(notebook, snippet)
+      api = get_api(request, snippet)
+      response['handle'] = api.execute(notebook, snippet)
 
       # Retrieve and remove the result from the handle
       if response['handle'].get('sync'):
