@@ -2,6 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
             "name": "HUE Django",
             "type": "python",
             "request": "launch",
@@ -11,7 +27,8 @@
             "args": [
                 "runserver",
                 "0.0.0.0:8000",
-                "--noreload"
+                "--noreload" //,/*没有--noreload无法进入Django*/
+                //"--nothreading" /*有--nothreadingDjango的代码断点无效*/
             ],
             "debugOptions": [
                 "WaitOnAbnormalExit",
@@ -53,8 +70,8 @@
             "cwd": "",
             "args": [
                 "runserver",
-                "--noreload"//,/*没有--noreload无法进入Django*/
-                //"--nothreading" /*有--nothreadingDjango的代码断点无效*/
+                "--noreload",//,/*没有--noreload无法进入Django*/
+                "--nothreading" /*有--nothreadingDjango的代码断点无效*/
             ],
             "env": {},
             "envFile": "${workspaceRoot}/.env",
