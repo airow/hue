@@ -2663,6 +2663,18 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           snippetIcon: 'fa-database',
           sqlDialect: true
         },
+        druid: {
+          placeHolder: '${ _("Example: SELECT * FROM tablename, or press CTRL + space") }',
+          aceMode: 'ace/mode/sql',
+          snippetImage: '${ static("desktop/art/druid_48.png") }',
+          sqlDialect: true
+        },
+        elasticsearch: {
+           placeHolder: '${ _("Example: SELECT * FROM tablename, or press CTRL + space") }',
+          aceMode: 'ace/mode/sql',
+          snippetImage: '${ static("desktop/art/icon_elasticsearch_48.png") }',
+          sqlDialect: true
+        },
         mysqljdbc: {
           placeHolder: '${ _("Example: SELECT * FROM tablename, or press CTRL + space") }',
           aceMode: 'ace/mode/mysql',

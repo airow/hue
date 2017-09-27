@@ -111,9 +111,15 @@ class DruidApi(Api):
   @query_error_handler
   def check_status(self, notebook, snippet):
     return {'status': 'available'}
-
-  def _fetch_result(self, cursor):
-    return {}
+  
+  @query_error_handler
+  def fetch_result(self, notebook, snippet, rows, start_over):
+    return {
+      'has_more': False,
+      'data': [],
+      'meta': [],
+      'type': 'table'
+    }
 
   @query_error_handler
   def fetch_result_metadata(self):

@@ -185,3 +185,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 Teld
 -----------
 Version: teld.hue 4.0.1( branches origin/branch-4.0 tags release-4.0.1 )
+```
+git clone -b tag_teld.hue-4.0.1-r1 https://github.com/airow/hue.git
+```
