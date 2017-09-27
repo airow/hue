@@ -798,6 +798,24 @@
     #   ## If 'user' and 'password' are omitted, they will be prompted in the UI.
     #   options='{"url": "jdbc:mysql://localhost:3306/hue", "driver": "com.mysql.jdbc.Driver", "user": "root", "password": "root"}'
 
+    # [[[elasticsearch]]]
+    #   name = Elasticsearch
+    #   interface=elasticsearch
+    #   ## Specific options for connecting to the elasticsearch server.
+    #   ## url: Elasticsearch server address
+    #   ## queryUrl: Elasticsearch like sql query address
+    #   options='{"url": "http://hdpjntest.chinacloudapp.cn:12200", "queryUrl":"http://hdpjntest.chinacloudapp.cn:808/TeldBigData/ES"}'
+
+    # [[[druid]]]
+    #   name = Druid
+    #   interface=druid
+    #   ## Specific options for connecting to the druid server. like sql use plyql
+    #   ## url: druid restful address
+    #   ## host: druid like sql query host
+    #   ## port: druid like sql query port 
+    #   options='{"url": "http://telddruidteal.chinacloudapp.cn:8082/druid/v2/datasources", "host": "telddruidteal.chinacloudapp.cn", "port": "3307"}'
+
+
 
 ###########################################################################
 # Settings to configure your Analytics Dashboards
