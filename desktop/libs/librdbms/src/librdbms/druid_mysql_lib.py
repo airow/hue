@@ -114,19 +114,17 @@ class DruidMySQLClient():
     return params
 
 
-  def use(self, database):
-    if 'db' in self._conn_params and self._conn_params['db'] != database:
-      raise RuntimeError(_("Database '%s' is not allowed. Please use database '%s'.") % (database, self._conn_params['db']))
-    else:
-      cursor = self.connection.cursor()
-      cursor.execute("USE `%s`" % database)
-      self.connection.commit()
 
+
+  
+  
+  def close(self):
+    self.connection.close()
 
   def execute_statement(self, statement):
     cursor = self.connection.cursor()
-    cursor.execute(statement)
-    self.connection.commit()
+    cursor.execute(statement)   
+    #self.connection.commit()
 
     if cursor.description:
       columns = [{'name': column[0], 'type': _convert_types(column[1])} for column in cursor.description]
@@ -134,40 +132,29 @@ class DruidMySQLClient():
       columns = []
     return self.data_table_cls(cursor, columns)
 
+  def get_datasource(self):
+    cursor = self.connection.cursor()
+    cursor.execute("SHOW TABLES")
+    # self.connection.commit()
+    databases = [row[0] for row in cursor.fetchall()]
+    return databases
 
   def get_databases(self):
-    cursor = self.connection.cursor()
-    cursor.execute("SHOW DATABASES")
-    self.connection.commit()
-    databases = [row[0] for row in cursor.fetchall()]
-    if 'db' in self._conn_params:
-      if self._conn_params['db'] in databases:
-        return [self._conn_params['db']]
-      else:
-        raise RuntimeError(_("Cannot locate the %s database. Are you sure your configuration is correct?") % self._conn_params['db'])
-    else:
-      return databases
+    datasource = self.get_datasource()
+    return datasource
 
 
   def get_tables(self, database, table_names=[]):
-    cursor = self.connection.cursor()
-    query = 'SHOW TABLES'
-    if table_names:
-      clause = ' OR '.join(["`Tables_in_%(database)s` LIKE '%%%(table)s%%'" % {'database': database, 'table': table} for table in table_names])
-      query += ' FROM `%(database)s` WHERE (%(clause)s)' % {'database': database, 'clause': clause}
-    cursor.execute(query)
-    self.connection.commit()
-    return [row[0] for row in cursor.fetchall()]
+    return [database]
 
 
-  def get_columns(self, database, table, names_only=True):
-    cursor = self.connection.cursor()
-    cursor.execute("SHOW COLUMNS FROM %s.%s" % (database, table))
-    self.connection.commit()
+  def get_columns(self, database, table, names_only=False):
+    table_columns = self.execute_statement("SELECT * FROM %s.%s LIMIT 0" % (database, table))
+
     if names_only:
-      columns = [row[0] for row in cursor.fetchall()]
+      columns = [col['name'] for col in table_columns.columns_description]
     else:
-      columns = [dict(name=row[0], type=row[1], comment='') for row in cursor.fetchall()]
+      columns = table_columns.columns_description
     return columns
 
 

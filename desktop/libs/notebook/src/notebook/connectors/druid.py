@@ -58,9 +58,10 @@ class DruidApi(Api):
     self.options = interpreter['options']
 
     if self.cache_key in API_CACHE:
-      self.db = API_CACHE[self.cache_key]
-    else:        
-      self.db = API_CACHE[self.cache_key] = DruidMySQLClient(self.options)
+      API_CACHE[self.cache_key].close()
+      API_CACHE.pop(self.cache_key)
+
+    self.db = API_CACHE[self.cache_key] = DruidMySQLClient(self.options)
 
   def create_session(self, lang=None, properties=None):
     global API_CACHE
@@ -212,13 +213,13 @@ class Assist():
     self.db = db
 
   def get_databases(self):
-    # databases = self.db.get_databases()
-    databases = ['DruidMonitoring']
+    databases = self.db.get_databases()
+    # databases = ['DruidMonitoring']
     return databases
 
   def get_tables(self, database):
-    # tables = self.db.get_tables(database)
-    tables = ['DruidMonitoring']
+    tables = self.db.get_tables(database)
+    # tables = ['DruidMonitoring']
     return tables
 
   def get_columns(self, database, table):

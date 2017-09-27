@@ -945,7 +945,7 @@ var ApiHelper = (function () {
           databases.forEach(function (database) {
             // Blacklist of system databases
             if (database !== '_impala_builtins') {              
-              if(options.sourceType === 'elasticsearch'){
+              if (options.sourceType === 'elasticsearch' || options.sourceType === 'druid') {
                 cleanDatabases.push(database);
               }else{
                 // Ensure lower case
