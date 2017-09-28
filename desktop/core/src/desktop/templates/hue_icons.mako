@@ -296,6 +296,8 @@
     <!-- ko case: 'tables' --><i class="fa fa-fw fa-table"></i><!-- /ko -->
     <!-- ko case: 'text' --><i class="fa fa-fw fa-i-cursor"></i><!-- /ko -->
     <!-- ko case: 'yarn' --><svg class="hi"><use xlink:href="#hi-job-designer"></use></svg><!-- /ko -->
+    <!-- ko case: 'druid' --><svg class="hi"><use xlink:href="#hi-job-designer"></use></svg><!-- /ko -->
+    <!-- ko case: 'elasticsearch' --><svg class="hi"><use xlink:href="#hi-job-designer"></use></svg><!-- /ko -->
     <!-- ko case: $else --><i class="fa fa-fw fa-database"></i><!-- /ko -->
     <!-- /ko -->
   </script>
