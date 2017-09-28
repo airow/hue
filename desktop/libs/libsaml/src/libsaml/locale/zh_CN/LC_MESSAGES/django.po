@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -113,3 +113,4 @@ msgstr "来自服务器的此 NameID 格式的请求"
 #: src/libsaml/conf.py:183
 msgid "username_source not configured properly. SAML integration may not work."
 msgstr "username_source 未正确配置。SAML 集成可能无法正常工作。"
+

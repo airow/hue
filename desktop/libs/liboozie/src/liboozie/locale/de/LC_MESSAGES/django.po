@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -48,9 +48,9 @@ msgid ""
 " into the workspace. This makes submissions faster and less prone to HDFS"
 " permission errors"
 msgstr ""
-"Gibt an, ob Hue jar-Pfade an oozie.libpath anhängt, anstatt sie in den Workspace"
-"zu kopieren. Dadurch werden Einsendungen schneller und weniger anfällig für "
-"falsche HDFS-Berechtigungen"
+"Gibt an, ob Hue jar-Pfade an oozie.libpath anhängt, anstatt sie in den "
+"Workspacezu kopieren. Dadurch werden Einsendungen schneller und weniger "
+"anfällig für falsche HDFS-Berechtigungen"
 
 #: src/liboozie/conf.py:90
 msgid "The Oozie server is not available"
@@ -64,22 +64,22 @@ msgstr "Pfad der Oozie-Freigabebibliothek ist nicht verfügbar"
 msgid "Oozie Share Lib not installed in default location."
 msgstr "Oozie-Freigabebibliothek ist nicht am Standardspeicherort installiert."
 
-#: src/liboozie/submission2.py:46 src/liboozie/submittion.py:43
+#: src/liboozie/submission2.py:47 src/liboozie/submittion.py:43
 #, python-format
 msgid "Submission already submitted (Oozie job id %s)"
 msgstr "Übermittlung bereits übermittelt (Oozie-Job-ID %s)"
 
-#: src/liboozie/submission2.py:186 src/liboozie/submittion.py:151
+#: src/liboozie/submission2.py:187 src/liboozie/submittion.py:151
 #, python-format
 msgid "Failed to create deployment directory: %s"
 msgstr "Auf Bereitstellungsverzeichnis konnte nicht zugegriffen werden: %s"
 
-#: src/liboozie/submission2.py:411 src/liboozie/submittion.py:252
+#: src/liboozie/submission2.py:412 src/liboozie/submittion.py:252
 #, python-format
 msgid "Path is not a directory: %s."
 msgstr "Pfad ist kein Verzeichnis: %s."
 
-#: src/liboozie/submission2.py:416 src/liboozie/submittion.py:257
+#: src/liboozie/submission2.py:417 src/liboozie/submittion.py:257
 #, python-format
 msgid "Error accessing directory '%s': %s."
 msgstr "Fehler beim Zugriff auf Verzeichnis \"%s\": %s."
@@ -94,3 +94,4 @@ msgid "Permission denied. User %(username)s cannot modify user %(user)s's job."
 msgstr ""
 "Berechtigung abgelehnt. Benutzer %(username)s kann den Job von Benutzer "
 "%(user)s nicht ändern."
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -20,7 +20,9 @@ msgstr ""
 #: src/libsentry/api.py:44 src/libsentry/api2.py:44
 #, python-format
 msgid "Failed to connect to Sentry server %s, and Sentry HA is not enabled."
-msgstr "Impossible de se connecter au serveur Sentry %s et la haute disponibilité Sentry n’est pas activée."
+msgstr ""
+"Impossible de se connecter au serveur Sentry %s et la haute disponibilité"
+" Sentry n’est pas activée."
 
 #: src/libsentry/api.py:53 src/libsentry/api.py:91 src/libsentry/api2.py:53
 #: src/libsentry/api2.py:91
@@ -47,11 +49,15 @@ msgstr ""
 
 #: src/libsentry/conf.py:49
 msgid "Number of seconds when the privilege list of a user is cached."
-msgstr "Nombre de secondes lorsque la liste des privilèges d’un utilisateur est cachée."
+msgstr ""
+"Nombre de secondes lorsque la liste des privilèges d’un utilisateur est "
+"cachée."
 
 #: src/libsentry/sentry_ha.py:46 src/libsentry/tests.py:58
 msgid "Cannot create a Sentry client without server hostname and port."
-msgstr "Impossible de créer un client Sentry sans le nom d’hôte et le port du serveur."
+msgstr ""
+"Impossible de créer un client Sentry sans le nom d’hôte et le port du "
+"serveur."
 
 #: src/libsentry/sentry_ha.py:76
 #, python-format
@@ -70,8 +76,3 @@ msgstr "Aucun serveur Sentry n'est configuré."
 msgid "Error in retrieving Sentry server properties."
 msgstr "Erreur lors de la récupération des propriétés du serveur Sentry."
 
-#~ msgid "No Sentry servers are available."
-#~ msgstr ""
-
-#~ msgid "Error in retrieving Sentry server properties from Zookeeper."
-#~ msgstr ""

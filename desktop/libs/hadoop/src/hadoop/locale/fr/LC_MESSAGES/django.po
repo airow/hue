@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -69,7 +69,9 @@ msgstr "Aucun HDFS trouvé"
 #: src/hadoop/fs/upload.py:77
 #, python-format
 msgid "User %s does not have permissions to write to path \"%s\"."
-msgstr "L'utilisateur %s ne dispose pas des autorisations pour écrire vers le chemin \"%s\"."
+msgstr ""
+"L'utilisateur %s ne dispose pas des autorisations pour écrire vers le "
+"chemin \"%s\"."
 
 #: src/hadoop/fs/webhdfs.py:251 src/hadoop/fs/webhdfs.py:287
 #, python-format
@@ -205,3 +207,4 @@ msgstr "Le gestionnaire de ressources YARN a renvoyé une réponse d'échec : %s
 #: src/hadoop/yarn/spark_history_server_api.py:47
 msgid "No Spark History Server is available."
 msgstr "Aucun serveur d'historique de Spark n'est disponible."
+

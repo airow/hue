@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-04 18:46-0800\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2012-11-07 13:08-0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: src/liboauth/backend.py:105 src/liboauth/backend.py:150
-#: src/liboauth/backend.py:158 src/liboauth/backend.py:171
-#: src/liboauth/backend.py:180 src/liboauth/backend.py:254
+#: src/liboauth/backend.py:109 src/liboauth/backend.py:155
+#: src/liboauth/backend.py:163 src/liboauth/backend.py:176
+#: src/liboauth/backend.py:185 src/liboauth/backend.py:259
 #, python-format
 msgid "Invalid response from OAuth provider: %s"
 msgstr "Resposta inválida do fornecedor OAuth: %s"
@@ -109,8 +109,14 @@ msgid "Comma-separated list of whitelisted domains."
 msgstr "Lista separada por vírgulas de domínios em lista de aprovação."
 
 #: src/liboauth/conf.py:161
-msgid "JSON formatted hash of username simplifications. Example: {\"@sub1.domain.com\":\"_S1\", \"@sub2.domain.com\":\"_S2\"} converts \"email@sub1.domain.com\" to \"email_S1\""
-msgstr "Hash formatada em JSON de simplificações de nomes de utilizador. Exemplo: {\"@sub1.domain.com\":\"_S1\", \"@sub2.domain.com\":\"_S2\"} converte \"email@sub1.domain.com\" para \"email_S1\""
+msgid ""
+"JSON formatted hash of username simplifications. Example: "
+"{\"@sub1.domain.com\":\"_S1\", \"@sub2.domain.com\":\"_S2\"} converts "
+"\"email@sub1.domain.com\" to \"email_S1\""
+msgstr ""
+"Hash formatada em JSON de simplificações de nomes de utilizador. Exemplo:"
+" {\"@sub1.domain.com\":\"_S1\", \"@sub2.domain.com\":\"_S2\"} converte "
+"\"email@sub1.domain.com\" para \"email_S1\""
 
 #: src/liboauth/views.py:72
 #, python-format
@@ -125,27 +131,60 @@ msgstr "Hue - Efectuar o registo"
 msgid "Hue - Sign in"
 msgstr "Hue - Iniciar sessão"
 
-#: src/liboauth/templates/oauth-login.mako:155
+#: src/liboauth/templates/oauth-login.mako:151
+#: src/liboauth/templates/oauth-login.mako:167
+msgid "Hue logo"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:156
 msgid "Visit gethue.com"
 msgstr "Visite gethue.com"
 
-#: src/liboauth/templates/oauth-login.mako:155
+#: src/liboauth/templates/oauth-login.mako:156
 msgid "Fell asleep? Visit us on gethue.com instead!"
 msgstr "Deixou-se dormir? Visite-nos em gethue.com!"
 
-#: src/liboauth/templates/oauth-login.mako:170
+#: src/liboauth/templates/oauth-login.mako:171
 msgid "Error!"
 msgstr "Erro!"
 
-#: src/liboauth/templates/oauth-login.mako:170
+#: src/liboauth/templates/oauth-login.mako:171
 msgid "Invalid username or password."
 msgstr "Nome de utilizador ou palavra-passe inválido."
 
-#: src/liboauth/templates/oauth-login.mako:177
+#: src/liboauth/templates/oauth-login.mako:178
 msgid "This is your first time logging in."
 msgstr "Esta é a primeira vez que inicia sessão."
 
-#: src/liboauth/templates/oauth-login.mako:178
+#: src/liboauth/templates/oauth-login.mako:179
 msgid "You will become Hue superuser."
 msgstr "Irá transformar-se num super utilizador Hue."
+
+#: src/liboauth/templates/oauth-login.mako:181
+msgid "Sign Up via"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:184
+msgid "Sign In via"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:190
+msgid "Google icon"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:196
+msgid "Facebook icon"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:202
+msgid "Linkedin icon"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:208
+msgid "Twitter icon"
+msgstr ""
+
+#: src/liboauth/templates/oauth-login.mako:213
+msgid "The oauth app is not configured with any provider."
+msgstr ""
 

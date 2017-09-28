@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:50+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "Error while accessing Solr"
 msgstr "Error al acceder a Solr"
 
-#: src/dashboard/api.py:73 src/dashboard/views.py:205
+#: src/dashboard/api.py:73 src/dashboard/views.py:206
 msgid "There is no collection to search."
 msgstr "No hay ninguna recopilación que buscar."
 
-#: src/dashboard/api.py:83 src/dashboard/views.py:240
-#: src/dashboard/views.py:253
+#: src/dashboard/api.py:83 src/dashboard/views.py:241
+#: src/dashboard/views.py:254
 msgid "POST request required."
 msgstr "Se necesita una solicitud POST."
 
@@ -63,41 +63,41 @@ msgstr "Este campo no admite estadísticas"
 msgid "Could not download search results: %s"
 msgstr "No se han podido descargar los resultados de la búsqueda: %s"
 
-#: src/dashboard/conf.py:36
+#: src/dashboard/conf.py:35
 msgid "Activate the Dashboard link in the menu."
 msgstr "Active el enlace Panel en el menú."
 
-#: src/dashboard/conf.py:43
+#: src/dashboard/conf.py:42
 msgid "Activate the SQL Dashboard (beta)."
 msgstr "Active el panel de SQL (beta)."
 
-#: src/dashboard/conf.py:77
+#: src/dashboard/conf.py:76
 msgid "index (Solr)"
 msgstr "índice (Solr)"
 
-#: src/dashboard/conf.py:85
+#: src/dashboard/conf.py:84
 #, python-format
 msgid "table (%s)"
 msgstr "tabla (%s)"
 
-#: src/dashboard/conf.py:102
+#: src/dashboard/conf.py:101
 msgid ""
 "Name of the interface to use as query engine for the dashboard, e.g. "
 "solr, sql."
 msgstr ""
-"Nombre de la interfaz que se debe usar como motor de consultas del panel; p. ej., "
-"Solr, SQL."
+"Nombre de la interfaz que se debe usar como motor de consultas del panel;"
+" p. ej., Solr, SQL."
 
-#: src/dashboard/conf.py:106
+#: src/dashboard/conf.py:105
 msgid "Support analytics facets or not."
 msgstr "Admitir facetas de análisis o no."
 
-#: src/dashboard/conf.py:112
+#: src/dashboard/conf.py:111
 msgid "Support nested documents or not."
 msgstr "Admitir documentos anidados o no."
 
 #: src/dashboard/decorators.py:45 src/dashboard/decorators.py:65
-#: src/dashboard/views.py:69
+#: src/dashboard/views.py:70
 msgid "Dashboard does not exist or you don't have the permission to access it."
 msgstr "El panel no existe o no tiene permiso para acceder a él."
 
@@ -109,7 +109,7 @@ msgstr ""
 "El esquema de Solr requiere un campo de ID para llevar a cabo la "
 "señalización"
 
-#: src/dashboard/views.py:203
+#: src/dashboard/views.py:204
 msgid "Page saved !"
 msgstr "¡Página guardada!"
 
@@ -980,7 +980,9 @@ msgstr "Añadir consulta actual como..."
 
 #: src/dashboard/templates/common_search.mako:2552
 msgid "Click on this button to add the currenty query as a new definition"
-msgstr "Haga clic en este botón para añadir la consulta actual como una nueva definición"
+msgstr ""
+"Haga clic en este botón para añadir la consulta actual como una nueva "
+"definición"
 
 #: src/dashboard/templates/common_search.mako:2570
 msgid "There are currently no query definitions."
@@ -1139,7 +1141,7 @@ msgstr "Menos"
 msgid "Total"
 msgstr "Total"
 
-#: src/dashboard/templates/common_search.mako:3840
+#: src/dashboard/templates/common_search.mako:3843
 msgid ""
 "Result highlighting is unavailable: the collection does not have an index"
 " field"
@@ -1172,5 +1174,3 @@ msgstr "¿Desea crear un"
 msgid "new index"
 msgstr "nuevo índice?"
 
-#~ msgid "Search"
-#~ msgstr ""

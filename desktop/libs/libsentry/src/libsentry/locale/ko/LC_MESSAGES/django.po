@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -56,9 +56,7 @@ msgstr "서버 호스트 이름 및 포트 없이 Sentry 클라이언트를 생�
 msgid ""
 "Encountered unexpected error while trying to find available Sentry "
 "client: %s"
-msgstr ""
-"사용할 수 있는 Sentry 클라이언트를 찾는 중 예기치 않은 오류 "
-"발생: %s"
+msgstr "사용할 수 있는 Sentry 클라이언트를 찾는 중 예기치 않은 오류 발생: %s"
 
 #: src/libsentry/sentry_site.py:133
 msgid "No Sentry servers are configured."
@@ -68,8 +66,3 @@ msgstr "구성된 Sentry 서버가 없습니다."
 msgid "Error in retrieving Sentry server properties."
 msgstr "Sentry 서버 속성을 검색하는 중 오류가 발생했습니다."
 
-#~ msgid "No Sentry servers are available."
-#~ msgstr ""
-
-#~ msgid "Error in retrieving Sentry server properties from Zookeeper."
-#~ msgstr ""

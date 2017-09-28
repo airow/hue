@@ -1,14 +1,14 @@
 # Translations template for Hue.
-# Copyright (C) 2012 Cloudera, Inc
+# Copyright (C) 2017 Cloudera, Inc
 # This file is distributed under the same license as the Hue project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2012-09-11 13:35-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,1117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: src/about/templates/index.mako:20
-msgid "About Hue"
+#: src/indexer/api.py:39 src/indexer/api.py:142 src/indexer/api.py:190
+#: src/indexer/api.py:218 src/indexer/api.py:260 src/indexer/api.py:281
+#: src/indexer/api2.py:38 src/indexer/api2.py:68 src/indexer/api2.py:95
+#: src/indexer/api2.py:116 src/indexer/api2.py:132
+msgid "POST request required."
 msgstr ""
 
-#: src/about/templates/index.mako:25
-msgid "Configuration"
+#: src/indexer/api.py:73
+msgid "Could not detect any fields."
 msgstr ""
 
-#: src/about/templates/index.mako:26
-msgid "Check for misconfiguration"
+#: src/indexer/api.py:82
+#, python-format
+msgid "Type %s not supported."
 msgstr ""
 
-#: src/about/templates/index.mako:27
-msgid "Server Logs"
+#: src/indexer/api.py:87
+#, python-format
+msgid "Source type %s not supported."
+msgstr ""
+
+#: src/indexer/api.py:178 src/indexer/api.py:209
+msgid "Collection created!"
+msgstr ""
+
+#: src/indexer/api.py:183 src/indexer/api.py:211
+msgid "Collection missing."
+msgstr ""
+
+#: src/indexer/api.py:225
+msgid "No collections to remove."
+msgstr ""
+
+#: src/indexer/api.py:237
+msgid "Collections removed!"
+msgstr ""
+
+#: src/indexer/api.py:244
+msgid "GET request required."
+msgstr ""
+
+#: src/indexer/api.py:267
+msgid "No collection to update."
+msgstr ""
+
+#: src/indexer/api.py:274
+msgid "Collection updated!"
+msgstr ""
+
+#: src/indexer/api.py:299
+msgid "Index imported!"
+msgstr ""
+
+#: src/indexer/api.py:301
+#, python-format
+msgid "Unsupported source %s"
+msgstr ""
+
+#: src/indexer/api2.py:57
+msgid "Index created!"
+msgstr ""
+
+#: src/indexer/api2.py:59
+#, python-format
+msgid "Index could not be created: %s"
+msgstr ""
+
+#: src/indexer/api2.py:61
+msgid "Index requires a name field."
+msgstr ""
+
+#: src/indexer/api2.py:75
+msgid "No indexes to remove."
+msgstr ""
+
+#: src/indexer/api2.py:88
+msgid "Indexes removed!"
+msgstr ""
+
+#: src/indexer/api2.py:107
+msgid "Alias created or modified!"
+msgstr ""
+
+#: src/indexer/api2.py:109
+#, python-format
+msgid "Alias could not be created or modified: %s"
+msgstr ""
+
+#: src/indexer/api2.py:170
+#, python-format
+msgid "Could not get index schema: %s"
+msgstr ""
+
+#: src/indexer/api3.py:76
+#, python-format
+msgid "Path %(path)s is not a file"
+msgstr ""
+
+#: src/indexer/api3.py:201
+#, python-format
+msgid "Creating database %(name)s"
+msgstr ""
+
+#: src/indexer/api3.py:380
+#, python-format
+msgid "Creating table %(database)s.%(table)s"
+msgstr ""
+
+#: src/indexer/conf.py:64
+msgid "Flag to turn on the new metadata importer."
+msgstr ""
+
+#: src/indexer/conf.py:71
+msgid "Flag to turn on the new Solr indexer."
+msgstr ""
+
+#: src/indexer/conf.py:78 src/indexer/conf.py:105
+msgid "oozie workspace template for indexing:"
+msgstr ""
+
+#: src/indexer/conf.py:87
+msgid "Batch indexer path in HDFS."
+msgstr ""
+
+#: src/indexer/conf.py:93
+msgid ""
+"Local path to Hue folder where Solr instance directories will be created "
+"in non-solrcloud mode."
+msgstr ""
+
+#: src/indexer/conf.py:99
+msgid "Default template used at collection creation."
+msgstr ""
+
+#: src/indexer/conf.py:112
+msgid "Location of the solrctl binary."
+msgstr ""
+
+#: src/indexer/conf.py:119
+msgid "Zookeeper ensemble."
+msgstr ""
+
+#: src/indexer/controller.py:134
+#, python-format
+msgid "Could not fetch fields for collection %s."
+msgstr ""
+
+#: src/indexer/controller.py:135
+#, python-format
+msgid "Could not fetch fields for collection %s. See logs for more info."
+msgstr ""
+
+#: src/indexer/controller.py:140
+#, python-format
+msgid "Could not fetch unique key for collection %s."
+msgstr ""
+
+#: src/indexer/controller.py:141
+#, python-format
+msgid "Could not fetch unique key for collection %s. See logs for more info."
+msgstr ""
+
+#: src/indexer/controller.py:167
+msgid "Error in copying Solr configurations."
+msgstr ""
+
+#: src/indexer/controller.py:178 src/indexer/controller.py:218
+#: src/indexer/controller2.py:175
+msgid "Error in deleting Solr configurations."
+msgstr ""
+
+#: src/indexer/controller.py:179 src/indexer/controller.py:198
+msgid "Could not create collection. Check error logs for more info."
+msgstr ""
+
+#: src/indexer/controller.py:186 src/indexer/controller2.py:140
+#, python-format
+msgid ""
+"Instance directory %s already exists! Please remove it from the file "
+"system."
+msgstr ""
+
+#: src/indexer/controller.py:207
+msgid "Cannot remove Solr cores."
+msgstr ""
+
+#: src/indexer/controller.py:220 src/indexer/controller2.py:177
+msgid "Could not remove collection. Check error logs for more info."
+msgstr ""
+
+#: src/indexer/controller.py:249
+msgid "File size is too large to handle!"
+msgstr ""
+
+#: src/indexer/controller.py:264
+#, python-format
+msgid "Could not update index. Unknown type %s"
+msgstr ""
+
+#: src/indexer/controller.py:267 src/indexer/controller.py:291
+msgid "Could not update index. Check error logs for more info."
+msgstr ""
+
+#: src/indexer/controller.py:269
+#, python-format
+msgid "Could not update index. Indexing strategy %s not supported."
+msgstr ""
+
+#: src/indexer/controller.py:295
+msgid "Could not update index."
+msgstr ""
+
+#: src/indexer/controller2.py:90
+#, python-format
+msgid "Solr server could not be contacted properly: %s"
+msgstr ""
+
+#: src/indexer/controller2.py:129 src/indexer/controller2.py:152
+msgid "Could not create index. Check error logs for more info."
+msgstr ""
+
+#: src/indexer/controller2.py:164
+msgid "Cannot remove non-Solr cloud cores."
+msgstr ""
+
+#: src/indexer/controller2.py:191
+#, python-format
+msgid "Error in getting schema information for index '%s'"
+msgstr ""
+
+#: src/indexer/file_format.py:189
+msgid "Hue Log File"
+msgstr ""
+
+#: src/indexer/file_format.py:225
+msgid "Combined Apache Log File"
+msgstr ""
+
+#: src/indexer/file_format.py:247
+msgid "Ruby Log"
+msgstr ""
+
+#: src/indexer/file_format.py:263
+msgid "Syslog"
+msgstr ""
+
+#: src/indexer/file_format.py:281
+msgid "Parquet Table"
+msgstr ""
+
+#: src/indexer/file_format.py:286
+msgid "CSV File"
+msgstr ""
+
+#: src/indexer/operations.py:57
+msgid "Split Chararacter"
+msgstr ""
+
+#: src/indexer/operations.py:64
+msgid "Regular Expression"
+msgstr ""
+
+#: src/indexer/operations.py:71
+msgid "Date Format (eg: yyyy/MM/dd)"
+msgstr ""
+
+#: src/indexer/operations.py:78
+msgid "Authority"
+msgstr ""
+
+#: src/indexer/operations.py:79
+msgid "Fragment"
+msgstr ""
+
+#: src/indexer/operations.py:80
+msgid "Host"
+msgstr ""
+
+#: src/indexer/operations.py:81 src/indexer/templates/importer.mako:391
+#: src/indexer/templates/indexer.mako:243
+#: src/indexer/templates/indexes.mako:174
+msgid "Path"
+msgstr ""
+
+#: src/indexer/operations.py:82
+msgid "Port"
+msgstr ""
+
+#: src/indexer/operations.py:83 src/indexer/templates/importer.mako:408
+#: src/indexer/templates/indexer.mako:255
+msgid "Query"
+msgstr ""
+
+#: src/indexer/operations.py:84
+msgid "Scheme"
+msgstr ""
+
+#: src/indexer/operations.py:85
+msgid "Scheme Specific Path"
+msgstr ""
+
+#: src/indexer/operations.py:86
+msgid "User Info"
+msgstr ""
+
+#: src/indexer/operations.py:93
+msgid "ISO Code"
+msgstr ""
+
+#: src/indexer/operations.py:94
+msgid "Country Name"
+msgstr ""
+
+#: src/indexer/operations.py:95
+msgid "Subdivisions Names"
+msgstr ""
+
+#: src/indexer/operations.py:96
+msgid "Subdivisons ISO Code"
+msgstr ""
+
+#: src/indexer/operations.py:97
+msgid "City Name"
+msgstr ""
+
+#: src/indexer/operations.py:98
+msgid "Postal Code"
+msgstr ""
+
+#: src/indexer/operations.py:99
+msgid "Latitude"
+msgstr ""
+
+#: src/indexer/operations.py:100
+msgid "Longitude"
+msgstr ""
+
+#: src/indexer/operations.py:108
+msgid "Mapping"
+msgstr ""
+
+#: src/indexer/operations.py:115
+msgid "Find"
+msgstr ""
+
+#: src/indexer/operations.py:116
+msgid "Replace"
+msgstr ""
+
+#: src/indexer/utils.py:135
+#, python-format
+msgid "%s is not a boolean value"
+msgstr ""
+
+#: src/indexer/views.py:39 src/indexer/views.py:48 src/indexer/views.py:63
+msgid "Missing permission."
+msgstr ""
+
+#: src/indexer/views.py:125
+msgid "A POST request is required."
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:44
+msgid "Installing twitter collection"
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:52
+msgid "Twitter collection successfully installed"
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:54
+msgid "Installing yelp collection"
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:62
+msgid "Yelp collection successfully installed"
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:64
+msgid "Installing logs collection"
+msgstr ""
+
+#: src/indexer/management/commands/indexer_setup.py:75
+msgid "Logs collection successfully installed"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:25
+msgid "Search Indexes"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:66
+#: src/indexer/templates/collections.mako:193
+#: src/indexer/templates/indexes.mako:63
+msgid "Collections"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:67
+msgid "Dashboards"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:76
+#: src/indexer/templates/indexer.mako:120
+msgid "Index Browser"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:76
+#: src/indexer/templates/collections.mako:542
+#: src/indexer/templates/indexer.mako:120
+msgid "Indexes"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:104
+#: src/indexer/templates/collections.mako:122
+#: src/indexer/templates/importer.mako:759
+#: src/indexer/templates/indexes.mako:203
+msgid "Close"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:105
+msgid "Do you really want to delete the following index(es)?"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:113
+#: src/indexer/templates/collections.mako:129
+#: src/indexer/templates/importer.mako:766
+#: src/indexer/templates/indexes.mako:104
+#: src/indexer/templates/indexes.mako:122
+#: src/indexer/templates/indexes.mako:164
+msgid "Cancel"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:114
+#: src/indexer/templates/collections.mako:130
+#: src/indexer/templates/indexes.mako:208
+msgid "Yes"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:123
+msgid "Confirm Delete"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:126
+msgid "Are you sure you want to delete the index"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:162
+msgid "Filter indexes..."
+msgstr ""
+
+#: src/indexer/templates/collections.mako:164
+msgid ""
+"Delete the selected indexes. These must be solr cloud collections. Cores "
+"cannot be deleted currently."
+msgstr ""
+
+#: src/indexer/templates/collections.mako:165
+#: src/indexer/templates/collections.mako:370
+#: src/indexer/templates/indexes.mako:38
+msgid "Delete"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:167
+msgid "Show cores"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:173
+#: src/indexer/templates/importer.mako:365
+#: src/indexer/templates/indexes.mako:161
+msgid "Create"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:181
+msgid "There are currently no indexes defined."
+msgstr ""
+
+#: src/indexer/templates/collections.mako:181
+msgid "Click here to add"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:181
+msgid "one or more."
+msgstr ""
+
+#: src/indexer/templates/collections.mako:192
+#: src/indexer/templates/collections.mako:239
+#: src/indexer/templates/collections.mako:301
+#: src/indexer/templates/collections.mako:382
+#: src/indexer/templates/importer.mako:489
+#: src/indexer/templates/importer.mako:491
+#: src/indexer/templates/importer.mako:777
+#: src/indexer/templates/importer.mako:835
+#: src/indexer/templates/indexer.mako:261
+#: src/indexer/templates/indexer.mako:381 src/indexer/templates/indexes.mako:61
+#: src/indexer/templates/indexes.mako:133
+msgid "Name"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:224
+#: src/indexer/templates/collections.mako:437
+#: src/indexer/templates/indexer.mako:337
+#: src/indexer/templates/indexes.mako:409
+msgid "Previous"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:225
+#: src/indexer/templates/collections.mako:438
+#: src/indexer/templates/importer.mako:737
+#: src/indexer/templates/indexer.mako:342
+#: src/indexer/templates/indexer.mako:348
+#: src/indexer/templates/indexes.mako:408
+msgid "Next"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:226
+#: src/indexer/templates/collections.mako:439
+msgid "Finish"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:236
+msgid "Pick a name and a CSV or Tab separated file with header to index from HDFS"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:241
+msgid "Name of index"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:246
+#: src/indexer/templates/collections.mako:451
+msgid "Files"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:253
+#: src/indexer/templates/collections.mako:458
+msgid "Source type"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:262
+#: src/indexer/templates/collections.mako:467
+msgid "Format of the selected file to index"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:265
+#: src/indexer/templates/collections.mako:470
+msgid "Separator"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:272
+#: src/indexer/templates/collections.mako:477
+msgid "Quote character"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:281
+msgid "Morphlines config name"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:289
+msgid "Morphlines config expression"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:302
+#: src/indexer/templates/collections.mako:383
+#: src/indexer/templates/importer.mako:381
+#: src/indexer/templates/importer.mako:484
+#: src/indexer/templates/importer.mako:781
+#: src/indexer/templates/importer.mako:838
+#: src/indexer/templates/indexer.mako:237
+#: src/indexer/templates/indexer.mako:384 src/indexer/templates/indexes.mako:62
+msgid "Type"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:303
+#: src/indexer/templates/collections.mako:384
+msgid "ID"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:304
+#: src/indexer/templates/collections.mako:385
+#: src/indexer/templates/importer.mako:850
+#: src/indexer/templates/indexer.mako:398
+msgid "Required"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:305
+#: src/indexer/templates/collections.mako:386
+msgid "Indexed"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:306
+#: src/indexer/templates/collections.mako:387
+msgid "Stored"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:307
+msgid "Default Field"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:353
+#: src/indexer/templates/collections.mako:416
+msgid "Add"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:355
+msgid "Generate a random ID"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:356
+msgid "Add ID"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:367
+msgid "Actions"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:368
+msgid "Search"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:369
+msgid "Index file"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:420
+msgid "Update"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:448
+msgid "CSV or TSV file to index"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:515
+msgid "Name is missing"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:516
+#: src/indexer/templates/collections.mako:558
+msgid "File path is missing"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:533
+msgid "Field name is missing"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:534
+msgid "Field type is missing"
+msgstr ""
+
+#: src/indexer/templates/collections.mako:543
+msgid "Upload data"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:30
+#: src/indexer/templates/importer.mako:270
+msgid "Importer"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:280
+#: src/indexer/templates/importer.mako:291
+#: src/indexer/templates/indexer.mako:130
+#: src/indexer/templates/indexer.mako:141
+msgid "Toggle Assist"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:326
+#: src/indexer/templates/indexer.mako:176
+msgid "Go to Step 1"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:341
+msgid "Pick data from "
+msgstr ""
+
+#: src/indexer/templates/importer.mako:344
+msgid "No source data"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:350
+#: src/indexer/templates/indexer.mako:192
+msgid "Go to Step 2"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:362
+msgid "Move it to "
+msgstr ""
+
+#: src/indexer/templates/importer.mako:377
+msgid "Source"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:387
+msgid "No source is needed for creating a database."
+msgstr ""
+
+#: src/indexer/templates/importer.mako:392
+msgid "Click or drag from the assist"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:395
+#: src/indexer/templates/importer.mako:510
+#: src/indexer/templates/importer.mako:748
+#: src/indexer/templates/indexer.mako:359
+#: src/indexer/templates/indexer.mako:362
+msgid "Open"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:402
+#: src/indexer/templates/indexer.mako:249
+#: src/indexer/templates/indexes.mako:187
+msgid "Table"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:403
+msgid "Table name or <database>.<table>"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:409
+msgid "Search your documents..."
+msgstr ""
+
+#: src/indexer/templates/importer.mako:419
+msgid "Guessing format..."
+msgstr ""
+
+#: src/indexer/templates/importer.mako:422
+#: src/indexer/templates/importer.mako:522
+#: src/indexer/templates/indexer.mako:277
+msgid "Format"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:425
+#: src/indexer/templates/indexer.mako:280
+msgid "File Type"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:440
+msgid "Generating preview..."
+msgstr ""
+
+#: src/indexer/templates/importer.mako:443
+#: src/indexer/templates/indexer.mako:304
+msgid "Preview"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:481
+msgid "Destination"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:495
+msgid "Only alphanumeric and underscore characters"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:501
+msgid "Empty name or invalid characters"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:505
+msgid "Adding data to the existing "
+msgstr ""
+
+#: src/indexer/templates/importer.mako:508
+msgid "Already existing"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:519
+#: src/indexer/templates/importer.mako:707
+msgid "Properties"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:529
+msgid "Store in Default location"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:534
+#: src/indexer/templates/importer.mako:717
+msgid "External location"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:540
+msgid "Extras"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:541
+msgid "Show extra properties"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:550
+msgid "Import data"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:554
+#: src/indexer/templates/importer.mako:555
+#: src/indexer/templates/importer.mako:709
+#: src/indexer/templates/importer.mako:710
+msgid "Description"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:560
+msgid "Use first row as header"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:565
+msgid "Custom char delimiters"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:569
+msgid "Field"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:572
+msgid "Array, Map"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:575
+msgid "Struct"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:582
+msgid "Regexp"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:588
+msgid "Primary keys"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:594
+msgid "Partitions"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:603
+msgid "Add Partition"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:603
+#: src/indexer/templates/importer.mako:650
+msgid "Add partition"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:638
+msgid "Add value"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:644
+msgid "Add column"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:661
+#: src/indexer/templates/indexer.mako:290
+msgid "Fields"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:680
+msgid "Add Field"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:714
+msgid "Default location"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:732
+msgid "Back"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:743
+msgid "Submit"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:749
+msgid "Check status"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:760
+msgid "Write or paste comma separated field names"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:763
+msgid "e.g. id, name, salary"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:767
+msgid "Change field names"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:778
+#: src/indexer/templates/importer.mako:836
+#: src/indexer/templates/indexer.mako:382
+msgid "Field name"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:790
+msgid "Length"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:792
+msgid "Precision"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:793
+msgid "Scale"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:798
+msgid "Value"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:799
+msgid "Partition value"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:804
+#: src/indexer/templates/importer.mako:841
+msgid "Show field properties"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:807
+msgid "Field comment"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:822
+msgid "No sample to be shown"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:844
+#: src/indexer/templates/indexer.mako:392
+msgid "Unique"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:847
+#: src/indexer/templates/indexer.mako:395
+msgid "Keep in index"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:855
+#: src/indexer/templates/importer.mako:863
+#: src/indexer/templates/indexer.mako:402
+#: src/indexer/templates/indexer.mako:408
+msgid "Add Operation"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:855
+#: src/indexer/templates/indexer.mako:402
+msgid "Operation"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:863
+#: src/indexer/templates/indexer.mako:408
+msgid "Operation to"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:873
+#: src/indexer/templates/indexer.mako:417
+msgid "Number of expected fields"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:877
+#: src/indexer/templates/indexer.mako:421
+msgid "Remove"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:916
+#: src/indexer/templates/indexer.mako:453
+msgid "Remove Pair"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:919
+#: src/indexer/templates/indexer.mako:456
+msgid "Add Pair"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:935
+#: src/indexer/templates/indexer.mako:472
+msgid "generated"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:1647
+#: src/indexer/templates/importer.mako:1653
+msgid "Example: SELECT * FROM tablename, or press CTRL + space"
+msgstr ""
+
+#: src/indexer/templates/importer.mako:1712
+msgid "Task submitted."
+msgstr ""
+
+#: src/indexer/templates/importer.mako:1715
+msgid "Error importing"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:28 src/indexer/templates/indexes.mako:23
+#: src/indexer/templates/indexes.mako:28
+msgid "Solr Indexes"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:189
+msgid "Pick data"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:205
+msgid "Get fields"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:208
+msgid "Go to Step 3"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:224
+msgid "Index!"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:231
+msgid "Collection details"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:262
+msgid "Collection name"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:263
+msgid "A new collection will be created"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:265
+msgid "Adding data to this existing collection"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:354
+msgid "Index it!"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:360
+msgid "Oozie Status"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:363
+msgid "View indexing status"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:366
+msgid "View collection"
+msgstr ""
+
+#: src/indexer/templates/indexer.mako:387
+msgid "Show indexing properties"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:32
+msgid "Search for name, description, etc..."
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:45 src/indexer/templates/indexes.mako:101
+msgid "Create index"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:48
+msgid "Create index from a file"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:51
+msgid "Create alias"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:64
+msgid "Schema"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:78 src/indexer/templates/indexes.mako:83
+msgid "Edit"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:119
+msgid "Create or edit"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:153
+msgid "Get Sample"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:186
+msgid "Database"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:204
+msgid "Delete the selected index(es)?"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:207
+msgid "No"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:400
+msgid "No data available"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:401
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:402
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:403
+msgid "(filtered from _MAX_ total entries)"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:404
+msgid "No matching records"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:406
+msgid "First"
+msgstr ""
+
+#: src/indexer/templates/indexes.mako:407
+msgid "Last"
 msgstr ""
 

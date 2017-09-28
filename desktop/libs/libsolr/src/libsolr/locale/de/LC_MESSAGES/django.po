@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -34,7 +34,8 @@ msgid ""
 "Could not create or edit alias. Check response:\n"
 "%s"
 msgstr ""
-"Alias konnte nicht erstellt oder bearbeitet werden. Prüfen Sie die Antwort:\n"
+"Alias konnte nicht erstellt oder bearbeitet werden. Prüfen Sie die "
+"Antwort:\n"
 "%s"
 
 #: src/libsolr/api.py:439
@@ -57,3 +58,4 @@ msgstr ""
 #: src/libsolr/conf.py:33
 msgid "Default path to Solr in ZooKeeper"
 msgstr "Standardpfad zu Solr in ZooKeeper"
+

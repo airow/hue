@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:41-0700\n"
+"POT-Creation-Date: 2017-09-28 18:51+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -44,3 +44,4 @@ msgstr "SparkSQL サーバーを実行するポートです。"
 #: src/spark/conf.py:89
 msgid "The app won't work without a running Livy Spark Server"
 msgstr "実行中の Livy Spark Server が存在しない場合、アプリが機能しません"
+

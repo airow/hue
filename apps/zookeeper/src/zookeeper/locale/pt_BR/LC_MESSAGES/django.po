@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-04 18:47-0800\n"
+"POT-Creation-Date: 2017-09-28 18:51+0800\n"
 "PO-Revision-Date: 2013-08-26 11:01-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -125,6 +125,10 @@ msgstr "Versão"
 msgid "Go to cluster"
 msgstr "Ir para o cluster"
 
+#: src/zookeeper/templates/shared_components.mako:80
+msgid "Zookeeper icon"
+msgstr ""
+
 #: src/zookeeper/templates/shared_components.mako:81
 msgid "ZooKeeper Browser"
 msgstr "ZooKeeper Browser"
@@ -169,6 +173,10 @@ msgstr "Editar como texto"
 #: src/zookeeper/templates/tree.mako:87
 msgid "Edit as Base64"
 msgstr "Editar como Base64"
+
+#: src/zookeeper/templates/tree.mako:118
+msgid "Close"
+msgstr ""
 
 #: src/zookeeper/templates/tree.mako:119
 msgid "Delete Znode?"

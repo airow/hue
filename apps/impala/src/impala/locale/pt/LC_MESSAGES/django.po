@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-04 18:47-0800\n"
+"POT-Creation-Date: 2017-09-28 18:50+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -17,184 +17,224 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: src/impala/conf.py:29
+#: src/impala/api.py:50
+msgid "Successfully invalidated metadata"
+msgstr ""
+
+#: src/impala/api.py:65
+#, python-format
+msgid "Successfully refreshed metadata for `%s`.`%s`"
+msgstr ""
+
+#: src/impala/api.py:80
+msgid "get_exec_summary requires a valid query_history_id"
+msgstr ""
+
+#: src/impala/api.py:102
+msgid "get_runtime_profile requires a valid query_history_id"
+msgstr ""
+
+#: src/impala/conf.py:39
 msgid "Host of the Impala Server."
 msgstr "Anfitrião do Impala Server."
 
-#: src/impala/conf.py:34
+#: src/impala/conf.py:44
 msgid "Port of the Impala Server."
 msgstr "Porta do servidor Impala."
 
-#: src/impala/conf.py:40
+#: src/impala/conf.py:50
 msgid "Kerberos principal name for Impala. Typically 'impala/hostname.foo.com'."
-msgstr "Nome principal do Kerberos para o Impala. Normalmente \"'impala/hostname.foo.com\"."
+msgstr ""
+"Nome principal do Kerberos para o Impala. Normalmente "
+"\"'impala/hostname.foo.com\"."
 
-#: src/impala/conf.py:46
+#: src/impala/conf.py:56
 msgid "Turn on/off impersonation mechanism when talking to Impala."
 msgstr "Ligar/desligar mecanismo de representação ao comunicar com o Impala."
 
-#: src/impala/conf.py:52
-msgid "Number of initial rows of a resultset to ask Impala to cache in order to support re-fetching them for downloading them. Set to 0 for disabling the option and backward compatibility."
-msgstr "Número de linhas iniciais de um conjunto de resultados para pedir ao Impala para colocar em cache, para apoiar re-obtenções para os transferir. Ajuste para 0 para desactivar a opção e a retrocompatibilidade."
-
 #: src/impala/conf.py:62
+msgid ""
+"Number of initial rows of a resultset to ask Impala to cache in order to "
+"support re-fetching them for downloading them. Set to 0 for disabling the"
+" option and backward compatibility."
+msgstr ""
+"Número de linhas iniciais de um conjunto de resultados para pedir ao "
+"Impala para colocar em cache, para apoiar re-obtenções para os "
+"transferir. Ajuste para 0 para desactivar a opção e a "
+"retrocompatibilidade."
+
+#: src/impala/conf.py:72
 msgid "Timeout in seconds for Thrift calls."
 msgstr "Limite de tempo em segundos para chamadas Thrift."
 
-#: src/impala/conf.py:66
-msgid "Hue will try to close the Impala query when the user leaves the editor page. This will free all the query resources in Impala, but also make its results inaccessible."
-msgstr "O Hue tentará fechar a consulta no Impala quando o utilizador deixar a página de editor, o que libertará todos os recursos de consulta no Impala, mas também tornará os seus resultados inacessíveis."
+#: src/impala/conf.py:76
+msgid ""
+"Hue will try to close the Impala query when the user leaves the editor "
+"page. This will free all the query resources in Impala, but also make its"
+" results inaccessible."
+msgstr ""
+"O Hue tentará fechar a consulta no Impala quando o utilizador deixar a "
+"página de editor, o que libertará todos os recursos de consulta no "
+"Impala, mas também tornará os seus resultados inacessíveis."
 
-#: src/impala/conf.py:74
-msgid "If QUERY_TIMEOUT_S > 0, the query will be timed out (i.e. cancelled) if Impala does not do any work (compute or send back results) for that query within QUERY_TIMEOUT_S seconds."
-msgstr "Se QUERY_TIMEOUT_S > 0, o tempo de consulta é excedido (ou seja, a consulta é cancelada) se o Impala não efectuar qualquer acção (computar ou enviar resultados) relacionada com tal consulta em QUERY_TIMEOUT_S segundos."
+#: src/impala/conf.py:84
+msgid ""
+"If QUERY_TIMEOUT_S > 0, the query will be timed out (i.e. cancelled) if "
+"Impala does not do any work (compute or send back results) for that query"
+" within QUERY_TIMEOUT_S seconds."
+msgstr ""
+"Se QUERY_TIMEOUT_S > 0, o tempo de consulta é excedido (ou seja, a "
+"consulta é cancelada) se o Impala não efectuar qualquer acção (computar "
+"ou enviar resultados) relacionada com tal consulta em QUERY_TIMEOUT_S "
+"segundos."
 
-#: src/impala/conf.py:82
+#: src/impala/conf.py:92
+msgid ""
+"If SESSION_TIMEOUT_S > 0, the session will be timed out (i.e. cancelled) "
+"if Impala does not do any work (compute or send back results) for that "
+"session within QUERY_TIMEOUT_S seconds. Default: 1 hour."
+msgstr ""
+
+#: src/impala/conf.py:102
+msgid ""
+"A comma-separated list of white-listed Impala configuration properties "
+"that users are authorized to set."
+msgstr ""
+
+#: src/impala/conf.py:107
+msgid "Impala configuration directory, where impala_flags is located."
+msgstr ""
+
+#: src/impala/conf.py:113
 msgid "SSL configuration for the server."
 msgstr "Configuração SSL para o servidor."
 
-#: src/impala/conf.py:86
+#: src/impala/conf.py:117
 msgid "SSL communication enabled for this server."
 msgstr "Comunicação SSL activada para este servidor."
 
-#: src/impala/conf.py:93
+#: src/impala/conf.py:124
 msgid "Path to Certificate Authority certificates."
 msgstr "Caminho para certificados de autoridade de certificação."
 
-#: src/impala/conf.py:100
-msgid "Path to the private key file."
+#: src/impala/conf.py:131
+#, fuzzy
+msgid "Path to the private key file, e.g. /etc/hue/key.pem"
 msgstr "Caminho para o ficheiro de chave privada."
 
-#: src/impala/conf.py:107
-msgid "Path to the public certificate file."
+#: src/impala/conf.py:138
+#, fuzzy
+msgid "Path to the public certificate file, e.g. /etc/hue/cert.pem"
 msgstr "Caminho para o ficheiro de certificado público."
 
-#: src/impala/conf.py:114
+#: src/impala/conf.py:145
 msgid "Choose whether Hue should validate certificates received from the server."
 msgstr "Decida se o Hue deve validar certificados recebidos a partir do servidor."
 
-#: src/impala/conf.py:134
-msgid "No available Impalad to send queries to."
-msgstr "Sem Impalad disponível para enviar consultas."
+#: src/impala/conf.py:158
+msgid "Auth username of the hue user used for authentications."
+msgstr ""
 
-#: src/impala/dashboards.py:201
-msgid "Page saved !"
-msgstr "Página guardada!"
+#: src/impala/conf.py:172
+msgid "LDAP/PAM/.. password of the hue user used for authentications."
+msgstr ""
 
-#: src/impala/dashboards.py:203
-msgid "There is no dashboard to search."
-msgstr "Não existe painel para pesquisar."
+#: src/impala/conf.py:178
+msgid ""
+"Execute this script to produce the auth password. This will be used when "
+"`auth_password` is not set."
+msgstr ""
 
-#: src/impala/templates/dashboard.mako:31
-msgid "Grid Results"
-msgstr "Resultados de grelha"
+#~ msgid "No available Impalad to send queries to."
+#~ msgstr "Sem Impalad disponível para enviar consultas."
 
-#: src/impala/templates/dashboard.mako:39
-msgid "Text Facet"
-msgstr "Aspecto do texto"
+#~ msgid "Page saved !"
+#~ msgstr "Página guardada!"
 
-#: src/impala/templates/dashboard.mako:46
-msgid "Pie Chart"
-msgstr "Gráfico circular"
+#~ msgid "There is no dashboard to search."
+#~ msgstr "Não existe painel para pesquisar."
 
-#: src/impala/templates/dashboard.mako:53
-msgid "Bar Chart"
-msgstr "Gráfico de barras"
+#~ msgid "Grid Results"
+#~ msgstr "Resultados de grelha"
 
-#: src/impala/templates/dashboard.mako:60
-msgid "Line Chart"
-msgstr "Gráfico de linhas"
+#~ msgid "Text Facet"
+#~ msgstr "Aspecto do texto"
 
-#: src/impala/templates/dashboard.mako:67
-msgid "Timeline"
-msgstr "Cronologia"
+#~ msgid "Pie Chart"
+#~ msgstr "Gráfico circular"
 
-#: src/impala/templates/dashboard.mako:74
-msgid "Filter Bar"
-msgstr "Barra de filtro"
+#~ msgid "Bar Chart"
+#~ msgstr "Gráfico de barras"
 
-#: src/impala/templates/dashboard.mako:81
-msgid "Map"
-msgstr "Mapa"
+#~ msgid "Line Chart"
+#~ msgstr "Gráfico de linhas"
 
-#: src/impala/templates/dashboard.mako:91
-msgid "Edit"
-msgstr "Editar"
+#~ msgid "Timeline"
+#~ msgstr "Cronologia"
 
-#: src/impala/templates/dashboard.mako:93
-msgid "Save"
-msgstr "Guardar"
+#~ msgid "Filter Bar"
+#~ msgstr "Barra de filtro"
 
-#: src/impala/templates/dashboard.mako:93
-msgid "Saving..."
-msgstr "A guardar..."
+#~ msgid "Map"
+#~ msgstr "Mapa"
 
-#: src/impala/templates/dashboard.mako:94
-msgid "New"
-msgstr "Novo"
+#~ msgid "Edit"
+#~ msgstr "Editar"
 
-#: src/impala/templates/dashboard.mako:99
-msgid "Select a database and a table"
-msgstr "Seleccione uma base de dados e uma tabela"
+#~ msgid "Save"
+#~ msgstr "Guardar"
 
-#: src/impala/templates/dashboard.mako:101
-msgid "Choose a database..."
-msgstr "Seleccione uma base de dados..."
+#~ msgid "Saving..."
+#~ msgstr "A guardar..."
 
-#: src/impala/templates/dashboard.mako:102
-msgid "Choose a table..."
-msgstr "Seleccione uma tabela..."
+#~ msgid "New"
+#~ msgstr "Novo"
 
-#: src/impala/templates/dashboard.mako:104
-msgid "Manually refresh the dropdowns"
-msgstr "Actualize os menus pendentes manualmente"
+#~ msgid "Select a database and a table"
+#~ msgstr "Seleccione uma base de dados e uma tabela"
 
-#: src/impala/templates/dashboard.mako:109
-msgid "Search"
-msgstr "Pesquisar"
+#~ msgid "Choose a database..."
+#~ msgstr "Seleccione uma base de dados..."
 
-#: src/impala/templates/dashboard.mako:139
-msgid "Filter fields"
-msgstr "Campos de Filtro"
+#~ msgid "Choose a table..."
+#~ msgstr "Seleccione uma tabela..."
 
-#: src/impala/templates/dashboard.mako:147
-msgid "Field Name"
-msgstr "Nome de ficheiro"
+#~ msgid "Manually refresh the dropdowns"
+#~ msgstr "Actualize os menus pendentes manualmente"
 
-#: src/impala/templates/dashboard.mako:169
-msgid "Your search did not match any documents."
-msgstr "A sua pesquisa não corresponde a quaisquer documentos."
+#~ msgid "Search"
+#~ msgstr "Pesquisar"
 
-#: src/impala/templates/dashboard.mako:243
-msgid "Exclude this value"
-msgstr "Excluir este valor"
+#~ msgid "Filter fields"
+#~ msgstr "Campos de Filtro"
 
-#: src/impala/templates/dashboard.mako:377
-msgid "There are currently no filters applied."
-msgstr "Neste momento, não existem filtros aplicados."
+#~ msgid "Field Name"
+#~ msgstr "Nome de ficheiro"
 
-#: src/impala/templates/dashboard.mako:382
-#: src/impala/templates/dashboard.mako:392
-msgid "field"
-msgstr "campo"
+#~ msgid "Your search did not match any documents."
+#~ msgstr "A sua pesquisa não corresponde a quaisquer documentos."
 
-#: src/impala/templates/dashboard.mako:385
-msgid "value"
-msgstr "valor"
+#~ msgid "Exclude this value"
+#~ msgstr "Excluir este valor"
 
-#: src/impala/templates/dashboard.mako:396
-msgid "from"
-msgstr "de"
+#~ msgid "There are currently no filters applied."
+#~ msgstr "Neste momento, não existem filtros aplicados."
 
-#: src/impala/templates/dashboard.mako:398
-msgid "to"
-msgstr "para"
+#~ msgid "field"
+#~ msgstr "campo"
 
-#: src/impala/templates/dashboard.mako:611
-msgid "Oops, no database found!"
-msgstr "Ups, nenhuma base de dados encontrada!"
+#~ msgid "value"
+#~ msgstr "valor"
 
-#: src/impala/templates/dashboard.mako:635
-msgid "Oops, no table found!"
-msgstr "Ups, nenhuma tabela encontrada!"
+#~ msgid "from"
+#~ msgstr "de"
+
+#~ msgid "to"
+#~ msgstr "para"
+
+#~ msgid "Oops, no database found!"
+#~ msgstr "Ups, nenhuma base de dados encontrada!"
+
+#~ msgid "Oops, no table found!"
+#~ msgstr "Ups, nenhuma tabela encontrada!"
 

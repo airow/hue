@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2014-01-03 20:09+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -36,3 +36,4 @@ msgstr "E-Mail als Benutzernamen verwenden."
 #: src/libopenid/conf.py:67
 msgid "Required OPENID SSO endpoint URL is not provided."
 msgstr "Erforderliche OPENID SSO-Endpunkt-URL nicht vorhanden."
+

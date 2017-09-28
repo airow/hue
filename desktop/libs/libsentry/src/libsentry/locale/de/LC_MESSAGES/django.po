@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -20,7 +20,9 @@ msgstr ""
 #: src/libsentry/api.py:44 src/libsentry/api2.py:44
 #, python-format
 msgid "Failed to connect to Sentry server %s, and Sentry HA is not enabled."
-msgstr "Die Verbindung mit dem Sentry-Server %s konnte nicht hergestellt werden, und Sentry HA ist nicht aktiviert."
+msgstr ""
+"Die Verbindung mit dem Sentry-Server %s konnte nicht hergestellt werden, "
+"und Sentry HA ist nicht aktiviert."
 
 #: src/libsentry/api.py:53 src/libsentry/api.py:91 src/libsentry/api2.py:53
 #: src/libsentry/api2.py:91
@@ -47,7 +49,9 @@ msgstr ""
 
 #: src/libsentry/conf.py:49
 msgid "Number of seconds when the privilege list of a user is cached."
-msgstr "Anzahl von Sekunden, in denen die Berechtigungsliste eines Benutzers zwischengespeichert wird."
+msgstr ""
+"Anzahl von Sekunden, in denen die Berechtigungsliste eines Benutzers "
+"zwischengespeichert wird."
 
 #: src/libsentry/sentry_ha.py:46 src/libsentry/tests.py:58
 msgid "Cannot create a Sentry client without server hostname and port."
@@ -58,9 +62,7 @@ msgstr "Ohne Serverhostname und Port kann kein Sentry-Client erstellt werden."
 msgid ""
 "Encountered unexpected error while trying to find available Sentry "
 "client: %s"
-msgstr ""
-"Unerwarteter Fehler beim Suchen nach einem verfügbaren Sentry-"
-"Client: %s"
+msgstr "Unerwarteter Fehler beim Suchen nach einem verfügbaren Sentry-Client: %s"
 
 #: src/libsentry/sentry_site.py:133
 msgid "No Sentry servers are configured."
@@ -70,8 +72,3 @@ msgstr "Es ist kein Sentry-Server konfiguriert."
 msgid "Error in retrieving Sentry server properties."
 msgstr "Fehler beim Abrufen der Sentry-Servereigenschaften."
 
-#~ msgid "No Sentry servers are available."
-#~ msgstr ""
-
-#~ msgid "Error in retrieving Sentry server properties from Zookeeper."
-#~ msgstr ""

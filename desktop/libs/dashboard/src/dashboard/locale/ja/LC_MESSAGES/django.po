@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:50+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "Error while accessing Solr"
 msgstr "Solr へのアクセス中にエラーが発生しました"
 
-#: src/dashboard/api.py:73 src/dashboard/views.py:205
+#: src/dashboard/api.py:73 src/dashboard/views.py:206
 msgid "There is no collection to search."
 msgstr "検索するコレクションがありません。"
 
-#: src/dashboard/api.py:83 src/dashboard/views.py:240
-#: src/dashboard/views.py:253
+#: src/dashboard/api.py:83 src/dashboard/views.py:241
+#: src/dashboard/views.py:254
 msgid "POST request required."
 msgstr "POST 要求が必要です。"
 
@@ -63,41 +63,39 @@ msgstr "このフィールドは統計をサポートしていません"
 msgid "Could not download search results: %s"
 msgstr "検索結果をダウンロードできませんでした：%s"
 
-#: src/dashboard/conf.py:36
+#: src/dashboard/conf.py:35
 msgid "Activate the Dashboard link in the menu."
 msgstr "メニューのダッシュボードリンクをアクティブ化します。"
 
-#: src/dashboard/conf.py:43
+#: src/dashboard/conf.py:42
 msgid "Activate the SQL Dashboard (beta)."
 msgstr "SQL ダッシュボード（ベータ）をアクティブ化します。"
 
-#: src/dashboard/conf.py:77
+#: src/dashboard/conf.py:76
 msgid "index (Solr)"
 msgstr "インデックス（Solr）"
 
-#: src/dashboard/conf.py:85
+#: src/dashboard/conf.py:84
 #, python-format
 msgid "table (%s)"
 msgstr "テーブル（%s）"
 
-#: src/dashboard/conf.py:102
+#: src/dashboard/conf.py:101
 msgid ""
 "Name of the interface to use as query engine for the dashboard, e.g. "
 "solr, sql."
-msgstr ""
-"ダッシュボードのクエリエンジンとして使用するインターフェイスの名前、例: "
-"solr、sql"
+msgstr "ダッシュボードのクエリエンジンとして使用するインターフェイスの名前、例: solr、sql"
 
-#: src/dashboard/conf.py:106
+#: src/dashboard/conf.py:105
 msgid "Support analytics facets or not."
 msgstr "分析用ファセットをサポートするかどうか。"
 
-#: src/dashboard/conf.py:112
+#: src/dashboard/conf.py:111
 msgid "Support nested documents or not."
 msgstr "ネストされたドキュメントをサポートするかどうか。"
 
 #: src/dashboard/decorators.py:45 src/dashboard/decorators.py:65
-#: src/dashboard/views.py:69
+#: src/dashboard/views.py:70
 msgid "Dashboard does not exist or you don't have the permission to access it."
 msgstr "ダッシュボードが存在しないか、ダッシュボードにアクセスするパーミッションがありません。"
 
@@ -107,7 +105,7 @@ msgid ""
 "highlighting"
 msgstr "Solr スキーマには結果のハイライト表示を行うための ID フィールドが必要です"
 
-#: src/dashboard/views.py:203
+#: src/dashboard/views.py:204
 msgid "Page saved !"
 msgstr "ページが保存されました。"
 
@@ -1137,7 +1135,7 @@ msgstr "絞り込み..."
 msgid "Total"
 msgstr "合計"
 
-#: src/dashboard/templates/common_search.mako:3840
+#: src/dashboard/templates/common_search.mako:3843
 msgid ""
 "Result highlighting is unavailable: the collection does not have an index"
 " field"
@@ -1168,5 +1166,3 @@ msgstr "新しいインデックスを"
 msgid "new index"
 msgstr "作成することをお勧めします"
 
-#~ msgid "Search"
-#~ msgstr ""

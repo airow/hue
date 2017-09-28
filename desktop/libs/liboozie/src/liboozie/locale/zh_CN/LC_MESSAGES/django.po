@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -41,10 +41,7 @@ msgid ""
 "Whether Hue append jar paths to the oozie.libpath instead of copying them"
 " into the workspace. This makes submissions faster and less prone to HDFS"
 " permission errors"
-msgstr ""
-"Hue 是否将 jar 路径附加到 oozie.libpath，而不是将其复制"
-"到工作区。此操作将加快提交速度，并且不容易发生 HDFS"
-" 权限错误"
+msgstr "Hue 是否将 jar 路径附加到 oozie.libpath，而不是将其复制到工作区。此操作将加快提交速度，并且不容易发生 HDFS 权限错误"
 
 #: src/liboozie/conf.py:90
 msgid "The Oozie server is not available"
@@ -58,22 +55,22 @@ msgstr "Oozie Share Lib 路径不可用"
 msgid "Oozie Share Lib not installed in default location."
 msgstr "Oozie Share Lib 未安装在默认位置。"
 
-#: src/liboozie/submission2.py:46 src/liboozie/submittion.py:43
+#: src/liboozie/submission2.py:47 src/liboozie/submittion.py:43
 #, python-format
 msgid "Submission already submitted (Oozie job id %s)"
 msgstr "已提交提交（Oozie 作业 ID %s）"
 
-#: src/liboozie/submission2.py:186 src/liboozie/submittion.py:151
+#: src/liboozie/submission2.py:187 src/liboozie/submittion.py:151
 #, python-format
 msgid "Failed to create deployment directory: %s"
 msgstr "无法创建部署目录：%s"
 
-#: src/liboozie/submission2.py:411 src/liboozie/submittion.py:252
+#: src/liboozie/submission2.py:412 src/liboozie/submittion.py:252
 #, python-format
 msgid "Path is not a directory: %s."
 msgstr "路径不是目录：%s。"
 
-#: src/liboozie/submission2.py:416 src/liboozie/submittion.py:257
+#: src/liboozie/submission2.py:417 src/liboozie/submittion.py:257
 #, python-format
 msgid "Error accessing directory '%s': %s."
 msgstr "访问目录 '%s' 时出错：%s。"
@@ -86,3 +83,4 @@ msgstr "无足够权限。"
 #, python-format
 msgid "Permission denied. User %(username)s cannot modify user %(user)s's job."
 msgstr "权限被拒绝。用户 %(username)s 无法修改用户 %(user)s 的作业。"
+

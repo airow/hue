@@ -1,14 +1,14 @@
 # Translations template for Hue.
-# Copyright (C) 2013 Cloudera, Inc
+# Copyright (C) 2017 Cloudera, Inc
 # This file is distributed under the same license as the Hue project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-05-10 11:59-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: src/impala/conf.py:26
-msgid "Host of the Impala Server."
+#: src/libsolr/api.py:307 src/libsolr/api.py:319 src/libsolr/api.py:330
+#: src/libsolr/api.py:341 src/libsolr/api.py:353 src/libsolr/api.py:368
+#: src/libsolr/api.py:388 src/libsolr/api.py:410 src/libsolr/api.py:427
+#: src/libsolr/api.py:443 src/libsolr/api.py:461 src/libsolr/api.py:479
+#: src/libsolr/api.py:486 src/libsolr/api.py:495 src/libsolr/api.py:505
+#: src/libsolr/api.py:515 src/libsolr/api.py:528 src/libsolr/api.py:538
+#: src/libsolr/api.py:548 src/libsolr/api.py:570 src/libsolr/api.py:586
+#: src/libsolr/api.py:604 src/libsolr/api.py:616 src/libsolr/api.py:790
+msgid "Error while accessing Solr"
 msgstr ""
 
-#: src/impala/conf.py:31
-msgid "Port of the Impala Server."
-msgstr ""
-
-#: src/impala/conf.py:37
+#: src/libsolr/api.py:423
+#, python-format
 msgid ""
-"Beeswax or Hive Server 2 Thrift API used. Choices are: 'beeswax' or "
-"'hiveserver2'."
+"Could not create or edit alias. Check response:\n"
+"%s"
 msgstr ""
 
-#: src/impala/conf.py:42
-msgid "Kerberos principal name for Impala. Typically 'impala/hostname.foo.com'."
+#: src/libsolr/api.py:439
+#, python-format
+msgid ""
+"Could not delete alias. Check response:\n"
+"%s"
 msgstr ""
 
-#: src/impala/views.py:35
-msgid "A POST request is required."
+#: src/libsolr/conf.py:26
+msgid ""
+"In secure mode (HTTPS), if Solr SSL certificates have to be verified "
+"against certificate authority"
+msgstr ""
+
+#: src/libsolr/conf.py:33
+msgid "Default path to Solr in ZooKeeper"
 msgstr ""
 

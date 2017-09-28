@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:50+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgid "Username or password is invalid."
 msgstr "用户名或密码无效。"
 
 #: src/useradmin/forms.py:89 src/useradmin/forms.py:225
-#: src/useradmin/templates/list_users.mako:71
+#: src/useradmin/templates/list_users.mako:74
 #: src/useradmin/templates/view_user.mako:32
 msgid "Username"
 msgstr "用户名"
@@ -258,7 +258,7 @@ msgstr "需要 POST 请求。"
 msgid "You cannot remove yourself."
 msgstr "您不能删除自己。"
 
-#: src/useradmin/views.py:194 src/useradmin/templates/list_users.mako:200
+#: src/useradmin/views.py:194 src/useradmin/templates/list_users.mako:203
 msgid "The users were deleted."
 msgstr "已删除用户。"
 
@@ -270,7 +270,7 @@ msgstr "您必须是超级用户才能删除组。"
 msgid "The default user group may not be deleted."
 msgstr "不可删除默认用户组。"
 
-#: src/useradmin/views.py:227 src/useradmin/templates/list_groups.mako:172
+#: src/useradmin/views.py:227 src/useradmin/templates/list_groups.mako:175
 msgid "The groups were deleted."
 msgstr "已删除组。"
 
@@ -462,8 +462,8 @@ msgstr "是否检查用户的 shell 是否为 /bin/false。"
 #: src/useradmin/templates/add_ldap_users.mako:25
 #: src/useradmin/templates/change_password.mako:24
 #: src/useradmin/templates/edit_user.mako:28
-#: src/useradmin/templates/list_users.mako:25
-#: src/useradmin/templates/list_users.mako:31
+#: src/useradmin/templates/list_users.mako:27
+#: src/useradmin/templates/list_users.mako:34
 #: src/useradmin/templates/view_user.mako:23
 msgid "Hue Users"
 msgstr "Hue 用户"
@@ -548,14 +548,14 @@ msgid "Confirm"
 msgstr "确认"
 
 #: src/useradmin/templates/confirm.mako:26
-#: src/useradmin/templates/list_groups.mako:118
-#: src/useradmin/templates/list_users.mako:131
+#: src/useradmin/templates/list_groups.mako:121
+#: src/useradmin/templates/list_users.mako:134
 msgid "Yes"
 msgstr "是"
 
 #: src/useradmin/templates/edit_group.mako:27
-#: src/useradmin/templates/list_groups.mako:26
-#: src/useradmin/templates/list_groups.mako:32
+#: src/useradmin/templates/list_groups.mako:28
+#: src/useradmin/templates/list_groups.mako:35
 msgid "Hue Groups"
 msgstr "Hue 组"
 
@@ -581,7 +581,7 @@ msgid "Add/Sync group"
 msgstr "添加/同步组"
 
 #: src/useradmin/templates/edit_group.mako:76
-#: src/useradmin/templates/list_groups.mako:46
+#: src/useradmin/templates/list_groups.mako:49
 msgid "Add group"
 msgstr "添加组"
 
@@ -654,7 +654,7 @@ msgid "Next"
 msgstr "下一页"
 
 #: src/useradmin/templates/edit_user.mako:115
-#: src/useradmin/templates/list_users.mako:45
+#: src/useradmin/templates/list_users.mako:48
 msgid "Add user"
 msgstr "添加用户"
 
@@ -678,12 +678,12 @@ msgstr "用户"
 #: src/useradmin/templates/list_configurations.mako:48
 #: src/useradmin/templates/list_configurations.mako:87
 #: src/useradmin/templates/list_permissions.mako:44
-#: src/useradmin/templates/list_users.mako:75
+#: src/useradmin/templates/list_users.mako:78
 msgid "Groups"
 msgstr "组"
 
 #: src/useradmin/templates/layout.mako:66
-#: src/useradmin/templates/list_groups.mako:69
+#: src/useradmin/templates/list_groups.mako:72
 msgid "Permissions"
 msgstr "权限"
 
@@ -730,60 +730,65 @@ msgstr "更新配置"
 msgid "There was an error loading the configurations"
 msgstr "加载配置时出错"
 
-#: src/useradmin/templates/list_groups.mako:36
+#: src/useradmin/templates/list_groups.mako:39
 msgid "Search for name, members, etc..."
 msgstr "搜索名称、成员等..."
 
-#: src/useradmin/templates/list_groups.mako:40
-#: src/useradmin/templates/list_users.mako:39
+#: src/useradmin/templates/list_groups.mako:43
+#: src/useradmin/templates/list_users.mako:42
 msgid "Delete"
 msgstr "删除"
 
-#: src/useradmin/templates/list_groups.mako:49
+#: src/useradmin/templates/list_groups.mako:52
 msgid "Add/Sync LDAP group"
 msgstr "添加/同步 LDAP 组"
 
-#: src/useradmin/templates/list_groups.mako:67
+#: src/useradmin/templates/list_groups.mako:55
+#: src/useradmin/templates/list_users.mako:59
+msgid "Learn how to integrate Hue with your company LDAP"
+msgstr ""
+
+#: src/useradmin/templates/list_groups.mako:70
 msgid "Group Name"
 msgstr "组名称"
 
-#: src/useradmin/templates/list_groups.mako:68
+#: src/useradmin/templates/list_groups.mako:71
 msgid "Members"
 msgstr "成员"
 
-#: src/useradmin/templates/list_groups.mako:83
+#: src/useradmin/templates/list_groups.mako:86
 #, python-format
 msgid "Edit %(groupname)s"
 msgstr "编辑 %(groupname)s"
 
-#: src/useradmin/templates/list_groups.mako:99
+#: src/useradmin/templates/list_groups.mako:102
 msgid "There are no groups matching the search criteria."
 msgstr "没有符合搜索条件的组。"
 
-#: src/useradmin/templates/list_groups.mako:113
-#: src/useradmin/templates/list_users.mako:126
+#: src/useradmin/templates/list_groups.mako:116
+#: src/useradmin/templates/list_users.mako:129
 #: src/useradmin/templates/sync_ldap_users_groups.mako:42
 msgid "Close"
 msgstr "关闭"
 
-#: src/useradmin/templates/list_groups.mako:114
+#: src/useradmin/templates/list_groups.mako:117
 msgid "Are you sure you want to delete the selected group(s)?"
 msgstr "是否确定要删除选定组？"
 
-#: src/useradmin/templates/list_groups.mako:117
-#: src/useradmin/templates/list_users.mako:130
+#: src/useradmin/templates/list_groups.mako:120
+#: src/useradmin/templates/list_users.mako:133
 msgid "No"
 msgstr "否"
 
-#: src/useradmin/templates/list_groups.mako:160
+#: src/useradmin/templates/list_groups.mako:163
 #: src/useradmin/templates/list_permissions.mako:92
-#: src/useradmin/templates/list_users.mako:178
+#: src/useradmin/templates/list_users.mako:181
 msgid "No data available"
 msgstr "没有可用数据"
 
-#: src/useradmin/templates/list_groups.mako:161
+#: src/useradmin/templates/list_groups.mako:164
 #: src/useradmin/templates/list_permissions.mako:93
-#: src/useradmin/templates/list_users.mako:179
+#: src/useradmin/templates/list_users.mako:182
 msgid "No matching records"
 msgstr "没有匹配记录"
 
@@ -803,48 +808,48 @@ msgstr "编辑权限"
 msgid "There are no permissions matching the search criteria."
 msgstr "没有符合搜索条件的权限。"
 
-#: src/useradmin/templates/list_users.mako:35
+#: src/useradmin/templates/list_users.mako:38
 msgid "Search for name, group, etc..."
 msgstr "搜索名称、组等..."
 
-#: src/useradmin/templates/list_users.mako:49
+#: src/useradmin/templates/list_users.mako:52
 msgid "Add/Sync LDAP user"
 msgstr "添加/同步 LDAP 用户"
 
-#: src/useradmin/templates/list_users.mako:52
+#: src/useradmin/templates/list_users.mako:55
 msgid "Sync LDAP users/groups"
 msgstr "同步 LDAP 用户/组"
 
-#: src/useradmin/templates/list_users.mako:72
+#: src/useradmin/templates/list_users.mako:75
 msgid "First Name"
 msgstr "名字"
 
-#: src/useradmin/templates/list_users.mako:73
+#: src/useradmin/templates/list_users.mako:76
 msgid "Last Name"
 msgstr "姓氏"
 
-#: src/useradmin/templates/list_users.mako:74
+#: src/useradmin/templates/list_users.mako:77
 msgid "E-mail"
 msgstr "电子邮件"
 
-#: src/useradmin/templates/list_users.mako:76
+#: src/useradmin/templates/list_users.mako:79
 msgid "Last Login"
 msgstr "上次登录"
 
-#: src/useradmin/templates/list_users.mako:90
+#: src/useradmin/templates/list_users.mako:93
 #, python-format
 msgid "Edit %(username)s"
 msgstr "编辑 %(username)s"
 
-#: src/useradmin/templates/list_users.mako:109
+#: src/useradmin/templates/list_users.mako:112
 msgid "There are no users matching the search criteria."
 msgstr "没有符合搜索条件的用户。"
 
-#: src/useradmin/templates/list_users.mako:127
+#: src/useradmin/templates/list_users.mako:130
 msgid "Are you sure you want to delete the selected user(s)?"
 msgstr "是否确定要删除选定用户？"
 
-#: src/useradmin/templates/list_users.mako:228
+#: src/useradmin/templates/list_users.mako:231
 msgid "The users and groups were update correctly."
 msgstr "已正确更新用户和组。"
 
@@ -884,3 +889,4 @@ msgstr "姓氏"
 #: src/useradmin/templates/view_user.mako:38
 msgid "Email"
 msgstr "电子邮件"
+

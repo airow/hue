@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:40-0700\n"
+"POT-Creation-Date: 2017-09-28 18:50+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -17,176 +17,213 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: src/notebook/api.py:354
+#: src/notebook/api.py:357
 msgid "Query saved successfully"
 msgstr "Requête enregistrée avec succès"
 
-#: src/notebook/api.py:354
+#: src/notebook/api.py:357
 msgid "Notebook saved successfully"
 msgstr "Carnet enregistré avec succès"
 
-#: src/notebook/api.py:456
+#: src/notebook/api.py:459
 msgid "History fetched"
 msgstr "Historique extrait"
 
-#: src/notebook/api.py:478
+#: src/notebook/api.py:481
 msgid "History cleared !"
 msgstr "Historique vidé !"
 
-#: src/notebook/api.py:495
+#: src/notebook/api.py:498
 msgid "Notebook loaded successfully"
 msgstr "Carnet chargé avec succès"
 
-#: src/notebook/api.py:525
+#: src/notebook/api.py:528
 msgid "Notebook closed successfully"
 msgstr "Carnet fermé avec succès"
 
-#: src/notebook/api.py:545
+#: src/notebook/api.py:548
 msgid "Statement closed !"
 msgstr "Instruction fermée !"
 
-#: src/notebook/api.py:618
+#: src/notebook/api.py:621
 msgid "Exporting result failed."
 msgstr "Echec de l'exportation du résultat."
 
-#: src/notebook/api.py:650
+#: src/notebook/api.py:653
 #, python-format
 msgid "Export %s query to table %s"
 msgstr "Exporter %s requête vers la table %s"
 
-#: src/notebook/api.py:651 src/notebook/api.py:675
+#: src/notebook/api.py:654 src/notebook/api.py:678
 #, python-format
 msgid "Query %s to %s"
 msgstr "Requête %s sur %s"
 
-#: src/notebook/api.py:674
+#: src/notebook/api.py:677
 #, python-format
 msgid "Export %s query to directory"
 msgstr "Exporter %s requête vers le répertoire"
 
-#: src/notebook/conf.py:38
+#: src/notebook/conf.py:39
 msgid "Show the notebook menu or not"
 msgstr "Afficher ou on le menu du carnet"
 
-#: src/notebook/conf.py:73
+#: src/notebook/conf.py:76
 msgid "Define the name and how to connect and execute the language."
 msgstr ""
 "Définissez le nom et la manière de se se connecter et d'exécuter le "
 "langage."
 
-#: src/notebook/conf.py:77
+#: src/notebook/conf.py:80
 msgid "The name of the snippet."
 msgstr "Nom de l'extrait."
 
-#: src/notebook/conf.py:89
+#: src/notebook/conf.py:92
 msgid "Specific options for connecting to the server."
 msgstr "Options spécifiques pour la connexion au serveur."
 
-#: src/notebook/conf.py:99
+#: src/notebook/conf.py:102
 msgid ""
 "Comma separated list of interpreters that should be shown on the wheel. "
 "This list takes precedence over the order in which the interpreter "
 "entries appear. Only the first 5 interpreters will appear on the wheel."
 msgstr ""
-"Liste d'interpréteurs séparés par des virgules devant s'afficher sur le package wheel. "
-"Cette liste est prioritaire par rapport à l'ordre d'apparition des entrées "
-"de l'interpréteur. Seuls les 5 premiers interpréteurs apparaîtront sur le package wheel."
+"Liste d'interpréteurs séparés par des virgules devant s'afficher sur le "
+"package wheel. Cette liste est prioritaire par rapport à l'ordre "
+"d'apparition des entrées de l'interpréteur. Seuls les 5 premiers "
+"interpréteurs apparaîtront sur le package wheel."
 
-#: src/notebook/conf.py:108
+#: src/notebook/conf.py:111
 msgid "Main flag to override the automatic starting of the DBProxy server."
 msgstr ""
 "Drapeau principal pour écraser le démarrage automatique du serveur "
 "DBProxy."
 
-#: src/notebook/conf.py:115
+#: src/notebook/conf.py:118
 msgid ""
 "Additional classes to put on the dbproxy classpath when starting. Values "
 "separated by ':'"
 msgstr ""
-"Classes supplémentaires à inclure dans le paramètre classpath du serveur dbproxy lors du démarrage. Les valeurs "
-"sont séparées par deux-points (:)."
+"Classes supplémentaires à inclure dans le paramètre classpath du serveur "
+"dbproxy lors du démarrage. Les valeurs sont séparées par deux-points (:)."
 
-#: src/notebook/conf.py:122
+#: src/notebook/conf.py:125
 msgid "Flag to enable the SQL query builder of the table assist."
 msgstr "Drapeau pour activer le constructeur de requêtes SQL de l'aide des tables."
 
-#: src/notebook/conf.py:129
+#: src/notebook/conf.py:132
 msgid "Flag to enable the creation of a coordinator for the current SQL query."
 msgstr ""
 "Drapeau pour activer la création d'un coordinator pour la requête SQL "
 "courante."
 
-#: src/notebook/conf.py:136
+#: src/notebook/conf.py:139
 msgid ""
 "Flag to enable the selection of queries from files, saved queries into "
 "the editor or as snippet."
 msgstr ""
-"Indicateur permettant d'activer la sélection de requêtes à partir de fichiers, de requêtes enregistrées dans "
-"l’éditeur ou comme extrait."
+"Indicateur permettant d'activer la sélection de requêtes à partir de "
+"fichiers, de requêtes enregistrées dans l’éditeur ou comme extrait."
 
-#: src/notebook/conf.py:143
+#: src/notebook/conf.py:146
 msgid ""
 "Flag to enable the bulk submission of queries as a background task "
 "through Oozie."
 msgstr ""
-"Drapeau pour autoriser l'envoi en vrac de requête sous forme d'une tâche d'arrière-plan "
-"via Oozie."
+"Drapeau pour autoriser l'envoi en vrac de requête sous forme d'une tâche "
+"d'arrière-plan via Oozie."
 
 #: src/notebook/decorators.py:53 src/notebook/decorators.py:70
 #, python-format
 msgid "Document %(id)s does not exist"
 msgstr "Le document %(id)s n'existe pas"
 
-#: src/notebook/views.py:225
+#: src/notebook/views.py:228
 #, python-format
 msgid "Action %s is unknown"
 msgstr "Action %s inconnue"
 
-#: src/notebook/views.py:246
+#: src/notebook/views.py:249
 msgid "No notebooks have been selected for deletion."
 msgstr "Aucun carnet n’a été sélectionné pour la suppression."
 
-#: src/notebook/views.py:264
+#: src/notebook/views.py:267
 #, python-format
 msgid "Trashed %d notebook(s) and failed to delete %d notebook(s)."
-msgstr "Placement dans la corbeille de %d carnet(s) et échec de la suppression de %d carnet(s)."
+msgstr ""
+"Placement dans la corbeille de %d carnet(s) et échec de la suppression de"
+" %d carnet(s)."
 
-#: src/notebook/views.py:266
+#: src/notebook/views.py:269
 #, python-format
 msgid "Trashed %d notebook(s)"
 msgstr "Supprimer %d carnet(s)"
 
-#: src/notebook/views.py:278
+#: src/notebook/views.py:281
 msgid "No notebooks have been selected for copying."
 msgstr "Aucun carnet n’a été sélectionné pour la copie."
 
-#: src/notebook/views.py:297
+#: src/notebook/views.py:300
 #, python-format
 msgid "Copied %d notebook(s) and failed to copy %d notebook(s)."
 msgstr "Copie de %d carnet(s) et échec de la copie de %d carnet(s)."
 
-#: src/notebook/views.py:299
+#: src/notebook/views.py:302
 #, python-format
 msgid "Copied %d notebook(s)"
 msgstr "Copie de %d carnet(s)"
 
-#: src/notebook/views.py:333
+#: src/notebook/views.py:336
 msgid "A POST request is required."
 msgstr "Requête POST requise."
 
-#: src/notebook/connectors/base.py:54
+#: src/notebook/connectors/base.py:55
 msgid "No error message, please check the logs."
 msgstr "Aucun message d'erreur. Veuillez consulter les fichiers journaux."
 
-#: src/notebook/connectors/base.py:208
+#: src/notebook/connectors/base.py:212
 #, python-format
 msgid "Snippet type %(type)s is not configured in hue.ini"
 msgstr "Le type d'extrait %(type)s n'est pas configuré dans hue.ini"
 
-#: src/notebook/connectors/base.py:231
+#: src/notebook/connectors/base.py:246
 #, python-format
 msgid "Notebook connector interface not recognized: %s"
 msgstr "L'interface de connecteur au carnet n'est pas reconnue : %s"
+
+#: src/notebook/connectors/dataeng.py:44
+#, fuzzy
+msgid "Error accessing"
+msgstr "Tri ascendant"
+
+#: src/notebook/connectors/dataeng.py:87
+#: src/notebook/connectors/oozie_batch.py:95
+#, python-format
+msgid "Job was %s"
+msgstr "Le job était %s"
+
+#: src/notebook/connectors/dataeng.py:96
+#, fuzzy
+msgid "Job successfully completed."
+msgstr "Session fermée avec succès."
+
+#: src/notebook/connectors/dataeng.py:109
+msgid "Could not cancel because of unsuccessful submition."
+msgstr ""
+
+#: src/notebook/connectors/druid.py:45
+#: src/notebook/connectors/elasticsearch.py:44
+#: src/notebook/connectors/jdbc.py:45
+#, python-format
+msgid "%s: is the DB Proxy server running?"
+msgstr "%s : le serveur DB Proxy est-il en cours d'exécution ?"
+
+#: src/notebook/connectors/druid.py:208
+#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
+#: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
+msgid "Failed to get sample data."
+msgstr "Echec de l'obtention des données d'exemple."
 
 #: src/notebook/connectors/hiveserver2.py:113
 #: src/notebook/connectors/spark_shell.py:70
@@ -213,7 +250,7 @@ msgstr ""
 
 #: src/notebook/connectors/hiveserver2.py:129
 #: src/notebook/connectors/hiveserver2.py:146
-#: src/notebook/templates/editor_components.mako:966
+#: src/notebook/templates/editor_components.mako:949
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -248,7 +285,9 @@ msgstr "L'état du résultat n'est pas disponible"
 #: src/notebook/connectors/hiveserver2.py:314
 #, python-format
 msgid "Cannot fetch result metadata for snippet type: %s"
-msgstr "Impossible de récupérer les métadonnées de résultat pour le type d'extrait : %s"
+msgstr ""
+"Impossible de récupérer les métadonnées de résultat pour le type "
+"d'extrait : %s"
 
 #: src/notebook/connectors/hiveserver2.py:373
 msgid "Increase the sasl_max_buffer value in hue.ini"
@@ -268,34 +307,28 @@ msgstr ""
 
 #: src/notebook/connectors/hiveserver2.py:746
 msgid "Failed to get job details or job does not contain counters data."
-msgstr "Impossible d'obtenir les détails du job ou le job ne contient aucune donnée de compteurs."
+msgstr ""
+"Impossible d'obtenir les détails du job ou le job ne contient aucune "
+"donnée de compteurs."
 
 #: src/notebook/connectors/hiveserver2.py:779
 msgid "Hive query did not execute any jobs."
 msgstr "La requête Hive n'a exécuté aucun job."
 
-#: src/notebook/connectors/hiveserver2.py:841
+#: src/notebook/connectors/hiveserver2.py:842
 #, python-format
 msgid "Failed to get query profile from Impala Daemon server: %s"
-msgstr "Impossible d'obtenir le profil de la requête auprès du serveur de démons Impala : %s"
+msgstr ""
+"Impossible d'obtenir le profil de la requête auprès du serveur de démons "
+"Impala : %s"
 
-#: src/notebook/connectors/hiveserver2.py:844
+#: src/notebook/connectors/hiveserver2.py:845
 msgid ""
 "Could not find profile in query profile response from Impala Daemon "
 "Server."
 msgstr ""
-"Impossible de trouver le profil dans la réponse du profil de la requête auprès du serveur de démons "
-"Impala."
-
-#: src/notebook/connectors/jdbc.py:45
-#, python-format
-msgid "%s: is the DB Proxy server running?"
-msgstr "%s : le serveur DB Proxy est-il en cours d'exécution ?"
-
-#: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
-#: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
-msgid "Failed to get sample data."
-msgstr "Echec de l'obtention des données d'exemple."
+"Impossible de trouver le profil dans la réponse du profil de la requête "
+"auprès du serveur de démons Impala."
 
 #: src/notebook/connectors/oozie_batch.py:65
 msgid ""
@@ -314,11 +347,6 @@ msgstr "%s pour %s"
 #, python-format
 msgid "Batch job for %s"
 msgstr "Job de lot pour %s"
-
-#: src/notebook/connectors/oozie_batch.py:95
-#, python-format
-msgid "Job was %s"
-msgstr "Le job était %s"
 
 #: src/notebook/connectors/spark_shell.py:51
 msgid "Spark Conf"
@@ -414,292 +442,290 @@ msgstr "Impossible de créer la session Spark dans le cluster : %s"
 msgid "Editor"
 msgstr "Editeur"
 
-#: src/notebook/templates/editor_components.mako:203
-#: src/notebook/templates/editor_components.mako:376
+#: src/notebook/templates/editor_components.mako:193
+#: src/notebook/templates/editor_components.mako:366
 msgid "Hue logo"
 msgstr "Logo Hue"
 
-#: src/notebook/templates/editor_components.mako:212
+#: src/notebook/templates/editor_components.mako:202
 msgid "Saving..."
 msgstr "Enregistrement en cours..."
 
-#: src/notebook/templates/editor_components.mako:219
+#: src/notebook/templates/editor_components.mako:209
 msgid "Save as..."
 msgstr "Enregistrer sous..."
 
-#: src/notebook/templates/editor_components.mako:234
+#: src/notebook/templates/editor_components.mako:224
 msgid "Player mode"
 msgstr "Mode lecture"
 
-#: src/notebook/templates/editor_components.mako:239
+#: src/notebook/templates/editor_components.mako:229
 msgid "Execute all snippets"
 msgstr "Exécuter tous les extraits"
 
-#: src/notebook/templates/editor_components.mako:244
+#: src/notebook/templates/editor_components.mako:234
 msgid "Clear all results"
 msgstr "Effacer tous les résultats"
 
-#: src/notebook/templates/editor_components.mako:249
+#: src/notebook/templates/editor_components.mako:239
 msgid "Display all Notebook content"
 msgstr "Afficher tout le contenu du carnet"
 
-#: src/notebook/templates/editor_components.mako:254
+#: src/notebook/templates/editor_components.mako:244
 msgid "Export to Jupyter"
 msgstr "Exporter vers Jupyter"
 
-#: src/notebook/templates/editor_components.mako:262
+#: src/notebook/templates/editor_components.mako:252
 msgid "New "
 msgstr "Nouveau "
 
-#: src/notebook/templates/editor_components.mako:262
+#: src/notebook/templates/editor_components.mako:252
 msgid " Query"
 msgstr " Requête"
 
-#: src/notebook/templates/editor_components.mako:267
+#: src/notebook/templates/editor_components.mako:257
 msgid "New Notebook"
 msgstr "Nouveau carnet"
 
-#: src/notebook/templates/editor_components.mako:273
-#: src/notebook/templates/editor_components.mako:278
+#: src/notebook/templates/editor_components.mako:263
+#: src/notebook/templates/editor_components.mako:268
 msgid "Queries"
 msgstr "Requêtes"
 
-#: src/notebook/templates/editor_components.mako:273
-#: src/notebook/templates/editor_components.mako:278
+#: src/notebook/templates/editor_components.mako:263
+#: src/notebook/templates/editor_components.mako:268
 #: src/notebook/templates/notebooks.mako:23
 #: src/notebook/templates/notebooks.mako:47
 msgid "Notebooks"
 msgstr "Carnets"
 
-#: src/notebook/templates/editor_components.mako:283
+#: src/notebook/templates/editor_components.mako:273
 msgid "Context"
 msgstr "Contexte"
 
-#: src/notebook/templates/editor_components.mako:292
+#: src/notebook/templates/editor_components.mako:282
 msgid " Editor"
 msgstr " Editeur"
 
-#: src/notebook/templates/editor_components.mako:342
+#: src/notebook/templates/editor_components.mako:332
 msgid "This is a history query"
 msgstr "Ceci est une requête d'historique"
 
-#: src/notebook/templates/editor_components.mako:345
+#: src/notebook/templates/editor_components.mako:335
 msgid "Open directory of this query"
 msgstr "Ouvrir le répertoire de cette requête"
 
-#: src/notebook/templates/editor_components.mako:350
+#: src/notebook/templates/editor_components.mako:340
 msgid "Click to open original saved query"
 msgstr "Cliquez pour ouvrir la requête enregistrée d'origine"
 
-#: src/notebook/templates/editor_components.mako:355
+#: src/notebook/templates/editor_components.mako:345
 msgid "This is a saved query"
 msgstr "Ceci est une requête enregistrée"
 
-#: src/notebook/templates/editor_components.mako:388
-#: src/notebook/templates/editor_components.mako:400
-#: src/notebook/templates/editor_components.mako:407
-#: src/notebook/templates/editor_components.mako:413
-#: src/notebook/templates/editor_components.mako:420
-#: src/notebook/templates/editor_components.mako:427
-#: src/notebook/templates/editor_components.mako:434
-#: src/notebook/templates/editor_components.mako:583
-#: src/notebook/templates/editor_components.mako:1817
-#: src/notebook/templates/editor_components.mako:1838
-#: src/notebook/templates/editor_components.mako:1863
-#: src/notebook/templates/editor_components.mako:1898
-#: src/notebook/templates/editor_components.mako:1911
-#: src/notebook/templates/editor_components.mako:1939
+#: src/notebook/templates/editor_components.mako:378
+#: src/notebook/templates/editor_components.mako:385
+#: src/notebook/templates/editor_components.mako:391
+#: src/notebook/templates/editor_components.mako:398
+#: src/notebook/templates/editor_components.mako:405
+#: src/notebook/templates/editor_components.mako:412
+#: src/notebook/templates/editor_components.mako:563
+#: src/notebook/templates/editor_components.mako:1806
+#: src/notebook/templates/editor_components.mako:1831
+#: src/notebook/templates/editor_components.mako:1866
+#: src/notebook/templates/editor_components.mako:1879
+#: src/notebook/templates/editor_components.mako:1907
 #: src/notebook/templates/notebooks.mako:142
 msgid "Close"
 msgstr "Fermer"
 
-#: src/notebook/templates/editor_components.mako:389
-msgid "Row details"
-msgstr "Détail de la ligne"
-
-#: src/notebook/templates/editor_components.mako:401
+#: src/notebook/templates/editor_components.mako:379
 msgid "Editor keyboard shortcuts"
 msgstr "Raccourcis clavier de l'éditeur"
 
-#: src/notebook/templates/editor_components.mako:414
+#: src/notebook/templates/editor_components.mako:392
 msgid "All Notebook content"
 msgstr "Tout le contenu du carnet"
 
-#: src/notebook/templates/editor_components.mako:428
+#: src/notebook/templates/editor_components.mako:406
 msgid "Invalid Query"
 msgstr "Requête incorrecte"
 
-#: src/notebook/templates/editor_components.mako:431
+#: src/notebook/templates/editor_components.mako:409
 msgid "Query requires a select or an aggregate."
 msgstr "La requête nécessite une sélection ou un agrégat."
 
-#: src/notebook/templates/editor_components.mako:440
-#: src/notebook/templates/editor_components.mako:443
-#: src/notebook/templates/editor_components.mako:461
-#: src/notebook/templates/editor_components.mako:542
+#: src/notebook/templates/editor_components.mako:418
+#: src/notebook/templates/editor_components.mako:421
+#: src/notebook/templates/editor_components.mako:439
+#: src/notebook/templates/editor_components.mako:521
 msgid "Toggle Assist"
 msgstr "Activer/désactiver l'aide"
 
-#: src/notebook/templates/editor_components.mako:557
+#: src/notebook/templates/editor_components.mako:537
 msgid "Sessions"
 msgstr "Sessions"
 
-#: src/notebook/templates/editor_components.mako:575
+#: src/notebook/templates/editor_components.mako:555
 msgid "There are currently no active sessions, please reload the page."
 msgstr "Il n'y a actuellement aucune session active, rechargez la page."
 
-#: src/notebook/templates/editor_components.mako:580
+#: src/notebook/templates/editor_components.mako:560
 msgid "Recreate session"
 msgstr "Recréer la session"
 
-#: src/notebook/templates/editor_components.mako:581
+#: src/notebook/templates/editor_components.mako:561
 msgid "Recreate"
 msgstr "Recréer"
 
-#: src/notebook/templates/editor_components.mako:583
+#: src/notebook/templates/editor_components.mako:563
 msgid "Close session"
 msgstr "Fermer la session"
 
-#: src/notebook/templates/editor_components.mako:585
+#: src/notebook/templates/editor_components.mako:565
 msgid "Save session settings as default"
 msgstr "Enregistrer les paramètres de session comme valeurs par défaut"
 
-#: src/notebook/templates/editor_components.mako:585
+#: src/notebook/templates/editor_components.mako:565
 msgid "Set as default settings"
 msgstr "Définir comme paramètres par défaut"
 
-#: src/notebook/templates/editor_components.mako:619
+#: src/notebook/templates/editor_components.mako:599
 msgid "Snippet icon"
 msgstr "Icône Extrait"
 
-#: src/notebook/templates/editor_components.mako:639
+#: src/notebook/templates/editor_components.mako:619
 msgid "No logs available at this moment."
 msgstr "Aucun journal disponible en ce moment."
 
-#: src/notebook/templates/editor_components.mako:648
+#: src/notebook/templates/editor_components.mako:628
 msgid "Success."
 msgstr "Réussite."
 
-#: src/notebook/templates/editor_components.mako:652
+#: src/notebook/templates/editor_components.mako:632
 msgid "Done. 0 results."
 msgstr "Terminé. 0 résultat."
 
-#: src/notebook/templates/editor_components.mako:656
-#: src/notebook/templates/editor_components.mako:1415
+#: src/notebook/templates/editor_components.mako:636
+#: src/notebook/templates/editor_components.mako:1390
 #: src/notebook/templates/editor_m.mako:115
 msgid "Results have expired, rerun the query if needed."
 msgstr "Les résultats ont expiré, exécutez à nouveau la requête si nécessaire."
 
-#: src/notebook/templates/editor_components.mako:661
+#: src/notebook/templates/editor_components.mako:641
 msgid "Loading..."
 msgstr "Chargement en cours..."
 
-#: src/notebook/templates/editor_components.mako:672
+#: src/notebook/templates/editor_components.mako:652
 msgid "Query History"
 msgstr "Historique des requêtes"
 
-#: src/notebook/templates/editor_components.mako:673
+#: src/notebook/templates/editor_components.mako:653
 msgid "Search the query history"
 msgstr "Rechercher dans l'historique des requêtes"
 
-#: src/notebook/templates/editor_components.mako:674
-#: src/notebook/templates/editor_components.mako:681
+#: src/notebook/templates/editor_components.mako:654
+#: src/notebook/templates/editor_components.mako:661
 msgid "Search..."
 msgstr "Rechercher..."
 
-#: src/notebook/templates/editor_components.mako:675
+#: src/notebook/templates/editor_components.mako:655
 msgid "Clear the query history"
 msgstr "Effacer l'historique des requêtes"
 
-#: src/notebook/templates/editor_components.mako:679
+#: src/notebook/templates/editor_components.mako:659
 msgid "Saved Queries"
 msgstr "Requêtes enregistrées"
 
-#: src/notebook/templates/editor_components.mako:680
+#: src/notebook/templates/editor_components.mako:660
 msgid "Search the saved queries"
 msgstr "Rechercher les requêtes enregistrées"
 
-#: src/notebook/templates/editor_components.mako:685
+#: src/notebook/templates/editor_components.mako:662
+msgid "Refresh"
+msgstr ""
+
+#: src/notebook/templates/editor_components.mako:667
 msgid "Query Builder"
 msgstr "Constructeur de requêtes"
 
-#: src/notebook/templates/editor_components.mako:689
+#: src/notebook/templates/editor_components.mako:672
 msgid "Results"
 msgstr "Résultats"
 
-#: src/notebook/templates/editor_components.mako:691
+#: src/notebook/templates/editor_components.mako:674
 msgid "Number of rows"
 msgstr "Nombre de lignes"
 
-#: src/notebook/templates/editor_components.mako:694
+#: src/notebook/templates/editor_components.mako:677
 msgid "Search the results"
 msgstr "Rechercher les résultats"
 
-#: src/notebook/templates/editor_components.mako:696
+#: src/notebook/templates/editor_components.mako:679
 msgid "Expand results"
 msgstr "Développer les résultats"
 
-#: src/notebook/templates/editor_components.mako:697
-#: src/notebook/templates/editor_components.mako:907
+#: src/notebook/templates/editor_components.mako:680
+#: src/notebook/templates/editor_components.mako:890
 msgid "Collapse results"
 msgstr "Réduire les résultats"
 
-#: src/notebook/templates/editor_components.mako:702
-#: src/notebook/templates/editor_components.mako:1703
+#: src/notebook/templates/editor_components.mako:685
+#: src/notebook/templates/editor_components.mako:1684
 msgid "Explain"
 msgstr "Expliquer"
 
-#: src/notebook/templates/editor_components.mako:724
+#: src/notebook/templates/editor_components.mako:707
 msgid "No queries to be shown."
 msgstr "Aucune requête à afficher."
 
-#: src/notebook/templates/editor_components.mako:727
-#: src/notebook/templates/editor_components.mako:785
+#: src/notebook/templates/editor_components.mako:710
+#: src/notebook/templates/editor_components.mako:768
 msgid "No queries found for"
 msgstr "Aucune requête trouvée pour"
 
-#: src/notebook/templates/editor_components.mako:763
-#: src/notebook/templates/editor_components.mako:809
+#: src/notebook/templates/editor_components.mako:746
+#: src/notebook/templates/editor_components.mako:792
 msgid "Prev"
 msgstr "Préc."
 
-#: src/notebook/templates/editor_components.mako:765
-#: src/notebook/templates/editor_components.mako:811
+#: src/notebook/templates/editor_components.mako:748
+#: src/notebook/templates/editor_components.mako:794
 #: src/notebook/templates/notebooks.mako:276
 msgid "Next"
 msgstr "Suivant"
 
-#: src/notebook/templates/editor_components.mako:779
+#: src/notebook/templates/editor_components.mako:762
 msgid "Error loading my queries"
 msgstr "Erreur de chargement de mes requêtes"
 
-#: src/notebook/templates/editor_components.mako:782
+#: src/notebook/templates/editor_components.mako:765
 msgid "You don't have any saved query."
 msgstr "Vous n'avez aucune requête enregistrée."
 
-#: src/notebook/templates/editor_components.mako:791
-#: src/notebook/templates/editor_components.mako:1876
+#: src/notebook/templates/editor_components.mako:774
+#: src/notebook/templates/editor_components.mako:1844
 #: src/notebook/templates/notebooks.mako:108
 msgid "Name"
 msgstr "Nom"
 
-#: src/notebook/templates/editor_components.mako:792
-#: src/notebook/templates/editor_components.mako:1882
+#: src/notebook/templates/editor_components.mako:775
+#: src/notebook/templates/editor_components.mako:1850
 #: src/notebook/templates/notebooks.mako:109
 msgid "Description"
 msgstr "Description"
 
-#: src/notebook/templates/editor_components.mako:793
+#: src/notebook/templates/editor_components.mako:776
 #: src/notebook/templates/notebooks.mako:110
 msgid "Owner"
 msgstr "Propriétaire"
 
-#: src/notebook/templates/editor_components.mako:794
+#: src/notebook/templates/editor_components.mako:777
 #: src/notebook/templates/notebooks.mako:111
 msgid "Last Modified"
 msgstr "Dernière modification"
 
-#: src/notebook/templates/editor_components.mako:818
+#: src/notebook/templates/editor_components.mako:801
 msgid ""
 "There are currently no rules defined. To get started, right click on any "
 "table column in the SQL Assist panel."
@@ -707,351 +733,348 @@ msgstr ""
 "Il n'existe actuellement aucune règle définie. Pour commencer, cliquez "
 "avec le bouton droit dans une colonne de la table dans le volet Aide SQL."
 
-#: src/notebook/templates/editor_components.mako:822
+#: src/notebook/templates/editor_components.mako:805
 msgid "Table"
 msgstr "Table"
 
-#: src/notebook/templates/editor_components.mako:823
+#: src/notebook/templates/editor_components.mako:806
 msgid "Column"
 msgstr "Colonne"
 
-#: src/notebook/templates/editor_components.mako:824
+#: src/notebook/templates/editor_components.mako:807
 msgid "Operation"
 msgstr "Opération"
 
-#: src/notebook/templates/editor_components.mako:831
+#: src/notebook/templates/editor_components.mako:814
 msgid "Build query"
 msgstr "Construire une requête"
 
-#: src/notebook/templates/editor_components.mako:865
+#: src/notebook/templates/editor_components.mako:848
 msgid "The query is hanging and taking longer than expected."
 msgstr "La requête est suspendue et son traitement dure plus longtemps que prévu."
 
-#: src/notebook/templates/editor_components.mako:871
+#: src/notebook/templates/editor_components.mako:854
 msgid "The current query has been redacted to hide sensitive information."
 msgstr "La requête courante a été rédigée pour masquer les informations sensibles."
 
-#: src/notebook/templates/editor_components.mako:881
-#: src/notebook/templates/editor_components.mako:903
+#: src/notebook/templates/editor_components.mako:864
+#: src/notebook/templates/editor_components.mako:886
 msgid "Show Logs"
 msgstr "Afficher les journaux"
 
-#: src/notebook/templates/editor_components.mako:882
-#: src/notebook/templates/editor_components.mako:896
+#: src/notebook/templates/editor_components.mako:865
+#: src/notebook/templates/editor_components.mako:879
 msgid "Execution time"
 msgstr "Durée d'exécution"
 
+#: src/notebook/templates/editor_components.mako:870
 #: src/notebook/templates/editor_components.mako:887
-#: src/notebook/templates/editor_components.mako:904
 msgid "Settings and properties"
 msgstr "Paramètres et propriétés"
 
-#: src/notebook/templates/editor_components.mako:905
+#: src/notebook/templates/editor_components.mako:888
 msgid "Show editor shortcuts"
 msgstr "Afficher les raccourcis de l'éditeur"
 
-#: src/notebook/templates/editor_components.mako:1009
+#: src/notebook/templates/editor_components.mako:992
 msgid "The query has a parse error."
 msgstr "La requête contient une erreur d'analyse."
 
-#: src/notebook/templates/editor_components.mako:1018
+#: src/notebook/templates/editor_components.mako:1001
 msgid "This "
 msgstr "Cette"
 
-#: src/notebook/templates/editor_components.mako:1018
+#: src/notebook/templates/editor_components.mako:1001
 msgid " query is not compatible with "
 msgstr " requête n'est pas compatible avec "
 
-#: src/notebook/templates/editor_components.mako:1029
+#: src/notebook/templates/editor_components.mako:1012
 msgid "The "
 msgstr "La "
 
-#: src/notebook/templates/editor_components.mako:1031
-#: src/notebook/templates/editor_components.mako:1035
+#: src/notebook/templates/editor_components.mako:1014
+#: src/notebook/templates/editor_components.mako:1018
 msgid " query is compatible with "
 msgstr " requête est compatible avec "
 
-#: src/notebook/templates/editor_components.mako:1032
+#: src/notebook/templates/editor_components.mako:1015
 msgid "Execute it with "
 msgstr "Exécutez-la avec "
 
-#: src/notebook/templates/editor_components.mako:1045
+#: src/notebook/templates/editor_components.mako:1028
 msgid "This query is not compatible with "
 msgstr "Cette requête n'est pas compatible avec "
 
-#: src/notebook/templates/editor_components.mako:1058
+#: src/notebook/templates/editor_components.mako:1041
 msgid "Some low risks were detected."
 msgstr "Des risques faibles ont été détectés."
 
-#: src/notebook/templates/editor_components.mako:1068
+#: src/notebook/templates/editor_components.mako:1051
 msgid "Some medium risks were detected."
 msgstr "Des risques moyens ont été détectés."
 
-#: src/notebook/templates/editor_components.mako:1078
+#: src/notebook/templates/editor_components.mako:1061
 msgid "Some high risks were detected."
 msgstr "Des risques élevés ont été détectés."
 
-#: src/notebook/templates/editor_components.mako:1088
+#: src/notebook/templates/editor_components.mako:1071
 msgid "Query validated."
 msgstr "La requête a été validée."
 
-#: src/notebook/templates/editor_components.mako:1096
-msgid "Not validated."
-msgstr "Non validé."
-
-#: src/notebook/templates/editor_components.mako:1108
+#: src/notebook/templates/editor_components.mako:1083
 msgid "Query File"
 msgstr "Fichier de requêtes"
 
-#: src/notebook/templates/editor_components.mako:1109
+#: src/notebook/templates/editor_components.mako:1084
 msgid "Path to file, e.g. /user/hue/sample.sql"
 msgstr "Chemin vers le fichier, par exemple, /user/hue/sample.sql"
 
-#: src/notebook/templates/editor_components.mako:1112
-#: src/notebook/templates/editor_components.mako:1134
+#: src/notebook/templates/editor_components.mako:1087
+#: src/notebook/templates/editor_components.mako:1109
 msgid "Open in new tab"
 msgstr "Ouvrir dans un nouvel onglet"
 
-#: src/notebook/templates/editor_components.mako:1128
+#: src/notebook/templates/editor_components.mako:1103
 msgid "Document"
 msgstr "Document"
 
-#: src/notebook/templates/editor_components.mako:1130
+#: src/notebook/templates/editor_components.mako:1105
 msgid "Search your documents..."
 msgstr "Rechercher vos documents…"
 
-#: src/notebook/templates/editor_components.mako:1178
+#: src/notebook/templates/editor_components.mako:1153
 msgid "Variable value"
 msgstr "Valeur de variable"
 
-#: src/notebook/templates/editor_components.mako:1190
-#: src/notebook/templates/editor_components.mako:1257
+#: src/notebook/templates/editor_components.mako:1165
+#: src/notebook/templates/editor_components.mako:1232
 msgid "type"
 msgstr "type"
 
-#: src/notebook/templates/editor_components.mako:1194
-#: src/notebook/templates/editor_components.mako:1749
-#: src/notebook/templates/editor_components.mako:1764
+#: src/notebook/templates/editor_components.mako:1169
+#: src/notebook/templates/editor_components.mako:1730
+#: src/notebook/templates/editor_components.mako:1745
 msgid "Bars"
 msgstr "Barres"
 
-#: src/notebook/templates/editor_components.mako:1195
+#: src/notebook/templates/editor_components.mako:1170
+#: src/notebook/templates/editor_components.mako:1731
 #: src/notebook/templates/editor_components.mako:1750
-#: src/notebook/templates/editor_components.mako:1769
 msgid "Lines"
 msgstr "Lignes"
 
+#: src/notebook/templates/editor_components.mako:1177
 #: src/notebook/templates/editor_components.mako:1202
-#: src/notebook/templates/editor_components.mako:1227
 msgid "value"
 msgstr "valeur"
 
-#: src/notebook/templates/editor_components.mako:1208
+#: src/notebook/templates/editor_components.mako:1183
 msgid "legend"
 msgstr "légende"
 
-#: src/notebook/templates/editor_components.mako:1217
+#: src/notebook/templates/editor_components.mako:1192
 msgid "x-axis"
 msgstr "Axe x"
 
-#: src/notebook/templates/editor_components.mako:1218
+#: src/notebook/templates/editor_components.mako:1193
 msgid "region"
 msgstr "région"
 
-#: src/notebook/templates/editor_components.mako:1219
+#: src/notebook/templates/editor_components.mako:1194
 msgid "latitude"
 msgstr "latitude"
 
-#: src/notebook/templates/editor_components.mako:1226
+#: src/notebook/templates/editor_components.mako:1201
 msgid "y-axis"
 msgstr "Axe y"
 
-#: src/notebook/templates/editor_components.mako:1228
+#: src/notebook/templates/editor_components.mako:1203
 msgid "longitude"
 msgstr "longitude"
 
-#: src/notebook/templates/editor_components.mako:1242
+#: src/notebook/templates/editor_components.mako:1217
 msgid "group"
 msgstr "groupe"
 
-#: src/notebook/templates/editor_components.mako:1249
+#: src/notebook/templates/editor_components.mako:1224
 msgid "limit"
 msgstr "limite"
 
-#: src/notebook/templates/editor_components.mako:1261
+#: src/notebook/templates/editor_components.mako:1236
 msgid "Markers"
 msgstr "Marqueurs"
 
-#: src/notebook/templates/editor_components.mako:1262
+#: src/notebook/templates/editor_components.mako:1237
 msgid "Heatmap"
 msgstr "Carte thermique"
 
-#: src/notebook/templates/editor_components.mako:1268
+#: src/notebook/templates/editor_components.mako:1243
 msgid "label"
 msgstr "étiquette"
 
-#: src/notebook/templates/editor_components.mako:1277
+#: src/notebook/templates/editor_components.mako:1252
 msgid "intensity"
 msgstr "intensité"
 
-#: src/notebook/templates/editor_components.mako:1286
+#: src/notebook/templates/editor_components.mako:1261
 msgid "scatter size"
 msgstr "taille de dispersion"
 
-#: src/notebook/templates/editor_components.mako:1293
+#: src/notebook/templates/editor_components.mako:1268
 msgid "scatter group"
 msgstr "groupe de dispersion"
 
-#: src/notebook/templates/editor_components.mako:1301
+#: src/notebook/templates/editor_components.mako:1276
 msgid "scope"
 msgstr "portée"
 
-#: src/notebook/templates/editor_components.mako:1305
+#: src/notebook/templates/editor_components.mako:1280
 msgid "World"
 msgstr "Monde"
 
-#: src/notebook/templates/editor_components.mako:1306
+#: src/notebook/templates/editor_components.mako:1281
 msgid "Europe"
 msgstr "Europe"
 
-#: src/notebook/templates/editor_components.mako:1307
+#: src/notebook/templates/editor_components.mako:1282
 msgid "Australia"
 msgstr "Australie"
 
-#: src/notebook/templates/editor_components.mako:1308
+#: src/notebook/templates/editor_components.mako:1283
 msgid "Brazil"
 msgstr "Brésil"
 
-#: src/notebook/templates/editor_components.mako:1309
+#: src/notebook/templates/editor_components.mako:1284
 msgid "Canada"
 msgstr "Canada"
 
-#: src/notebook/templates/editor_components.mako:1310
+#: src/notebook/templates/editor_components.mako:1285
 msgid "China"
 msgstr "Chine"
 
-#: src/notebook/templates/editor_components.mako:1311
+#: src/notebook/templates/editor_components.mako:1286
 msgid "France"
 msgstr "France"
 
-#: src/notebook/templates/editor_components.mako:1312
+#: src/notebook/templates/editor_components.mako:1287
 msgid "Germany"
 msgstr "Allemagne"
 
-#: src/notebook/templates/editor_components.mako:1313
+#: src/notebook/templates/editor_components.mako:1288
 msgid "Italy"
 msgstr "Italie"
 
-#: src/notebook/templates/editor_components.mako:1314
+#: src/notebook/templates/editor_components.mako:1289
 msgid "Japan"
 msgstr "Japon"
 
-#: src/notebook/templates/editor_components.mako:1315
+#: src/notebook/templates/editor_components.mako:1290
 msgid "UK"
 msgstr "Royaume-Uni"
 
-#: src/notebook/templates/editor_components.mako:1316
+#: src/notebook/templates/editor_components.mako:1291
 msgid "USA"
 msgstr "Etats-Unis"
 
-#: src/notebook/templates/editor_components.mako:1322
+#: src/notebook/templates/editor_components.mako:1297
 msgid "sorting"
 msgstr "tri"
 
-#: src/notebook/templates/editor_components.mako:1325
+#: src/notebook/templates/editor_components.mako:1300
 msgid "No sorting"
 msgstr "Aucun tri"
 
-#: src/notebook/templates/editor_components.mako:1326
+#: src/notebook/templates/editor_components.mako:1301
 msgid "Sort ascending"
 msgstr "Tri ascendant"
 
-#: src/notebook/templates/editor_components.mako:1327
+#: src/notebook/templates/editor_components.mako:1302
 msgid "Sort descending"
 msgstr "Tri descendant"
 
-#: src/notebook/templates/editor_components.mako:1341
+#: src/notebook/templates/editor_components.mako:1316
 msgid "columns"
 msgstr "colonnes"
 
-#: src/notebook/templates/editor_components.mako:1343
+#: src/notebook/templates/editor_components.mako:1318
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/notebook/templates/editor_components.mako:1347
+#: src/notebook/templates/editor_components.mako:1322
 msgid "Filter columns..."
 msgstr "Filtrer les colonnes…"
 
-#: src/notebook/templates/editor_components.mako:1347
+#: src/notebook/templates/editor_components.mako:1322
 msgid "Type column:xxx or type:yyy for specific filters."
 msgstr "Tapez la colonne :xxx ou tapez :yyy pour les filtres spécifiques."
 
-#: src/notebook/templates/editor_components.mako:1361
+#: src/notebook/templates/editor_components.mako:1336
 msgid "No results found"
 msgstr "Aucun résultat trouvé"
 
-#: src/notebook/templates/editor_components.mako:1385
+#: src/notebook/templates/editor_components.mako:1360
 msgid "Done."
 msgstr "Terminé."
 
-#: src/notebook/templates/editor_components.mako:1390
+#: src/notebook/templates/editor_components.mako:1365
 msgid "Result image"
 msgstr "Image du résultat"
 
-#: src/notebook/templates/editor_components.mako:1420
+#: src/notebook/templates/editor_components.mako:1395
 msgid "Select the chart parameters on the left"
 msgstr "Sélectionner les paramètres de graphique à gauche"
 
-#: src/notebook/templates/editor_components.mako:1468
+#: src/notebook/templates/editor_components.mako:1443
 msgid "Type your text here, select some text to format it"
 msgstr "Saisissez votre texte ici, sélectionnez du texte pour le mettre en forme"
 
-#: src/notebook/templates/editor_components.mako:1497
+#: src/notebook/templates/editor_components.mako:1472
 msgid "Source"
 msgstr "Source"
 
-#: src/notebook/templates/editor_components.mako:1499
+#: src/notebook/templates/editor_components.mako:1474
 msgid "Source path to copy, e.g. ${nameNode1}/path/to/input.txt"
 msgstr "Chemin d'accès source à copier, par exemple ${nameNode1}/path/to/input.txt"
 
-#: src/notebook/templates/editor_components.mako:1503
+#: src/notebook/templates/editor_components.mako:1478
 msgid "Destination"
 msgstr "Destination"
 
-#: src/notebook/templates/editor_components.mako:1505
+#: src/notebook/templates/editor_components.mako:1480
 msgid "Destination path, e.g. ${nameNode2}/path/to/output.txt"
 msgstr "Chemin d'accès destination, par exemple ${nameNode2}/path/to/output.txt"
 
-#: src/notebook/templates/editor_components.mako:1511
+#: src/notebook/templates/editor_components.mako:1486
 msgid "Script path"
 msgstr "Chemin d'accès au script"
 
-#: src/notebook/templates/editor_components.mako:1513
+#: src/notebook/templates/editor_components.mako:1488
 msgid "Source path to the command"
 msgstr "Chemin d'accès source à la commande"
 
-#: src/notebook/templates/editor_components.mako:1517
+#: src/notebook/templates/editor_components.mako:1492
+#: src/notebook/templates/editor_components.mako:1527
 msgid "Variables"
 msgstr "Variables"
 
-#: src/notebook/templates/editor_components.mako:1526
+#: src/notebook/templates/editor_components.mako:1501
 msgid "Jar path"
 msgstr "Chemin des fichiers Jar"
 
-#: src/notebook/templates/editor_components.mako:1528
+#: src/notebook/templates/editor_components.mako:1503
 msgid "Source path to the main MapReduce jar"
 msgstr "Le chemin d'accès source au fichier jar MapReduce principal"
 
-#: src/notebook/templates/editor_components.mako:1532
+#: src/notebook/templates/editor_components.mako:1507
 msgid "Properties"
 msgstr "Propriétés"
 
-#: src/notebook/templates/editor_components.mako:1540
-#: src/notebook/templates/editor_components.mako:1554
+#: src/notebook/templates/editor_components.mako:1515
+#: src/notebook/templates/editor_components.mako:1535
 msgid "Path"
 msgstr "Chemin d'accès"
 
-#: src/notebook/templates/editor_components.mako:1542
+#: src/notebook/templates/editor_components.mako:1517
 msgid ""
 "Path to application jar, e.g. hdfs://localhost:8020/user/hue/oozie-"
 "examples.jar"
@@ -1059,288 +1082,288 @@ msgstr ""
 "Chemin d'accès au fichier jar de l'application, par ex. "
 "hdfs://localhost:8020/user/hue/oozie-examples.jar"
 
-#: src/notebook/templates/editor_components.mako:1546
-#: src/notebook/templates/editor_components.mako:1567
+#: src/notebook/templates/editor_components.mako:1521
+#: src/notebook/templates/editor_components.mako:1548
 msgid "Class"
 msgstr "Classe"
 
-#: src/notebook/templates/editor_components.mako:1548
-#: src/notebook/templates/editor_components.mako:1570
+#: src/notebook/templates/editor_components.mako:1523
+#: src/notebook/templates/editor_components.mako:1551
 msgid "Class name of application, e.g. org.apache.oozie.example.SparkFileCopy"
 msgstr ""
 "Nom de la classe de l'application, par ex. "
 "org.apache.oozie.example.SparkFileCopy"
 
-#: src/notebook/templates/editor_components.mako:1556
+#: src/notebook/templates/editor_components.mako:1537
 msgid "Path to python file, e.g. script.py"
 msgstr "Chemin d'accès au fichier python, par ex. script.py"
 
-#: src/notebook/templates/editor_components.mako:1608
+#: src/notebook/templates/editor_components.mako:1589
 msgid "Click to hide"
 msgstr "Cliquer pour masquer"
 
-#: src/notebook/templates/editor_components.mako:1610
+#: src/notebook/templates/editor_components.mako:1591
 msgid "The statement was canceled."
 msgstr "L'instruction a été annulée."
 
-#: src/notebook/templates/editor_components.mako:1640
+#: src/notebook/templates/editor_components.mako:1621
 msgid "Creating session"
 msgstr "Création de la session"
 
-#: src/notebook/templates/editor_components.mako:1644
+#: src/notebook/templates/editor_components.mako:1625
 msgid "Restart from the first statement"
 msgstr "Redémarrer à partir de la première instruction"
 
-#: src/notebook/templates/editor_components.mako:1651
+#: src/notebook/templates/editor_components.mako:1632
 #: src/notebook/templates/editor_m.mako:95
 msgid "Cancel operation"
 msgstr "Annuler l'opération"
 
-#: src/notebook/templates/editor_components.mako:1656
+#: src/notebook/templates/editor_components.mako:1637
 msgid "Canceling operation..."
 msgstr "Annulation de l'opération…"
 
-#: src/notebook/templates/editor_components.mako:1662
-#: src/notebook/templates/editor_components.mako:1683
+#: src/notebook/templates/editor_components.mako:1643
+#: src/notebook/templates/editor_components.mako:1664
 msgid "Submit all the queries as a background batch job."
 msgstr "Envoyez toutes les requêtes comme job de lot à l'arrière-plan."
 
-#: src/notebook/templates/editor_components.mako:1678
+#: src/notebook/templates/editor_components.mako:1659
 msgid "Execute interactively the current statement"
 msgstr "Exécuter l'instruction courante de manière interactive"
 
-#: src/notebook/templates/editor_components.mako:1679
+#: src/notebook/templates/editor_components.mako:1660
 #: src/notebook/templates/editor_m.mako:92
 msgid "Execute"
 msgstr "Exécuter"
 
-#: src/notebook/templates/editor_components.mako:1684
+#: src/notebook/templates/editor_components.mako:1665
 msgid "Batch"
 msgstr "Lot"
 
-#: src/notebook/templates/editor_components.mako:1694
-#: src/notebook/templates/editor_components.mako:1702
+#: src/notebook/templates/editor_components.mako:1675
+#: src/notebook/templates/editor_components.mako:1683
 msgid "Explain the current SQL query"
 msgstr "Expliquer la requête SQL en cours"
 
-#: src/notebook/templates/editor_components.mako:1708
+#: src/notebook/templates/editor_components.mako:1689
 msgid "Format the current SQL query"
 msgstr "Formater la requête SQL en cours"
 
-#: src/notebook/templates/editor_components.mako:1709
+#: src/notebook/templates/editor_components.mako:1690
 msgid "Format"
 msgstr "Format"
 
-#: src/notebook/templates/editor_components.mako:1714
+#: src/notebook/templates/editor_components.mako:1695
 msgid "Clear the current editor"
 msgstr "Effacer l'éditeur en cours"
 
-#: src/notebook/templates/editor_components.mako:1715
+#: src/notebook/templates/editor_components.mako:1696
 msgid "Clear"
 msgstr "Effacer"
 
-#: src/notebook/templates/editor_components.mako:1721
+#: src/notebook/templates/editor_components.mako:1702
 msgid "Get hints on how to port SQL from other databases"
-msgstr "Obtenir des conseils sur la manière de porter SQL à partir d’autres bases de données"
+msgstr ""
+"Obtenir des conseils sur la manière de porter SQL à partir d’autres bases"
+" de données"
 
-#: src/notebook/templates/editor_components.mako:1722
+#: src/notebook/templates/editor_components.mako:1703
 msgid "Check compatibility"
 msgstr "Vérifier la compatibilité"
 
-#: src/notebook/templates/editor_components.mako:1727
+#: src/notebook/templates/editor_components.mako:1708
 msgid "Load recent queries in order to improve recommendations"
 msgstr "Charger les requêtes récentes pour améliorer les recommandations"
 
-#: src/notebook/templates/editor_components.mako:1728
+#: src/notebook/templates/editor_components.mako:1709
 msgid "Upload history"
 msgstr "Charger l’historique"
 
-#: src/notebook/templates/editor_components.mako:1742
+#: src/notebook/templates/editor_components.mako:1723
 msgid "Grid"
 msgstr "Grille"
 
-#: src/notebook/templates/editor_components.mako:1751
-#: src/notebook/templates/editor_components.mako:1774
+#: src/notebook/templates/editor_components.mako:1732
+#: src/notebook/templates/editor_components.mako:1755
 msgid "Time"
 msgstr "Heure"
 
-#: src/notebook/templates/editor_components.mako:1752
-#: src/notebook/templates/editor_components.mako:1779
+#: src/notebook/templates/editor_components.mako:1733
+#: src/notebook/templates/editor_components.mako:1760
 msgid "Pie"
 msgstr "Diagramme"
 
-#: src/notebook/templates/editor_components.mako:1753
-#: src/notebook/templates/editor_components.mako:1784
+#: src/notebook/templates/editor_components.mako:1734
+#: src/notebook/templates/editor_components.mako:1765
 msgid "Scatter"
 msgstr "Dispersion"
 
-#: src/notebook/templates/editor_components.mako:1754
-#: src/notebook/templates/editor_components.mako:1789
+#: src/notebook/templates/editor_components.mako:1735
+#: src/notebook/templates/editor_components.mako:1770
 msgid "Marker Map"
 msgstr "Map Marker"
 
-#: src/notebook/templates/editor_components.mako:1755
-#: src/notebook/templates/editor_components.mako:1794
+#: src/notebook/templates/editor_components.mako:1736
+#: src/notebook/templates/editor_components.mako:1775
 msgid "Gradient Map"
 msgstr "Carte de dégradés"
 
-#: src/notebook/templates/editor_components.mako:1801
+#: src/notebook/templates/editor_components.mako:1782
 msgid "Columns"
 msgstr "Colonnes"
 
-#: src/notebook/templates/editor_components.mako:1818
-msgid "Choose a file"
-msgstr "Choisir un fichier"
-
-#: src/notebook/templates/editor_components.mako:1839
+#: src/notebook/templates/editor_components.mako:1807
 msgid "Confirm Remove"
 msgstr "Confirmer la suppression"
 
-#: src/notebook/templates/editor_components.mako:1842
+#: src/notebook/templates/editor_components.mako:1810
 msgid "Are you sure you want to remove this snippet?"
 msgstr "Voulez-vous vraiment supprimer cet extrait ?"
 
-#: src/notebook/templates/editor_components.mako:1845
-#: src/notebook/templates/editor_components.mako:1946
-#: src/notebook/templates/editor_components.mako:1961
+#: src/notebook/templates/editor_components.mako:1813
+#: src/notebook/templates/editor_components.mako:1914
+#: src/notebook/templates/editor_components.mako:1929
 #: src/notebook/templates/notebooks.mako:158
 msgid "No"
 msgstr "Non"
 
-#: src/notebook/templates/editor_components.mako:1846
-#: src/notebook/templates/editor_components.mako:1947
+#: src/notebook/templates/editor_components.mako:1814
+#: src/notebook/templates/editor_components.mako:1915
 #: src/notebook/templates/notebooks.mako:159
 msgid "Yes"
 msgstr "Oui"
 
-#: src/notebook/templates/editor_components.mako:1853
-#: src/notebook/templates/editor_components.mako:1999
+#: src/notebook/templates/editor_components.mako:1821
+#: src/notebook/templates/editor_components.mako:1970
 msgid "Drop a SQL file here"
 msgstr "Déposer un fichier SQL ici"
 
-#: src/notebook/templates/editor_components.mako:1856
-#: src/notebook/templates/editor_components.mako:2001
+#: src/notebook/templates/editor_components.mako:1824
+#: src/notebook/templates/editor_components.mako:1972
 msgid "Drop iPython/Zeppelin notebooks here"
 msgstr "Déposer des carnets iPython/Zeppelin ici"
 
-#: src/notebook/templates/editor_components.mako:1865
+#: src/notebook/templates/editor_components.mako:1833
 msgid "Save query as..."
 msgstr "Enregistrer la requête sous…"
 
-#: src/notebook/templates/editor_components.mako:1868
+#: src/notebook/templates/editor_components.mako:1836
 msgid "Save notebook as..."
 msgstr "Enregistrer le carnet sous…"
 
-#: src/notebook/templates/editor_components.mako:1884
+#: src/notebook/templates/editor_components.mako:1852
 msgid "(optional)"
 msgstr "(facultatif)"
 
-#: src/notebook/templates/editor_components.mako:1890
-#: src/notebook/templates/editor_components.mako:1903
-#: src/notebook/templates/editor_components.mako:1931
+#: src/notebook/templates/editor_components.mako:1858
+#: src/notebook/templates/editor_components.mako:1871
+#: src/notebook/templates/editor_components.mako:1899
 #: src/notebook/templates/editor_m.mako:96
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/notebook/templates/editor_components.mako:1891
-#: src/notebook/templates/editor_components.mako:1904
+#: src/notebook/templates/editor_components.mako:1859
+#: src/notebook/templates/editor_components.mako:1872
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/notebook/templates/editor_components.mako:1899
+#: src/notebook/templates/editor_components.mako:1867
 msgid "Are you sure you want to save back to File?"
 msgstr "Voulez-vous vraiment réenregistrer dans le fichier ?"
 
-#: src/notebook/templates/editor_components.mako:1912
+#: src/notebook/templates/editor_components.mako:1880
 msgid "Connect to the data source"
 msgstr "Se connecter à la source des données"
 
-#: src/notebook/templates/editor_components.mako:1919
+#: src/notebook/templates/editor_components.mako:1887
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: src/notebook/templates/editor_components.mako:1925
+#: src/notebook/templates/editor_components.mako:1893
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/notebook/templates/editor_components.mako:1932
+#: src/notebook/templates/editor_components.mako:1900
 msgid "Connect"
 msgstr "Se connecter"
 
-#: src/notebook/templates/editor_components.mako:1940
+#: src/notebook/templates/editor_components.mako:1908
 msgid "Confirm History Clear"
 msgstr "Confirmer l'effacement de l'historique"
 
-#: src/notebook/templates/editor_components.mako:1943
+#: src/notebook/templates/editor_components.mako:1911
 msgid "Are you sure you want to clear the query history?"
 msgstr "Voulez-vous vraiment supprimer l'historique des requêtes ?"
 
-#: src/notebook/templates/editor_components.mako:1955
+#: src/notebook/templates/editor_components.mako:1923
 msgid "Operation timed out"
 msgstr "Dépassement du délai de l'opération"
 
-#: src/notebook/templates/editor_components.mako:1958
+#: src/notebook/templates/editor_components.mako:1926
 msgid "The operation timed out. Do you want to retry?"
 msgstr "Le délai de l'opération est dépassé. Voulez-vous réessayer ?"
 
-#: src/notebook/templates/editor_components.mako:1962
+#: src/notebook/templates/editor_components.mako:1930
 msgid "Yes, retry"
 msgstr "Oui, réessayer"
 
-#: src/notebook/templates/editor_components.mako:2019
+#: src/notebook/templates/editor_components.mako:1988
 msgid "No results found."
 msgstr "Aucun résultat trouvé."
 
-#: src/notebook/templates/editor_components.mako:2020
+#: src/notebook/templates/editor_components.mako:1989
 msgid "of"
 msgstr "sur"
 
-#: src/notebook/templates/editor_components.mako:2617
+#: src/notebook/templates/editor_components.mako:2600
 msgid "Distribution"
 msgstr "Distribution"
 
-#: src/notebook/templates/editor_components.mako:2651
+#: src/notebook/templates/editor_components.mako:2636
+#: src/notebook/templates/editor_components.mako:2646
+#: src/notebook/templates/editor_components.mako:2652
 #: src/notebook/templates/editor_components.mako:2661
 #: src/notebook/templates/editor_components.mako:2667
-#: src/notebook/templates/editor_components.mako:2676
-#: src/notebook/templates/editor_components.mako:2682
-#: src/notebook/templates/editor_components.mako:2688
-#: src/notebook/templates/editor_components.mako:2699
-#: src/notebook/templates/editor_components.mako:2753
-#: src/notebook/templates/editor_m.mako:201
-#: src/notebook/templates/editor_m.mako:211
-#: src/notebook/templates/editor_m.mako:217
-#: src/notebook/templates/editor_m.mako:226
-#: src/notebook/templates/editor_m.mako:232
-#: src/notebook/templates/editor_m.mako:238
-#: src/notebook/templates/editor_m.mako:249
-#: src/notebook/templates/editor_m.mako:287
+#: src/notebook/templates/editor_components.mako:2673
+#: src/notebook/templates/editor_components.mako:2679
+#: src/notebook/templates/editor_components.mako:2685
+#: src/notebook/templates/editor_components.mako:2696
+#: src/notebook/templates/editor_components.mako:2750
+#: src/notebook/templates/editor_m.mako:196
+#: src/notebook/templates/editor_m.mako:206
+#: src/notebook/templates/editor_m.mako:212
+#: src/notebook/templates/editor_m.mako:221
+#: src/notebook/templates/editor_m.mako:227
+#: src/notebook/templates/editor_m.mako:233
+#: src/notebook/templates/editor_m.mako:244
+#: src/notebook/templates/editor_m.mako:282
 msgid "Example: SELECT * FROM tablename, or press CTRL + space"
 msgstr "Exemple : SELECT * FROM nom_de_table ou appuyez sur CTRL + espace"
 
-#: src/notebook/templates/editor_components.mako:2657
-#: src/notebook/templates/editor_components.mako:2694
-#: src/notebook/templates/editor_components.mako:2717
-#: src/notebook/templates/editor_components.mako:2722
-#: src/notebook/templates/editor_components.mako:2727
-#: src/notebook/templates/editor_components.mako:2732
-#: src/notebook/templates/editor_m.mako:207
-#: src/notebook/templates/editor_m.mako:244
+#: src/notebook/templates/editor_components.mako:2642
+#: src/notebook/templates/editor_components.mako:2691
+#: src/notebook/templates/editor_components.mako:2714
+#: src/notebook/templates/editor_components.mako:2719
+#: src/notebook/templates/editor_components.mako:2724
+#: src/notebook/templates/editor_components.mako:2729
+#: src/notebook/templates/editor_m.mako:202
+#: src/notebook/templates/editor_m.mako:239
+#: src/notebook/templates/editor_m.mako:262
 #: src/notebook/templates/editor_m.mako:267
 #: src/notebook/templates/editor_m.mako:272
 #: src/notebook/templates/editor_m.mako:277
-#: src/notebook/templates/editor_m.mako:282
 msgid "Example: 1 + 1, or press CTRL + space"
 msgstr "Exemple : 1 + 1, ou appuyer sur Ctrl + Espace"
 
-#: src/notebook/templates/editor_components.mako:2705
-#: src/notebook/templates/editor_m.mako:255
+#: src/notebook/templates/editor_components.mako:2702
+#: src/notebook/templates/editor_m.mako:250
 msgid "Example: SELECT fieldA, FieldB FROM collectionname, or press CTRL + space"
 msgstr ""
 "Exemple : SELECT champA, champB FROM nomcollection, ou appuyez sur CTRL +"
 " espace"
 
-#: src/notebook/templates/editor_components.mako:2746
+#: src/notebook/templates/editor_components.mako:2743
 msgid ""
 "Example: import  --connect jdbc:hsqldb:file:db.hsqldb --table TT "
 "--target-dir hdfs://localhost:8020/user/foo -m 1"
@@ -1348,47 +1371,19 @@ msgstr ""
 "Exemple : import  --connect jdbc:hsqldb:file:db.hsqldb --table TT "
 "--target-dir hdfs://localhost:8020/user/foo -m 1"
 
-#: src/notebook/templates/editor_components.mako:2759
-#: src/notebook/templates/editor_m.mako:293
+#: src/notebook/templates/editor_components.mako:2756
+#: src/notebook/templates/editor_m.mako:288
 msgid "Type your text here"
 msgstr "Saisissez votre texte ici"
 
-#: src/notebook/templates/editor_components.mako:2764
-#: src/notebook/templates/editor_m.mako:298
+#: src/notebook/templates/editor_components.mako:2761
+#: src/notebook/templates/editor_m.mako:293
 msgid "Type your markdown here"
 msgstr "Saisissez votre remise ici"
 
-#: src/notebook/templates/editor_components.mako:3504
+#: src/notebook/templates/editor_components.mako:3488
 msgid "Coordinator submitted."
 msgstr "Coordinator envoyé."
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:102
-msgid "Primary key"
-msgstr "Clé primaire"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:135
-msgid "Popular join"
-msgstr "Jointure populaire"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:151
-msgid "Popular join condition"
-msgstr "Condition de jointure populaire"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:167
-msgid "Popular aggregate"
-msgstr "Agrégat populaire"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:193
-msgid "Popular group by"
-msgstr "Regrouper par popularité"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:209
-msgid "Popular order by"
-msgstr "Trier par popularité"
-
-#: src/notebook/templates/hue_ace_autocompleter.mako:225
-msgid "Popular filter"
-msgstr "Filtre populaire"
 
 #: src/notebook/templates/notebook.mako:29
 msgid "Notebook"
@@ -1516,83 +1511,33 @@ msgstr "Dernier"
 msgid "Previous"
 msgstr "Précédent"
 
-#~ msgid "Import from Github"
-#~ msgstr ""
+#~ msgid "Row details"
+#~ msgstr "Détail de la ligne"
 
-#~ msgid "Query"
-#~ msgstr ""
+#~ msgid "Not validated."
+#~ msgstr "Non validé."
 
-#~ msgid "Assistant"
-#~ msgstr ""
+#~ msgid "Choose a file"
+#~ msgstr "Choisir un fichier"
 
-#~ msgid "Schedule"
-#~ msgstr ""
+#~ msgid "Primary key"
+#~ msgstr "Clé primaire"
 
-#~ msgid "Changes not saved"
-#~ msgstr ""
+#~ msgid "Popular join"
+#~ msgstr "Jointure populaire"
 
-#~ msgid "Start"
-#~ msgstr ""
+#~ msgid "Popular join condition"
+#~ msgstr "Condition de jointure populaire"
 
-#~ msgid "Query needs to be saved first."
-#~ msgstr ""
+#~ msgid "Popular aggregate"
+#~ msgstr "Agrégat populaire"
 
-#~ msgid "Query Validator"
-#~ msgstr ""
+#~ msgid "Popular group by"
+#~ msgstr "Regrouper par popularité"
 
-#~ msgid "The query is compatible with Impala."
-#~ msgstr ""
+#~ msgid "Popular order by"
+#~ msgstr "Trier par popularité"
 
-#~ msgid "Execute it now in Impala!"
-#~ msgstr ""
+#~ msgid "Popular filter"
+#~ msgstr "Filtre populaire"
 
-#~ msgid "This query is not compatible with Impala."
-#~ msgstr ""
-
-#~ msgid "Path to file, e.g. /user/hue/sample.sql, s3a://hue/sample.sql"
-#~ msgstr ""
-
-#~ msgid "Environment variables"
-#~ msgstr ""
-
-#~ msgid "Hadoop properties"
-#~ msgstr ""
-
-#~ msgid "Get syntax checks"
-#~ msgstr ""
-
-#~ msgid "Check syntax"
-#~ msgstr ""
-
-#~ msgid "Get recommendations on query risks and optimizations"
-#~ msgstr ""
-
-#~ msgid "Check complexity"
-#~ msgstr ""
-
-#~ msgid "Get Impala compatibility hints"
-#~ msgstr ""
-
-#~ msgid "Check Impala compatibility"
-#~ msgstr ""
-
-#~ msgid "Expand query with similar queries suggestions"
-#~ msgstr ""
-
-#~ msgid "Show similarities"
-#~ msgstr ""
-
-#~ msgid "Load past query history in order to improve recommendations"
-#~ msgstr ""
-
-#~ msgid "Upload workload"
-#~ msgstr ""
-
-#~ msgid "Failed to load"
-#~ msgstr ""
-
-#~ msgid "User successfully authenticated to GitHub."
-#~ msgstr ""
-
-#~ msgid "Could not decode Github file content to JSON."
-#~ msgstr ""

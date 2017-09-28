@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -47,9 +47,9 @@ msgid ""
 " into the workspace. This makes submissions faster and less prone to HDFS"
 " permission errors"
 msgstr ""
-"Indique si Hue ajoute ou non des chemins d'accès jar à oozie.libpath au lieu de les copier"
-" dans l'espace de travail. Cela permet d'accélérer les envois et d'être moins exposé aux erreurs d'autorisation "
-"HDFS"
+"Indique si Hue ajoute ou non des chemins d'accès jar à oozie.libpath au "
+"lieu de les copier dans l'espace de travail. Cela permet d'accélérer les "
+"envois et d'être moins exposé aux erreurs d'autorisation HDFS"
 
 #: src/liboozie/conf.py:90
 msgid "The Oozie server is not available"
@@ -65,22 +65,22 @@ msgstr ""
 "Bibliothèque de partages Oozie non installée dans l'emplacement par "
 "défaut."
 
-#: src/liboozie/submission2.py:46 src/liboozie/submittion.py:43
+#: src/liboozie/submission2.py:47 src/liboozie/submittion.py:43
 #, python-format
 msgid "Submission already submitted (Oozie job id %s)"
 msgstr "Envoi déjà effectué (ID de job Oozie %s)."
 
-#: src/liboozie/submission2.py:186 src/liboozie/submittion.py:151
+#: src/liboozie/submission2.py:187 src/liboozie/submittion.py:151
 #, python-format
 msgid "Failed to create deployment directory: %s"
 msgstr "Echec de la création du répertoire de déploiement : %s"
 
-#: src/liboozie/submission2.py:411 src/liboozie/submittion.py:252
+#: src/liboozie/submission2.py:412 src/liboozie/submittion.py:252
 #, python-format
 msgid "Path is not a directory: %s."
 msgstr "Le chemin n'est pas un répertoire : %s."
 
-#: src/liboozie/submission2.py:416 src/liboozie/submittion.py:257
+#: src/liboozie/submission2.py:417 src/liboozie/submittion.py:257
 #, python-format
 msgid "Error accessing directory '%s': %s."
 msgstr "Erreur d'accès au répertoire '%s' : %s."
@@ -95,3 +95,4 @@ msgid "Permission denied. User %(username)s cannot modify user %(user)s's job."
 msgstr ""
 "Autorisation refusée. L'utilisateur %(username)s ne peut pas modifier le "
 "job de l'utilisateur %(user)s."
+

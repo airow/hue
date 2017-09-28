@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-05-16 08:39-0700\n"
+"POT-Creation-Date: 2017-09-28 18:49+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -203,3 +203,4 @@ msgstr "YARN RM에서 실패한 응답을 리턴함: %s"
 #: src/hadoop/yarn/spark_history_server_api.py:47
 msgid "No Spark History Server is available."
 msgstr "사용 가능한 Spark History 서버가 없습니다."
+
