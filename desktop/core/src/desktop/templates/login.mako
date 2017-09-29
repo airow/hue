@@ -70,7 +70,7 @@ ${ commonheader(_("Welcome to Hue"), "login", user, request, "50px", True, True)
 
     <div class="logo">
       %if is_hue4():
-      <svg style="height: 80px; width: 200px;"><use xlink:href="#hi-logo"></use></svg>
+      <!--<svg style="height: 80px; width: 200px;"><use xlink:href="#hi-logo"></use></svg>-->
       %else:
       <img src="${ static('desktop/art/hue-login-logo-ellie@2x.png') }" width="70" height="70" alt="${ _('Hue logo') }">
       %endif

@@ -104,12 +104,13 @@ ${ hueIcons.symbols() }
           <span class="hamburger-box"><span class="hamburger-inner"></span></span>
         </a>
 
+        <!--
         <a class="brand" data-bind="hueLink: '/home'" href="javascript: void(0);" title="${_('Documents')}">
           <svg style="height: 24px; width: 120px;"><use xlink:href="#hi-logo"></use></svg>
         </a>
+        -->
 
-
-        <div class="btn-group" data-bind="visible: true" style="display:none; margin-top: 8px">
+        <div class="btn-group" data-bind="visible: true" style="float:left; display:none; margin-top: 8px">
           <!-- ko if: mainQuickCreateAction -->
           <!-- ko with: mainQuickCreateAction -->
           <a class="btn btn-primary disable-feedback hue-main-create-btn" data-bind="hueLink: url, attr: {title: tooltip}, style: { borderBottomRightRadius: $parent.quickCreateActions().length > 1 ? '0px' : '4px', borderTopRightRadius: $parent.quickCreateActions().length > 1 ? '0px' : '4px' }">

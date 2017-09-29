@@ -306,11 +306,13 @@ ${ hueIcons.symbols() }
   % endif
 
   </div>
+    <!--
     <a class="brand nav-tooltip pull-left" title="${_('About Hue')}" data-rel="navigator-tooltip" href="/about">
       <svg style="margin-top: 2px; margin-left:8px;width: 60px;height: 16px;display: inline-block;">
         <use xlink:href="#hi-logo"></use>
       </svg>
     </a>
+    -->
     % if user.is_authenticated() and section != 'login':
      <ul class="nav nav-pills pull-left">
        <li><a title="${_('My documents')}" data-rel="navigator-tooltip" href="${ home_url }" style="padding-bottom:2px!important"><i class="fa fa-home" style="font-size: 19px"></i></a></li>
@@ -321,6 +323,13 @@ ${ hueIcons.symbols() }
        <li class="dropdown oozie">
          <a title="${_('Query data')}" data-rel="navigator-tooltip" href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-terminal inline-block hideMoreThan950"></i><span class="hide950">Query Editors</span> <b class="caret"></b></a>
          <ul role="menu" class="dropdown-menu">
+           % if USE_NEW_EDITOR.get():
+              <li><a href="${ url('notebook:editor') }?type=druid"><img style="width:24px" alt="Snippet icon" src="/static/desktop/art/icon_druid_48.png"> ${_('druid')}</a></li>
+              <li><a href="${ url('notebook:editor') }?type=elasticsearch"><img style="width:24px" alt="Snippet icon" src="/static/desktop/art/icon_elasticsearch_48.png"> ${_('elasticsearch')}</a></li>
+            % else:
+              <li><a href="/${apps['druid'].display_name}"><svg class="svg-app-icon"><use xlink:href="#hi-hive"></use></svg> ${_('druid')}</a></li>
+              <li><a href="/${apps['druid'].display_name}"><svg class="svg-app-icon"><use xlink:href="#hi-hive"></use></svg> ${_('elasticsearch')}</a></li>
+            % endif
            % if 'beeswax' in apps:
              % if USE_NEW_EDITOR.get():
              <li><a href="${ url('notebook:editor') }?type=hive"><svg class="svg-app-icon"><use xlink:href="#hi-hive"></use></svg> ${_('Hive')}</a></li>
