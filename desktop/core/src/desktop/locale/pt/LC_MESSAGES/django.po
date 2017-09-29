@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-29 11:04+0800\n"
+"POT-Creation-Date: 2017-09-29 19:39+0800\n"
 "PO-Revision-Date: 2012-08-10 13:58-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -1349,13 +1349,13 @@ msgstr ""
 msgid "No permission to any app."
 msgstr ""
 
-#: src/desktop/models.py:1627 src/desktop/templates/common_header.mako:383
-#: src/desktop/templates/common_header.mako:387
-#: src/desktop/templates/common_header.mako:391
+#: src/desktop/models.py:1627 src/desktop/templates/common_header.mako:392
+#: src/desktop/templates/common_header.mako:396
+#: src/desktop/templates/common_header.mako:400
 #: src/desktop/templates/common_header_footer_components.mako:77
 #: src/desktop/templates/document_browser.mako:360
 #: src/desktop/templates/document_browser.mako:361
-#: src/desktop/templates/hue.mako:568
+#: src/desktop/templates/hue.mako:569
 msgid "Notebook"
 msgstr ""
 
@@ -1364,17 +1364,17 @@ msgstr ""
 msgid "%s Query"
 msgstr "Consulta DB"
 
-#: src/desktop/models.py:1651 src/desktop/templates/hue.mako:567
-#: src/desktop/templates/hue.mako:1480
+#: src/desktop/models.py:1651 src/desktop/templates/hue.mako:568
+#: src/desktop/templates/hue.mako:1481
 #, fuzzy
 msgid "Editor"
 msgstr "Editores"
 
-#: src/desktop/models.py:1666 src/desktop/templates/common_header.mako:481
+#: src/desktop/models.py:1666 src/desktop/templates/common_header.mako:490
 #: src/desktop/templates/common_notebook_ko_components.mako:196
 #: src/desktop/templates/common_notebook_ko_components.mako:267
 #: src/desktop/templates/document_browser.mako:392
-#: src/desktop/templates/hue.mako:570
+#: src/desktop/templates/hue.mako:571
 #, fuzzy
 msgid "Dashboard"
 msgstr "Painéis"
@@ -1399,21 +1399,21 @@ msgid "Tables"
 msgstr "Tabelas Sentry"
 
 #: src/desktop/models.py:1703 src/desktop/models.py:1704
-#: src/desktop/templates/common_header.mako:483
-#: src/desktop/templates/hue.mako:580
+#: src/desktop/templates/common_header.mako:492
+#: src/desktop/templates/hue.mako:581
 msgid "Indexes"
 msgstr "Índices"
 
 #: src/desktop/models.py:1712 src/desktop/models.py:1713
 #: src/desktop/models.py:1721 src/desktop/models.py:1722
-#: src/desktop/templates/hue.mako:280
+#: src/desktop/templates/hue.mako:281
 #: src/desktop/templates/ko_components.mako:393
 msgid "Jobs"
 msgstr ""
 
 #: src/desktop/models.py:1729 src/desktop/models.py:1730
 #: src/desktop/templates/assist.mako:1558
-#: src/desktop/templates/common_header.mako:417
+#: src/desktop/templates/common_header.mako:426
 msgid "HBase"
 msgstr "HBase"
 
@@ -1422,31 +1422,31 @@ msgid "Security"
 msgstr "Segurança"
 
 #: src/desktop/models.py:1745 src/desktop/models.py:1746
-#: src/desktop/templates/hue.mako:602
+#: src/desktop/templates/hue.mako:603
 msgid "Sqoop"
 msgstr ""
 
-#: src/desktop/models.py:1753 src/desktop/templates/hue.mako:1527
+#: src/desktop/models.py:1753 src/desktop/templates/hue.mako:1528
 #, fuzzy
 msgid "Browsers"
 msgstr "Job Browser"
 
 #: src/desktop/models.py:1764 src/desktop/models.py:1765
 #: src/desktop/templates/document_browser.mako:375
-#: src/desktop/templates/home.mako:140 src/desktop/templates/hue.mako:571
+#: src/desktop/templates/home.mako:140 src/desktop/templates/hue.mako:572
 msgid "Workflow"
 msgstr "Workflow"
 
 #: src/desktop/models.py:1769 src/desktop/models.py:1770
 #: src/desktop/templates/assist.mako:1972
-#: src/desktop/templates/assist.mako:2061 src/desktop/templates/hue.mako:572
+#: src/desktop/templates/assist.mako:2061 src/desktop/templates/hue.mako:573
 #, fuzzy
 msgid "Schedule"
 msgstr "Programador Oozie"
 
 #: src/desktop/models.py:1774 src/desktop/models.py:1775
 #: src/desktop/templates/document_browser.mako:385
-#: src/desktop/templates/home.mako:142 src/desktop/templates/hue.mako:573
+#: src/desktop/templates/home.mako:142 src/desktop/templates/hue.mako:574
 msgid "Bundle"
 msgstr "Bundle"
 
@@ -1996,7 +1996,7 @@ msgid "Hue icon"
 msgstr ""
 
 #: src/desktop/templates/about_layout.mako:36
-#: src/desktop/templates/common_header.mako:309
+#: src/desktop/templates/common_header.mako:310
 msgid "About Hue"
 msgstr "Sobre o Hue"
 
@@ -2394,8 +2394,8 @@ msgstr ""
 msgid "HDFS"
 msgstr ""
 
-#: src/desktop/templates/assist.mako:1572 src/desktop/templates/hue.mako:107
-#: src/desktop/templates/hue.mako:1511
+#: src/desktop/templates/assist.mako:1572 src/desktop/templates/hue.mako:108
+#: src/desktop/templates/hue.mako:1512
 #, fuzzy
 msgid "Documents"
 msgstr "Os meus documentos"
@@ -2494,7 +2494,7 @@ msgid "Search result"
 msgstr ""
 
 #: src/desktop/templates/assist_search.mako:89
-#: src/desktop/templates/common_header.mako:559
+#: src/desktop/templates/common_header.mako:568
 #: src/desktop/templates/common_header_footer_components.mako:445
 #: src/desktop/templates/common_header_footer_components.mako:456
 #: src/desktop/templates/common_import_export.mako:32
@@ -2649,7 +2649,7 @@ msgid "Manage HDFS"
 msgstr "Gerir HDFS"
 
 #: src/desktop/templates/common_header.mako:229
-#: src/desktop/templates/hue.mako:576
+#: src/desktop/templates/hue.mako:577
 #: src/desktop/templates/sql_context_popover.mako:41
 msgid "File Browser"
 msgstr "Browser de ficheiros"
@@ -2679,7 +2679,7 @@ msgstr "Gerir trabalhos"
 
 #: src/desktop/templates/common_header.mako:261
 #: src/desktop/templates/common_header.mako:262
-#: src/desktop/templates/hue.mako:575
+#: src/desktop/templates/hue.mako:576
 msgid "Job Browser"
 msgstr "Job Browser"
 
@@ -2694,18 +2694,18 @@ msgid "Administration"
 msgstr "Administração"
 
 #: src/desktop/templates/common_header.mako:284
-#: src/desktop/templates/hue.mako:250
+#: src/desktop/templates/hue.mako:251
 #, fuzzy
 msgid "View Profile"
 msgstr "Editar perfil"
 
 #: src/desktop/templates/common_header.mako:286
-#: src/desktop/templates/hue.mako:250
+#: src/desktop/templates/hue.mako:251
 msgid "Edit Profile"
 msgstr "Editar perfil"
 
 #: src/desktop/templates/common_header.mako:291
-#: src/desktop/templates/hue.mako:253
+#: src/desktop/templates/hue.mako:254
 msgid "Manage Users"
 msgstr "Gerir utilizadores"
 
@@ -2719,11 +2719,11 @@ msgstr "Documentação"
 
 #: src/desktop/templates/common_header.mako:304
 #: src/desktop/templates/common_header_m.mako:331
-#: src/desktop/templates/hue.mako:262
+#: src/desktop/templates/hue.mako:263
 msgid "Sign out"
 msgstr "Terminar sessão"
 
-#: src/desktop/templates/common_header.mako:316
+#: src/desktop/templates/common_header.mako:318
 #: src/desktop/templates/common_home.mako:47
 #: src/desktop/templates/document_browser.mako:300
 #: src/desktop/templates/document_browser.mako:308
@@ -2731,213 +2731,223 @@ msgstr "Terminar sessão"
 msgid "My documents"
 msgstr "Os meus documentos"
 
-#: src/desktop/templates/common_header.mako:322
+#: src/desktop/templates/common_header.mako:324
 msgid "Query data"
 msgstr "Consultar dados"
 
-#: src/desktop/templates/common_header.mako:326
+#: src/desktop/templates/common_header.mako:327
+#: src/desktop/templates/common_header.mako:330
+msgid "druid"
+msgstr ""
+
 #: src/desktop/templates/common_header.mako:328
-#: src/desktop/templates/common_header.mako:360
-#: src/desktop/templates/common_header.mako:362
+#: src/desktop/templates/common_header.mako:331
+msgid "elasticsearch"
+msgstr ""
+
+#: src/desktop/templates/common_header.mako:335
+#: src/desktop/templates/common_header.mako:337
+#: src/desktop/templates/common_header.mako:369
+#: src/desktop/templates/common_header.mako:371
 #: src/desktop/templates/common_header_m.mako:320
 msgid "Hive"
 msgstr "Hive"
 
-#: src/desktop/templates/common_header.mako:333
-#: src/desktop/templates/common_header.mako:335
-#: src/desktop/templates/common_header.mako:366
-#: src/desktop/templates/common_header.mako:368
+#: src/desktop/templates/common_header.mako:342
+#: src/desktop/templates/common_header.mako:344
+#: src/desktop/templates/common_header.mako:375
+#: src/desktop/templates/common_header.mako:377
 #: src/desktop/templates/common_header_m.mako:325
 msgid "Impala"
 msgstr "Impala"
 
-#: src/desktop/templates/common_header.mako:340
-#: src/desktop/templates/common_header.mako:342
+#: src/desktop/templates/common_header.mako:349
+#: src/desktop/templates/common_header.mako:351
 msgid "DBQuery icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:340
-#: src/desktop/templates/common_header.mako:342
+#: src/desktop/templates/common_header.mako:349
+#: src/desktop/templates/common_header.mako:351
 msgid "DB Query"
 msgstr "Consulta DB"
 
-#: src/desktop/templates/common_header.mako:347
-#: src/desktop/templates/common_header.mako:349
+#: src/desktop/templates/common_header.mako:356
+#: src/desktop/templates/common_header.mako:358
 msgid "Pig"
 msgstr "Pig"
 
-#: src/desktop/templates/common_header.mako:353
-#: src/desktop/templates/hue.mako:603
+#: src/desktop/templates/common_header.mako:362
+#: src/desktop/templates/hue.mako:604
 msgid "Job Designer"
 msgstr "Job Designer"
 
-#: src/desktop/templates/common_header.mako:383
-#: src/desktop/templates/common_header.mako:388
 #: src/desktop/templates/common_header.mako:392
+#: src/desktop/templates/common_header.mako:397
+#: src/desktop/templates/common_header.mako:401
 msgid "Notebooks"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:411
+#: src/desktop/templates/common_header.mako:420
 msgid "Manage data"
 msgstr "Gerir dados"
 
-#: src/desktop/templates/common_header.mako:414
-#: src/desktop/templates/common_header.mako:508
-#: src/desktop/templates/common_header.mako:511
+#: src/desktop/templates/common_header.mako:423
+#: src/desktop/templates/common_header.mako:517
+#: src/desktop/templates/common_header.mako:520
 #, fuzzy
 msgid "Metastore icon"
 msgstr "Tabelas Metastore"
 
-#: src/desktop/templates/common_header.mako:414
+#: src/desktop/templates/common_header.mako:423
 msgid "Metastore Tables"
 msgstr "Tabelas Metastore"
 
-#: src/desktop/templates/common_header.mako:417
+#: src/desktop/templates/common_header.mako:426
 #, fuzzy
 msgid "HBase icon"
 msgstr "segundo"
 
-#: src/desktop/templates/common_header.mako:420
+#: src/desktop/templates/common_header.mako:429
 msgid "Sqoop icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:420
+#: src/desktop/templates/common_header.mako:429
 msgid "Sqoop Transfer"
 msgstr "Transferência Sqoop"
 
-#: src/desktop/templates/common_header.mako:423
+#: src/desktop/templates/common_header.mako:432
 #, fuzzy
 msgid "ZooKeeper icon"
 msgstr "ZooKeeper"
 
-#: src/desktop/templates/common_header.mako:423
+#: src/desktop/templates/common_header.mako:432
 msgid "ZooKeeper"
 msgstr "ZooKeeper"
 
-#: src/desktop/templates/common_header.mako:432
+#: src/desktop/templates/common_header.mako:441
 msgid "Schedule with Oozie"
 msgstr "Programar com Oozie"
 
-#: src/desktop/templates/common_header.mako:435
+#: src/desktop/templates/common_header.mako:444
 msgid "Oozie dashboard icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:435
-#: src/desktop/templates/common_header.mako:482
+#: src/desktop/templates/common_header.mako:444
+#: src/desktop/templates/common_header.mako:491
 msgid "Dashboards"
 msgstr "Painéis"
 
-#: src/desktop/templates/common_header.mako:437
-#: src/desktop/templates/common_header.mako:448
+#: src/desktop/templates/common_header.mako:446
 #: src/desktop/templates/common_header.mako:457
+#: src/desktop/templates/common_header.mako:466
 #: src/desktop/templates/document_browser.mako:375
 #: src/desktop/templates/home.mako:140
 #, fuzzy
 msgid "Oozie workflow icon"
 msgstr "Workflow do Oozie"
 
-#: src/desktop/templates/common_header.mako:437
-#: src/desktop/templates/common_header.mako:448
+#: src/desktop/templates/common_header.mako:446
 #: src/desktop/templates/common_header.mako:457
-#: src/desktop/templates/hue.mako:281
+#: src/desktop/templates/common_header.mako:466
+#: src/desktop/templates/hue.mako:282
 msgid "Workflows"
 msgstr "Workflows"
 
-#: src/desktop/templates/common_header.mako:438
-#: src/desktop/templates/common_header.mako:449
+#: src/desktop/templates/common_header.mako:447
 #: src/desktop/templates/common_header.mako:458
+#: src/desktop/templates/common_header.mako:467
 #: src/desktop/templates/document_browser.mako:380
 #: src/desktop/templates/home.mako:141
 #, fuzzy
 msgid "Oozie coordinator icon"
 msgstr "Coordinator do Oozie"
 
-#: src/desktop/templates/common_header.mako:438
-#: src/desktop/templates/common_header.mako:449
+#: src/desktop/templates/common_header.mako:447
 #: src/desktop/templates/common_header.mako:458
+#: src/desktop/templates/common_header.mako:467
 msgid "Coordinators"
 msgstr "Coordinators"
 
-#: src/desktop/templates/common_header.mako:439
+#: src/desktop/templates/common_header.mako:448
 msgid "Oozie bundles icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:439
-#: src/desktop/templates/common_header.mako:450
+#: src/desktop/templates/common_header.mako:448
 #: src/desktop/templates/common_header.mako:459
+#: src/desktop/templates/common_header.mako:468
 msgid "Bundles"
 msgstr "Bundles"
 
-#: src/desktop/templates/common_header.mako:446
 #: src/desktop/templates/common_header.mako:455
+#: src/desktop/templates/common_header.mako:464
 msgid "Oozie editor icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:446
 #: src/desktop/templates/common_header.mako:455
+#: src/desktop/templates/common_header.mako:464
 msgid "Editors"
 msgstr "Editores"
 
-#: src/desktop/templates/common_header.mako:450
 #: src/desktop/templates/common_header.mako:459
+#: src/desktop/templates/common_header.mako:468
 #: src/desktop/templates/document_browser.mako:385
 #: src/desktop/templates/home.mako:142
 msgid "Oozie bundle icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:473
-#: src/desktop/templates/common_header.mako:477
+#: src/desktop/templates/common_header.mako:482
+#: src/desktop/templates/common_header.mako:486
 #: src/desktop/templates/document_browser.mako:391
 msgid "Solr Search"
 msgstr "Pesquisa Solr"
 
-#: src/desktop/templates/common_header.mako:473
-#: src/desktop/templates/common_header.mako:478
+#: src/desktop/templates/common_header.mako:482
+#: src/desktop/templates/common_header.mako:487
 #: src/desktop/templates/common_header_m.mako:329
 #: src/desktop/templates/config_ko_components.mako:108
 #: src/desktop/templates/document_browser.mako:323
-#: src/desktop/templates/hue.mako:579
+#: src/desktop/templates/hue.mako:580
 msgid "Search"
 msgstr "Pesquisar"
 
-#: src/desktop/templates/common_header.mako:488
+#: src/desktop/templates/common_header.mako:497
 #, fuzzy
 msgid "Index"
 msgstr "Índices"
 
-#: src/desktop/templates/common_header.mako:494
+#: src/desktop/templates/common_header.mako:503
 msgid "Collection icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:505
+#: src/desktop/templates/common_header.mako:514
 msgid "Hadoop Security"
 msgstr "Segurança Hadoop"
 
-#: src/desktop/templates/common_header.mako:508
+#: src/desktop/templates/common_header.mako:517
 msgid "Hive Tables"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:511
+#: src/desktop/templates/common_header.mako:520
 msgid "Hive Tables v2"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:514
+#: src/desktop/templates/common_header.mako:523
 msgid "Solr Collections"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:516
+#: src/desktop/templates/common_header.mako:525
 msgid "File ACLs"
 msgstr "ACL de ficheiro"
 
-#: src/desktop/templates/common_header.mako:522
+#: src/desktop/templates/common_header.mako:531
 msgid "Other apps"
 msgstr "Outras aplicações"
 
-#: src/desktop/templates/common_header.mako:525
+#: src/desktop/templates/common_header.mako:534
 msgid "App icon"
 msgstr ""
 
-#: src/desktop/templates/common_header.mako:538
+#: src/desktop/templates/common_header.mako:547
 #: src/desktop/templates/hue.mako:67
 msgid "Feedback"
 msgstr "Comentários"
@@ -4179,7 +4189,7 @@ msgstr "Predefinição:"
 msgid "Error!"
 msgstr "Erro!"
 
-#: src/desktop/templates/error.mako:45 src/desktop/templates/hue.mako:577
+#: src/desktop/templates/error.mako:45 src/desktop/templates/hue.mako:578
 msgid "Home"
 msgstr "Início"
 
@@ -4319,189 +4329,189 @@ msgstr "Projecto actualizado com sucesso."
 msgid "Toggle Assist"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:121
+#: src/desktop/templates/hue.mako:122
 #, fuzzy
 msgid "More"
 msgstr "Faça mais!"
 
-#: src/desktop/templates/hue.mako:199
+#: src/desktop/templates/hue.mako:200
 msgid "Search data and saved documents..."
 msgstr ""
 
-#: src/desktop/templates/hue.mako:232
+#: src/desktop/templates/hue.mako:233
 #, fuzzy
 msgid "No match found"
 msgstr "Página não encontrada."
 
-#: src/desktop/templates/hue.mako:250
+#: src/desktop/templates/hue.mako:251
 #, fuzzy
 msgid "My Profile"
 msgstr "Editar perfil"
 
-#: src/desktop/templates/hue.mako:255
+#: src/desktop/templates/hue.mako:256
 msgid "Switch to Hue 3"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:256 src/desktop/templates/hue.mako:598
+#: src/desktop/templates/hue.mako:257 src/desktop/templates/hue.mako:599
 msgid "Help"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:257
+#: src/desktop/templates/hue.mako:258
 #, fuzzy
 msgid "Welcome Tour"
 msgstr "Bem-vindo"
 
-#: src/desktop/templates/hue.mako:259
+#: src/desktop/templates/hue.mako:260
 #, fuzzy
 msgid "Check Configuration"
 msgstr "Configuração"
 
-#: src/desktop/templates/hue.mako:278
+#: src/desktop/templates/hue.mako:279
 #, fuzzy
 msgid "Open Job Browser"
 msgstr "Job Browser"
 
-#: src/desktop/templates/hue.mako:282
+#: src/desktop/templates/hue.mako:283
 msgid "Schedules"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:315
+#: src/desktop/templates/hue.mako:316
 msgid "Import data wizard"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:316
+#: src/desktop/templates/hue.mako:317
 msgid "Click or Drop files here"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:322 src/desktop/templates/hue.mako:406
+#: src/desktop/templates/hue.mako:323 src/desktop/templates/hue.mako:407
 msgid "Show Assist"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:323 src/desktop/templates/hue.mako:407
+#: src/desktop/templates/hue.mako:324 src/desktop/templates/hue.mako:408
 msgid "Hide Assist"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:421
+#: src/desktop/templates/hue.mako:422
 #, fuzzy
 msgid "Sessions"
 msgstr "segundos"
 
-#: src/desktop/templates/hue.mako:569
+#: src/desktop/templates/hue.mako:570
 #: src/desktop/templates/sql_context_popover.mako:35
 #, fuzzy
 msgid "Table Browser"
 msgstr "Browser de ficheiros"
 
-#: src/desktop/templates/hue.mako:574
+#: src/desktop/templates/hue.mako:575
 msgid "Oozie"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:578
+#: src/desktop/templates/hue.mako:579
 #, fuzzy
 msgid "Indexer"
 msgstr "Índices"
 
-#: src/desktop/templates/hue.mako:581
+#: src/desktop/templates/hue.mako:582
 msgid "Importer"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:582
+#: src/desktop/templates/hue.mako:583
 msgid "User Admin - Users"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:583
+#: src/desktop/templates/hue.mako:584
 msgid "User Admin - Groups"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:584
+#: src/desktop/templates/hue.mako:585
 msgid "User Admin - New Group"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:585
+#: src/desktop/templates/hue.mako:586
 msgid "User Admin - Edit Group"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:586
+#: src/desktop/templates/hue.mako:587
 #, fuzzy
 msgid "User Admin - Permissions"
 msgstr "Faça a gestão de utilizadores e das permissões de grupo"
 
-#: src/desktop/templates/hue.mako:587
+#: src/desktop/templates/hue.mako:588
 #, fuzzy
 msgid "User Admin - Edit Permission"
 msgstr "Faça a gestão de utilizadores e das permissões de grupo"
 
-#: src/desktop/templates/hue.mako:588
+#: src/desktop/templates/hue.mako:589
 #, fuzzy
 msgid "User Admin - Configurations"
 msgstr "A efectuar dump da configuração..."
 
-#: src/desktop/templates/hue.mako:589
+#: src/desktop/templates/hue.mako:590
 msgid "User Admin - New User"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:590
+#: src/desktop/templates/hue.mako:591
 msgid "User Admin - Add LDAP User"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:591
+#: src/desktop/templates/hue.mako:592
 msgid "User Admin - Edit User"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:592
+#: src/desktop/templates/hue.mako:593
 msgid "User Admin - Add LDAP Groups"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:593
+#: src/desktop/templates/hue.mako:594
 msgid "HBase Browser"
 msgstr "Navegador de HBase"
 
-#: src/desktop/templates/hue.mako:594 src/desktop/templates/hue.mako:596
+#: src/desktop/templates/hue.mako:595 src/desktop/templates/hue.mako:597
 #, fuzzy
 msgid "Security - Hive"
 msgstr "Segurança"
 
-#: src/desktop/templates/hue.mako:595
+#: src/desktop/templates/hue.mako:596
 #, fuzzy
 msgid "Security - HDFS"
 msgstr "Segurança"
 
-#: src/desktop/templates/hue.mako:597
+#: src/desktop/templates/hue.mako:598
 #, fuzzy
 msgid "Security - SOLR"
 msgstr "Segurança"
 
-#: src/desktop/templates/hue.mako:599
+#: src/desktop/templates/hue.mako:600
 msgid "Admin Wizard"
 msgstr ""
 
-#: src/desktop/templates/hue.mako:600
+#: src/desktop/templates/hue.mako:601
 #, fuzzy
 msgid "Logs"
 msgstr "Moldar registos"
 
-#: src/desktop/templates/hue.mako:601
+#: src/desktop/templates/hue.mako:602
 #, fuzzy
 msgid "Dump Configuration"
 msgstr "A efectuar dump da configuração..."
 
-#: src/desktop/templates/hue.mako:853
+#: src/desktop/templates/hue.mako:854
 msgid ""
 "It looks like you are offline or an unknown error happened. Please "
 "refresh the page."
 msgstr ""
 
-#: src/desktop/templates/hue.mako:1235
+#: src/desktop/templates/hue.mako:1236
 #, fuzzy
 msgid "Query"
 msgstr "Consulta DB"
 
-#: src/desktop/templates/hue.mako:1273
+#: src/desktop/templates/hue.mako:1274
 #, fuzzy
 msgid "Add more..."
 msgstr "Leia mais..."
 
-#: src/desktop/templates/hue.mako:1504
+#: src/desktop/templates/hue.mako:1505
 msgid "Apps"
 msgstr ""
 
