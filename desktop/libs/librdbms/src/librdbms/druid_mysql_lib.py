@@ -16,6 +16,8 @@
 # limitations under the License.
 
 import logging
+import urllib2
+import pandas as pd
 
 try:
     import MySQLdb as Database
@@ -102,6 +104,7 @@ class DruidMySQLClient():
 
   def __init__(self, options):
     self.options = options
+    self.url = options['url']
     self.connection = Database.connect(**self._conn_params)
 
   @property
@@ -139,8 +142,15 @@ class DruidMySQLClient():
     databases = [row[0] for row in cursor.fetchall()]
     return databases
 
+  def get_datasourceMapping(self):
+    try:
+      databases = pd.read_json(self.url)[0].tolist()
+    except urllib2.URLError as ex:
+      databases = []
+    return databases
+
   def get_databases(self):
-    datasource = self.get_datasource()
+    datasource = self.get_datasourceMapping()
     return datasource
 
 

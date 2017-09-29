@@ -79,7 +79,15 @@ class DruidApi(Api):
     return props
 
   def _execute(self, notebook, snippet):
-    table = self.db.execute_statement(snippet['statement'])  # TODO: execute statement stub in Rdbms
+    statement = snippet['statement']
+
+    lower_statement = statement.lower()
+    
+    if('select' in lower_statement):
+      if (not 'limit' in lower_statement):
+          raise Exception('SELECT need LIMIT')
+
+    table = self.db.execute_statement(statement)  # TODO: execute statement stub in Rdbms
 
     return table
 

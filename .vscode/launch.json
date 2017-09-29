@@ -22,7 +22,7 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "/home/teld-hue/teld.hue/build/env/bin/python2.7",
+            "pythonPath": "${workspaceRoot}/build/env/bin/python2.7",
             "program": "${workspaceRoot}/build/env/bin/hue",
             "args": [
                 "runserver",

@@ -80,10 +80,13 @@ class ElasticsearchApi(Api):
   def execute(self, notebook, snippet):
     if self.db is None:
       raise AuthenticationRequired()
-
+    
     resultSet = query_and_fetch(self.db, snippet['statement'], 1000)
     has_result_set = resultSet is not None
     data = resultSet[0]
+
+    if 'errorMessage' in data[0]:
+      raise Exception(data[0].get('exceptionStack'))
 
     return {
       'sync': True,
