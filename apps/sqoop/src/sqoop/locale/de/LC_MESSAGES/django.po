@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -461,7 +461,4 @@ msgstr "Vorsicht! Dieser Pfad ist derzeit nicht vorhanden."
 #: src/sqoop/templates/app.mako:1149
 msgid "Untitled Job"
 msgstr "Job ohne Titel"
-
-#~ msgid "Choose a folder"
-#~ msgstr "Einen Ordner auswählen"
 

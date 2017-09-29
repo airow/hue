@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -144,97 +144,4 @@ msgid ""
 "Execute this script to produce the auth password. This will be used when "
 "`auth_password` is not set."
 msgstr ""
-
-#~ msgid "No available Impalad to send queries to."
-#~ msgstr "Sem Impalad disponível para enviar consultas."
-
-#~ msgid "Page saved !"
-#~ msgstr "Página guardada!"
-
-#~ msgid "There is no dashboard to search."
-#~ msgstr "Não existe painel para pesquisar."
-
-#~ msgid "Grid Results"
-#~ msgstr "Resultados de grelha"
-
-#~ msgid "Text Facet"
-#~ msgstr "Aspecto do texto"
-
-#~ msgid "Pie Chart"
-#~ msgstr "Gráfico circular"
-
-#~ msgid "Bar Chart"
-#~ msgstr "Gráfico de barras"
-
-#~ msgid "Line Chart"
-#~ msgstr "Gráfico de linhas"
-
-#~ msgid "Timeline"
-#~ msgstr "Cronologia"
-
-#~ msgid "Filter Bar"
-#~ msgstr "Barra de filtro"
-
-#~ msgid "Map"
-#~ msgstr "Mapa"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid "Saving..."
-#~ msgstr "A guardar..."
-
-#~ msgid "New"
-#~ msgstr "Novo"
-
-#~ msgid "Select a database and a table"
-#~ msgstr "Seleccione uma base de dados e uma tabela"
-
-#~ msgid "Choose a database..."
-#~ msgstr "Seleccione uma base de dados..."
-
-#~ msgid "Choose a table..."
-#~ msgstr "Seleccione uma tabela..."
-
-#~ msgid "Manually refresh the dropdowns"
-#~ msgstr "Actualize os menus pendentes manualmente"
-
-#~ msgid "Search"
-#~ msgstr "Pesquisar"
-
-#~ msgid "Filter fields"
-#~ msgstr "Campos de Filtro"
-
-#~ msgid "Field Name"
-#~ msgstr "Nome de ficheiro"
-
-#~ msgid "Your search did not match any documents."
-#~ msgstr "A sua pesquisa não corresponde a quaisquer documentos."
-
-#~ msgid "Exclude this value"
-#~ msgstr "Excluir este valor"
-
-#~ msgid "There are currently no filters applied."
-#~ msgstr "Neste momento, não existem filtros aplicados."
-
-#~ msgid "field"
-#~ msgstr "campo"
-
-#~ msgid "value"
-#~ msgstr "valor"
-
-#~ msgid "from"
-#~ msgstr "de"
-
-#~ msgid "to"
-#~ msgstr "para"
-
-#~ msgid "Oops, no database found!"
-#~ msgstr "Ups, nenhuma base de dados encontrada!"
-
-#~ msgid "Oops, no table found!"
-#~ msgstr "Ups, nenhuma tabela encontrada!"
 

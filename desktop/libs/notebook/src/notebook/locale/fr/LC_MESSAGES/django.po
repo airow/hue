@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -218,8 +218,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr "%s : le serveur DB Proxy est-il en cours d'exécution ?"
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."
@@ -1510,34 +1510,4 @@ msgstr "Dernier"
 #: src/notebook/templates/notebooks.mako:277
 msgid "Previous"
 msgstr "Précédent"
-
-#~ msgid "Row details"
-#~ msgstr "Détail de la ligne"
-
-#~ msgid "Not validated."
-#~ msgstr "Non validé."
-
-#~ msgid "Choose a file"
-#~ msgstr "Choisir un fichier"
-
-#~ msgid "Primary key"
-#~ msgstr "Clé primaire"
-
-#~ msgid "Popular join"
-#~ msgstr "Jointure populaire"
-
-#~ msgid "Popular join condition"
-#~ msgstr "Condition de jointure populaire"
-
-#~ msgid "Popular aggregate"
-#~ msgstr "Agrégat populaire"
-
-#~ msgid "Popular group by"
-#~ msgstr "Regrouper par popularité"
-
-#~ msgid "Popular order by"
-#~ msgstr "Trier par popularité"
-
-#~ msgid "Popular filter"
-#~ msgstr "Filtre populaire"
 

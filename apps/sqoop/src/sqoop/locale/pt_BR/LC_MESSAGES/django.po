@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-07-30 18:56-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -465,34 +465,4 @@ msgstr "Atenção! Este caminho não existe no momento."
 #: src/sqoop/templates/app.mako:1149
 msgid "Untitled Job"
 msgstr "Job sem título"
-
-#~ msgid "Last run: "
-#~ msgstr "Última execução: "
-
-#~ msgid "Choose a folder"
-#~ msgstr "Escolher uma pasta"
-
-#~ msgid "Job type"
-#~ msgstr "Tipo de job"
-
-#~ msgid "Import from a Database to Hadoop"
-#~ msgstr "Importar de um banco de dados para o Hadoop"
-
-#~ msgid "Import"
-#~ msgstr "Importar"
-
-#~ msgid "Import from Hadoop to a Database"
-#~ msgstr "Importar do Hadoop para um banco de dados"
-
-#~ msgid "Export"
-#~ msgstr "Exportar"
-
-#~ msgid "Choose..."
-#~ msgstr "Escolher..."
-
-#~ msgid "Step 1: To"
-#~ msgstr "Etapa 1: para"
-
-#~ msgid "Step 1: Type"
-#~ msgstr "Etapa 1: tipo"
 

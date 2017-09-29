@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2012-07-30 18:51-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -313,7 +313,7 @@ msgstr ""
 " Certifique-se de que não tem colunas vazias."
 
 #: src/beeswax/create_table.py:267
-#, fuzzy, python-format
+#, fuzzy
 msgid "The table could not be created."
 msgstr "Não foi possível guardar o resultado: %s."
 
@@ -2594,97 +2594,4 @@ msgstr "Nome ou directório necessários."
 #: src/beeswax/templates/watch_results.mako:502
 msgid "Download results from the left."
 msgstr "Transferir resultados da esquerda."
-
-#~ msgid "SSL communication enabled for this server."
-#~ msgstr "Comunicação SSL activada para este servidor."
-
-#~ msgid "The application won't work without a running HiveServer2."
-#~ msgstr "A aplicação não irá funcionar sem um HiveServer2 a ser executado."
-
-#~ msgid "Failed to access Hive warehouse: %s"
-#~ msgstr "Falha ao ceder ao armazém Hive: %s"
-
-#~ msgid "The headers of the file could not be removed."
-#~ msgstr "Não foi possível remover os cabeçalhos do ficheiro."
-
-#~ msgid "Input File"
-#~ msgstr "Ficheiro de entrada"
-
-#~ msgid "Automatically load this file into the table after creation."
-#~ msgstr "Carregar automaticamente este ficheiro para a tabela após a criação."
-
-#~ msgid "database"
-#~ msgstr "base de dados"
-
-#~ msgid "Oops, no database found!"
-#~ msgstr "Ups, nenhuma base de dados encontrada!"
-
-#~ msgid ""
-#~ "Check this box to import the data"
-#~ " in this file after creating the "
-#~ "table definition. Leave it unchecked to"
-#~ " define an empty table."
-#~ msgstr ""
-#~ "Marque esta caixa para importar os "
-#~ "dados deste ficheiro depois de criar "
-#~ "a definição da tabela. Deixe-a "
-#~ "desmarcada para definir uma tabela "
-#~ "vazia."
-
-#~ msgid "Choose a file"
-#~ msgstr "Escolha um ficheiro"
-
-#~ msgid "Double click on a table name or field to insert it in the editor"
-#~ msgstr "Faça duplo clique num nome ou campo da tabela para o inserir no editor"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "Actualizar manualmente a lista da tabela"
-
-#~ msgid "Choose a database..."
-#~ msgstr "Seleccione uma base de dados..."
-
-#~ msgid "Table name..."
-#~ msgstr "Nome da tabela..."
-
-#~ msgid "The selected database has no tables."
-#~ msgstr "A base de dados seleccionada não tem tabelas."
-
-#~ msgid "Share"
-#~ msgstr "Partilhar"
-
-#~ msgid "Scroll to the column"
-#~ msgstr "Navegar para a coluna"
-
-#~ msgid "View in Metastore Browser"
-#~ msgstr "Ver no Metastore Browser"
-
-#~ msgid "Data sample for"
-#~ msgstr "Amostra de dados para"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "No databases or tables found."
-#~ msgstr "Nenhuma base de dados ou tabela encontrada."
-
-#~ msgid "Preview Sample data"
-#~ msgstr "Pré-visualizar dados de amostra"
-
-#~ msgid "Spark Igniter"
-#~ msgstr "Spark Igniter"
-
-#~ msgid "Editor"
-#~ msgstr "Editor"
-
-#~ msgid "Applications"
-#~ msgstr "Aplicações"
-
-#~ msgid "Dashboard"
-#~ msgstr "Painel"
-
-#~ msgid "Contexts"
-#~ msgstr "Contextos"
-
-#~ msgid "Uploads"
-#~ msgstr "Carregamentos"
 

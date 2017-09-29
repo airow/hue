@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-08-14 22:56-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -1772,7 +1772,7 @@ msgid "Select a saved Hive query you want to schedule."
 msgstr ""
 
 #: src/oozie/models2.py:2185
-#, fuzzy, python-format
+#, fuzzy
 msgid "The parameters of the script. E.g. N=5, INPUT=${inputDir}"
 msgstr "Os parâmetros de %(type)s do script. Por exemplo, N=5, INPUT=${inputDir}"
 
@@ -3135,7 +3135,7 @@ msgid "Successfully ignored selected action(s)"
 msgstr ""
 
 #: src/oozie/templates/dashboard/list_oozie_coordinator.mako:210
-#, fuzzy, python-format
+#, fuzzy
 msgid "Are you sure you want to ignore the action(s)?"
 msgstr "Tem certeza de que deseja eliminar o bundle %s?"
 
@@ -4892,7 +4892,7 @@ msgid "Submit this job?"
 msgstr "Enviar este job?"
 
 #: src/oozie/templates/editor/submit_job_popup.mako:60
-#, fuzzy, python-format
+#, fuzzy
 msgid "Do a dryrun before submitting the job?"
 msgstr "Erro ao enviar o job %s"
 
@@ -5341,7 +5341,7 @@ msgid "Submit %(job)s?"
 msgstr "Enviar %(job)s?"
 
 #: src/oozie/templates/editor2/submit_job_popup.mako:79
-#, fuzzy, python-format
+#, fuzzy
 msgid "Do a dryrun before submitting the job"
 msgstr "Erro ao enviar o job %s"
 
@@ -5893,100 +5893,4 @@ msgstr "Salvo!"
 #: src/oozie/views/editor2.py:833
 msgid "Bundle copied."
 msgstr "Bundle copiado."
-
-#~ msgid "Every day at midnight"
-#~ msgstr "Todos os dias à meia-noite"
-
-#~ msgid "JDBC URL"
-#~ msgstr "URL do JDBC"
-
-#~ msgid ""
-#~ "JDBC URL for the Hive Server 2."
-#~ " Beeline will use this to know "
-#~ "where to connect to."
-#~ msgstr ""
-#~ "URL do JDBC para o Hive Server "
-#~ "2. O Beeline usará isso para saber"
-#~ " aonde conectar-se."
-
-#~ msgid "Cc addresses (optional)"
-#~ msgstr "Endereços Cc (opcionais)"
-
-#~ msgid "Killed"
-#~ msgstr "Eliminado"
-
-#~ msgid "Failed"
-#~ msgstr "Falhou"
-
-#~ msgid "Comment"
-#~ msgstr "Comentário"
-
-#~ msgid "There are older actions to be shown:"
-#~ msgstr "Não há nenhuma ação mais antiga a ser mostrada:"
-
-#~ msgid "Expand"
-#~ msgstr "Expandir"
-
-#~ msgid "Missing"
-#~ msgstr "Ausente"
-
-#~ msgid "Edit Node: "
-#~ msgstr "Editar nó: "
-
-#~ msgid "Select a Timezone"
-#~ msgstr "Selecione um fuso horário"
-
-#~ msgid "Workflow Parameters"
-#~ msgstr "Parâmetros do workflow"
-
-#~ msgid "Select a parameter"
-#~ msgstr "Selecione um parâmetro"
-
-#~ msgid "Required data path dependency to start the worklow"
-#~ msgstr "Dependência do caminho de dados obrigatório para iniciar o worklow"
-
-#~ msgid "Data path created by the workflow"
-#~ msgstr "Caminho de dados criados pelo workflow"
-
-#~ msgid "e.g. 1, 2, 3, /data/logs, coord:nominalTime()"
-#~ msgstr "ex.: 1, 2, 3, /data/logs, coord:nominalTime()"
-
-#~ msgid "Choose a file"
-#~ msgstr "Escolha um arquivo"
-
-#~ msgid "HDFS Fs"
-#~ msgstr "HDFS Fs"
-
-#~ msgid "Add a description..."
-#~ msgstr "Adicione uma descrição..."
-
-#~ msgid "Click on the pencil to get started with your dashboard!"
-#~ msgstr "Clique no lápis para começar a trabalhar com seu painel!"
-
-#~ msgid "Pick an index and Click on a layout to start your dashboard!"
-#~ msgstr "Selecione um índice e clique em um layout para iniciar seu painel!"
-
-#~ msgid "Fill me up!"
-#~ msgstr "Preencha-me!"
-
-#~ msgid "Move"
-#~ msgstr "Mover"
-
-#~ msgid "for directories"
-#~ msgstr "para diretórios"
-
-#~ msgid "for directories and files"
-#~ msgstr "para diretórios e arquivos"
-
-#~ msgid "recursivelt"
-#~ msgstr "recursivamente"
-
-#~ msgid "Change groups"
-#~ msgstr "Alterar grupos"
-
-#~ msgid "recursively"
-#~ msgstr "recursivamente"
-
-#~ msgid "Error performing %s on Oozie job %s: %s."
-#~ msgstr "Erro ao executar %s em job de Oozie %s: %s."
 

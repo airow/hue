@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -201,12 +201,4 @@ msgstr "지원되지 않는 호출"
 #, python-format
 msgid "Could not get tenant id from cluster id %s: %s"
 msgstr ""
-
-#~ msgid ""
-#~ "Base URL to Optimizer API (e.g. -"
-#~ " https://alpha.optimizer.cloudera.com/)"
-#~ msgstr "Optimizer API의 기본 URL(예: https://alpha.optimizer.cloudera.com/)"
-
-#~ msgid "The email of the Optimizer account to use (deprecated)."
-#~ msgstr "사용할 Optimizer 계정의 이메일입니다(사용되지 않음)."
 

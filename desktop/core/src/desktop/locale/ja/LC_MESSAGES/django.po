@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -4667,28 +4667,4 @@ msgid ""
 "It looks like you are running an older browser. What about upgrading to "
 "the latest"
 msgstr "古いブラウザが実行されている可能性があります。最新のブラウザにアップグレードすることをお勧めします"
-
-#~ msgid "Go to My documents"
-#~ msgstr "［マイドキュメント］に移動"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "テーブルリストを手動で更新"
-
-#~ msgid "Add missing table and columns "
-#~ msgstr "不足しているテーブルと列を追加"
-
-#~ msgid "Upload"
-#~ msgstr "アップロード"
-
-#~ msgid "Showing"
-#~ msgstr "表示"
-
-#~ msgid "No history to be shown."
-#~ msgstr "表示する履歴はありません。"
-
-#~ msgid "History"
-#~ msgstr "履歴"
-
-#~ msgid "Running jobs"
-#~ msgstr "実行中のジョブ"
 

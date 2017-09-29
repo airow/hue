@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VERSÃO DO PROJETO\n"
 "Report-Msgid-Bugs-To: ENDEREÇO DE E-MAIL\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2012-07-30 18:51-0700\n"
 "Last-Translator: NOME COMPLETO <ENDEREÇO DE E-MAIL>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -784,37 +784,4 @@ msgstr ""
 #: src/metastore/templates/popups/load_data.mako:64
 msgid "Submit"
 msgstr "Enviar"
-
-#~ msgid "Hive Error"
-#~ msgstr "Erro no Hive"
-
-#~ msgid "Column analysis not supportet yet"
-#~ msgstr "Análise de colunas ainda sem suporte"
-
-#~ msgid "A POST request is required"
-#~ msgstr "É necessária uma solicitação POST"
-
-#~ msgid "Actions"
-#~ msgstr "Ações"
-
-#~ msgid "Show Table"
-#~ msgstr "Exibir tabela"
-
-#~ msgid "%s : %s"
-#~ msgstr "%s : %s"
-
-#~ msgid "View File Location"
-#~ msgstr "Visualizar local do arquivo"
-
-#~ msgid "Comment:"
-#~ msgstr "Comentário:"
-
-#~ msgid "Partition Columns"
-#~ msgstr "Colunas de partição"
-
-#~ msgid "Error!"
-#~ msgstr "Erro!"
-
-#~ msgid "Import data"
-#~ msgstr "Importar dados"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2012-08-10 13:58-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -1718,7 +1718,7 @@ msgstr ""
 
 #: src/desktop/lib/vcs/apis/github_api.py:53
 #: src/desktop/lib/vcs/apis/github_readonly_api.py:82
-#, fuzzy, python-format
+#, fuzzy
 msgid "url param is required"
 msgstr "--%(param)s é necessário."
 
@@ -1818,7 +1818,7 @@ msgid "CherryPy Server for Desktop."
 msgstr "Servidor CherryPy para Desktop."
 
 #: src/desktop/management/commands/runcherrypyserver.py:121
-#, fuzzy, python-format
+#, fuzzy
 msgid "starting server with options:"
 msgstr "a iniciar o servidor com as opções %(options)s"
 
@@ -1890,7 +1890,7 @@ msgid "Access forbidden."
 msgstr ""
 
 #: src/desktop/templates/403.mako:38
-#, fuzzy, python-format
+#, fuzzy
 msgid ""
 "Sorry, you don't have permissions to access the page, or your session has"
 " expired."
@@ -4293,7 +4293,7 @@ msgid "No"
 msgstr "Não"
 
 #: src/desktop/templates/home.mako:399
-#, fuzzy, python-format
+#, fuzzy
 msgid "File name is required."
 msgstr "--%(param)s é necessário."
 
@@ -4888,312 +4888,4 @@ msgid ""
 msgstr ""
 "Parece que tem um browser antigo em execução. Porque não actualizar para "
 "o mais recente"
-
-#~ msgid "POST request only"
-#~ msgstr "Apenas pedido POST"
-
-#~ msgid "Use this string to parse and redact log message."
-#~ msgstr "Utilize esta string para analisar e editar a mensagem de registo."
-
-#~ msgid "If true, log all database requests."
-#~ msgstr "Se True, todos os pedidos à base de dados são registados."
-
-#~ msgid "Cannot find HDFS called \"%(fs_ref)s\"."
-#~ msgstr "Não foi possível encontrar o HDFS denominado \"%(fs_ref)s\"."
-
-#~ msgid "Only superusers and %s are allowed to read this document."
-#~ msgstr "Apenas superutilizadores e %s têm permissão para ler este documento."
-
-#~ msgid "Only superusers and %s are allowed to write this document."
-#~ msgstr ""
-#~ "Apenas superutilizadores e %s têm "
-#~ "permissão para escrever este documento."
-
-#~ msgid "Not Found"
-#~ msgstr "Não encontrado"
-
-#~ msgid "Server Error (500)"
-#~ msgstr "Erro do servidor (500)"
-
-#~ msgid "Date Pickers"
-#~ msgstr "Seleccionadores de data"
-
-#~ msgid "Read more about it..."
-#~ msgstr "Saber mais..."
-
-#~ msgid "Demo tutorials"
-#~ msgstr "Tutoriais de demonstração"
-
-#~ msgid "Query Editors"
-#~ msgstr "Consultar editores"
-
-#~ msgid "Spark"
-#~ msgstr "Spark"
-
-#~ msgid "Data Browsers"
-#~ msgstr "Data Browsers"
-
-#~ msgid "Change project for"
-#~ msgstr "Mudar projecto para"
-
-#~ msgid "Did you know?"
-#~ msgstr "Sabia?"
-
-#~ msgid "Step 1:"
-#~ msgstr "Passo 1:"
-
-#~ msgid "Add data"
-#~ msgstr "Adicionar dados"
-
-#~ msgid "Step 2:"
-#~ msgstr "Passo 2:"
-
-#~ msgid "Step 3:"
-#~ msgstr "Passo 3:"
-
-#~ msgid "With"
-#~ msgstr "Com"
-
-#~ msgid "and the apps in the"
-#~ msgstr "e as aplicações nas"
-
-#~ msgid "section, upload, view your data and create tables."
-#~ msgstr "tabelas secção, carregar, visualizar dados e criar."
-
-#~ msgid "Pre-installed samples are also already there."
-#~ msgstr "As amostras pré-carregadas também já se encontram nessa localização."
-
-#~ msgid "Then query and visualize the data with the"
-#~ msgstr "Depois consulte e visualize os dados com"
-
-#~ msgid "Tours were created to guide you around."
-#~ msgstr "Foram criadas apresentações para o guiar."
-
-#~ msgid "You can see the list of tours by clicking on the checkered flag icon"
-#~ msgstr "Pode ver a lista de visitas clicando no ícone de bandeira de quadrados."
-
-#~ msgid "Additional documentation is available at"
-#~ msgstr "Encontra-se disponível documentação adicional em"
-
-#~ msgid "Do not show this dialog again"
-#~ msgstr "Não voltar a mostrar este diálogo"
-
-#~ msgid "Got it, prof!"
-#~ msgstr "Percebido."
-
-#~ msgid "Create your Hue account"
-#~ msgstr "Criar a sua conta Hue"
-
-#~ msgid "Sign in to continue to Hue"
-#~ msgstr "Inicie sessão para aceder ao Hue"
-
-#~ msgid ""
-#~ "This is where you can access all"
-#~ " your documents and you can tag "
-#~ "them per project. Your home is "
-#~ "always reachable from any part of "
-#~ "Hue, just click on the house icon"
-#~ " on the top navigator bar."
-#~ msgstr ""
-#~ "Aqui pode aceder a todos os seus"
-#~ " documentos e pode etiquetá-los por "
-#~ "projecto. A página inicial está sempre"
-#~ " disponível em qualquer parte do Hue,"
-#~ " basta clicar no ícone de casa "
-#~ "na barra superior do browser."
-
-#~ msgid "Actions and projects"
-#~ msgstr "Acções e projectos"
-
-#~ msgid ""
-#~ "From here you can create new "
-#~ "documents or see a specific project "
-#~ "or any trashed document for instance."
-#~ msgstr ""
-#~ "A partir daqui, pode criar novos "
-#~ "documentos ou ver um projecto específico"
-#~ " ou qualquer documento enviado para o"
-#~ " lixo, por exemplo."
-
-#~ msgid "Organize!"
-#~ msgstr "Organize!"
-
-#~ msgid ""
-#~ "You can organize your documents in "
-#~ "projects and filter them out in "
-#~ "this area. It's a smart and fast"
-#~ " way to focus on a specific "
-#~ "project you are currently tackling."
-#~ msgstr ""
-#~ "Pode organizar os seus documentos em "
-#~ "projectos e filtrá-los nesta área. "
-#~ "Trata-se de uma forma inteligente e"
-#~ " rápida de se centrar num projecto"
-#~ " específico, no qual está a trabalhar"
-#~ " no momento."
-
-#~ msgid ""
-#~ "You can always have a glance at"
-#~ " your hard work. This is the "
-#~ "list of all your documents, The "
-#~ "first column tells you the kind of"
-#~ " document that is, then you can "
-#~ "find its name, a description and "
-#~ "some other fields."
-#~ msgstr ""
-#~ "Pode monitorizar rapidamente o seu "
-#~ "trabalho. Esta é a lista de todos"
-#~ " os seus documentos. A primeira "
-#~ "coluna informa-o relativamente ao tipo "
-#~ "de documento. Depois pode encontrar o"
-#~ " respectivo nome, uma descrição e "
-#~ "alguns outros campos."
-
-#~ msgid "Projects"
-#~ msgstr "Projectos"
-
-#~ msgid ""
-#~ "You can assign one or more "
-#~ "projects to a document just by "
-#~ "clicking in this cell."
-#~ msgstr ""
-#~ "Pode atribuir um ou mais projectos "
-#~ "a um documento, clicando simplesmente "
-#~ "nesta célula."
-
-#~ msgid "Share your documents"
-#~ msgstr "Partilhar os seus documentos"
-
-#~ msgid ""
-#~ "You can also share a document you"
-#~ " have worked on with a specific "
-#~ "user or a group of users. Just "
-#~ "click on the icon in this column"
-#~ " on every document you want to "
-#~ "share and choose users and groups "
-#~ "from the popup."
-#~ msgstr ""
-#~ "Também pode partilhar um documento no"
-#~ " qual trabalhou com um utilizador "
-#~ "específico ou com um grupo de "
-#~ "utilizadores. Basta clicar no ícone "
-#~ "nesta coluna em cada documento que "
-#~ "pretende partilhar e seleccionar os "
-#~ "utilizadores e os grupos na janela "
-#~ "de contexto."
-
-#~ msgid ""
-#~ "You can always filter out the "
-#~ "documents by name, description or even"
-#~ " owner. Enjoy your new home!"
-#~ msgstr ""
-#~ "Pode sempre filtrar documentos por nome,"
-#~ " descrição e até mesmo por "
-#~ "proprietário. Desfrute da sua nova "
-#~ "página inicial!"
-
-#~ msgid "Create Hive tables and load quoted"
-#~ msgstr "Criar tabelas do Hive e carregar dados"
-
-#~ msgid "Submit any Oozie jobs directly"
-#~ msgstr "Enviar trabalhos do Oozie directamente"
-
-#~ msgid "from HDFS"
-#~ msgstr "do HDFS"
-
-#~ msgid "ZooKeeper Browser"
-#~ msgstr "ZooKeeper Browser"
-
-#~ msgid "Query your Databases"
-#~ msgstr "Consulte as suas bases de dados"
-
-#~ msgid "Graphical facets"
-#~ msgstr "Aspectos gráficos"
-
-#~ msgid "Use Impala with Sentry"
-#~ msgstr "Utilizar Impala com Sentry"
-
-#~ msgid "Submit Oozie jobs directly from HDFS"
-#~ msgstr "Enviar trabalhos do Oozie diretamente do HDFS"
-
-#~ msgid "A Job Browser for Yarn"
-#~ msgstr "Um browser de trabalhos para Yarn"
-
-#~ msgid "Security with Yarn"
-#~ msgstr "Segurança com o Yarn"
-
-#~ msgid "Hive Query editor with HiveServer2"
-#~ msgstr "Editor Hive Query com HiveServer2"
-
-#~ msgid "Integrate external Web applications in"
-#~ msgstr "Integrar aplicações da Web externas em"
-
-#~ msgid "any language"
-#~ msgstr "qualquer idioma"
-
-#~ msgid "Season 2 of Hadoop Video Tutorials"
-#~ msgstr "Série 2 de tutoriais de vídeo Hadoop"
-
-#~ msgid "Analyze Twitter data"
-#~ msgstr "Analisar dados do Twitter"
-
-#~ msgid "Preparing Yelp data for analysis with"
-#~ msgstr "A preparar dados do Yelp para análise com"
-
-#~ msgid "Pig and Python UDF"
-#~ msgstr "Pig e Python UDF"
-
-#~ msgid "What's new in Hue 3.5"
-#~ msgstr "Novidades do Hue 3.5"
-
-#~ msgid "SSO with SAML"
-#~ msgstr "SSO com SAML"
-
-#~ msgid "Integrating your company with LDAP: How To"
-#~ msgstr "Integrar a sua empresa com LDAP: How To"
-
-#~ msgid "A new Spark UI"
-#~ msgstr "Uma nova IU Spark"
-
-#~ msgid "Fast SQL with Impala"
-#~ msgstr "SQL rápida com Impala"
-
-#~ msgid "The Pig Editor"
-#~ msgstr "O Editor Pig"
-
-#~ msgid "Build and use Hive UDF in 1 minute!"
-#~ msgstr "Crie e utilize o Hive UDF em 1 minuto!"
-
-#~ msgid "How to use HCatalog in Hue with Pig"
-#~ msgstr "Como utilizar o HCatalog no Hue com o Pig"
-
-#~ msgid "The search app with Solr"
-#~ msgstr "A aplicação de pesquisa com Solr"
-
-#~ msgid "HDFS File Operations Made Easy"
-#~ msgstr "Operações de ficheiro HDFS simplificadas"
-
-#~ msgid "High availability in Hue"
-#~ msgstr "Elevada disponibilidade no Hue"
-
-#~ msgid "What's new in Hue 2.5"
-#~ msgstr "Novidades do Hue 2.5"
-
-#~ msgid "Transfering data with Sqoop"
-#~ msgstr "Transferir dados com o Sqoop"
-
-#~ msgid "New Impala and Hive Editors"
-#~ msgstr "Editores New Impala e Hive"
-
-#~ msgid "Oozie SLAs"
-#~ msgstr "SLA do Oozie"
-
-#~ msgid "The new Oozie Crontab"
-#~ msgstr "O novo Oozie Crontab"
-
-#~ msgid "Secure your YARN cluster"
-#~ msgstr "Proteja o seu cluster YARN"
-
-#~ msgid "MR2 and YARN alternative Job Browser"
-#~ msgstr "Job Browser alternativo MR2 e YARN"
 

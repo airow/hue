@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -4631,28 +4631,4 @@ msgid ""
 "It looks like you are running an older browser. What about upgrading to "
 "the latest"
 msgstr "您似乎在运行旧版浏览器。建议升级到最新版"
-
-#~ msgid "Go to My documents"
-#~ msgstr "转至我的文档"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "手动刷新表列表"
-
-#~ msgid "Add missing table and columns "
-#~ msgstr "添加缺少的表和列"
-
-#~ msgid "Upload"
-#~ msgstr "上传"
-
-#~ msgid "Showing"
-#~ msgstr "正在显示"
-
-#~ msgid "No history to be shown."
-#~ msgstr "没有要显示的历史记录。"
-
-#~ msgid "History"
-#~ msgstr "历史记录"
-
-#~ msgid "Running jobs"
-#~ msgstr "正在运行作业"
 

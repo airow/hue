@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -202,8 +202,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr "%s: DB 프록시 서버가 실행 중입니까?"
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."
@@ -1456,34 +1456,4 @@ msgstr "마지막"
 #: src/notebook/templates/notebooks.mako:277
 msgid "Previous"
 msgstr "이전"
-
-#~ msgid "Row details"
-#~ msgstr "행 세부 정보"
-
-#~ msgid "Not validated."
-#~ msgstr "유효성이 검사되지 않았습니다."
-
-#~ msgid "Choose a file"
-#~ msgstr "파일 선택"
-
-#~ msgid "Primary key"
-#~ msgstr "기본 키"
-
-#~ msgid "Popular join"
-#~ msgstr "인기 가입"
-
-#~ msgid "Popular join condition"
-#~ msgstr "인기 가입 조건"
-
-#~ msgid "Popular aggregate"
-#~ msgstr "인기 집계"
-
-#~ msgid "Popular group by"
-#~ msgstr "인기 그룹 기준"
-
-#~ msgid "Popular order by"
-#~ msgstr "인기 순서 기준"
-
-#~ msgid "Popular filter"
-#~ msgstr "인기 필터"
 

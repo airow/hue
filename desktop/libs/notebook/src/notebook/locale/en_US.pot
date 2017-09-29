@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,8 +198,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr ""
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."

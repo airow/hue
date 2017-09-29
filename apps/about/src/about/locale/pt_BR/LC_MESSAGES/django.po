@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -205,43 +205,4 @@ msgstr "Exemplos atualizados"
 #: src/about/templates/admin_wizard.mako:393
 msgid "Configuration updated"
 msgstr "Configuração atualizada"
-
-#~ msgid "Visit the project website!"
-#~ msgstr "Visite o site do projeto!"
-
-#~ msgid "The Hadoop UI"
-#~ msgstr "A interface do usuário do Hadoop"
-
-#~ msgid "Install all the application examples"
-#~ msgstr "Instalar todos os exemplos de aplicativos"
-
-#~ msgid "All"
-#~ msgstr "Tudo"
-
-#~ msgid "Tours and tutorials"
-#~ msgstr "Tours e tutoriais"
-
-#~ msgid "Check to enable the tours and tutorials"
-#~ msgstr "Marque para habilitar os tours e tutoriais"
-
-#~ msgid ""
-#~ "Display the \"Available Tours\" question "
-#~ "mark when tours are available for "
-#~ "a specific page."
-#~ msgstr ""
-#~ "Exibe o ponto de interrogação \"Tours"
-#~ " disponíveis\" quando houver tours "
-#~ "disponíveis para uma página específica."
-
-#~ msgid "Hue Home"
-#~ msgstr "Página inicial do Hue"
-
-#~ msgid "About Hue"
-#~ msgstr "Sobre o Hue"
-
-#~ msgid "Configuration"
-#~ msgstr "Configuração"
-
-#~ msgid "Server Logs"
-#~ msgstr "Logs de servidor"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -759,16 +759,4 @@ msgstr "데이터를 로드하면 해당 위치에서 테이블의 스토리지 
 #: src/metastore/templates/popups/load_data.mako:64
 msgid "Submit"
 msgstr "제출"
-
-#~ msgid "Hive Error"
-#~ msgstr "Hive 오류"
-
-#~ msgid "Compressed"
-#~ msgstr "압축됨"
-
-#~ msgid "Not compressed"
-#~ msgstr "압축되지 않음"
-
-#~ msgid "Show Partitions"
-#~ msgstr "파티션 표시"
 

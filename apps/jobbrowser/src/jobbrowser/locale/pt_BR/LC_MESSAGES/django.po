@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-07-30 18:53-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt_BR <LL@li.org>\n"
@@ -1524,27 +1524,4 @@ msgstr "Máximo tarefas Reduce"
 #: src/jobbrowser/templatetags/unix_ms_to_datetime.py:29
 msgid "No time"
 msgstr "Sem horário"
-
-#~ msgid "Could not find job %s."
-#~ msgstr "Não foi possível localizar o job %s."
-
-#~ msgid "Insufficient permission"
-#~ msgstr "Permissão insuficiente"
-
-#~ msgid ""
-#~ "Permission denied.  User %(username)s cannot"
-#~ " delete user %(user)s's job."
-#~ msgstr ""
-#~ "Permissão negada. O usuário %(username)s "
-#~ "não pode excluir a tarefa do "
-#~ "usuário %(user)s."
-
-#~ msgid "Metric"
-#~ msgstr "Métrica"
-
-#~ msgid "header"
-#~ msgstr "cabeçalho"
-
-#~ msgid "There were no tasks that match your search criteria."
-#~ msgstr "Nenhuma tarefa corresponde aos critérios de pesquisa."
 

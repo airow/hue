@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VERSÃO DO PROJECTO\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: NOME COMPLETO <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -506,7 +506,4 @@ msgstr "Incluir ficheiros ou ficheiros comprimidos"
 #: src/pig/templates/app.mako:1415
 msgid "You have unsaved changes in this pig script."
 msgstr "Tem alterações não guardadas neste script Pig."
-
-#~ msgid "Choose a file"
-#~ msgstr "Escolha um ficheiro"
 

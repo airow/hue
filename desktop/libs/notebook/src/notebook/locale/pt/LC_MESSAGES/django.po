@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VERSÃO DO PROJECTO\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: NOME COMPLETO <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -202,8 +202,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr ""
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."
@@ -1487,79 +1487,4 @@ msgstr "Último"
 #: src/notebook/templates/notebooks.mako:277
 msgid "Previous"
 msgstr "Anterior"
-
-#~ msgid "URL of the Spark Job Server."
-#~ msgstr "URL do servidor de trabalho Spark."
-
-#~ msgid "List of available types of snippets."
-#~ msgstr "Lista de tipos de fragmentos disponíveis."
-
-#~ msgid "The app won't work without a running Job Server"
-#~ msgstr "A aplicação não funciona sem um servidor Job em execução"
-
-#~ msgid "<h2>This is a text snippet</h2>Type your text here"
-#~ msgstr "<h2>Isto é um fragmento de texto</h2>Escreva o seu texto aqui"
-
-#~ msgid "Brand New"
-#~ msgstr "Completamente novo"
-
-#~ msgid "Data sample for"
-#~ msgstr "Amostra de dados para"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "Actualizar manualmente a lista da tabela"
-
-#~ msgid "Choose a database..."
-#~ msgstr "Seleccione uma base de dados..."
-
-#~ msgid "The selected database has no tables."
-#~ msgstr "A base de dados seleccionada não tem tabelas."
-
-#~ msgid "The database list cannot be loaded."
-#~ msgstr "A lista da base de dados não pode ser carregada."
-
-#~ msgid "Add a new snippet"
-#~ msgstr "Adicionar um novo fragmento"
-
-#~ msgid "CTRL + ENTER"
-#~ msgstr "CTRL + ENTER"
-
-#~ msgid "Download first rows as CSV"
-#~ msgstr "Transferir filas iniciais como CSV"
-
-#~ msgid "CSV"
-#~ msgstr "CSV"
-
-#~ msgid "Download first rows as XLS"
-#~ msgstr "Transferir filas iniciais como XLS"
-
-#~ msgid "Excel"
-#~ msgstr "Excel"
-
-#~ msgid "Success but empty results."
-#~ msgstr "Operação realizada com sucesso mas sem resultados."
-
-#~ msgid "Show columns"
-#~ msgstr "Mostrar colunas"
-
-#~ msgid "Hide"
-#~ msgstr "Ocultar"
-
-#~ msgid "Choose a column..."
-#~ msgstr "Seleccione uma coluna..."
-
-#~ msgid "Paste or type a link"
-#~ msgstr "Colar ou escrever uma hiperligação"
-
-#~ msgid "There was a problem loading the table preview."
-#~ msgstr "Ocorreu um problema ao carregar a pré-visualização da tabela."
-
-#~ msgid "Spark Editor"
-#~ msgstr "Editor Spark"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
 

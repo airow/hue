@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -200,8 +200,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr "%s：DB Proxy 服务器是否正在运行？"
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."
@@ -1454,34 +1454,4 @@ msgstr "最后一个"
 #: src/notebook/templates/notebooks.mako:277
 msgid "Previous"
 msgstr "上一页"
-
-#~ msgid "Row details"
-#~ msgstr "行详细信息"
-
-#~ msgid "Not validated."
-#~ msgstr "未验证。"
-
-#~ msgid "Choose a file"
-#~ msgstr "选择文件"
-
-#~ msgid "Primary key"
-#~ msgstr "主要密钥"
-
-#~ msgid "Popular join"
-#~ msgstr "热门连接"
-
-#~ msgid "Popular join condition"
-#~ msgstr "热门连接条件"
-
-#~ msgid "Popular aggregate"
-#~ msgstr "热门汇总"
-
-#~ msgid "Popular group by"
-#~ msgstr "热门分组依据"
-
-#~ msgid "Popular order by"
-#~ msgstr "热门排序依据"
-
-#~ msgid "Popular filter"
-#~ msgstr "热门筛选器"
 

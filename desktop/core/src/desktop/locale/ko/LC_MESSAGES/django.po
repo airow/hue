@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ko <LL@li.org>\n"
@@ -4656,28 +4656,4 @@ msgid ""
 "It looks like you are running an older browser. What about upgrading to "
 "the latest"
 msgstr "이전 브라우저를 실행 중인 것 같습니다. 최신 버전으로 업그레이드 하시겠습니까?"
-
-#~ msgid "Go to My documents"
-#~ msgstr "내 문서로 이동"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "테이블 목록을 수동으로 새로 고침"
-
-#~ msgid "Add missing table and columns "
-#~ msgstr "누락된 테이블 및 열 추가 "
-
-#~ msgid "Upload"
-#~ msgstr "업로드"
-
-#~ msgid "Showing"
-#~ msgstr "표시 중"
-
-#~ msgid "No history to be shown."
-#~ msgstr "표시할 기록이 없습니다."
-
-#~ msgid "History"
-#~ msgstr "기록"
-
-#~ msgid "Running jobs"
-#~ msgstr "실행 중인 작업"
 

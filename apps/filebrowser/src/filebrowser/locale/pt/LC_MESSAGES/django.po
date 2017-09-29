@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2012-07-30 18:52-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -1247,46 +1247,4 @@ msgstr "Ocorreu um problema com o seu pedido."
 #: src/filebrowser/templates/saveas.mako:20
 msgid "Save File As..."
 msgstr "Guardar ficheiro como..."
-
-#~ msgid ""
-#~ " Note: You are a Hue admin "
-#~ "but not a HDFS superuser (which is"
-#~ " \"%(superuser)s\")."
-#~ msgstr ""
-#~ " Nota: é um administrador do Hue,"
-#~ " mas não um super-utilizador do "
-#~ "HDFS (que é \"%(superuser)s\")."
-
-#~ msgid "Saved %(path)s."
-#~ msgstr "%(path)s guardado."
-
-#~ msgid "A POST request is required."
-#~ msgstr "É necessário um pedido POST."
-
-#~ msgid "%(destination)s upload succeeded"
-#~ msgstr "Upload para %(destination)s bem-sucedido"
-
-#~ msgid "%(destination)s upload succeeded."
-#~ msgstr "Carregamento de %(destination)s executado com êxito."
-
-#~ msgid "Upload failed: %(data)s."
-#~ msgstr "Falha do carregamento: %(data)s."
-
-#~ msgid "Info"
-#~ msgstr "Info"
-
-#~ msgid "Change Permissions:"
-#~ msgstr "Alterar permissões:"
-
-#~ msgid "The file will then be extracted in the path specified above."
-#~ msgstr "O ficheiro será então extraído para o caminho especificado acima."
-
-#~ msgid "Upload progress"
-#~ msgstr "Carregar progresso"
-
-#~ msgid "Cancel upload"
-#~ msgstr "Cancelar o carregamento"
-
-#~ msgid "Upload has been canceled"
-#~ msgstr "O carregamento foi cancelado"
 

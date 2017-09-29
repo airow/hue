@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VERSÃO DO PROJECTO\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2012-07-30 18:50-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: pt <LL@li.org>\n"
@@ -243,7 +243,7 @@ msgstr ""
 "suportada."
 
 #: src/indexer/controller.py:295
-#, fuzzy, python-format
+#, fuzzy
 msgid "Could not update index."
 msgstr "Não foi possível actualizar o índice. Tipo desconhecido: %s"
 
@@ -1178,48 +1178,4 @@ msgstr ""
 #: src/indexer/templates/indexes.mako:407
 msgid "Last"
 msgstr ""
-
-#~ msgid ""
-#~ "Could not create instance directory. "
-#~ "Check if solr_zk_ensemble and solrctl_path "
-#~ "are correct in Hue config [indexer]."
-#~ msgstr ""
-#~ "Não foi possível criar um directório "
-#~ "de instância. Verifique se solr_zk_ensemble"
-#~ " and solrctl_path são correctos e "
-#~ "corrija no [indexer] de configuração do"
-#~ " Hue."
-
-#~ msgid "Could not create instance directory. Check error logs for more info."
-#~ msgstr ""
-#~ "Não foi possível criar um directório "
-#~ "de instância. Verifique os registos de"
-#~ " erros para obter mais informações."
-
-#~ msgid "Could not update index. Could not fetch any data from Hive."
-#~ msgstr ""
-#~ "Não foi possível actualizar o índice."
-#~ " Não foi possível obter quaisquer "
-#~ "dados do Hive."
-
-#~ msgid "Installing jobs collection"
-#~ msgstr "A instalar colecção de trabalhos"
-
-#~ msgid "Jobs collection successfully installed"
-#~ msgstr "Colecção de trabalhos instalada com sucesso"
-
-#~ msgid "Confirm"
-#~ msgstr "Confirmar"
-
-#~ msgid "Unique key field"
-#~ msgstr "Campo-chave único"
-
-#~ msgid "Retweeted %s times"
-#~ msgstr "Tweet reenviado %s vezes"
-
-#~ msgid "Reply"
-#~ msgstr "Responder"
-
-#~ msgid "Retweet"
-#~ msgstr "Reenviar tweet"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:49+0800\n"
+"POT-Creation-Date: 2017-09-29 11:04+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -4899,28 +4899,4 @@ msgid ""
 msgstr ""
 "Anscheinend verwenden Sie einen älteren Browser. Möchten Sie ein Upgrade "
 "auf die neueste Version durchführen?"
-
-#~ msgid "Go to My documents"
-#~ msgstr "Meine Dokumente öffnen"
-
-#~ msgid "Manually refresh the table list"
-#~ msgstr "Tabellenliste manuell aktualisieren"
-
-#~ msgid "Add missing table and columns "
-#~ msgstr "Fehlende Tabelle und Spalten hinzufügen"
-
-#~ msgid "Upload"
-#~ msgstr "Hochladen"
-
-#~ msgid "Showing"
-#~ msgstr "Anzeigen"
-
-#~ msgid "No history to be shown."
-#~ msgstr "Kein anzuzeigender Verlauf."
-
-#~ msgid "History"
-#~ msgstr "Verlauf"
-
-#~ msgid "Running jobs"
-#~ msgstr "Jobs werden ausgeführt"
 

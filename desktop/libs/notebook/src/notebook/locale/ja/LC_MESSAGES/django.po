@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -202,8 +202,8 @@ msgstr ""
 msgid "%s: is the DB Proxy server running?"
 msgstr "%s：DB プロキシサーバーは実行中ですか？"
 
-#: src/notebook/connectors/druid.py:208
-#: src/notebook/connectors/elasticsearch.py:176
+#: src/notebook/connectors/druid.py:216
+#: src/notebook/connectors/elasticsearch.py:179
 #: src/notebook/connectors/jdbc.py:171 src/notebook/connectors/rdbms.py:168
 #: src/notebook/connectors/solr.py:176 src/notebook/connectors/solr.py:214
 msgid "Failed to get sample data."
@@ -1456,34 +1456,4 @@ msgstr "末尾"
 #: src/notebook/templates/notebooks.mako:277
 msgid "Previous"
 msgstr "前"
-
-#~ msgid "Row details"
-#~ msgstr "行の詳細"
-
-#~ msgid "Not validated."
-#~ msgstr "検証されていません。"
-
-#~ msgid "Choose a file"
-#~ msgstr "ファイルを選択"
-
-#~ msgid "Primary key"
-#~ msgstr "プライマリキー"
-
-#~ msgid "Popular join"
-#~ msgstr "よく使用する結合"
-
-#~ msgid "Popular join condition"
-#~ msgstr "よく使用する結合条件"
-
-#~ msgid "Popular aggregate"
-#~ msgstr "よく使用する集計"
-
-#~ msgid "Popular group by"
-#~ msgstr "よく使用するグループ化"
-
-#~ msgid "Popular order by"
-#~ msgstr "よく使用する順序"
-
-#~ msgid "Popular filter"
-#~ msgstr "よく使用するフィルタ"
 

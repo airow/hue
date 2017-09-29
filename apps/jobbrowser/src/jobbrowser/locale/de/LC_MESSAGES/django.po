@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:06+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -1517,25 +1517,4 @@ msgstr "Map Reduce-Tasks"
 #: src/jobbrowser/templatetags/unix_ms_to_datetime.py:29
 msgid "No time"
 msgstr "Keine Zeit"
-
-#~ msgid "elapsedTime"
-#~ msgstr "elapsedTime"
-
-#~ msgid "progress"
-#~ msgstr "Fortschritt"
-
-#~ msgid "state"
-#~ msgstr "Zustand"
-
-#~ msgid "startTime"
-#~ msgstr "startTime"
-
-#~ msgid "successfulAttempt"
-#~ msgstr "successfulAttempt"
-
-#~ msgid "finishTime"
-#~ msgstr "finishTime"
-
-#~ msgid "rack"
-#~ msgstr "Rack"
 

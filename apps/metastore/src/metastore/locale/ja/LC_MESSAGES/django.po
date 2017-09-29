@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hue VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-28 18:50+0800\n"
+"POT-Creation-Date: 2017-09-29 11:05+0800\n"
 "PO-Revision-Date: 2013-10-28 10:31-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
@@ -759,16 +759,4 @@ msgstr "データを読み込むと、データの場所からテーブルの保
 #: src/metastore/templates/popups/load_data.mako:64
 msgid "Submit"
 msgstr "サブミット"
-
-#~ msgid "Hive Error"
-#~ msgstr "Hive エラー"
-
-#~ msgid "Compressed"
-#~ msgstr "圧縮済み"
-
-#~ msgid "Not compressed"
-#~ msgstr "未圧縮"
-
-#~ msgid "Show Partitions"
-#~ msgstr "パーティションの表示"
 
