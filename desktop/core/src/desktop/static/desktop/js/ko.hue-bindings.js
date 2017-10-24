@@ -4402,7 +4402,12 @@
       });
 
       $tableDropMenu.find('.editor-drop-select').click(function () {
-        setFromDropMenu('SELECT * FROM ' + lastMeta.database + '.' + lastMeta.table + ' LIMIT 100;');
+        var where = '';
+        if ('druid' === lastMeta.sourceType) {
+          where = " WHERE __time >= '" + moment().add(-1, 'd').format('YYYY-MM-DDT00:00:00.000') + "' AND __time < '" + moment().format('YYYY-MM-DDT00:00:00.000') + "' ";
+        }
+
+        setFromDropMenu('SELECT * FROM ' + lastMeta.database + '.' + lastMeta.table + where + ' LIMIT 100;');
         $tableDropMenu.hide();
       });
 
