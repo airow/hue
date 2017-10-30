@@ -41,6 +41,7 @@ ${layout.menubar(section='permissions')}
       <tr>
         <th>${_('Application')}</th>
         <th>${_('Permission')}</th>
+        <th>Description</th>
         <th>${_('Groups')}</th>
       </tr>
       </thead>
@@ -56,8 +57,9 @@ ${layout.menubar(section='permissions')}
             %else:
               <strong>${perm.app}</strong>
             %endif
-          </td>
+          </td>            
             <td>${perm.description}</td>
+            <td data-perm-app="${perm.app}" data-perm-action="${perm.action}"></td>
             <td>${', '.join([group.name for group in Group.objects.filter(grouppermission__hue_permission=perm).order_by('name')])}</td>
           </tr>
           % endfor
@@ -78,12 +80,18 @@ ${layout.menubar(section='permissions')}
 <script type="text/javascript">
   $(document).ready(function () {
     var $permissionsComponents = $('#permissionsComponents');
+    $permissionsComponents.find('[data-perm-app]').each(function(){
+      var app=$(this).data('perm-app');
+      var action=$(this).data('perm-action');
+      $(this).text(window.permssionsMapping.get(app,action));
+    });
     var dt = $permissionsComponents.find(".datatables").dataTable({
       "bPaginate": false,
       "bLengthChange": false,
       "bInfo": false,
       "bFilter": true,
       "aoColumns": [
+        null,
         null,
         null,
         null

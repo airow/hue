@@ -96,7 +96,7 @@ ${layout.menubar(section='groups')}
       width: 600,
       height: 240
     });
-    $("#id_permissions").jHueSelector({
+    $("#id_permissions").jHueSelectorWithPerm({
       selectAllLabel: "${_('Select all')}",
       searchPlaceholder: "${_('Search')}",
       noChoicesFound: "${_('No permissions found.')}",

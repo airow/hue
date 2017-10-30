@@ -465,6 +465,8 @@ ${ hueIcons.symbols() }
 <script src="${ static('desktop/js/jquery.hdfsautocomplete.js') }"></script>
 <script src="${ static('desktop/js/jquery.filechooser.js') }"></script>
 <script src="${ static('desktop/js/jquery.selector.js') }"></script>
+<script src="${ static('desktop/js/jquery.selectorwithperm.mapping.js') }"></script>
+<script src="${ static('desktop/js/jquery.selectorwithperm.js') }"></script>
 <script src="${ static('desktop/js/jquery.delayedinput.js') }"></script>
 <script src="${ static('desktop/js/jquery.rowselector.js') }"></script>
 <script src="${ static('desktop/js/jquery.notify.js') }"></script>
