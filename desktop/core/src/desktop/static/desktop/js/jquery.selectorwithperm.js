@@ -97,6 +97,7 @@
           var actionSplit = action.split(":");
           var actionKey = action.replace(key + ".", "").replace(":" + actionSplit[actionSplit.length - 1], "");
           var lbl = $("<label>").text(permConf.action[actionKey] || opt.text());
+          lbl.attr('search-key', opt.text() + permConf.action[actionKey] + permConf.name);
           lbl.attr('title', opt.text());
           var chk = $("<input>").attr("type", "checkbox").addClass("selector").change(function () {
             if ($(this).is(":checked")) {
@@ -150,7 +151,8 @@
         if (q != "") {
           body.find("li.selectorDivider").hide();
           body.find("label").each(function () {
-            if ($(this).text().toLowerCase().indexOf(q.toLowerCase()) > -1) {
+            //if ($(this).text().toLowerCase().indexOf(q.toLowerCase()) > -1) {
+            if ($(this).attr("search-key").toLowerCase().indexOf(q.toLowerCase()) > -1) {
               $(this).parent().show();
             }
             else {
