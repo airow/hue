@@ -908,7 +908,7 @@ ${ utils.submit_popup_event() }
       $.each(clusterConfig['app_config']['editor']['interpreters'], function(index, interpreter) {
         interpreters.push(interpreter.type);
       });
-      viewModel.availableActions(interpreters);
+      //viewModel.availableActions(interpreters);
       resizeToolbar();
     }, 'oozie');
 
