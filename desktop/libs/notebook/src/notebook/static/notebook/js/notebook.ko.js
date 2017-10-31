@@ -1199,6 +1199,22 @@ var EditorViewModel = (function() {
 
       self.currentQueryTab('queryHistory');
 
+      var execStatement = self.getContext().statement();
+
+      if (/(update|drop|insert|delete)/i.test(self.getContext().statement())) {
+        $(".jHueNotify").show();
+        $(document).trigger("error", "This statement is not allowed");
+        // self.statusForButtons('executed');
+        // stopLongOperationTimeout();
+        // //self.status('available');
+        self.status('ready');
+        // self.progress(100);
+
+        //alert('This statement is not allowed');
+        //self.cancel();
+        return;
+      }
+
       self.executingBlockingOperation = $.post("/notebook/api/execute/" + self.type(), {
         notebook: vm.editorMode() ? ko.mapping.toJSON(notebook, NOTEBOOK_MAPPING) : ko.mapping.toJSON(notebook.getContext()),
         snippet: ko.mapping.toJSON(self.getContext())
