@@ -387,7 +387,7 @@ from django.utils.translation import ugettext as _
 
 <%def name="import_modals()">
 
-<div id="chooseWorkflowDemiModal" class="${ is_embeddable and 'modal' or 'demi-modal' } fade" data-backdrop="${ is_embeddable and 'true' or 'false' }">
+<div id="chooseWorkflowDemiModal" class="${ is_embeddable and 'modal' or 'demi-modal' } hide fade" data-backdrop="${ is_embeddable and 'true' or 'false' }">
   %if is_embeddable:
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="${ _('Close') }"><span aria-hidden="true">&times;</span></button>
