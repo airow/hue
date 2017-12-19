@@ -16,6 +16,7 @@
 # limitations under the License.
 
 from desktop.lib.django_util import render
+from django.http import HttpResponse
 import datetime
 
 def index(request):
@@ -26,4 +27,6 @@ def index(request):
   response.set_cookie("hg",request.COOKIES["sessionid"], domain=".teld.cn")
   return response
 
+def defalut(request):
+  return HttpResponse("hello")
 

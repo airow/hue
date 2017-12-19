@@ -18,7 +18,7 @@ ${commonheader("Exec Log", "exec_log", user, request, "28px") | n,unicode}
   }
 </style>
 
-<iframe id="appframe" src="${ URL.get() if URL.get() else 'http://mls.teld.cn:4330/grafana/dashboard/ooziewflog?orgId=1' }"></iframe>
+<iframe id="appframe" src="${ URL.get() if URL.get() else 'defalut' }"></iframe>
 
 <script type="text/javascript">
   $(document).ready(function () {

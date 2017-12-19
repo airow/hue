@@ -19,4 +19,5 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('exec_log',
   url(r'^$', 'views.index'),
+  url(r'^defalut$', 'views.defalut'),
 )
