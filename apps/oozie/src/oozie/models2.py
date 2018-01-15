@@ -1198,6 +1198,111 @@ class JavaAction(Action):
   def get_mandatory_fields(cls):
     return [cls.FIELDS['jar_path'], cls.FIELDS['main_class']]
 
+class TeldOozieAction(Action):
+  TYPE = 'teldoozie'
+  FIELDS = {
+     'url': {
+          'name': 'url',
+          'label': 'url',
+          'value': 'http://bdpapp.chinacloudapp.cn:5500',
+          'help_text': _('Path to the jar on HDFS.'),
+          'type': ''
+     },
+     'jobName': {
+          'name': 'jobName',
+          'label': 'jobName',
+          'value': 'C:\\kettlework\\test.kjb',
+          'help_text': _('Java class. e.g. org.apache.hadoop.examples.Grep'),
+          'type': 'text'
+     },
+     'username': {
+          'name': 'username',
+          'label': 'username',
+          'value': 'cluster',
+          'help_text': _('Arguments of the main method. The value of each arg element is considered a single argument '
+                         'and they are passed to the main method in the same order.'),
+          'type': ''
+     },
+     'password': {
+          'name': 'password',
+          'label': 'password',
+          'value': 'cluster',
+          'help_text': _('Parameters for the JVM, e.g. -Dprop1=a -Dprop2=b'),
+          'type': ''
+     },
+     'jobParam': {
+          'name': 'jobParam',
+          'label': 'jobParam',
+          'value': 'filepath=C:\\kettlework',
+          'help_text': _('Parameters for the JVM, e.g. -Dprop1=a -Dprop2=b'),
+          'type': ''
+     },
+     'capture_output': {
+          'name': 'capture_output',
+          'label': _('Capture output'),
+          'value': False,
+          'help_text': _('Capture output of the stdout of the %(program)s command execution. The %(program)s '
+                         'command output must be in Java Properties file format and it must not exceed 2KB. '
+                         'From within the workflow definition, the output of an %(program)s action node is accessible '
+                         'via the String action:output(String node, String key) function') % {'program': TYPE.title()},
+          'type': ''
+     },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': [],
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['url'], cls.FIELDS['jobName']]
+
 
 class HiveAction(Action):
   TYPE = 'hive'
@@ -2839,6 +2944,7 @@ NODES = {
   'end-widget': EndNode,
   'pig-widget': PigAction,
   'java-widget': JavaAction,
+  'teldooize-widget': TeldOozieAction,
   'hive-widget': HiveAction,
   'hive2-widget': HiveServer2Action,
   'impala-widget': ImpalaAction,

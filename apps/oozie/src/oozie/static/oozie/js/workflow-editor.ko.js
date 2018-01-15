@@ -1338,6 +1338,7 @@ var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_
   self.draggableImpalaAction = ko.observable(bareWidgetBuilder("Impala Script", "impala-widget"));
   self.draggablePigAction = ko.observable(bareWidgetBuilder("Pig Script", "pig-widget"));
   self.draggableJavaAction = ko.observable(bareWidgetBuilder("Java program", "java-widget"));
+  self.draggableTeldOoizeAction = ko.observable(bareWidgetBuilder("Teld Ooize", "teldooize-widget"));
   self.draggableMapReduceAction = ko.observable(bareWidgetBuilder("MapReduce job", "mapreduce-widget"));
   self.draggableSubworkflowAction = ko.observable(bareWidgetBuilder("Sub workflow", "subworkflow-widget"));
   self.draggableSqoopAction = ko.observable(bareWidgetBuilder("Sqoop 1", "sqoop-widget"));

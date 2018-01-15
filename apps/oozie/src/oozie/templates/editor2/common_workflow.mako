@@ -188,6 +188,10 @@
       <a class="widget-icon"><i class="fa fa-file-code-o"></i></a>
       <!-- /ko -->
 
+      <!-- ko if: widgetType() == 'teldooize-widget' || widgetType() == 'teldooize-document-widget' -->
+      <a class="widget-icon"><i class="fa fa-file-code-o"></i></a>
+      <!-- /ko -->
+
       <!-- ko if: widgetType() == 'sqoop-widget' || widgetType() == 'sqoop-document-widget' -->
       <img src="${ static('oozie/art/icon_sqoop_48.png') }" class="widget-icon" alt="${ _('Sqoop icon') }">
       <!-- /ko -->
@@ -1326,6 +1330,93 @@
   <!-- /ko -->
 </script>
 
+<script type="text/html" id="teldooize-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      <span data-bind="text: properties.main_class" />
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+        <div class="airy">
+          <span class="widget-label"  data-bind="text: $root.workflow_properties.url.label"></span>
+          <input type="text" class="filechooser-input input-xlarge" data-bind="value: properties.url, attr: { placeholder: $root.workflow_properties.url.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.jobName.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.jobName, attr: { placeholder: $root.workflow_properties.url.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.username.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.username, attr: { placeholder: $root.workflow_properties.username.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.password.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.password, attr: { placeholder: $root.workflow_properties.password.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.jobParam.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.jobParam, attr: { placeholder: $root.workflow_properties.jobParam.help_text }" validate="nonempty"/>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#properties-' + id()}" data-toggle="tab">${ _('Properties') }</a></li>
+        <li><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'properties-' + id() }">
+          <h6>
+            <a class="pointer" data-bind="click: function(){ properties.java_opts.push({'value': ''}); }">
+              <span data-bind="text: $root.workflow_properties.java_opts.label"></span> <i class="fa fa-plus"></i>
+            </a>
+          </h6>
+          <ul class="unstyled" data-bind="foreach: properties.java_opts">
+            <li>
+              <input type="text" data-bind="value: value, attr: { placeholder: $root.workflow_properties.java_opts.help_text }" class="input-xlarge"/>
+              <a href="#" data-bind="click: function(){ $parent.properties.java_opts.remove(this); }">
+                <i class="fa fa-minus"></i>
+              </a>
+            </li>
+          </ul>
+
+          <span data-bind="text: $root.workflow_properties.capture_output.label"></span>
+          <input type="checkbox" data-bind="checked: properties.capture_output" />
+          <br/>
+          <br/>
+
+          <span data-bind="template: { name: 'common-action-properties' }"></span>
+          <br/>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
 
 <script type="text/html" id="sqoop-widget">
   <!-- ko if: $root.workflow.getNodeById(id()) -->
