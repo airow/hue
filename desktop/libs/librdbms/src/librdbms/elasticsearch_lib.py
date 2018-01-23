@@ -23,7 +23,8 @@ import urllib
 import pandas as pd
 import urllib2
 import json
-
+reload(sys)
+sys.setdefaultencoding('utf-8')
 LOG = logging.getLogger(__name__)
 
 
@@ -46,7 +47,7 @@ class ElasticsearchClient():
     test_data = {'sql': statement}
     test_data_urlencode = urllib.urlencode(test_data)
     requrl = self.queryUrl
-    req = urllib2.Request(url=requrl, data=test_data_urlencode)
+    req = urllib2.Request(url=requrl, data='sql='+ statement)
     res_data = urllib2.urlopen(req)
     res = res_data.read()
     data = json.loads(res);
