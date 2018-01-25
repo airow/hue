@@ -119,14 +119,23 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
         <!-- ko if: $root.currentDraggableSection() === 'actions' -->
         ${ _('ACTIONS') }
         <!-- /ko -->
+        <!-- ko if: $root.currentDraggableSection() === 'teld_nodes' -->
+        ${ _('Teld Nodes') }
+        <!-- /ko -->
         <b class="caret"></b>
       </a>
     <ul class="dropdown-menu toolbar-dropdown">
       <!-- ko if: $root.currentDraggableSection() === 'actions' -->
       <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('documents') }">${ _('Documents') }</a></li>
+      <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('teld_nodes') }">${ _('Teld Nodes') }</a></li>
       <!-- /ko -->
       <!-- ko if: $root.currentDraggableSection() === 'documents' -->
+      <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('teld_nodes') }">${ _('Teld Nodes') }</a></li>
+      <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('actions') }">${ _('Actions') }</a></li>      
+      <!-- /ko -->
+      <!-- ko if: $root.currentDraggableSection() === 'teld_nodes' -->      
       <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('actions') }">${ _('Actions') }</a></li>
+      <li><a href="javascript: void(0)" data-bind="click: function(){ $root.currentDraggableSection('documents') }">${ _('Documents') }</a></li>
       <!-- /ko -->
     </ul>
     % endif
@@ -238,15 +247,6 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
     </div>
     <!-- /ko -->
     % endif
-    
-    <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('teldooize') != -1 -->
-    <div data-bind="css: { 'draggable-widget': true },
-                    draggable: {data: draggableTeldOoizeAction(), isEnabled: true,
-                    options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableTeldOoizeAction());}}}"
-         title="${_('HiveServer2 Script')}" rel="tooltip" data-placement="top">
-        <a class="draggable-icon"><img src="${ static('oozie/art/icon_beeswax_48.png3') }" class="app-icon" alt="${ _('Hive icon') }"><sup style="color: #0B7FAD; margin-left: -4px; top: -14px; font-size: 12px">2</sup></a>
-    </div>
-    <!-- /ko -->
 
     <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('dataeng') != -1 -->
     <div data-bind="css: { 'draggable-widget': true },
@@ -407,6 +407,22 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
 
     </div>
     <!-- /ko -->
+
+    <!-- ko if: $root.currentDraggableSection() === 'teld_nodes' -->
+    <div class="draggable-actions">
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('kettlejob') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableKettleJobAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableKettleJobAction());}}}"
+          title="Kettle Job" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_kettle_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <div class="clearfix"></div>
+    </div>
+    <!-- /ko -->
 </%def>
 </%dashboard:layout_toolbar>
 
@@ -454,6 +470,15 @@ ${ workflow.render() }
           <!-- /ko -->
           <!-- ko if: type() == 'text' -->
           <input type="text" data-bind="value: value, valueUpdate:'afterkeydown', attr: { placeholder: help_text }" class="input-xlarge"/>
+          <!-- /ko -->
+          <!-- ko if: type() == 'help' -->
+          <span data-bind="width"></span>
+          <input type="text" data-bind="style: { width:width()},value: value, valueUpdate:'afterkeydown', attr: { placeholder: help_text }" class="input-xlarge"/>
+          <span data-bind='foreach: options'>
+            <button class="btn" data-bind="click:function(){$parent.value(value())}">
+              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.value() == value() }" ></i>
+            </button>
+          </span>
           <!-- /ko -->
           <!-- ko if: type() == 'textarea' -->
           <textarea data-bind="value: value, valueUpdate:'afterkeydown'" class="input-xlarge" style="resize:both"></textarea>

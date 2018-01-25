@@ -191,6 +191,10 @@
       <!-- ko if: widgetType() == 'teldooize-widget' || widgetType() == 'teldooize-document-widget' -->
       <a class="widget-icon"><i class="fa fa-file-code-o"></i></a>
       <!-- /ko -->
+      
+      <!-- ko if: widgetType() == 'kettlejob-widget' -->
+      <img src="${ static('oozie/art/icon_kettle_32.png') }" class="widget-icon" alt="${ _('kettle icon') }">
+      <!-- /ko -->
 
       <!-- ko if: widgetType() == 'sqoop-widget' || widgetType() == 'sqoop-document-widget' -->
       <img src="${ static('oozie/art/icon_sqoop_48.png') }" class="widget-icon" alt="${ _('Sqoop icon') }">
@@ -1402,6 +1406,87 @@
         </div>
 
         <div class="tab-pane" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="kettlejob-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      <span data-bind="text: properties.jobname" />
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.jobname.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.jobname, attr: { placeholder: $root.workflow_properties.jobname.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.jobparam.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.jobparam, attr: { placeholder: $root.workflow_properties.jobparam.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label"  data-bind="text: $root.workflow_properties.kettle_url.label"></span>
+          <input type="text" class="filechooser-input input-xlarge" data-bind="value: properties.kettle_url, attr: { placeholder: $root.workflow_properties.kettle_url.help_text }" validate="nonempty"/>
+
+          <span data-bind='foreach: $root.workflow_properties.kettle_url.options'>
+            <button class="btn" data-bind="click:function(){$parent.properties.kettle_url(value())}">
+              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.properties.kettle_url() == value() }" ></i>
+            </button>
+          </span>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.repname.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.repname, attr: { placeholder: $root.workflow_properties.repname.help_text }" validate="nonempty"/>
+
+          <span data-bind='foreach: $root.workflow_properties.repname.options'>
+            <button class="btn" data-bind="click:function(){$parent.properties.repname(value())}">
+              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.properties.repname() == value() }" ></i>
+            </button>
+          </span>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_username.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.kettle_username, attr: { placeholder: $root.workflow_properties.kettle_username.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_password.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.kettle_password, attr: { placeholder: $root.workflow_properties.kettle_password.help_text }" validate="nonempty"/>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'sla-' + id() }">
           <span data-bind="template: { name: 'common-action-sla' }"></span>
         </div>
 

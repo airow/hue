@@ -1,3 +1,4 @@
+#-*- coding:utf-8 –*-
 #!/usr/bin/env python
 # Licensed to Cloudera, Inc. under one
 # or more contributor license agreements.  See the NOTICE file
@@ -1302,6 +1303,111 @@ class TeldOozieAction(Action):
   @classmethod
   def get_mandatory_fields(cls):
     return [cls.FIELDS['url'], cls.FIELDS['jobName']]
+
+class KettleJobAction(Action):
+  TYPE = 'kettlejob'
+  FIELDS = {
+     'kettle_url': {
+          'name': 'kettle_url',
+          'label': 'kettle url',
+          'value': 'http://192.168.2.91:5000',
+          'help_text': 'kettle server addrs',
+          'type': 'help',
+          'width': '50%',
+          'options':[{ 'name':'生产' ,'value':'http://192.168.2.91:5000' },{ 'name': '测试','value':'http://bdpapp.chinacloudapp.cn:5500' }]
+     },
+    'kettle_username': {
+          'name': 'kettle_username',
+          'label': 'kettle usr',
+          'value': 'cluster',
+          'help_text':'kettle username',
+          'type': 'text'
+     },
+     'kettle_password': {
+          'name': 'kettle_password',
+          'label': 'kettle pwd',
+          'value': 'cluster',
+          'help_text': 'kettle password',
+          'type': 'text'
+     },
+     'repname': {
+          'name': 'repname',
+          'label': 'kettle rep',
+          'value': 'ETLRepo',
+          'help_text': 'Pentaho Repository',
+          'type': 'help',
+          'width': '30%',
+          'options':[{ 'name':'ETLRepo' ,'value':'ETLRepo' },{ 'name': 'DataRep','value':'DataRep' }]
+     },
+     'jobname': {
+          'name': 'jobname',
+          'label': 'job name',
+          'value': '',
+          'help_text': 'job name',
+          'type': 'text'
+     },
+     'jobparam': {
+          'name': 'jobparam',
+          'label': 'job param',
+          'value': 'filepath=C:\\kettlework',
+          'help_text': 'Job Param, filepath=xxx',
+          'type': 'text'
+     },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['jobname'], cls.FIELDS['jobparam'], cls.FIELDS['kettle_url'], cls.FIELDS['repname']]
 
 
 class HiveAction(Action):
@@ -2945,6 +3051,7 @@ NODES = {
   'pig-widget': PigAction,
   'java-widget': JavaAction,
   'teldooize-widget': TeldOozieAction,
+  'kettlejob-widget': KettleJobAction,
   'hive-widget': HiveAction,
   'hive2-widget': HiveServer2Action,
   'impala-widget': ImpalaAction,
