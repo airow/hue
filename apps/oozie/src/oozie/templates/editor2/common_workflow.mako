@@ -196,6 +196,18 @@
       <img src="${ static('oozie/art/icon_kettle_32.png') }" class="widget-icon" alt="${ _('kettle icon') }">
       <!-- /ko -->
 
+      <!-- ko if: widgetType() == 'WFLog2ES-widget' -->
+      <img src="${ static('oozie/art/icon_WFLog2ES_32.png') }" class="widget-icon" alt="${ _('kettle icon') }">
+      <!-- /ko -->
+
+      <!-- ko if: widgetType() == 'HSF-widget' -->
+      <img src="${ static('oozie/art/icon_HSF_32.png') }" class="widget-icon" alt="${ _('HSF icon') }">
+      <!-- /ko -->
+
+      <!-- ko if: widgetType() == 'SQLServerSP-widget' -->
+      <img src="${ static('oozie/art/icon_SQLServerSP_32.png') }" class="widget-icon" alt="${ _('SQLServerSP') }">
+      <!-- /ko -->
+
       <!-- ko if: widgetType() == 'sqoop-widget' || widgetType() == 'sqoop-document-widget' -->
       <img src="${ static('oozie/art/icon_sqoop_48.png') }" class="widget-icon" alt="${ _('Sqoop icon') }">
       <!-- /ko -->
@@ -1474,6 +1486,191 @@
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_password.label"></span>
           <input type="text" class="input-xlarge" data-bind="value: properties.kettle_password, attr: { placeholder: $root.workflow_properties.kettle_password.help_text }" validate="nonempty"/>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="WFLog2ES-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      <span data-bind="text: properties.wflog2es_url" />
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+
+        <div class="airy">
+          <span class="widget-label"  data-bind="text: $root.workflow_properties.wflog2es_url.label"></span>
+          <input type="text" class="filechooser-input input-xlarge" data-bind="value: properties.wflog2es_url, attr: { placeholder: $root.workflow_properties.wflog2es_url.help_text }" validate="nonempty"/>
+
+          <span data-bind='foreach: $root.workflow_properties.wflog2es_url.options'>
+            <button class="btn" data-bind="click:function(){$parent.properties.wflog2es_url(value())}">
+              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.properties.wflog2es_url() == value() }" ></i>
+            </button>
+          </span>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.wflog2es_esname.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.wflog2es_esname, attr: { placeholder: $root.workflow_properties.wflog2es_esname.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.wflog2es_esip.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.wflog2es_esip, attr: { placeholder: $root.workflow_properties.wflog2es_esip.help_text }" validate="nonempty"/>
+        </div>
+
+         <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.wflog2es_port.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.wflog2es_port, attr: { placeholder: $root.workflow_properties.wflog2es_port.help_text }" validate="nonempty"/>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="HSF-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      <span data-bind="text: properties.sg_url" />
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.sg_url.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.sg_url, attr: { placeholder: $root.workflow_properties.sg_url.help_text }" validate="nonempty"/>
+        </div>        
+        
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.sg_logpath.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.sg_logpath, attr: { placeholder: $root.workflow_properties.sg_logpath.help_text }" validate="nonempty"/>
+        </div>
+
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.sg_date.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.sg_date, attr: { placeholder: $root.workflow_properties.sg_date.help_text }"/>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="SQLServerSP-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      exec <span data-bind="text: properties.SQLServerSP_procname" /> (
+      <span data-bind="foreach: properties.SQLServerSP_params">
+        <span data-bind="visible:$index()!=0">,</span>
+        <span data-bind="text: value"/>
+      </span>
+      )
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.SQLServerSP_procname.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.SQLServerSP_procname, attr: { placeholder: $root.workflow_properties.SQLServerSP_procname.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <ul data-bind="foreach: properties.SQLServerSP_params" class="unstyled">
+            <li>
+              <span class="widget-label"><span data-bind="visible:$index()==0, text: $root.workflow_properties.SQLServerSP_params.label"></span></span>
+              <input type="text" data-bind="value: value" placeholder="${ _('Value, e.g. US') }"/>
+              <a href="#" data-bind="click: function(){ $parent.properties.SQLServerSP_params.remove(this); }">
+                <i class="fa fa-minus"></i>
+              </a>
+            </li>
+          </ul>
+          <a class="pointer" data-bind="click: function(){ properties.SQLServerSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
+            <i class="fa fa-plus"></i> ${ _('Add param') }
+          </a>
         </div>
 
       </div>

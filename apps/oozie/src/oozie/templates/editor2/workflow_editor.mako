@@ -420,6 +420,33 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
       </div>
       <!-- /ko -->
 
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('WFLog2ES') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableWFLog2ESAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableWFLog2ESAction());}}}"
+          title="WFLog2ES" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_WFLog2ES_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('HSF') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableHSFAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableHSFAction());}}}"
+          title="HSF" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_HSF_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('SQLServerSP') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableSQLServerSPAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableSQLServerSPAction());}}}"
+          title="SQLServerSP" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_SQLServerSP_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
       <div class="clearfix"></div>
     </div>
     <!-- /ko -->
