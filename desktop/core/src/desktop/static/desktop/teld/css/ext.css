@@ -1,0 +1,6 @@
+body {
+    padding-top: 47px !important;
+}
+body .navbar.hue-title-bar{
+    top: 0px !important;
+}
