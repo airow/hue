@@ -432,7 +432,8 @@ def commonheader(title, section, user, request=None, padding="90px", skip_topbar
 
   authproysso = request.COOKIES.get('osshtuahue')
   if authproysso:
-    skip_topbar = request.session.session_key == authproysso
+    request.session["authproysso"] = request.session.session_key == authproysso
+    skip_topbar = request.session["authproysso"]
   
   template = 'common_header.mako'
   if is_mobile:
