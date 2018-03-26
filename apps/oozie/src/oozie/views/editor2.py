@@ -96,6 +96,35 @@ def edit_workflow(request):
 
   return _edit_workflow(request, doc, workflow)
 
+@check_editor_access_permission
+@check_document_access_permission()
+def view_workflow(request):
+  workflow_id = request.GET.get('workflow')
+
+  wid = {}
+  if workflow_id:
+    if workflow_id.isdigit():
+      wid['id'] = workflow_id
+    else:
+      wid['uuid'] = workflow_id
+  else:        
+    coordinator_id = request.GET.get('coordinator')
+    if coordinator_id:
+      cid = {}
+      if coordinator_id.isdigit():
+        cid['id'] = coordinator_id
+      else:
+        cid['uuid'] = coordinator_id      
+      doc = Document2.objects.get(**cid)
+      coordinator = Coordinator(document=doc)
+      coordwfuuid = coordinator.data['properties']['workflow']
+      if coordwfuuid:
+        wid['uuid'] = coordwfuuid
+
+  doc = Document2.objects.get(type='oozie-workflow2', **wid)
+  workflow = Workflow(document=doc)  
+
+  return _edit_workflow(request, doc, workflow)
 
 def _edit_workflow(request, doc, workflow):
   workflow_data = workflow.get_data()

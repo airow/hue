@@ -71,6 +71,7 @@ urlpatterns += patterns(
 
   url(r'^editor/workflow/list/$', 'list_editor_workflows', name='list_editor_workflows'),
   url(r'^editor/workflow/edit/$', 'edit_workflow', name='edit_workflow'),
+  url(r'^editor/workflow/view/$', 'view_workflow', name='view_workflow'),
   url(r'^editor/workflow/new/$', 'new_workflow', name='new_workflow'),
   url(r'^editor/workflow/delete/$', 'delete_job', name='delete_editor_workflow'),
   url(r'^editor/workflow/copy/$', 'copy_workflow', name='copy_workflow'),

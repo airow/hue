@@ -31,6 +31,7 @@ ${ commonheader(_("Coordinator Editor"), "Oozie", user, request) | n,unicode }
 <div id="oozie_coordinatorComponents">
 
 <%def name="buttons()">
+  % if not request.session.get("authproysso"):
   <div class="pull-right" style="padding-right: 10px">
 
     <div data-bind="visible: coordinator.isDirty() || coordinator.id() == null" class="pull-left muted" style="padding-top: 12px; padding-right: 8px">
@@ -66,6 +67,7 @@ ${ commonheader(_("Coordinator Editor"), "Oozie", user, request) | n,unicode }
     </a>
 
   </div>
+  % endif
 </%def>
 
 ${ layout.menubar(section='coordinators', is_editor=True, pullright=buttons, is_embeddable=is_embeddable) }

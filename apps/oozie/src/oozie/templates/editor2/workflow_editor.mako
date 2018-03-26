@@ -34,6 +34,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
 <div id="oozie_workflowComponents" class="dashboard-container oozie_workflowComponents">
 
 <%def name="buttons()">
+  % if not request.session.get("authproysso"):
   <div class="pull-right" style="padding-right: 10px">
 
     <div data-bind="visible: workflow.isDirty() || workflow.id() == null" class="pull-left muted" style="padding-top: 12px; padding-right: 8px">
@@ -87,6 +88,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
       <i class="fa fa-fw fa-file-o"></i>
     </a>
   </div>
+  % endif
 </%def>
 
 ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_embeddable=is_embeddable) }

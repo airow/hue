@@ -66,10 +66,6 @@ if USE_NEW_EDITOR.get():
   <link href="${ static('desktop/css/hue3.css') }" rel="stylesheet">
   <link href="${ static('desktop/css/hue3-extra.css') }" rel="stylesheet">
 
-  % if request.session.get("authproysso"):
-    <link href="${ static('desktop/teld/css/ext.css') }" rel="stylesheet">
-  % endif
-
   <style type="text/css">
     % if banner_message or conf.CUSTOM.BANNER_TOP_HTML.get():
       body {
@@ -198,6 +194,10 @@ if USE_NEW_EDITOR.get():
     });
   </script>
 
+  % if request.session.get("authproysso"):
+    <link href="${ static('desktop/teld/css/ext.css') }" rel="stylesheet">
+    <script src="${ static('desktop/teld/js/ext.js') }"></script>
+  % endif
 </head>
 <body ssohtua='${request.session.get("authproysso")}'>
 
