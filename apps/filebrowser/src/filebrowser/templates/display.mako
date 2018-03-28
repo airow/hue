@@ -67,10 +67,11 @@ ${ fb_components.menubar() }
             <!-- ko if: $root.file().view.compression() && $root.file().view.compression() !== "none" -->
               <li><a class="pointer" data-bind="click: function(){ switchCompression('none'); }"><i class="fa fa-times-circle"></i> ${_('Stop preview')}</a></li>
             <!-- /ko -->
-
+            % if not request.session.get("authproysso"):
             <!-- ko if: $root.file().view.compression() && $root.file().view.compression() === "none" && $root.file().editable -->
               <li><a class="pointer" data-bind="click: $root.editFile"><i class="fa fa-pencil"></i> ${_('Edit file')}</a></li>
             <!-- /ko -->
+            % endif
           <!-- /ko -->
           <!-- ko ifnot: $root.isViewing -->
             <li><a class="pointer" data-bind="click: $root.viewFile"><i class="fa fa-eye"></i> ${_('View file')}</a></li>

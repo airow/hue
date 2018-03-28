@@ -157,7 +157,9 @@ ${ layout.menubar(section='workflows', dashboard=True) }
         <li><a href="#details" data-toggle="tab">${ _('Details') }</a></li>
         <li><a href="#configuration" data-toggle="tab">${ _('Configuration') }</a></li>
         <li><a href="#log" data-toggle="tab">${ _('Log') }</a></li>
+        % if not request.session.get("authproysso"):
         <li><a href="#definition" data-toggle="tab">${ _('Definition') }</a></li>
+        % endif
         % if oozie_workflow.has_sla:
         <li><a href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
         % endif

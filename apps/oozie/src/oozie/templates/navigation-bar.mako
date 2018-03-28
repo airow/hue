@@ -68,9 +68,15 @@
               </%def>
 
                 % if dashboard:
+                % if not request.session.get("authproysso"):
                 <a title="${ _('Switch to the editor') }" href="${getURL(section, dashboard, ENABLE_V2.get())}">
                   <img src="${ static('oozie/art/icon_oozie_dashboard_48.png') }" class="app-icon" alt="${ _('Oozie dashboard icon') }" /> ${ _('Oozie Dashboard') }
                 </a>
+                % else:
+                <a title="${ _('Switch to the editor') }">
+                  <img src="${ static('oozie/art/icon_oozie_dashboard_48.png') }" class="app-icon" alt="${ _('Oozie dashboard icon') }" /> ${ _('Oozie Dashboard') }
+                </a>
+                % endif
                 % else:
                 % if not request.session.get("authproysso"):
                 <a title="${ _('Switch to the dashboard') }" href="${ is_embeddable and '/hue/jobbrowser/#!workflows' or getURL(section, dashboard, ENABLE_V2.get())}">
@@ -85,11 +91,13 @@
                 % endif
                </li>
               % if dashboard:
+              % if not request.session.get("authproysso"):
                 <li class="${utils.is_selected(section, 'workflows')}"><a href="${url('oozie:list_oozie_workflows')}">${ _('Workflows') }</a></li>
                 <li class="${utils.is_selected(section, 'coordinators')}"><a href="${url('oozie:list_oozie_coordinators')}">${ _('Coordinators') }</a></li>
                 <li class="${utils.is_selected(section, 'bundles')}"><a href="${url('oozie:list_oozie_bundles')}">${ _('Bundles') }</a></li>
                 <li class="${utils.is_selected(section, 'sla')}"><a href="${url('oozie:list_oozie_sla')}">${ _('SLA') }</a></li>
                 <li class="${utils.is_selected(section, 'oozie')}"><a href="${url('oozie:list_oozie_info')}">${ _('Oozie') }</a></li>
+              % endif
               % else:
                 % if is_editor:
                   % if not request.session.get("authproysso"):
@@ -130,10 +138,12 @@
                     % if is_embeddable:
                     <a href="/home?type=oozie-coordinator2">${ _('Coordinators') }</a>
                     % else:                    
-                    % if section=="coordinators":
-                      <a>${ _('Coordinators') }</a>                      
+                      % if section=="coordinators":
+                        <a>${ _('Coordinators') }</a>                      
                       % elif section=="workflows":
-                      <a data-bind="hueLink: '${ url('oozie:edit_coordinator') }?coordinator=${request.GET['coordinator']}'">${ _('Coordinators') }</a>
+                        % if request.GET.get('coordinator'):
+                        <a data-bind="hueLink: '${ url('oozie:edit_coordinator') }?coordinator=${request.GET.get('coordinator')}'">${ _('Coordinators') }</a>
+                        % endif
                       % endif
                     % endif
                   </li>

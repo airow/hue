@@ -87,7 +87,9 @@ ${ layout.menubar(section='workflows', dashboard=True) }
       </h1>
       <ul class="nav nav-tabs">
         <li class="active"><a href="#details" data-toggle="tab">${ _('Details') }</a></li>
+        % if not request.session.get("authproysso"):
         <li><a href="#configuration" data-toggle="tab">${ _('Configuration') }</a></li>
+        % endif
         <li><a href="#child-jobs" data-toggle="tab">${ _('Child Jobs') }</a></li>
       </ul>
 
