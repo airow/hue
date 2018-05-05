@@ -1409,6 +1409,350 @@ class KettleJobAction(Action):
   def get_mandatory_fields(cls):
     return [cls.FIELDS['jobname'], cls.FIELDS['jobparam'], cls.FIELDS['kettle_url'], cls.FIELDS['repname']]
 
+class ESIndexAction(Action):
+  TYPE = 'ESIndex'
+  FIELDS = {
+    'esindex_type': {
+          'name': 'esindex_type',
+          'label': 'op type',
+          'value': '',
+          'help_text': '操作类型',
+          'type': 'helpSel',
+          'width': '50%',
+          'options':[{ 'name':'创建' ,'value':'put' },{ 'name': '删除','value':'delete' }]
+     },
+     'esindex_url': {
+          'name': 'esindex_url',
+          'label': 'es url',
+          'value': '',
+          'help_text': 'ES地址',
+          'type': 'text',
+     },
+    'esindex_hdfs': {
+          'name': 'esindex_hdfs',
+          'label': 'hdfs path',
+          'value': '',
+          'help_text':'存储索引文件的HDFS路径',
+          'type': ''
+     },
+     'esindex_index': {
+          'name': 'esindex_index',
+          'label': 'index name',
+          'value': '',
+          'help_text': '索引名称',
+          'type': 'text'
+     },
+     'esindex_confirm': {
+          'name': 'esindex_confirm',
+          'label': 'confirm',
+          'value': '',
+          'help_text': '确认索引名称',
+          'type': 'test'
+     },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['esindex_type']]
+
+class HSFAction(Action):
+  TYPE = 'HSF'
+  FIELDS = {
+    'sg_url': {
+          'name': 'sg_url',
+          'label': _('sg url'),
+          'value': '',
+          'help_text': _('sg url.'),
+          'type': 'text'
+     },
+     'sg_logpath': {
+          'name': 'sg_logpath',
+          'label': _('log path'),
+          'value': '/mnt/data/log',
+          'help_text': _('log path.'),
+          'type': 'text'
+     },
+     'sg_date': {
+          'name': 'sg_date',
+          'label': _('date'),
+          'value': '',
+          'help_text': '日期格式 yyyyMMdd',
+          'type': 'text'
+     },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['sg_url'], cls.FIELDS['sg_logpath']]
+
+class SQLServerSPAction(Action):
+  TYPE = 'SQLServerSP'
+  FIELDS = {
+     'SQLServerSP_procname': {
+          'name': 'SQLServerSP_procname',
+          'label': _('proc name'),
+          'value': '',
+          'help_text': '存储过程名称.',
+          'type': 'text'
+      },
+      'SQLServerSP_params': {
+          'name': 'SQLServerSP_params',
+          'label': _('proc para'),
+          'value': [],
+          'help_text': '存储过程所需参数',
+          'type': ''
+      },
+      'SQLServerSP_DBConn': {
+          'name': 'SQLServerSP_DBConn',
+          'label': _('proc DB'),
+          'value': [],
+          'help_text': '存储过程数据库',
+          'type': ''
+      },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['SQLServerSP_procname']]
+
+class WFLog2ESAction(Action):
+  TYPE = 'WFLog2ES'
+  FIELDS = {
+     'wflog2es_url': {
+          'name': 'wflog2es_url',
+          'label': 'oozie url',
+          'value': '',
+          'help_text': 'Oozie URL',
+          'type': 'help',
+          'width': '50%',
+          'options':[{ 'name':'生产' ,'value':'http://192.168.2.86:11000/oozie/' }]
+     },
+    'wflog2es_esname': {
+          'name': 'wflog2es_esname',
+          'label': 'es name',
+          'value': '',
+          'help_text':'ES集群名称',
+          'type': 'text'
+     },
+     'wflog2es_esip': {
+          'name': 'wflog2es_esip',
+          'label': 'es ip',
+          'value': '',
+          'help_text': 'ES集群ip地址',
+          'type': 'text'
+     },
+     'wflog2es_port': {
+          'name': 'wflog2es_port',
+          'label': 'es port',
+          'value': '12300',
+          'help_text': 'ES集群端口',
+          'type': 'text'
+     },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['wflog2es_url'], cls.FIELDS['wflog2es_esname'], cls.FIELDS['wflog2es_esip'], cls.FIELDS['wflog2es_port']]
+
 
 class HiveAction(Action):
   TYPE = 'hive'
@@ -3052,6 +3396,10 @@ NODES = {
   'java-widget': JavaAction,
   'teldooize-widget': TeldOozieAction,
   'kettlejob-widget': KettleJobAction,
+  'ESIndex-widget': ESIndexAction,
+  'HSF-widget': HSFAction,
+  'SQLServerSP-widget': SQLServerSPAction,
+  'WFLog2ES-widget':WFLog2ESAction,
   'hive-widget': HiveAction,
   'hive2-widget': HiveServer2Action,
   'impala-widget': ImpalaAction,

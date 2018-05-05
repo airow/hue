@@ -34,6 +34,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
 <div id="oozie_workflowComponents" class="dashboard-container oozie_workflowComponents">
 
 <%def name="buttons()">
+  % if not request.session.get("authproysso"):
   <div class="pull-right" style="padding-right: 10px">
 
     <div data-bind="visible: workflow.isDirty() || workflow.id() == null" class="pull-left muted" style="padding-top: 12px; padding-right: 8px">
@@ -87,6 +88,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
       <i class="fa fa-fw fa-file-o"></i>
     </a>
   </div>
+  % endif
 </%def>
 
 ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_embeddable=is_embeddable) }
@@ -420,6 +422,42 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
       </div>
       <!-- /ko -->
 
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('ESIndex') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableESIndexOoizeAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableESIndexOoizeAction());}}}"
+          title="ES Index" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_ESIndex_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('HSF') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableHSFAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableHSFAction());}}}"
+          title="HSF" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_HSF_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('SQLServerSP') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableSQLServerSPAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableSQLServerSPAction());}}}"
+          title="SQLServerSP" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_SQLServerSP_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('WFLog2ES') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableWFLog2ESAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableWFLog2ESAction());}}}"
+          title="WFLog2ES" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_WFLog2ES_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
+
       <div class="clearfix"></div>
     </div>
     <!-- /ko -->
@@ -472,8 +510,15 @@ ${ workflow.render() }
           <input type="text" data-bind="value: value, valueUpdate:'afterkeydown', attr: { placeholder: help_text }" class="input-xlarge"/>
           <!-- /ko -->
           <!-- ko if: type() == 'help' -->
-          <span data-bind="width"></span>
+  
           <input type="text" data-bind="style: { width:width()},value: value, valueUpdate:'afterkeydown', attr: { placeholder: help_text }" class="input-xlarge"/>
+          <span data-bind='foreach: options'>
+            <button class="btn" data-bind="click:function(){$parent.value(value())}">
+              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.value() == value() }" ></i>
+            </button>
+          </span>
+          <!-- /ko -->
+          <!-- ko if: type() == 'helpSel' -->
           <span data-bind='foreach: options'>
             <button class="btn" data-bind="click:function(){$parent.value(value())}">
               <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.value() == value() }" ></i>
@@ -635,7 +680,7 @@ ${ utils.submit_popup_event() }
 
   var apiHelper = ApiHelper.getInstance();
 
-  var viewModel = new WorkflowEditorViewModel(${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+  var viewModel = new WorkflowEditorViewModel(${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
   ko.applyBindings(viewModel, $("#oozie_workflowComponents")[0]);
 
   var shareViewModel = initSharing("#documentShareModal");

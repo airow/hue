@@ -14,7 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import re
 import logging
 from datetime import datetime,  timedelta
 from time import mktime, struct_time
@@ -31,7 +31,7 @@ from desktop.models import Document
 from oozie.conf import ENABLE_CRON_SCHEDULING
 from oozie.models import Workflow, Node, Java, Mapreduce, Streaming, Coordinator,\
   Dataset, DataInput, DataOutput, Pig, Link, Hive, Sqoop, Ssh, Shell, DistCp, Fs,\
-  Email, SubWorkflow, Generic, Bundle, BundledCoordinator
+  Email, SubWorkflow, Generic, Bundle, BundledCoordinator, DBConn
 
 
 
@@ -84,6 +84,72 @@ class WorkflowForm(forms.ModelForm):
 
   def __init__(self, *args, **kwargs):
     super(WorkflowForm, self).__init__(*args, **kwargs)
+
+
+class ConnectionForm(forms.ModelForm):
+  class Meta:
+    model = DBConn
+    widgets = {
+      'Coon_key': forms.TextInput(attrs={'class': 'span5'}),
+      'Coon_value': forms.TextInput(attrs={'class': 'span5'}),
+    }
+
+  def clean_Coon_value(self):
+    connectionvalue=self.cleaned_data['Coon_value']
+    connectionkey=self.cleaned_data['Coon_key']
+    pattern1=re.compile(r"^(jdbc:sqlserver://)+?")
+    pattern2=re.compile(r"(databaseName)+?")
+    pattern3=re.compile(r"(user)+?")
+    pattern4=re.compile(r"(password)+?")
+    if re.match(r"^(jdbc:)+?",connectionvalue,re.M|re.I|re.S):
+        pass 
+    else:
+        msg=u"error: No jdbc"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+    if re.match(r"^(.*sqlserver://)+?",connectionvalue,re.M|re.I|re.S):
+        pass 
+    else:
+        msg=u"error: No sqlserver"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+
+    if re.match(r"(.*databaseName)+?",connectionvalue,re.M|re.I|re.S):
+        pass
+    else:
+        msg=u"error: No databaseName"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+
+    if re.match(r"(.*user)+?",connectionvalue,re.M|re.I|re.S):
+         pass 
+    else:
+        msg=u"error: No user"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+
+    if re.match(r"(.*password)+?",connectionvalue,re.M|re.I|re.S):
+        pass
+    else:
+        msg=u"error: No password"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+    self.Coon_value=connectionvalue
+    self.Coon_key=connectionkey
+    return connectionvalue  
+
+  # def get_Coon_value(self):
+  #    connectionvalue=self.cleaned_data['Coon_value']
+  #    self.Coon_value=connectionvalue
+  #    return connectionvalue  
+    
+  # def get_Coon_key(self):
+  #    connectionkey=self.cleaned_data['Coon_key']
+  #    self.Coon_key=connectionkey
+  #    return connectionkey
+    
+  def __init__(self, *args, **kwargs):
+    super(ConnectionForm, self).__init__(*args, **kwargs)    
 
 
 SCHEMA_VERSION_CHOICES = ['0.4']

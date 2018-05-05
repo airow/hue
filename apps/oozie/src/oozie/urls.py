@@ -23,7 +23,7 @@ IS_URL_NAMESPACED = True
 
 urlpatterns = patterns(
   'oozie.views.editor',
-
+  
   url(r'^list_workflows/$', 'list_workflows', name='list_workflows'),
   url(r'^list_trashed_workflows/$', 'list_trashed_workflows', name='list_trashed_workflows'),
   url(r'^create_workflow/$', 'create_workflow', name='create_workflow'),
@@ -36,6 +36,17 @@ urlpatterns = patterns(
   url(r'^import_workflow/$', 'import_workflow', name='import_workflow'),
   url(r'^import_coordinator/$', 'import_coordinator', name='import_coordinator'),
   url(r'^export_workflow/(?P<workflow>\d+)$', 'export_workflow', name='export_workflow'),
+
+  url(r'^import_connection/$', 'import_connection', name='import_connection'),
+  url(r'^list_connections/$', 'list_connections', name='list_connections'),
+  url(r'^clone_connection/(?P<connection>\d+)$', 'clone_connection', name='clone_connection'),
+  url(r'^export_connection/(?P<workflow>\d+)$', 'export_connection', name='export_connection'),
+  url(r'^create_connection/$', 'create_connection', name='create_connection'),
+  url(r'^delete_connection$', 'delete_connection', name='delete_connection'),
+  url(r'^edit_connections/(?P<connection>\d+)$', 'edit_connections', name='edit_connections'),
+  url(r'^duplicate_connection_alert/$', 'duplicate_connection_alert', name='duplicate_connection_alert'),
+
+
 
   url(r'^list_coordinators/(?P<workflow_id>[-\w]+)?$', 'list_coordinators', name='list_coordinators'),
   url(r'^list_trashed_coordinators/$', 'list_trashed_coordinators', name='list_trashed_coordinators'),
@@ -68,9 +79,10 @@ urlpatterns = patterns(
 
 urlpatterns += patterns(
   'oozie.views.editor2',
-
+  url(r'^editor/connection/list/$', 'list_editor_connections', name='list_editor_connections'),
   url(r'^editor/workflow/list/$', 'list_editor_workflows', name='list_editor_workflows'),
   url(r'^editor/workflow/edit/$', 'edit_workflow', name='edit_workflow'),
+  url(r'^editor/workflow/view/$', 'view_workflow', name='view_workflow'),
   url(r'^editor/workflow/new/$', 'new_workflow', name='new_workflow'),
   url(r'^editor/workflow/delete/$', 'delete_job', name='delete_editor_workflow'),
   url(r'^editor/workflow/copy/$', 'copy_workflow', name='copy_workflow'),

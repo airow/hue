@@ -494,7 +494,7 @@ var Workflow = function (vm, workflow) {
   });
 }
 
-var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
+var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
   var self = this;
 
   self.isNested = ko.observable(true);
@@ -503,6 +503,8 @@ var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_
   self.currentDraggableSection.subscribe(function (newVal) {
     huePubSub.publish('oozie.draggable.section.change', newVal);
   });
+ 
+  self.connection = ko.mapping.fromJS(dbconn_json);
 
   self.canEdit = ko.mapping.fromJS(can_edit_json);
   self.isEditing = ko.observable(workflow_json.id == null);
@@ -1339,7 +1341,11 @@ var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_
   self.draggablePigAction = ko.observable(bareWidgetBuilder("Pig Script", "pig-widget"));
   self.draggableJavaAction = ko.observable(bareWidgetBuilder("Java program", "java-widget"));
   self.draggableTeldOoizeAction = ko.observable(bareWidgetBuilder("Teld Ooize", "teldooize-widget"));
+  self.draggableESIndexOoizeAction = ko.observable(bareWidgetBuilder("ES Index", "ESIndex-widget"));
   self.draggableKettleJobAction = ko.observable(bareWidgetBuilder("Kettle Job", "kettlejob-widget"));
+  self.draggableHSFAction = ko.observable(bareWidgetBuilder("HSF", "HSF-widget"));
+  self.draggableSQLServerSPAction = ko.observable(bareWidgetBuilder("SQLServerSP", "SQLServerSP-widget"));
+  self.draggableWFLog2ESAction = ko.observable(bareWidgetBuilder("WFLog2ES", "WFLog2ES-widget"));
   self.draggableMapReduceAction = ko.observable(bareWidgetBuilder("MapReduce job", "mapreduce-widget"));
   self.draggableSubworkflowAction = ko.observable(bareWidgetBuilder("Sub workflow", "subworkflow-widget"));
   self.draggableSqoopAction = ko.observable(bareWidgetBuilder("Sqoop 1", "sqoop-widget"));

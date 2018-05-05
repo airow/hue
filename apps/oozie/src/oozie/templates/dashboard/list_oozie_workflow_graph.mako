@@ -54,7 +54,7 @@ ${ dashboard.import_layout() }
   (function () {
 
     % if layout_json != '':
-      var viewModel = new WorkflowEditorViewModel(${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+      var viewModel = new WorkflowEditorViewModel(${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
       ko.cleanNode($("#${graph_element_id}")[0]);
       ko.applyBindings(viewModel, $("#${graph_element_id}")[0]);
       viewModel.isViewer = ko.observable(true);

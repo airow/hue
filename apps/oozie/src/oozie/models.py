@@ -73,6 +73,30 @@ DEFAULT_SLA = [
     {'key': 'upstream-apps', 'value': ''},
 ]
 
+class DBConnManager(models.Manager):
+  def new_connection(connkey, connvalue):
+    connection = DBConn(Coon_key=connkey, Coon_value=connvalue)
+    return connection
+  # def can_read(self, user, connection_id):
+  #   connection = DBConn.objects.select_related().get(pk=connection_id).get_full_node()
+  #   return connection.can_read(user)
+
+
+class DBConn(models.Model):
+  Coon_key = models.CharField(max_length=30)
+  Coon_value = models.TextField()
+  objects = DBConnManager()
+  # owner = models.ForeignKey(User, db_index=True, verbose_name=_t('Owner'), help_text=_t('Person who can modify the job.')) # Deprecated
+  # def is_editable(self, user):
+  #   return user.is_superuser or self.owner == user or self.doc.get().can_write(user)
+  # doc = generic.GenericRelation(Document, related_name='oozie_doc')
+  # def can_read(self, user):
+  #   try:
+  #     return self.doc.get().can_read(user)
+  #   except Exception, e:
+  #     LOG.error('can_read failed because the object has more than one document: %s' % self.doc.all())
+  #     raise e
+
 
 class JobManager(models.Manager):
 

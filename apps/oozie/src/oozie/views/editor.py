@@ -20,6 +20,7 @@ import logging
 import shutil
 import time
 
+from django.conf.urls import url 
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.forms.formsets import formset_factory
@@ -35,7 +36,9 @@ from desktop.lib.django_util import JsonResponse, render, extract_field_data
 from desktop.lib.exceptions_renderable import PopupException
 from desktop.lib.i18n import smart_str
 from desktop.lib.rest.http_client import RestException
+from desktop.lib.json_utils import JSONEncoderForHTML
 from desktop.models import Document
+
 
 from liboozie.credentials import Credentials
 from liboozie.oozie_api import get_oozie
@@ -48,14 +51,14 @@ from oozie.conf import ENABLE_CRON_SCHEDULING, ENABLE_V2
 from oozie.importlib.workflows import import_workflow as _import_workflow
 from oozie.importlib.coordinators import import_coordinator as _import_coordinator
 from oozie.management.commands import oozie_setup
-from oozie.models import Workflow, History, Coordinator,\
+from oozie.models import Workflow, History, Coordinator, DBConn,\
                          Dataset, DataInput, DataOutput,\
                          ACTION_TYPES, Bundle, BundledCoordinator, Job
 from oozie.forms import WorkflowForm, CoordinatorForm, DatasetForm,\
                         DataInputForm, DataOutputForm, LinkForm,\
                         DefaultLinkForm, ParameterForm, NodeForm,\
                         BundleForm, BundledCoordinatorForm, design_form_by_type,\
-                        ImportWorkflowForm, ImportCoordinatorForm
+                        ImportWorkflowForm, ImportCoordinatorForm, ConnectionForm
 
 
 LOG = logging.getLogger(__name__)
@@ -67,6 +70,26 @@ def list_workflows(request):
 
   return render('editor/list_workflows.mako', request, {
     'jobs': data,
+    'json_jobs': json.dumps([job.id for job in data]),
+  })
+
+def list_connections(request):
+  Connlist = [];
+  for obj in DBConn.objects.all():
+        print obj.Coon_key;
+        Connlist.append(obj.Coon_key);
+        print '-------------------------------------';
+        print json.dumps(Connlist,cls=JSONEncoderForHTML);
+
+  #'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML)
+  #connection=DBConn()
+  data = DBConn.objects.all()
+  print data
+  print json.dumps(Connlist,cls=JSONEncoderForHTML)
+
+  return render('editor/list_connections.mako', request, {
+    'jobs': data,
+    # 'json_jobs': json.dumps(Connlist,cls=JSONEncoderForHTML),
     'json_jobs': json.dumps([job.id for job in data]),
   })
 
@@ -86,7 +109,9 @@ def list_coordinators(request, workflow_id=None):
 
   if workflow_id is not None:
     data = [job for job in data if job.workflow.id == workflow_id]
-
+    print '-----------------Data----------------'+data
+    print '-------------------------------------';
+    print json.dumps([job.id for job in data])
   enable_cron_scheduling = ENABLE_CRON_SCHEDULING.get()
 
   return render('editor/list_coordinators.mako', request, {
@@ -239,6 +264,50 @@ def import_coordinator(request):
   })
 
 
+def import_connection(request):
+  connection = DBConn(owner=request.user, schema_version="uri:oozie:coordinator:0.2")
+
+  if request.method == 'POST':
+    coordinator_form = ImportCoordinatorForm(request.POST, request.FILES, instance=coordinator, user=request.user)
+
+    if coordinator_form.is_valid():
+      coordinator_definition = coordinator_form.cleaned_data['definition_file'].read()
+
+      try:
+        _import_connection(coordinator=coordinator, coordinator_definition=coordinator_definition)
+        coordinator.managed = True
+        coordinator.name = coordinator_form.cleaned_data.get('name')
+        coordinator.save()
+      except Exception, e:
+        request.error(_('Could not import coordinator: %s' % e))
+        raise PopupException(_('Could not import coordinator.'), detail=e)
+
+      if coordinator_form.cleaned_data.get('resource_archive'):
+        # Upload resources to workspace
+        source = coordinator_form.cleaned_data.get('resource_archive')
+        if source.name.endswith('.zip'):
+          temp_path = archive_factory(source).extract()
+          request.fs.copyFromLocal(temp_path, coordinator.deployment_dir)
+          shutil.rmtree(temp_path)
+        else:
+          Coordinator.objects.filter(id=coordinator.id).delete()
+          raise PopupException(_('Archive should be a Zip.'))
+
+      Document.objects.link(coordinator, owner=request.user, name=coordinator.name, description=coordinator.description)
+      request.info(_('Coordinator imported'))
+      return redirect(reverse('oozie:edit_coordinator', kwargs={'coordinator': coordinator.id}))
+
+    else:
+      request.error(_('Errors on the form'))
+
+  else:
+    coordinator_form = ImportCoordinatorForm(instance=coordinator, user=request.user)
+
+  return render('editor/import_coordinator.mako', request, {
+    'coordinator_form': coordinator_form,
+    'coordinator': coordinator,
+  })
+
 @check_job_access_permission()
 def export_workflow(request, workflow):
   mapping = dict([(param['name'], param['value']) for param in workflow.find_all_parameters()])
@@ -254,6 +323,24 @@ def export_workflow(request, workflow):
   response["Last-Modified"] = http_date(time.time())
   response["Content-Length"] = len(zip_file.getvalue())
   response['Content-Disposition'] = 'attachment; filename="workflow-%s-%d.zip"' % (workflow.name, workflow.id)
+  response.write(zip_file.getvalue())
+  return response
+
+@check_job_access_permission()
+def export_connection(request, connection):
+  mapping = dict([(param['name'], param['value']) for param in connection.find_all_parameters()])
+
+  oozie_api = get_oozie(request.user)
+  credentials = Credentials()
+  credentials.fetch(oozie_api)
+  mapping['credentials'] = credentials.get_properties()
+
+  zip_file = connection.compress(mapping=mapping)
+
+  response = HttpResponse(content_type="application/zip")
+  response["Last-Modified"] = http_date(time.time())
+  response["Content-Length"] = len(zip_file.getvalue())
+  response['Content-Disposition'] = 'attachment; filename="connection-%s-%d.zip"' % (connection.name, connection.id)
   response.write(zip_file.getvalue())
   return response
 
@@ -284,6 +371,41 @@ def edit_workflow(request, workflow):
     'credentials': json.dumps(credentials.credentials.keys())
   })
 
+
+def edit_connections(request, connection):
+  conn0 = DBConn.objects.get(id=connection)
+  old_key=conn0.Coon_key
+  print(old_key)
+  if request.method == 'POST':
+    connection_form = ConnectionForm(request.POST, instance=conn0)
+    if connection_form.is_valid():
+      try:
+        DBConn.objects.get(Coon_key=connection_form.Coon_key) 
+        print(connection_form.Coon_key)    
+      except:
+        conn = connection_form.save()
+        print(conn)
+        return redirect(reverse('oozie:list_connections'))
+      else:
+        if (connection_form.Coon_key==old_key):
+          conn = connection_form.save()
+          print(conn)
+          return redirect(reverse('oozie:list_connections'))          
+        else:
+          print(connection_form.Coon_key)
+          request.error(_('The Connection already exists.'))
+          return redirect(reverse('oozie:duplicate_connection_alert'))
+        
+    else:
+      request.error(_('Errors on the form: Edit connection') )
+
+  else:
+    connection_form = ConnectionForm(instance=conn0)
+ 
+  return render('editor/edit_connections.mako', request, {
+    'connection': conn0,
+    'connection_form': connection_form,
+  })
 
 def delete_workflow(request):
   if request.method != 'POST':
@@ -336,6 +458,16 @@ def clone_workflow(request, workflow):
 
   return JsonResponse(response)
 
+@check_job_access_permission()
+def clone_connection(request, connection):
+  if request.method != 'POST':
+    raise PopupException(_('A POST request is required.'))
+
+  clone = connection.clone(request.fs, request.user)
+
+  response = {'url': reverse('oozie:edit_connection', kwargs={'connection': clone.id})}
+
+  return JsonResponse(response)
 
 
 @check_job_access_permission()
@@ -424,6 +556,39 @@ def create_coordinator(request, workflow=None):
     'enable_cron_scheduling': enable_cron_scheduling,
   })
 
+def duplicate_connection_alert(request):
+  return render('editor/duplicate_connection_alert.mako', request, {
+  })
+
+def create_connection(request):
+  # connection = DBConn.objects.new_connection('', '')
+
+  connection = DBConn()
+
+  if request.method == 'POST':
+    connection_form = ConnectionForm(request.POST, instance=connection)
+
+    if connection_form.is_valid():
+      try:
+        DBConn.objects.get(Coon_key=connection.Coon_key)       
+      except:
+        conn = connection_form.save()
+        print(conn)
+        return redirect(reverse('oozie:list_connections'))
+      else:
+        request.error(_('The Connection already exists.'))
+        return redirect(reverse('oozie:duplicate_connection_alert'))
+    else:
+      request.error(_('Errors on the form: create connection') )
+  else:
+    connection_form = ConnectionForm(instance=connection)
+ 
+
+  return render('editor/create_connection.mako', request, {
+    'connection': connection,
+    'connection_form': connection_form,
+  })
+
 
 def delete_coordinator(request):
   if request.method != 'POST':
@@ -446,6 +611,29 @@ def delete_coordinator(request):
     request.info(_('Coordinator(s) trashed.'))
 
   return redirect(reverse('oozie:list_coordinators'))
+
+
+def delete_connection(request):
+  if request.method != 'POST':
+    raise PopupException(_('A POST request is required.'))
+
+  skip_trash = 'skip_trash' in request.GET
+
+  job_ids = request.POST.getlist('job_selection')
+  print('**********************************%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+  
+  print(job_ids)
+
+  for job_id in job_ids:
+    print(job_id)
+ 
+    DBConn.objects.filter(id=job_id).delete()
+  if skip_trash:
+    request.info(_('Connection(s) deleted.'))
+  else:
+    request.info(_('Connection(s) trashed.'))
+
+  return redirect(reverse('oozie:list_connections'))  
 
 
 def restore_coordinator(request):
