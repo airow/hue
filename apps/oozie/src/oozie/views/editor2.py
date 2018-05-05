@@ -40,7 +40,7 @@ from notebook.connectors.base import Notebook
 from oozie.decorators import check_document_access_permission, check_document_modify_permission,\
   check_editor_access_permission
 from oozie.forms import ParameterForm
-from oozie.models import Workflow as OldWorklow, Coordinator as OldCoordinator, Bundle as OldBundle, Job
+from oozie.models import Workflow as OldWorklow, Coordinator as OldCoordinator, Bundle as OldBundle, Job, DBConn
 from oozie.models2 import Node, Workflow, Coordinator, Bundle, NODES, WORKFLOW_NODE_PROPERTIES, import_workflow_from_hue_3_7,\
     find_dollar_variables, find_dollar_braced_variables, WorkflowBuilder,\
   _import_workspace, _save_workflow
@@ -50,12 +50,26 @@ from oozie.views.editor import edit_workflow as old_edit_workflow, edit_coordina
 
 LOG = logging.getLogger(__name__)
 
+'''
+@check_editor_access_permission
+def list_DBConns(request):
+  docs = DBConn.objects.all();
+  
+
+  return render('editor2/common_workflow.mako', request, {
+    'dbconn_json': json.dumps(docs,cls=JSONEncoderForHTML),
+  })
+ ''' 
+
 
 @check_editor_access_permission
 def list_editor_workflows(request):
   if USE_NEW_EDITOR.get():
     docs = Document2.objects.documents(user=request.user).search_documents(types=['oozie-workflow2'])
     workflows = [doc.to_dict() for doc in docs]
+    print '-------------------------------------';
+    print workflows
+    #print json.dumps([job.id for job in data])
   else:
     workflows = [d.content_object.to_dict() for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]
 
@@ -67,6 +81,22 @@ def list_editor_workflows(request):
     'workflows_json': json.dumps(workflows, cls=JSONEncoderForHTML),
   })
 
+
+@check_editor_access_permission
+def list_editor_connections(request):
+  if USE_NEW_EDITOR.get():
+    docs = Document2.objects.documents(user=request.user).search_documents(types=['oozie-dbconn'])
+    workflows = [doc.to_dict() for doc in docs]
+  else:
+    workflows = [d.content_object.to_dict() for d in Document.objects.get_docs(request.user, Document2, extra='workflow2')]
+
+  workflows_v1 = [job.doc.get().to_dict() for job in Document.objects.available(OldWorklow, request.user) if job.managed]
+  if workflows_v1:
+    workflows.extend(workflows_v1)
+
+  return render('editor2/list_editor_connections.mako', request, {
+    'workflows_json': json.dumps(workflows, cls=JSONEncoderForHTML),
+  })
 
 @check_editor_access_permission
 def open_old_workflow(request):
@@ -96,6 +126,35 @@ def edit_workflow(request):
 
   return _edit_workflow(request, doc, workflow)
 
+@check_editor_access_permission
+@check_document_access_permission()
+def view_workflow(request):
+  workflow_id = request.GET.get('workflow')
+
+  wid = {}
+  if workflow_id:
+    if workflow_id.isdigit():
+      wid['id'] = workflow_id
+    else:
+      wid['uuid'] = workflow_id
+  else:        
+    coordinator_id = request.GET.get('coordinator')
+    if coordinator_id:
+      cid = {}
+      if coordinator_id.isdigit():
+        cid['id'] = coordinator_id
+      else:
+        cid['uuid'] = coordinator_id      
+      doc = Document2.objects.get(**cid)
+      coordinator = Coordinator(document=doc)
+      coordwfuuid = coordinator.data['properties']['workflow']
+      if coordwfuuid:
+        wid['uuid'] = coordwfuuid
+
+  doc = Document2.objects.get(type='oozie-workflow2', **wid)
+  workflow = Workflow(document=doc)  
+
+  return _edit_workflow(request, doc, workflow)
 
 def _edit_workflow(request, doc, workflow):
   workflow_data = workflow.get_data()
@@ -109,8 +168,26 @@ def _edit_workflow(request, doc, workflow):
     LOG.error(smart_str(e))
 
   can_edit_json = doc is None or (doc.can_write(request.user) if USE_NEW_EDITOR.get() else doc.doc.get().is_editable(request.user))
+  '''
+  docs = DBConn.objects.all();
+  
+ 
+  return render('editor2/common_workflow.mako', request, {
+    'dbconn_json': json.dumps(docs,cls=JSONEncoderForHTML),
+  })'''
 
+  Connlist = [];
+  #dic = dict();
+  for obj in DBConn.objects.all():
+    #dic.setdefault(obj.Coon_key, []).append(obj.Coon_value)  
+    #if isinstance(obj,DBConn)
+        print obj.Coon_key;
+        Connlist.append(obj.Coon_key);
+        print '-------------------------------------';
+        #print dic;
+        print json.dumps(Connlist,cls=JSONEncoderForHTML);
   return render('editor2/workflow_editor.mako', request, {
+      'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
       'layout_json': json.dumps(workflow_data['layout'], cls=JSONEncoderForHTML),
       'workflow_json': json.dumps(workflow_data['workflow'], cls=JSONEncoderForHTML),
       'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML),
@@ -456,6 +533,9 @@ def list_editor_coordinators(request):
   if USE_NEW_EDITOR.get():
     docs = Document2.objects.documents(user=request.user).search_documents(types=['oozie-coordinator2'])
     coordinators = [doc.to_dict() for doc in docs]
+    print '-------------------------------------';
+    print docs
+    print coordinators
   else:
     coordinators = [d.content_object.to_dict() for d in Document.objects.get_docs(request.user, Document2, extra='coordinator2')]
 

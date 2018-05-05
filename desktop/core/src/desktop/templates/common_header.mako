@@ -66,10 +66,6 @@ if USE_NEW_EDITOR.get():
   <link href="${ static('desktop/css/hue3.css') }" rel="stylesheet">
   <link href="${ static('desktop/css/hue3-extra.css') }" rel="stylesheet">
 
-  % if request.session.get("authproysso"):
-    <link href="${ static('desktop/teld/css/ext.css') }" rel="stylesheet">
-  % endif
-
   <style type="text/css">
     % if banner_message or conf.CUSTOM.BANNER_TOP_HTML.get():
       body {
@@ -198,6 +194,10 @@ if USE_NEW_EDITOR.get():
     });
   </script>
 
+  % if request.session.get("authproysso"):
+    <link href="${ static('desktop/teld/css/ext.css') }" rel="stylesheet">
+    <script src="${ static('desktop/teld/js/ext.js') }"></script>
+  % endif
 </head>
 <body ssohtua='${request.session.get("authproysso")}'>
 
@@ -529,6 +529,28 @@ ${ hueIcons.symbols() }
              <li><a href="${ url('security:hdfs') }">&nbsp;<i class="fa fa-file"></i>&nbsp;${_('File ACLs')}</a></li>
            </ul>
          </li>
+       % endif
+       % if 'oozie' in apps:
+      <%
+      view_profile = user.has_hue_permission(action="access_view:ooozie:edit_connection", app="useradmin") or user.is_superuser
+      %>
+      % if view_profile:
+       <li class="dropdown oozie">
+         <a title="${_('Schedule with Oozie')}" data-rel="navigator-tooltip" href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-random inline-block hideMoreThan950"></i><span class="hide950">DBConns</span> <b class="caret"></b></a>
+         <ul role="menu" class="dropdown-menu">
+         % if user.is_superuser:
+           <li class="dropdown-submenu">
+             <a href="${ url('oozie:index') }"><img src="${ static('oozie/art/icon_oozie_editor_48.png') }" class="app-icon"  alt="${ _('Oozie editor icon') }"/> ${_('Editor')}</a>
+             <ul class="dropdown-menu">
+               <li><a href="${url('oozie:list_connections')}"><img src="${ static('oozie/art/icon_oozie_workflow_48.png') }" class="app-icon" alt="${ _('Oozie workflow icon') }"/> ${_('DBConns')}</a></li>
+             </ul>
+           </li>
+          % endif
+
+        
+         </ul>
+       </li>
+       %endif
        % endif
        % if other_apps:
        <li class="dropdown">

@@ -1601,6 +1601,13 @@ class SQLServerSPAction(Action):
           'help_text': '存储过程所需参数',
           'type': ''
       },
+      'SQLServerSP_DBConn': {
+          'name': 'SQLServerSP_DBConn',
+          'label': _('proc DB'),
+          'value': [],
+          'help_text': '存储过程数据库',
+          'type': ''
+      },
      # Common
      'files': {
           'name': 'files',

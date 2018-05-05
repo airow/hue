@@ -1668,6 +1668,11 @@
         </div>
 
         <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.SQLServerSP_DBConn.label"></span>
+          <select data-bind="options: $root.connection,value: properties.SQLServerSP_DBConn"></select>
+        </div>
+
+        <div class="airy">
           <ul data-bind="foreach: properties.SQLServerSP_params" class="unstyled">
             <li>
               <span class="widget-label"><span data-bind="visible:$index()==0, text: $root.workflow_properties.SQLServerSP_params.label"></span></span>

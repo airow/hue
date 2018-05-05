@@ -494,7 +494,7 @@ var Workflow = function (vm, workflow) {
   });
 }
 
-var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
+var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
   var self = this;
 
   self.isNested = ko.observable(true);
@@ -503,6 +503,8 @@ var WorkflowEditorViewModel = function (layout_json, workflow_json, credentials_
   self.currentDraggableSection.subscribe(function (newVal) {
     huePubSub.publish('oozie.draggable.section.change', newVal);
   });
+ 
+  self.connection = ko.mapping.fromJS(dbconn_json);
 
   self.canEdit = ko.mapping.fromJS(can_edit_json);
   self.isEditing = ko.observable(workflow_json.id == null);

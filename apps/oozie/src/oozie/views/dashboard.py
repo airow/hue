@@ -47,7 +47,7 @@ from liboozie.utils import catch_unicode_time
 
 from oozie.conf import OOZIE_JOBS_COUNT, ENABLE_CRON_SCHEDULING, ENABLE_V2, ENABLE_OOZIE_BACKEND_FILTERING
 from oozie.forms import RerunForm, ParameterForm, RerunCoordForm, RerunBundleForm, UpdateCoordinatorForm
-from oozie.models import Workflow as OldWorkflow, Job, utc_datetime_format, Bundle, Coordinator, get_link, History as OldHistory
+from oozie.models import Workflow as OldWorkflow, Job, utc_datetime_format, Bundle, Coordinator, get_link, History as OldHistory,DBConn
 from oozie.models2 import History, Workflow, WORKFLOW_NODE_PROPERTIES
 from oozie.settings import DJANGO_APPS
 from oozie.utils import convert_to_server_timezone
@@ -395,10 +395,21 @@ def list_oozie_workflow(request, job_id):
     }
     return JsonResponse(return_obj, encoder=JSONEncoderForHTML)
 
+  Connlist = [];
+  #dic = dict();
+  for obj in DBConn.objects.all():
+    #dic.setdefault(obj.Coon_key, []).append(obj.Coon_value)  
+    #if isinstance(obj,DBConn)
+        print obj.Coon_key;
+        Connlist.append(obj.Coon_key);
+        print '-------------------------------------';
+        #print dic;
+        print json.dumps(Connlist,cls=JSONEncoderForHTML);
   if request.GET.get('graph'):
     return render('dashboard/list_oozie_workflow_graph.mako', request, {
       'oozie_workflow': oozie_workflow,
       'workflow_graph': workflow_graph,
+      'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
       'layout_json': json.dumps(workflow_data.get('layout', ''), cls=JSONEncoderForHTML) if workflow_data else '',
       'workflow_json': json.dumps(workflow_data.get('workflow', ''), cls=JSONEncoderForHTML) if workflow_data else '',
       'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML) if credentials else '',
@@ -430,6 +441,7 @@ def list_oozie_workflow(request, job_id):
     'parameters': dict((var, val) for var, val in parameters.iteritems() if var not in ParameterForm.NON_PARAMETERS and var != 'oozie.use.system.libpath' or var == 'oozie.wf.application.path'),
     'has_job_edition_permission': has_job_edition_permission,
     'workflow_graph': workflow_graph,
+    'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
     'layout_json': json.dumps(workflow_data.get('layout', ''), cls=JSONEncoderForHTML) if workflow_data else '',
     'workflow_json': json.dumps(workflow_data.get('workflow', ''), cls=JSONEncoderForHTML) if workflow_data else '',
     'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML) if credentials else '',

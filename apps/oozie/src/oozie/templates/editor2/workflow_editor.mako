@@ -34,6 +34,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
 <div id="oozie_workflowComponents" class="dashboard-container oozie_workflowComponents">
 
 <%def name="buttons()">
+  % if not request.session.get("authproysso"):
   <div class="pull-right" style="padding-right: 10px">
 
     <div data-bind="visible: workflow.isDirty() || workflow.id() == null" class="pull-left muted" style="padding-top: 12px; padding-right: 8px">
@@ -87,6 +88,7 @@ ${ commonheader(_("Workflow Editor"), "Oozie", user, request, "40px") | n,unicod
       <i class="fa fa-fw fa-file-o"></i>
     </a>
   </div>
+  % endif
 </%def>
 
 ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_embeddable=is_embeddable) }
@@ -678,7 +680,7 @@ ${ utils.submit_popup_event() }
 
   var apiHelper = ApiHelper.getInstance();
 
-  var viewModel = new WorkflowEditorViewModel(${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+  var viewModel = new WorkflowEditorViewModel(${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
   ko.applyBindings(viewModel, $("#oozie_workflowComponents")[0]);
 
   var shareViewModel = initSharing("#documentShareModal");

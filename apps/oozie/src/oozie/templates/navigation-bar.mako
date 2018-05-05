@@ -54,7 +54,7 @@
                       if section == 'coordinators':
                         return url('oozie:list_coordinators')
                       elif section == 'bundles':
-                        return url('oozie:list_bundles')
+                        return url('oozie:list_bundles')  
                       else:
                         return url('oozie:list_workflows')
                   else:
@@ -62,6 +62,8 @@
                       return url('oozie:list_oozie_coordinators')
                     elif section == 'bundles':
                       return url('oozie:list_oozie_bundles')
+                    elif section == 'connections':
+                      return url('oozie:list_connections')
                     else:
                       return url('oozie:list_oozie_workflows')
                 %>
@@ -72,10 +74,16 @@
                   <img src="${ static('oozie/art/icon_oozie_dashboard_48.png') }" class="app-icon" alt="${ _('Oozie dashboard icon') }" /> ${ _('Oozie Dashboard') }
                 </a>
                 % else:
+                % if not request.session.get("authproysso"):
                 <a title="${ _('Switch to the dashboard') }" href="${ is_embeddable and '/hue/jobbrowser/#!workflows' or getURL(section, dashboard, ENABLE_V2.get())}">
                   <svg class="svg-app-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hi-oozie"></use></svg> ${ _('Oozie Editor') }
                   <!-- ko component: { name: 'hue-favorite-app', params: { hue4: IS_HUE_4, app: 'scheduler', interpreter: '${ getInterpreter(section) }' }} --><!-- /ko -->
                 </a>
+                % else:
+                <a>
+                  <svg class="svg-app-icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#hi-oozie"></use></svg> ${ _('Oozie View') }
+                </a>
+                % endif
                 % endif
                </li>
               % if dashboard:
@@ -86,6 +94,7 @@
                 <li class="${utils.is_selected(section, 'oozie')}"><a href="${url('oozie:list_oozie_info')}">${ _('Oozie') }</a></li>
               % else:
                 % if is_editor:
+                  % if not request.session.get("authproysso"):
                   <li class="${utils.is_selected(section, 'workflows')}">
                     % if is_embeddable:
                     <a href="/home?type=oozie-workflow2">${ _('Workflows') }</a>
@@ -107,10 +116,35 @@
                     <a href="${url('oozie:list_editor_bundles')}">${ _('Bundles') }</a>
                     % endif
                   </li>
+                  % else:
+                  <li class="${utils.is_selected(section, 'workflows')}">
+                    % if is_embeddable:
+                    <a href="/home?type=oozie-workflow2">${ _('Workflows') }</a>
+                    % else:
+                      % if section=="coordinators":
+                      <a data-bind="hueLink: '${ url('oozie:view_workflow') }?coordinator=${request.GET['coordinator']}'">${ _('Workflows') }</a>
+                      % elif section=="workflows":
+                      <a>${ _('Workflows') }</a>
+                      % endif
+                    % endif
+                  </li>
+                  <li class="${utils.is_selected(section, 'coordinators')}">
+                    % if is_embeddable:
+                    <a href="/home?type=oozie-coordinator2">${ _('Coordinators') }</a>
+                    % else:                    
+                    % if section=="coordinators":
+                      <a>${ _('Coordinators') }</a>                      
+                      % elif section=="workflows":
+                      <a data-bind="hueLink: '${ url('oozie:edit_coordinator') }?coordinator=${request.GET['coordinator']}'">${ _('Coordinators') }</a>
+                      % endif
+                    % endif
+                  </li>
+                  % endif
                 % else:
                   <li class="${utils.is_selected(section, 'workflows')}"><a href="${url('oozie:list_workflows')}">${ _('Workflows') }</a></li>
                   <li class="${utils.is_selected(section, 'coordinators')}"><a href="${url('oozie:list_coordinators')}">${ _('Coordinators') }</a></li>
                   <li class="${utils.is_selected(section, 'bundles')}"><a href="${url('oozie:list_bundles')}">${ _('Bundles') }</a></li>
+                  <li class="${utils.is_selected(section, 'connections')}"><a href="${url('oozie:list_connections')}">${ _('DBConns') }</a></li>
                 % endif
               % endif
             </ul>
