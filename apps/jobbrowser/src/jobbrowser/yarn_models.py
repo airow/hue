@@ -449,7 +449,7 @@ class Attempt:
       log_link = '%(root_url)s/%(logs_path)s/%(node)s/%(container)s/%(attempt)s/%(user)s' % {
         'root_url': root_url,
         'logs_path': logs_path.strip('/'),
-        'node': node_url,
+        'node': node_url.upper(),
         'container': container_id,
         'attempt': attempt_id,
         'user': user
@@ -464,9 +464,13 @@ class Attempt:
       response = None
       try:
         log_link = re.sub('job_[^/]+', self.id, log_link)
+        LOG.info('log_linklog_linklog_linklog_linklog_linklog_link: %s' % log_link)
         root = Resource(get_log_client(log_link), urlparse.urlsplit(log_link)[2], urlencode=False)
         response = root.get(link, params=params)
+        #LOG.info('responseresponseresponseresponseresponse: %s' % response)
         log = html.fromstring(response, parser=html.HTMLParser()).xpath('/html/body/table/tbody/tr/td[2]')[0].text_content()
+        #LOG.info('logloglogloglog: %s' % log)
+        #LOG.info('logloglogloglogendendendendend') 
       except Exception, e:
         log = _('Failed to retrieve log: %s' % e)
         try:
