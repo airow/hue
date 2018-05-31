@@ -16,14 +16,25 @@
 # limitations under the License.
 
 import logging
+import codecs 
+import numpy as np
+import os
+#import pandas as pd
+import csv
+import json
+import sys
+import codecs
+import logging
 
 from django.utils.translation import ugettext as _
-
+from beeswax.server import dbms
 from desktop.lib.exceptions_renderable import PopupException
 from desktop.lib.i18n import force_unicode, smart_str
 from librdbms.elasticsearch_lib import ElasticsearchClient, query_and_fetch
-
+from beeswax.server.dbms import get_query_server_config, QueryServerException
 from notebook.connectors.base import Api, QueryError, AuthenticationRequired
+from django.shortcuts import HttpResponse 
+from django.http import StreamingHttpResponse
 
 LOG = logging.getLogger(__name__)
 
@@ -81,13 +92,12 @@ class ElasticsearchApi(Api):
     if self.db is None:
       raise AuthenticationRequired()
     
-    resultSet = query_and_fetch(self.db, snippet['statement'], 1000)
+    resultSet = query_and_fetch(self.db, snippet['statement'],snippet['database'],1000)
     has_result_set = resultSet is not None
     data = resultSet[0]
 
     if 'errorMessage' in data[0]:
       raise Exception(data[0].get('exceptionStack'))
-
     return {
       'sync': True,
       'has_result_set': has_result_set,
@@ -124,8 +134,87 @@ class ElasticsearchApi(Api):
   def cancel(self, notebook, snippet):
     return {'status': 0}
 
+  def ReadFile(self,filePath,encoding):  
+    with codecs.open(filePath,"r",encoding) as f:  
+        return f.read() 
+
+  def WriteFile(self,filePath,u,encoding):  
+    with codecs.open(filePath,"w",encoding) as f:  
+        f.write(u)  
+
+  def is_number(self,s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+ 
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+ 
+    return False
+
+  def dict2csv(self,mydict,file):
+      np.set_printoptions(suppress=True)
+      print('77777777777777777777777777777777777777777777')
+      print(file)
+      f=codecs.open(file,'ab','utf_8_sig')
+    # with open(file, 'ab') as f:
+      wr = csv.writer(f, dialect='excel',delimiter=',',escapechar='\\')    # list=wr.read  ,quoting=csv.QUOTE_NONE
+      for word in mydict: 
+        print("00000000000000000000000000000000000000000000000000\n")
+        print(word)
+        print("\n**************************************************\n") 
+        i=len(word)
+        temp=word
+        #while i>=0:
+           #element=temp[i-1]
+           #if self.is_number(element):
+             # str(temp[i-1])
+           #temp[i-1]=element
+           #i=i-1;
+        wr.writerow(temp)         
+      f.close()
+      return f
+
   def download(self, notebook, snippet, format):
-    raise PopupException('Downloading is not supported yet')
+    #raise PopupException('Downloading is not supported yet')
+    filepath='result.csv'
+    np.set_printoptions(suppress=True)
+    response=self.execute( notebook, snippet)
+    os.remove(filepath)
+    dictHead=response["result"]["meta"]
+    mylist=[]
+    while len(dictHead)>0 :
+      temp=dictHead.pop()
+      mylist.append(temp["name"])
+    # mylist=pd.DataFrame(dictHead).to_dict('records')
+    mylist.reverse()
+    mylist=[mylist]
+    dictData=response["result"]["data"]
+    print(dictData)
+    #dictData.replace("\","\\")
+    has_result_set = dictData is not None
+    
+    print('11111111111111111111111111111111111111')
+    file=self.dict2csv(mylist,filepath)
+    print('222222222222222222222222222222222')
+    file=self.dict2csv(dictData,filepath)
+    print('33333333333333333333333333333333333333333')
+    csvfile = open(filepath, 'rb')
+    print('44444444444444444444444444444444444444444444444')
+    csvfile2=csvfile
+    response =StreamingHttpResponse(csvfile)
+     
+    response['Content-Type']='application/octet-stream'  
+    response['Content-Disposition']='attachment;filename="result.csv"'
+    # content = self.ReadFile('result.csv',encoding='gbk')
+    # self.WriteFile('result.csv',content,encoding='utf_8')  
+    return response   
 
   def progress(self, snippet, logs):
     return 50

@@ -14,7 +14,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import numpy as np
+import os
+# import pandas as pd
+import csv
+import json
+import sys
+import codecs
 import logging
 
 from django.utils.translation import ugettext as _
@@ -25,6 +31,7 @@ from desktop.lib.i18n import force_unicode, smart_str
 from librdbms.druid_mysql_lib import DruidMySQLClient
 
 from notebook.connectors.base import Api, QueryError, AuthenticationRequired
+from django.http import StreamingHttpResponse
 
 LOG = logging.getLogger(__name__)
 
@@ -87,7 +94,7 @@ class DruidApi(Api):
       if (not 'limit' in lower_statement):
           raise Exception('SELECT need LIMIT')
 
-    table = self.db.execute_statement(statement)  # TODO: execute statement stub in Rdbms
+    table = self.db.execute_statement(statement,snippet['database'])  # TODO: execute statement stub in Rdbms
 
     return table
 
@@ -137,8 +144,65 @@ class DruidApi(Api):
   def cancel(self, notebook, snippet):
     return {'status': 0}
 
+  def dict2csv(self,mydict,file):
+      # prevent long number to be compressed to scientific notation
+      np.set_printoptions(suppress=True)
+      # solve the messy code problem when opend by EXCEL
+				 
+      f=codecs.open(file,'ab','utf_8_sig')
+    # with open(file, 'ab') as f:
+      wr = csv.writer(f, dialect='excel',delimiter=',',escapechar='\\')
+      # "word" is a "list" type of data which represents one record from the result set
+      for word in mydict: 
+        print("00000000000000000000000000000000000000000000000000\n")
+        print(word)
+        print("\n**************************************************\n") 
+        i=len(word)
+        temp=word
+        # while i>=0:
+        #   element=temp[i-1]
+        #   if self.is_number(element):
+        #     # str(temp[i-1])
+        #     temp[i-1]=temp[i-1]+"\t"
+        #   i=i-1;
+        wr.writerow(temp)         
+      f.close()
+      return f
+
   def download(self, notebook, snippet, format):
-    raise PopupException('Downloading is not supported yet')
+    #raise PopupException('Downloading is not supported yet')
+    filepath='result.csv'
+    np.set_printoptions(suppress=True)
+    response=self.execute( notebook, snippet)
+    os.remove(filepath)
+    dictHead=response["result"]["meta"]
+    mylist=[]
+    while len(dictHead)>0 :
+      temp=dictHead.pop()
+      mylist.append(temp["name"])
+    # mylist=pd.DataFrame(dictHead).to_dict('records')
+    mylist.reverse()
+    mylist=[mylist]
+    dictData=response["result"]["data"]
+				   
+							   
+    has_result_set = dictData is not None
+    
+												   
+    file=self.dict2csv(mylist,filepath)
+											  
+    file=self.dict2csv(dictData,filepath)
+													  
+    csvfile = open(filepath, 'rb')
+															
+    csvfile2=csvfile
+    response =StreamingHttpResponse(csvfile)
+     
+    response['Content-Type']='application/octet-stream'  
+    response['Content-Disposition']='attachment;filename="result.csv"'
+    # content = self.ReadFile('result.csv',encoding='gbk')
+    # self.WriteFile('result.csv',content,encoding='utf_8')  
+    return response 
 
   def progress(self, snippet, logs):
     return 50
@@ -244,3 +308,4 @@ class Assist():
     column = column or '*'
     return query_and_fetch(self.db, 'SELECT %s FROM %s.%s' % (column, database, table))
   
+
