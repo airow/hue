@@ -58,12 +58,13 @@ def get_ordered_interpreters(user=None):
 
   reordered_interpreters = interpreters_shown_on_wheel + [i for i in interpreters if i not in interpreters_shown_on_wheel]
 
+							   
   return [{
       "name": interpreters[i].NAME.get(),
       "type": i,
       "interface": interpreters[i].INTERFACE.get(),
       "options": interpreters[i].OPTIONS.get(),
-      "is_sql" : interpreters[i].INTERFACE.get() in ["hiveserver2", "elasticsearch", "druid", "rdbms", "jdbc", "solr"]
+      "is_sql" : interpreters[i].INTERFACE.get() in ["hiveserver2","elasticsearch", "druid",  "rdbms", "jdbc", "solr"]
     }
     for i in reordered_interpreters
   ]
@@ -230,3 +231,4 @@ def _default_interpreters(user):
     ))
 
   INTERPRETERS.set_for_testing(OrderedDict(interpreters))
+
