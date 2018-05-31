@@ -112,6 +112,8 @@ class RdbmsApi(Api):
 
     file_name = _get_snippet_name(notebook)
     results = self._execute(notebook, snippet)
+    print("*************************************************************")
+    print(results)
     db = FixedResult(results)
 
     return data_export.download(None, format, db, id=snippet['id'], file_name=file_name)
