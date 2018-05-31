@@ -280,35 +280,35 @@ except ImportError, e:
         <button data-bind="click: trySaveResults, css: {'disabled': !isValidDestination()}" class="btn btn-primary disable-enter disable-feedback">${_('Save')}</button>
       </div>
     </div>
-
-    <div id="downloadProgressModal" class="modal hide fade">
-      <div class="modal-header">
-        <!-- ko if: isDownloading -->
-        <h2 class="modal-title">${_('Your download is being prepared')}</h2>
+    
+    <!--<div id="downloadProgressModal" class="modal hide fade">--><!--
+      <div class="modal-header">-->
+        <!-- ko if: isDownloading --><!--
+        <h2 class="modal-title">${_('Your download is being prepared')}</h2>-->
+        <!-- /ko -->
+        <!-- ko if: downloadTruncated --><!--
+        <h2 class="modal-title">${_('Your downloaded results have been truncated')}</h2>-->
+        <!-- /ko --><!--
+      </div>-->
+      <!--<div class="modal-body" style="padding: 4px">-->
+        <!-- ko if: isDownloading --><!--
+        ${ _('Please wait, it might take a while...') } <i class="fa fa-spinner fa-spin"></i>-->
         <!-- /ko -->
         <!-- ko if: downloadTruncated -->
-        <h2 class="modal-title">${_('Your downloaded results have been truncated')}</h2>
+        <!--${ _('The number of resulting rows was too big to be downloaded and the resulting file has been truncated to') }
+        <strong data-bind="text: downloadCounter"></strong>-->
+        <!--${ _('rows.') }-->
         <!-- /ko -->
-      </div>
-      <div class="modal-body" style="padding: 4px">
+      <!--</div>-->
+      <!--<div class="modal-footer">-->
         <!-- ko if: isDownloading -->
-        ${ _('Please wait, it might take a while...') } <i class="fa fa-spinner fa-spin"></i>
+        <!--<button data-bind="click: cancelDownload" class="btn btn-danger disable-feedback">${_('Cancel Download')}</button>-->
         <!-- /ko -->
         <!-- ko if: downloadTruncated -->
-        ${ _('The number of resulting rows was too big to be downloaded and the resulting file has been truncated to') }
-        <strong data-bind="text: downloadCounter"></strong>
-        ${ _('rows.') }
+        <!--<button class="btn disable-feedback" data-dismiss="modal">${_('Close')}</button>-->
         <!-- /ko -->
-      </div>
-      <div class="modal-footer">
-        <!-- ko if: isDownloading -->
-        <button data-bind="click: cancelDownload" class="btn btn-danger disable-feedback">${_('Cancel Download')}</button>
-        <!-- /ko -->
-        <!-- ko if: downloadTruncated -->
-        <button class="btn disable-feedback" data-dismiss="modal">${_('Close')}</button>
-        <!-- /ko -->
-      </div>
-    </div>
+    <!--</div>-->
+    <!--</div>-->
   </script>
 
   <script type="text/javascript">
@@ -337,7 +337,7 @@ except ImportError, e:
         $('#saveResultsModal, #downloadProgressModal').on('hide', function () {
           self.snippet.saveResultsModalVisible(false);
         });
-
+                    
         self.isValidDestination = ko.pureComputed(function () {
           return self.savePath() !== '' && (self.saveTarget() != 'hive-table' || /^([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]*$/.test(self.savePath()));
         });
