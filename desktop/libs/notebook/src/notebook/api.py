@@ -111,9 +111,9 @@ def _execute_notebook(request, notebook, snippet):
       if historify:
         history = _historify(notebook, request.user)
         notebook = Notebook(document=history).get_data()
+      
 
-      api = get_api(request, snippet)
-      response['handle'] = api.execute(notebook, snippet)
+      response['handle'] = get_api(request, snippet).execute(notebook, snippet)
 
       # Retrieve and remove the result from the handle
       if response['handle'].get('sync'):
@@ -556,6 +556,8 @@ def close_statement(request):
 def autocomplete(request, server=None, database=None, table=None, column=None, nested=None):
   response = {'status': -1}
 
+
+				
   # Passed by check_document_access_permission but unused by APIs
   notebook = json.loads(request.POST.get('notebook', '{}'))
   snippet = json.loads(request.POST.get('snippet', '{}'))
@@ -819,3 +821,4 @@ def _get_statement_from_file(user, fs, snippet):
     script_path = script_path.replace('hdfs://', '')
     if fs.do_as_user(user, fs.exists, script_path):
       return fs.do_as_user(user, fs.read, script_path, 0, 16 * 1024 ** 2)
+
