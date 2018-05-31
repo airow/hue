@@ -196,6 +196,8 @@ def get_api(request, snippet):
   from notebook.connectors.hiveserver2 import HS2Api  
   from notebook.connectors.elasticsearch import ElasticsearchApi
   from notebook.connectors.druid import DruidApi
+													
+													
   from notebook.connectors.jdbc import JdbcApi
   from notebook.connectors.rdbms import RdbmsApi
   from notebook.connectors.oozie_batch import OozieApi
@@ -204,17 +206,30 @@ def get_api(request, snippet):
   from notebook.connectors.spark_batch import SparkBatchApi
   from notebook.connectors.text import TextApi
 
+  print('get_api-request.user:')  
+  print(request.user)
+  print('get_api-request.snippet:') 
+  print(snippet)
+  
   if snippet.get('wasBatchExecuted'):
     return OozieApi(user=request.user, request=request)
+
+
 
   interpreter = [interpreter for interpreter in get_ordered_interpreters(request.user) if interpreter['type'] == snippet['type']]
   if not interpreter:
     raise PopupException(_('Snippet type %(type)s is not configured in hue.ini') % snippet)
   interpreter = interpreter[0]
+  print('interpreter:')
+  print(interpreter)					   					
   interface = interpreter['interface']
-
+  print('interface:')
+  print(interface)				  
   # Multi cluster
   cluster = Cluster(request.user)
+  print('cluster')
+  print(cluster)
+  print(cluster.get_type())											   
   if cluster and cluster.get_type() == 'dataeng':
     interface = 'dataeng'
 
@@ -312,3 +327,4 @@ def _get_snippet_name(notebook, unique=False, table_format=False):
   if table_format:
     name = re.sub('[-|\s:]', '_', name)
   return name
+
