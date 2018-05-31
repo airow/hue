@@ -33,7 +33,7 @@ ${layout.menubar(section='coordinators', dashboard=True)}
   <div class="card-body" style="padding-bottom: 20px">
   <p>
   <form>
-    <input type="text" id="filterInput" class="input-xlarge search-query" placeholder="${ _('Search partial name, submitter or complete Id') }">
+    <input type="text" id="filterInput" class="input-xlarge search-query" placeholder="${ _('Search partial/complate name') }">
 
     <div class="btn-toolbar" style="display: inline; vertical-align: middle; margin-left: 10px; font-size: 12px">
       <span class="loader hide"><i class="fa fa-2x fa-spinner fa-spin muted"></i></span>
@@ -375,7 +375,7 @@ ${layout.menubar(section='coordinators', dashboard=True)}
       var filterBtn = $("#filterInput");
       var textFilter = '';
       if (filterBtn.val()) {
-        textFilter = '&text=' + filterBtn.val();
+        textFilter = '&name=' + filterBtn.val();
       }
       return textFilter;
     }
