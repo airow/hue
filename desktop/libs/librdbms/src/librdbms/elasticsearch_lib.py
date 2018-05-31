@@ -28,11 +28,11 @@ sys.setdefaultencoding('utf-8')
 LOG = logging.getLogger(__name__)
 
 
-def query_and_fetch(db, statement, n=None):
+def query_and_fetch(db, statement, database,n=None):
   data = None
   statement = statement.rstrip(';')
-  statement = statement.replace('.','/')
-  data = db.execute_statement(statement,n)
+  # statement = statement.replace('.','/')
+  data = db.execute_statement(statement,database)
   print data
   return data
 
@@ -40,12 +40,14 @@ class ElasticsearchClient():
 
   def __init__(self, options):
     self.options = options
-    self.url = self.options['url']
-    self.queryUrl = self.options['queryUrl']
+    #self.url = self.options['url']
+    #self.queryUrl = self.options['queryUrl']
 
-  def execute_statement(self, statement, n=None):
+  def execute_statement(self, statement, database):
     test_data = {'sql': statement}
     test_data_urlencode = urllib.urlencode(test_data)
+
+    self.queryUrl = self.options[database+'.queryUrl']													  
     requrl = self.queryUrl
     req = urllib2.Request(url=requrl, data='sql='+ statement)
     res_data = urllib2.urlopen(req)
@@ -53,13 +55,17 @@ class ElasticsearchClient():
     data = json.loads(res);
     return data, res
 
-  def catAliases(self):
-    parsed = pd.read_table(self.url + '/_cat/aliases?v', sep=r'\s+')
-    alias = parsed['alias']
-    index = parsed['index']
-    return alias, index
+  def catAliases(self,database):
+    self.url = self.options[database+'.url']
+    self.queryUrl = self.options[database+'.queryUrl']
+    parsed = pd.read_table(self.url + '/_cat/indices?v', sep=r'\s+')
+    index = parsed.loc[parsed['status'] == 'open']['index']
+    return index
 
-  def _mappings(self, alias):
+  def _mappings(self, database, alias):
+    self.url = self.options[database+'.url']
+    self.queryUrl = self.options[database+'.queryUrl']
+
     requrl = self.url + "/"+alias+"/_mappings"
     req = urllib2.Request(url=requrl)
     res_data = urllib2.urlopen(req)
@@ -68,22 +74,30 @@ class ElasticsearchClient():
     return data, res
 
   def get_databases(self):        
-    alias,index = self.catAliases()
-    #databases = [row for row in alias.tolist())] if False else ['huebyeshuebyes']
-    databases = list(set(index.tolist()))
+   
+    print('clusters:')
+    print(self.options['clusters'])
+    clusters = self.options['clusters']
+
+    databases = clusters.split(",")
     return databases
 
   def get_tables(self, database):
-    databaseMappings = self._mappings(database)
-    mappings = databaseMappings[0][database]["mappings"]
-    tables = [key for key in mappings if key != '_default_' ]
+    print('database:')
+    print(database)
+    
+    index = self.catAliases(database)
+    temp_tables=[elem for elem in index if str('.') not in str(elem)]
+    # tables = list(set(index.tolist()))
+    tables =temp_tables
+
     return tables
 
 
   def get_columns(self, database, table, names_only=False):
-    databaseMappings = self._mappings(database)
-    mappings = databaseMappings[0][database]["mappings"]
-    properties = mappings[table].get("properties")
+    databaseMappings = self._mappings(database,table)
+    mappings = databaseMappings[0][table]["mappings"]
+    properties = mappings[mappings.keys()[0]].get("properties")
 
     if names_only:
       columns = [key for key in properties]
@@ -94,5 +108,6 @@ class ElasticsearchClient():
 
   def get_sample_data(self, database, table, column=None, limit=100):
     column = '`%s`' % column if column else '*'
-    statement = "SELECT %s FROM `%s`.`%s` LIMIT %d" % (column, database, table, limit)
-    return self.execute_statement(statement)
+    statement = "SELECT %s FROM `%s` LIMIT %d" % (column, table, limit)
+    return self.execute_statement(statement,database)
+

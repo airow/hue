@@ -104,14 +104,14 @@ class DruidMySQLClient():
 
   def __init__(self, options):
     self.options = options
-    self.url = options['url']
-    self.connection = Database.connect(**self._conn_params)
+    #self.url = options['url']
+    #self.connection = Database.connect(**self._conn_params)
 
   @property
   def _conn_params(self):
     params = {
-      'host': self.options['host'],
-      'port': int(self.options['port'])
+      'host': self.options[self.database+'.host'],
+      'port': int(self.options[self.database+'.port'])
     }
 
     return params
@@ -122,9 +122,13 @@ class DruidMySQLClient():
   
   
   def close(self):
-    self.connection.close()
+    #self.connection.close()
+	print('close');				
 
-  def execute_statement(self, statement):
+  def execute_statement(self, statement, database):
+    print(statement)
+    self.database = database
+    self.connection = Database.connect(**self._conn_params)			   
     cursor = self.connection.cursor()
     cursor.execute(statement)   
     #self.connection.commit()
@@ -142,24 +146,32 @@ class DruidMySQLClient():
     databases = [row[0] for row in cursor.fetchall()]
     return databases
 
-  def get_datasourceMapping(self):
+  def get_datasourceMapping(self,database):
     try:
-      databases = pd.read_json(self.url)[0].tolist()
+      self.url = self.options[database+'.url']
+      tables = pd.read_json(self.url)[0].tolist()
     except urllib2.URLError as ex:
-      databases = []
-    return databases
+      tables = []
+    return tables 
 
   def get_databases(self):
-    datasource = self.get_datasourceMapping()
-    return datasource
+    print('clusters:')
+    print(self.options['clusters'])
+    clusters = self.options['clusters']
+
+    databases = clusters.split(",")
+    return databases
 
 
   def get_tables(self, database, table_names=[]):
-    return [database]
+    datasource = self.get_datasourceMapping(database)
+    return datasource
 
 
   def get_columns(self, database, table, names_only=False):
-    table_columns = self.execute_statement("SELECT * FROM %s.%s LIMIT 0" % (database, table))
+    print('druid database:')
+    print(database)
+    table_columns = self.execute_statement("SELECT * FROM %s LIMIT 0" % (table), database)
 
     if names_only:
       columns = [col['name'] for col in table_columns.columns_description]
@@ -171,4 +183,5 @@ class DruidMySQLClient():
   def get_sample_data(self, database, table, column=None, limit=100):
     column = '`%s`' % column if column else '*'
     statement = "SELECT %s FROM `%s`.`%s` LIMIT %d" % (column, database, table, limit)
-    return self.execute_statement(statement)
+    return self.execute_statement(statement,database)
+
