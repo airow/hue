@@ -1510,16 +1510,9 @@ class HSFAction(Action):
   FIELDS = {
     'sg_url': {
           'name': 'sg_url',
-          'label': _('sg url'),
+          'label': _('Sg Url'),
           'value': '',
           'help_text': _('sg url.'),
-          'type': 'text'
-     },
-     'sg_logpath': {
-          'name': 'sg_logpath',
-          'label': _('log path'),
-          'value': '/mnt/data/log',
-          'help_text': _('log path.'),
           'type': 'text'
      },
      'sg_date': {
@@ -1582,7 +1575,7 @@ class HSFAction(Action):
   }
   @classmethod
   def get_mandatory_fields(cls):
-    return [cls.FIELDS['sg_url'], cls.FIELDS['sg_logpath']]
+    return [cls.FIELDS['sg_url']]#, cls.FIELDS['sg_logpath']
 
 class SQLServerSPAction(Action):
   TYPE = 'SQLServerSP'
