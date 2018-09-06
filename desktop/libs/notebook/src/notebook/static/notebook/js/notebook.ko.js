@@ -1200,21 +1200,114 @@ var EditorViewModel = (function() {
       self.currentQueryTab('queryHistory');
 
       var execStatement = self.getContext().statement();
-
-      if (/(update|drop|insert|delete)/i.test(self.getContext().statement())) {
-        $(".jHueNotify").show();
-        $(document).trigger("error", "This statement is not allowed");
-        // self.statusForButtons('executed');
-        // stopLongOperationTimeout();
-        // //self.status('available');
+      var inputString=self.getContext().statement().toLowerCase();
+      var inputList0=inputString.split(" ");
+      var item0=inputList0.shift();
+      while(item0==""){
+        item0=inputList0.shift();
+      }
+      if (/(update|drop|insert|delete|truncate)/i.test(inputString)) {
+        
+        if(item0=="update"||item0=="drop"||item0=="insert"||item0=="delete"||item0=="truncate"){
+          // $(".jHueNotify").show();
+          // $(document).trigger("error", "This statement is not allowed");
+          // self.status('ready');
+          alert("This statement is not allowed")
+          self.status('ready');
+          return;
+        }
+        
+      }
+      if(item0=="select"){
+      if(!/limit/i.test(inputString)){
+        alert("a LIMIT clause is needed")
         self.status('ready');
-        // self.progress(100);
-
-        //alert('This statement is not allowed');
-        //self.cancel();
         return;
       }
+    
+    
+      var arrayIdx = new Array();
+      var idx=-1
+      if(self.type()=="druid"){
+      for(var x=0;x<2;x++){
+        idx=inputString.indexOf("__time",idx+1);
+        arrayIdx.push(idx)
+        if(arrayIdx[x]==-1){
+        alert("__time range is missing")
+        self.status('ready');
+        return;
+        }
+        // alert(idx);
+      }
 
+      var subInputString1=inputString.slice(arrayIdx[0]+9,inputStringLength);
+      var inputList1=subInputString1.split(" ");
+      var item1=inputList1.shift();
+      while(item1==""){
+        item1=inputList1.shift();
+      }
+
+      var subInputString2=inputString.slice(arrayIdx[1]+9,inputStringLength);
+      var inputList2=subInputString2.split(" ");
+      var item2=inputList2.shift();
+      while(item2==""){
+        item2=inputList2.shift();
+      }
+
+      t1=Date.parse(item1.replace(/t/g," "));
+      t2=Date.parse(item2.replace(/t/g," "));
+      timeLimitDays=7;
+      timeLimit=timeLimitDays*24*60*60;
+      // alert(timeLimit);
+      // alert((t2-t1)/1000)
+      if((t2-t1)/1000>timeLimit){
+        alert("Query of more than "+timeLimitDays+" days is not allowed.")
+        self.status('ready');
+        return;
+      }
+    }
+      var esLimitNum=10000;
+      var druidLimitNum=8000;
+      var indexLimit=inputString.indexOf("limit",0);
+      var inputStringLength=inputString.length;
+      var lastCharactor=inputString.charAt(inputStringLength-1)
+      if(lastCharactor==";"){
+        inputStringLength=inputStringLength-1;
+      }
+      var subInputString=inputString.slice(indexLimit+5,inputStringLength);
+      var inputList=subInputString.split(" ");
+      var inputList0=inputString.split(" ");
+
+      var item=inputList.shift();
+      while(item==""){
+        item=inputList.shift();
+      }
+      var strLimitValue=item;
+      var intLimitValue=parseInt(strLimitValue);
+      if(self.type()=="elasticsearch"){
+        if(intLimitValue>esLimitNum){
+          alert("Query should be no more than "+esLimitNum+" records")
+          self.status('ready');
+          return;
+        }
+      }
+      if(self.type()=="druid"){
+        if(intLimitValue>druidLimitNum){
+          alert("Query should be no more than "+druidLimitNum+" records")
+          self.status('ready');
+          return;
+        }
+      }
+    }
+
+      
+      // alert(date1)
+      // alert(date2)
+      // $(".jHueNotify").show();
+      // $(document).trigger("error", inputList);
+      // self.status('ready');
+      // return;
+     
       self.executingBlockingOperation = $.post("/notebook/api/execute/" + self.type(), {
         notebook: vm.editorMode() ? ko.mapping.toJSON(notebook, NOTEBOOK_MAPPING) : ko.mapping.toJSON(notebook.getContext()),
         snippet: ko.mapping.toJSON(self.getContext())
