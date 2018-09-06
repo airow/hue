@@ -68,9 +68,12 @@ class ElasticsearchApi(Api):
     self.options = interpreter['options']
 
     if self.cache_key in API_CACHE:
-      self.db = API_CACHE[self.cache_key]
+      # self.db = API_CACHE[self.cache_key]
+      # self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
+      self.db = ElasticsearchClient(self.options)
     else:        
-      self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
+      # self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
+      self.db = ElasticsearchClient(self.options)
 
   def create_session(self, lang=None, properties=None):
     global API_CACHE
@@ -80,7 +83,10 @@ class ElasticsearchApi(Api):
     props['properties'] = {} # We don't store passwords
 
     if self.db is None:
-      self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
+      # self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
+      self.db = ElasticsearchClient(self.options)
+    # else:
+    #   self.db = API_CACHE[self.cache_key] = ElasticsearchClient(self.options)
 
     if self.db is None:
       raise AuthenticationRequired()
@@ -93,11 +99,19 @@ class ElasticsearchApi(Api):
       raise AuthenticationRequired()
     
     resultSet = query_and_fetch(self.db, snippet['statement'],snippet['database'],1000)
-    has_result_set = resultSet is not None
+    print(type(resultSet))
+    print(resultSet)
+    # while i<len_tuple:
+    # has_result_set = resultSet is not None
     data = resultSet[0]
-
-    if 'errorMessage' in data[0]:
-      raise Exception(data[0].get('exceptionStack'))
+    if data:
+      has_result_set=True
+    else:   
+      has_result_set=False  
+    # if 'errorMessage' in data[0]:
+    #   raise Exception(data[0].get('exceptionStack'))
+    print(has_result_set)
+    print(data)
     return {
       'sync': True,
       'has_result_set': has_result_set,
@@ -171,12 +185,6 @@ class ElasticsearchApi(Api):
         print("\n**************************************************\n") 
         i=len(word)
         temp=word
-        #while i>=0:
-           #element=temp[i-1]
-           #if self.is_number(element):
-             # str(temp[i-1])
-           #temp[i-1]=element
-           #i=i-1;
         wr.writerow(temp)         
       f.close()
       return f
@@ -186,8 +194,11 @@ class ElasticsearchApi(Api):
     filepath='result.csv'
     np.set_printoptions(suppress=True)
     response=self.execute( notebook, snippet)
-    os.remove(filepath)
+    if(os.path.exists(filepath)):
+      os.remove(filepath)
     dictHead=response["result"]["meta"]
+    print("------------------------------dict_head-------------------------")
+    print(dictHead)
     mylist=[]
     while len(dictHead)>0 :
       temp=dictHead.pop()
@@ -195,19 +206,24 @@ class ElasticsearchApi(Api):
     # mylist=pd.DataFrame(dictHead).to_dict('records')
     mylist.reverse()
     mylist=[mylist]
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>mylist<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+    print(mylist)
     dictData=response["result"]["data"]
+    print("-----------------------------dict_data-------------------------------")
     print(dictData)
+
+    resultData=mylist+dictData
     #dictData.replace("\","\\")
     has_result_set = dictData is not None
     
     print('11111111111111111111111111111111111111')
-    file=self.dict2csv(mylist,filepath)
-    print('222222222222222222222222222222222')
-    file=self.dict2csv(dictData,filepath)
+    file=self.dict2csv(resultData,filepath)
+    # print('222222222222222222222222222222222')
+    # file=self.dict2csv(dictData,filepath)
     print('33333333333333333333333333333333333333333')
     csvfile = open(filepath, 'rb')
     print('44444444444444444444444444444444444444444444444')
-    csvfile2=csvfile
+    # csvfile2=csvfile
     response =StreamingHttpResponse(csvfile)
      
     response['Content-Type']='application/octet-stream'  
@@ -279,11 +295,15 @@ class Assist():
     self.db = db
 
   def get_databases(self):
+    print("-------------------elasticsearch.py")
     databases = self.db.get_databases()
+    print(databases)
     return databases
 
   def get_tables(self, database):
+    print("-------------------elasticsearch.py")
     tables = self.db.get_tables(database)
+    print(tables)
     return tables
 
   def get_columns(self, database, table):
