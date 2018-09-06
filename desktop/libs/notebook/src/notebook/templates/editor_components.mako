@@ -197,7 +197,7 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
   <div class="navbar-inner">
     <div class="container-fluid">
       <div class="pull-right">
-
+        % if not request.session.get("authproysso"):
         <div class="btn-group">
           <a class="btn" rel="tooltip" data-placement="bottom" data-loading-text="${ _("Saving...") }" data-bind="click: function() { if ($root.canSave() ) { saveNotebook() } else { $('#saveAsModal${ suffix }').modal('show');} }, attr: { title: $root.canSave() ? '${ _ko('Save') }' : '${ _ko('Save As') }' }"><i class="fa fa-save"></i></a>
 
@@ -212,7 +212,7 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           </ul>
           <!-- /ko -->
         </div>
-
+        % endif
         <!-- ko ifnot: editorMode -->
         <div class="btn-group">
           <a class="btn dropdown-toggle" data-toggle="dropdown">
@@ -247,32 +247,37 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           </ul>
         </div>
         <!-- /ko -->
-
+        % if not request.session.get("authproysso"):
         <!-- ko if: editorMode -->
         <a class="btn" href="javascript:void(0)" data-bind="click: function() { newNotebook($root.editorType(), null, selectedNotebook() ? $root.selectedNotebook().snippets()[0].currentQueryTab() : null); }, attr: { 'title': '${ _('New ') }' +  editorTypeTitle() + '${ _(' Query') }' }" rel="tooltip" data-placement="bottom">
           <i class="fa fa-file-o"></i>
         </a>
         <!-- /ko -->
+        %endif
         <!-- ko ifnot: editorMode -->
         <a class="btn" href="javascript:void(0)" data-bind="click: newNotebook" title="${ _('New Notebook') }" rel="tooltip" data-placement="bottom">
           <i class="fa fa-file-o"></i>
         </a>
+        
         <!-- /ko -->
-
+        % if not request.session.get("authproysso"):
         <!-- ko if: IS_HUE_4 -->
         <a class="btn" data-bind="hueLink: '/home?type=' + (editorMode() ? 'query-' : '') + editorType(), attr: { 'title': editorMode() ? '${ _('Queries') }' : '${ _('Notebooks') }'  }" rel="tooltip" data-placement="bottom">
           <i class="fa fa-tags"></i>
         </a>
+        
         <!-- /ko -->
         <!-- ko ifnot: IS_HUE_4 -->
         <a class="btn" data-bind="hueLink: '${ url('notebook:notebooks') }?type=' + editorType(), attr: { 'title': editorMode() ? '${ _('Queries') }' : '${ _('Notebooks') }'  }" rel="tooltip" data-placement="bottom">
           <i class="fa fa-tags"></i>
         </a>
+        %endif
         <!-- /ko -->
-
+        % if not request.session.get("authproysso"):
         <a class="btn pointer" title="${ _('Context') }" rel="tooltip" data-placement="bottom" data-bind="css: {'active': $root.isContextPanelVisible }, click: function() { $root.isContextPanelVisible(!$root.isContextPanelVisible()); }">
           <i class="fa fa-cogs"></i>
         </a>
+        %endif
       </div>
 
       <div class="nav-collapse">
@@ -315,11 +320,15 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
                 Druid
               <!-- /ko -->
               <!-- ko if: editorType() == 'elasticsearch' -->
+              
                 Elasticsearch
+              
               <!-- /ko -->
+              % if not request.session.get("authproysso"):
               <!-- ko if: ['druid', 'elasticsearch', 'impala', 'pig', 'hive', 'beeswax', 'rdbms', 'java', 'spark2', 'sqoop1', 'distcp', 'shell', 'mapreduce'].indexOf(editorType()) == -1 -->
                 SQL
               <!-- /ko -->
+              %endif
               <!-- ko component: { name: 'hue-favorite-app', params: { hue4: IS_HUE_4, app: 'editor', interpreter: editorType() }} --><!-- /ko -->
               </a>
             <!-- /ko -->
@@ -350,6 +359,7 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           <li data-bind="visible: isSaved() && ! isHistory() && ! parentSavedQueryUuid()" style="display: none" class="no-horiz-padding muted">
             <a title="${ _('This is a saved query') }"><i class="fa fa-fw fa-file-o"></i></a>
           </li>
+          % if not request.session.get("authproysso"):
           <li class="query-name no-horiz-padding">
             <a href="javascript:void(0)">
               <div class="notebook-name-desc" data-bind="editable: name, editableOptions: { inputclass: 'notebook-name-input', enabled: true, placement: 'bottom', emptytext: '${_ko('Add a name...')}', tpl: '<input type=\'text\' maxlength=\'255\'>' }"></div>
@@ -360,6 +370,7 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
               <div class="notebook-name-desc" data-bind="editable: description, editableOptions: { type: 'textarea', enabled: true, placement: 'bottom', emptytext: '${_ko('Add a description...')}' }"></div>
             </a>
           </li>
+          %endif
           <!-- /ko -->
         </ul>
       </div>
@@ -441,8 +452,11 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
 
 <script type="text/html" id="notebook${ suffix }">
   % if not is_embeddable:
+
   <div class="assist-container left-panel" data-bind="visible: isLeftPanelVisible() && assistAvailable()">
+
     <a title="${_('Toggle Assist')}" class="pointer hide-assist" data-bind="click: function() { isLeftPanelVisible(false); huePubSub.publish('assist.set.manual.visibility'); }">
+
       <i class="fa fa-chevron-left"></i>
     </a>
     <div class="assist" data-bind="component: {
@@ -450,18 +464,23 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
         params: {
           user: user,
           sql: {
+           
             sourceTypes: sqlSourceTypes,
+            
             activeSourceType: activeSqlSourceType,
+            
             navigationSettings: {
               openDatabase: false,
               openItem: false,
               showStats: true,
               pinEnabled: true
             },
+            
           },
           visibleAssistPanels: editorMode() ? ['sql'] : []
         }
       }"></div>
+
   </div>
   <div class="resizer" data-bind="visible: isLeftPanelVisible() && assistAvailable(), splitDraggable : { appName: 'notebook', leftPanelVisible: isLeftPanelVisible, rightPanelVisible: isRightPanelVisible, rightPanelAvailable: isRightPanelAvailable, onPosition: function(){ huePubSub.publish('split.draggable.position') } }"><div class="resize-bar">&nbsp;</div></div>
   % endif
@@ -661,16 +680,22 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
             <div class="inline-block inactive-action pointer" title="${_('Clear the query history')}" data-target="#clearHistoryModal${ suffix }" data-toggle="modal" rel="tooltip" data-bind="visible: $parent.history().length > 0"><i class="snippet-icon fa fa-calendar-times-o"></i></div>
           </a>
         </li>
+         % if not request.session.get("authproysso"):
         <li data-bind="click: function(){ currentQueryTab('savedQueries'); }, css: {'active': currentQueryTab() == 'savedQueries'}, clickOutside: function () { if (queriesFilterVisible() && queriesFilter() === '') { queriesFilterVisible(false) } }">
           <a class="inactive-action" href="#savedQueries" data-toggle="tab">${_('Saved Queries')}
             <div class="inline-block inactive-action margin-left-10 pointer" title="${_('Search the saved queries')}" data-bind="visible: !queriesHasErrors(), click: function(data, e){ queriesFilterVisible(!queriesFilterVisible()); if (queriesFilterVisible()) { window.setTimeout(function(){ $(e.target).parent().siblings('input').focus(); }, 0); } else { queriesFilter('') }}"><i class="snippet-icon fa fa-search"></i></div>
             <input class="input-small inline-tab-filter" type="text" data-bind="visible: queriesFilterVisible, clearable: queriesFilter, valueUpdate:'afterkeydown'" placeholder="${ _('Search...') }">
+            % if not request.session.get("authproysso"):
             <div class="inline-block inactive-action pointer" title="${_('Refresh')}" rel="tooltip" data-bind="click: fetchQueries"><i class="snippet-icon fa fa-refresh"></i></div>
+            %endif
           </a>
         </li>
+        %endif
         % if ENABLE_QUERY_BUILDER.get():
         <!-- ko if: isSqlDialect -->
+         % if not request.session.get("authproysso"):
         <li data-bind="click: function(){ currentQueryTab('queryBuilderTab'); }, css: {'active': currentQueryTab() == 'queryBuilderTab'}"><a class="inactive-action" href="#queryBuilderTab" data-toggle="tab">${_('Query Builder')}</a></li>
+        %endif
         <!-- /ko -->
         % endif
         <!-- ko if: result.hasSomeResults -->
@@ -867,7 +892,9 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
   <div class="hover-actions inline pull-right" style="font-size: 15px;">
     <!-- ko template: { name: 'query-redacted${ suffix }' } --><!-- /ko -->
     <!-- ko template: { name: 'longer-operation${ suffix }' } --><!-- /ko -->
+
     <a class="inactive-action" href="javascript:void(0)" data-bind="visible: status() != 'ready' && status() != 'loading' && errors().length == 0, click: function() { hideFixedHeaders(); $data.showLogs(!$data.showLogs());}, css: {'blue': $data.showLogs}" title="${ _('Show Logs') }"><i class="fa fa-file-text-o"></i></a>
+
     <span class="execution-timer" data-bind="visible: type() != 'text' && status() != 'ready' && status() != 'loading', text: result.executionTime().toHHMMSS()" title="${ _('Execution time') }"></span>
 
     <!-- ko template: { name: 'snippet-header-statement-type${ suffix }' } --><!-- /ko -->
@@ -884,14 +911,19 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
     <!-- ko template: { name: 'longer-operation${ suffix }' } --><!-- /ko -->
     <span class="execution-timer" data-bind="visible: type() != 'text' && status() != 'ready' && status() != 'loading', text: result.executionTime().toHHMMSS()" title="${ _('Execution time') }"></span>
     <!-- ko if: availableDatabases().length > 0 && isSqlDialect() -->
+    % if not request.session.get("authproysso"):
     <div class="margin-left-10" data-bind="component: { name: 'hue-drop-down', params: { icon: 'fa-database', value: database, entries: availableDatabases, foreachVisible: true, searchable: true, linkTitle: '${ _ko('Active database') }' } }" style="display: inline-block"></div>
+    %endif
     <!-- /ko -->
 
    <!-- ko template: { name: 'snippet-header-statement-type${ suffix }' } --><!-- /ko -->
-
+    % if not request.session.get("authproysso"):
     <a class="inactive-action margin-left-10" href="javascript:void(0)" data-bind="visible: status() != 'ready' && status() != 'loading', click: function() { hideFixedHeaders(); $data.showLogs(!$data.showLogs());}, css: {'blue': $data.showLogs}" title="${ _('Show Logs') }"><i class="fa fa-file-text-o"></i></a>
+    %endif
     <a class="inactive-action margin-left-10" href="javascript:void(0)" data-bind="toggle: settingsVisible, visible: hasProperties, css: { 'blue' : settingsVisible }" title="${ _('Settings and properties') }"><i class="fa fa-cog"></i></a>
+    % if not request.session.get("authproysso"):
     <a class="inactive-action margin-left-10 pointer" title="${ _('Show editor shortcuts') }" data-toggle="modal" data-target="#helpModal${ suffix }"><i class="fa fa-question"></i></a>
+    %endif
   </div>
   <a class="hueAnchor collapse-results" href="javascript:void(0)" title="${ _('Collapse results') }" data-bind="visible: $root.editorMode() && !$root.isFullscreenMode() && $root.isPlayerMode(), click: function(){ $root.isPlayerMode(false); }" style="display: none;"><i class="fa fa-times fa-fw"></i></a>
 </script>
@@ -900,7 +932,9 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
 <script type="text/html" id="snippet-header-statement-type${ suffix }">
   % if ENABLE_EXTERNAL_STATEMENT.get():
   <!-- ko if: isSqlDialect() -->
+    % if not request.session.get("authproysso"):
     <div class="margin-left-10 statement-type-selector" data-bind="component: { name: 'hue-drop-down', params: { value: statementType, entries: statementTypes, linkTitle: '${ _ko('Statement type') }' } }" style="display: inline-block"></div>
+    %endif
   <!-- /ko -->
   % endif
 </script>
@@ -1100,7 +1134,6 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
         </div>
         <div class="clearfix margin-bottom-20"></div>
       <!-- /ko -->
-
       <!-- ko if: statementType() == 'document' -->
         <div class="margin-top-10">
           <!-- ko if: associatedDocumentLoading -->
@@ -1121,7 +1154,6 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
         </div>
         <div class="clearfix margin-bottom-20"></div>
       <!-- /ko -->
-
       <div class="ace-editor" data-bind="visible: statementType() === 'text' || statementType() !== 'text' && externalStatementLoaded(), css: {'single-snippet-editor ace-editor-resizable' : $root.editorMode(), 'active-editor': inFocus }, attr: { id: id() }, delayedOverflow, aceEditor: {
         snippet: $data,
         contextTooltip: '${ _ko("Right-click for details") }',
@@ -1136,10 +1168,10 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           minLines: $root.editorMode() ? null : 3
         }
       }, style: {opacity: statementType() !== 'text' ? '0.75' : '1', 'top': $root.editorMode() && statementType() !== 'text' ? '60px' : '0'}"></div>
+
       % if conf.USE_NEW_AUTOCOMPLETER.get():
       <!-- ko component: { name: 'hueAceAutocompleter', params: { editor: ace, snippet: $data } } --><!-- /ko -->
       % endif
-
 
       <ul class="table-drop-menu hue-context-menu">
         <li class="editor-drop-value"><a href="javascript:void(0);">"<span class="editor-drop-identifier"></span>"</a></li>
@@ -1833,7 +1865,7 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
   <!-- /ko -->
 </div>
 
-
+% if not request.session.get("authproysso"):
 <div id="saveAsModal${ suffix }" class="modal hide fade">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="${ _('Close') }"><span aria-hidden="true">&times;</span></button>
@@ -1844,15 +1876,18 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
     <h2 class="modal-title">${_('Save notebook as...')}</h2>
     <!-- /ko -->
   </div>
+%endif
 
   <!-- ko if: $root.selectedNotebook() -->
   <div class="modal-body">
     <form class="form-horizontal">
+    % if not request.session.get("authproysso"):
       <div class="control-group">
         <label class="control-label">${_('Name')}</label>
         <div class="controls">
           <input type="text" class="input-xlarge" data-bind="value: $root.selectedNotebook().name, valueUpdate:'afterkeydown'"/>
         </div>
+        %endif
       </div>
       <div class="control-group">
         <label class="control-label">${_('Description')}</label>
@@ -1862,9 +1897,12 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
       </div>
     </form>
   </div>
+
   <div class="modal-footer">
     <a class="btn" data-dismiss="modal">${_('Cancel')}</a>
+    % if not request.session.get("authproysso"):
     <input type="button" class="btn btn-primary disable-feedback" value="${_('Save')}" data-dismiss="modal" data-bind="click: saveAsNotebook, enable: $root.selectedNotebook().name().length > 0"/>
+    %endif
   </div>
   <!-- /ko -->
 </div>
@@ -2677,12 +2715,15 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
           snippetImage: '${ static("desktop/art/druid_48.png") }',
           sqlDialect: true
         },
+ 
+      
         elasticsearch: {
            placeHolder: '${ _("Example: SELECT * FROM tablename, or press CTRL + space") }',
           aceMode: 'ace/mode/sql',
           snippetImage: '${ static("desktop/art/icon_elasticsearch_48.png") }',
           sqlDialect: true
         },
+ 
         mysqljdbc: {
           placeHolder: '${ _("Example: SELECT * FROM tablename, or press CTRL + space") }',
           aceMode: 'ace/mode/mysql',
@@ -2772,7 +2813,6 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
         }
       }
     });
-
     var viewModel;
 
     var importExternalNotebook = function (notebook) {
@@ -3075,7 +3115,6 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
         }
       });
     }
-
 
     $(document).ready(function () {
       % if ENABLE_QUERY_SCHEDULING.get():
@@ -3579,7 +3618,6 @@ from notebook.conf import ENABLE_QUERY_BUILDER, ENABLE_QUERY_SCHEDULING, ENABLE_
       }
 
       forceChartDraws(true);
-
       var _resizeTimeout = -1;
       $(window).on("resize", function () {
         $('.notebook-name-desc').css('max-width', ($('.snippet-container').width()/4) + 'px');
