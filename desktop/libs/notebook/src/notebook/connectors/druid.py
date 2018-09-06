@@ -104,8 +104,18 @@ class DruidApi(Api):
       raise AuthenticationRequired()
 
     table = self._execute(notebook, snippet)
-    data = list(table.rows())
-    has_result_set = data is not None
+    print("++++++++++++++++++++++++++++++++++++")
+    print(table)
+    # data = list(table.rows())
+    data = table
+    print("++++++++++++++++++++++++++++++++++++")
+    print(data)
+    print(type(data))
+    if data:
+      has_result_set=True
+    else:   
+      has_result_set=False
+    # has_result_set = data is not None
 
     return {
       'sync': True,
@@ -113,12 +123,17 @@ class DruidApi(Api):
       'modified_row_count': 0,
       'result': {
         'has_more': False,
-        'data': data if has_result_set else [],
+        'data': [row.values() for row in data] if has_result_set else [],
+        # 'meta': [{
+        #   'name': col['name'] if type(col) is dict else col,
+        #   'type': col.get('type', '') if type(col) is dict else '',
+        #   'comment': ''
+        # } for col in table.columns_description] if has_result_set else [],
         'meta': [{
-          'name': col['name'] if type(col) is dict else col,
-          'type': col.get('type', '') if type(col) is dict else '',
+          'name': col,
+          'type': '',
           'comment': ''
-        } for col in table.columns_description] if has_result_set else [],
+        } for col in data[0].keys()] if has_result_set else [],
         'type': 'table'
       }
     }
