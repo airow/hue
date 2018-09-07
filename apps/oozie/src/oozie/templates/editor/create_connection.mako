@@ -47,6 +47,7 @@ ${ layout.menubar(section='connection') }
               <form class="form-horizontal" id="connectionForm" action="${ url('oozie:create_connection') }" method="POST">
                 ${ csrf_token(request) | n,unicode }
               <fieldset>
+                ${ utils.render_field(connection_form['Coon_type']) }
                 ${ utils.render_field(connection_form['Coon_key']) }
                 ${ utils.render_field(connection_form['Coon_value']) }
              </fieldset>

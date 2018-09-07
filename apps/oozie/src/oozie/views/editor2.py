@@ -177,16 +177,21 @@ def _edit_workflow(request, doc, workflow):
   })'''
 
   Connlist = [];
+  Connmysqllist=[];
   #dic = dict();
   for obj in DBConn.objects.all():
     #dic.setdefault(obj.Coon_key, []).append(obj.Coon_value)  
     #if isinstance(obj,DBConn)
         print obj.Coon_key;
-        Connlist.append(obj.Coon_key);
-        print '-------------------------------------';
+        if(obj.Coon_type=="SQLServer"):
+          Connlist.append(obj.Coon_key);
+          print '-------------------------------------';
         #print dic;
-        print json.dumps(Connlist,cls=JSONEncoderForHTML);
+          print json.dumps(Connlist,cls=JSONEncoderForHTML);
+        if(obj.Coon_type=="MySQL"):
+          Connmysqllist.append(obj.Coon_key);  
   return render('editor2/workflow_editor.mako', request, {
+      'mysqlconn_json':json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
       'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
       'layout_json': json.dumps(workflow_data['layout'], cls=JSONEncoderForHTML),
       'workflow_json': json.dumps(workflow_data['workflow'], cls=JSONEncoderForHTML),

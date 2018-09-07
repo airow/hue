@@ -77,9 +77,10 @@ def list_connections(request):
   Connlist = [];
   for obj in DBConn.objects.all():
         print obj.Coon_key;
-        Connlist.append(obj.Coon_key);
-        print '-------------------------------------';
-        print json.dumps(Connlist,cls=JSONEncoderForHTML);
+        if(obj.Coon_type=="SQLServer"):
+          Connlist.append(obj.Coon_key);
+          print '-------------------------------------';
+          print json.dumps(Connlist,cls=JSONEncoderForHTML);
 
   #'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML)
   #connection=DBConn()
@@ -570,13 +571,13 @@ def create_connection(request):
 
     if connection_form.is_valid():
       try:
-        DBConn.objects.get(Coon_key=connection.Coon_key)       
+        DBConn.objects.get(Coon_key=connection.Coon_key,Coon_type=connection.Coon_type)       
       except:
         conn = connection_form.save()
         print(conn)
         return redirect(reverse('oozie:list_connections'))
-      else:
-        request.error(_('The Connection already exists.'))
+      else:  
+        request.error(_('The Connection with the same type already exists.'))
         return redirect(reverse('oozie:duplicate_connection_alert'))
     else:
       request.error(_('Errors on the form: create connection') )
