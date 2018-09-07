@@ -330,6 +330,8 @@ ${ hueIcons.symbols() }
            % if USE_NEW_EDITOR.get():
               <li><a href="${ url('notebook:editor') }?type=druid"><img style="width:24px" alt="Snippet icon" src="/static/desktop/art/icon_druid_48.png"> ${_('druid')}</a></li>
               <li><a href="${ url('notebook:editor') }?type=elasticsearch"><img style="width:24px" alt="Snippet icon" src="/static/desktop/art/icon_elasticsearch_48.png"> ${_('elasticsearch')}</a></li>
+              <li><a href="${ url('notebook:editor') }?type=mysql"><img style="width:24px" alt="Snippet icon" src="/static/rdbms/art/icon_rdbms_48.png"> ${_('HUE')}</a></li>
+              <li><a href="${ url('notebook:editor') }?type=postgresql"><img style="width:24px" alt="Snippet icon" src="/static/rdbms/art/icon_rdbms_48.png"> ${_('Oozie')}</a></li>
             % else:
               <li><a href="/${apps['druid'].display_name}"><svg class="svg-app-icon"><use xlink:href="#hi-hive"></use></svg> ${_('druid')}</a></li>
               <li><a href="/${apps['druid'].display_name}"><svg class="svg-app-icon"><use xlink:href="#hi-hive"></use></svg> ${_('elasticsearch')}</a></li>
@@ -545,12 +547,11 @@ ${ hueIcons.symbols() }
                <li><a href="${url('oozie:list_connections')}"><img src="${ static('oozie/art/icon_oozie_workflow_48.png') }" class="app-icon" alt="${ _('Oozie workflow icon') }"/> ${_('DBConns')}</a></li>
              </ul>
            </li>
-          % endif
-
-        
+          % endif     
          </ul>
        </li>
-       %endif
+       % endif
+
        % endif
        % if other_apps:
        <li class="dropdown">

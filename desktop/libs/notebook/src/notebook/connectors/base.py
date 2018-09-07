@@ -195,6 +195,7 @@ def get_api(request, snippet):
   from notebook.connectors.dataeng import DataEngApi
   from notebook.connectors.hiveserver2 import HS2Api  
   from notebook.connectors.elasticsearch import ElasticsearchApi
+  from notebook.connectors.template import TemplateApi
   from notebook.connectors.druid import DruidApi
 													
 													
@@ -237,6 +238,8 @@ def get_api(request, snippet):
     return HS2Api(user=request.user, request=request)
   elif interface == 'elasticsearch':
     return ElasticsearchApi(request.user, interpreter=interpreter)
+  elif interface == 'template':
+    return TemplateApi(request.user, interpreter=interpreter)
   elif interface == 'druid':
     return DruidApi(request.user, interpreter=interpreter)
   elif interface == 'oozie':

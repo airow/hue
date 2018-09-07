@@ -88,6 +88,7 @@ from notebook.conf import get_ordered_interpreters
   </script>
 
   <script type="text/html" id="sql-context-items">
+% if not request.session.get("authproysso"):
     <!-- ko if: typeof definition !== 'undefined' -->
     <li><a href="javascript:void(0);" data-bind="click: function (data) { showContextPopover(data, { target: $parentContext.$contextSourceElement }, { left: 4, top: 2 }); }"><i class="fa fa-fw fa-info"></i> ${ _('Show details') }</a></li>
     <!-- ko if: !definition.isDatabase && $currentApp() === 'editor' -->
@@ -96,6 +97,7 @@ from notebook.conf import get_ordered_interpreters
     <!-- ko if: definition.isView || definition.isTable || definition.isDatabase -->
     <li><a href="javascript:void(0);" data-bind="click: openInMetastore"><i class="fa fa-fw fa-table"></i> ${ _('Open in Table Browser') }</a></li>
     <!-- /ko -->
+%endif
     %if ENABLE_QUERY_BUILDER.get():
     <!-- ko if: definition.isColumn && $currentApp() === 'editor' -->
     <li class="divider"></li>
@@ -105,6 +107,7 @@ from notebook.conf import get_ordered_interpreters
     <!-- /ko -->
   </script>
 
+ % if not request.session.get("authproysso"):
   <script type="text/html" id="query-builder-context-items">
     <li data-bind="contextSubMenu: '.hue-context-sub-menu'">
       <a href="javascript:void(0);"><i class="fa fa-fw fa-magic"></i> ${ _('Project') }<i class="sub-icon fa fa-fw fa-chevron-right"></i></a>
@@ -145,14 +148,15 @@ from notebook.conf import get_ordered_interpreters
       </ul>
     </li>
   </script>
-
+%endif
+ % if not request.session.get("authproysso"):
   <script type="text/html" id="hdfs-context-items">
     <li><a href="javascript:void(0);" data-bind="hueLink: definition.url"><i class="fa fa-fw" data-bind="css: {'fa-folder-open-o': definition.type === 'dir', 'fa-file-text-o': definition.type === 'file'}"></i> ${ _('Open in File Browser') }</a></li>
     <!-- ko if: $currentApp() === 'editor' -->
     <li><a href="javascript:void(0);" data-bind="click: dblClick"><i class="fa fa-fw fa-paste"></i> ${ _('Insert at cursor') }</a></li>
     <!-- /ko -->
   </script>
-
+%endif
   <script type="text/html" id="document-context-items">
     <!-- ko if: definition().type === 'directory' -->
     <li><a href="javascript: void(0);" data-bind="click: open"><i class="fa fa-fw fa-folder-open-o"></i> ${ _('Open folder') }</a></li>
@@ -185,7 +189,9 @@ from notebook.conf import get_ordered_interpreters
   <script type="text/html" id="assist-table-entry">
     <li class="assist-table" data-bind="appAwareTemplateContextMenu: { template: 'sql-context-items', scrollContainer: '.assist-db-scrollable' }, visibleOnHover: { override: statsVisible, selector: '.table-actions' }">
       <div class="assist-actions table-actions" style="opacity: 0">
+       % if not request.session.get("authproysso"):
         <a class="inactive-action" href="javascript:void(0)" data-bind="visible: navigationSettings.showStats, click: showContextPopover, css: { 'blue': statsVisible }"><i class="fa fa-fw fa-info" title="${_('Show details')}"></i></a>
+        %endif
         <a class="inactive-action" href="javascript:void(0)" data-bind="visible: navigationSettings.openItem, click: openItem"><i class="fa fa-long-arrow-right" title="${_('Open')}"></i></a>
       </div>
       <a class="assist-entry assist-table-link" href="javascript:void(0)" data-bind="click: toggleOpen, attr: {'title': definition.title }, draggableText: { text: editorText,  meta: {'type': 'sql', 'table': tableName, 'database': databaseName, 'sourceType': sourceType} }">
@@ -244,25 +250,29 @@ from notebook.conf import get_ordered_interpreters
   </script>
 
   <script type="text/html" id="assist-db-breadcrumb">
-    <div class="assist-flex-header assist-breadcrumb">
+    <div class="assist-flex-header assist-breadcrumb">  
       <!-- ko if: selectedSource()  && ! selectedSource().selectedDatabase() && sources().length === 1 -->
       <i class="fa fa-server assist-breadcrumb-text"></i>
       <span class="assist-breadcrumb-text" data-bind="text: breadcrumb, attr: {'title': breadcrumb }"></span>
       <!-- /ko -->
       <!-- ko if: selectedSource()  && ! selectedSource().selectedDatabase() && sources().length > 1 -->
+      % if not request.session.get("authproysso"):
       <a data-bind="click: back">
         <i class="fa fa-chevron-left assist-breadcrumb-back"></i>
+        %endif
         <i class="fa fa-server assist-breadcrumb-text"></i>
         <span class="assist-breadcrumb-text" data-bind="text: breadcrumb, attr: {'title': breadcrumb }"></span>
+      % if not request.session.get("authproysso"):
       </a>
+      %endif
       <!-- /ko -->
-      <!-- ko if: selectedSource()  && selectedSource().selectedDatabase() -->
+      <!-- ko if: selectedSource()  && selectedSource().selectedDatabase() -->    
       <a data-bind="click: back">
         <i class="fa fa-chevron-left assist-breadcrumb-back" ></i>
         <i class="fa fa-database assist-breadcrumb-text"></i>
         <span class="assist-breadcrumb-text" data-bind="text: breadcrumb, attr: {'title': breadcrumb }"></span>
       </a>
-      <!-- /ko -->
+      <!-- /ko -->   
     </div>
   </script>
 
@@ -1502,7 +1512,7 @@ from notebook.conf import get_ordered_interpreters
             }
 
             if (self.tabsEnabled) {
-
+              % if not request.session.get("authproysso"):
               if (appConfig['browser'] && appConfig['browser']['interpreter_names'].indexOf('hdfs') != -1) {
                 panels.push(new AssistInnerPanel({
                   panelData: new AssistHdfsPanel({
@@ -1518,7 +1528,7 @@ from notebook.conf import get_ordered_interpreters
                   % endif
                 }));
               }
-
+              %endif
               if (appConfig['browser'] && appConfig['browser']['interpreter_names'].indexOf('s3') != -1) {
                 panels.push(new AssistInnerPanel({
                   panelData: new AssistS3Panel({
@@ -1534,7 +1544,7 @@ from notebook.conf import get_ordered_interpreters
                   % endif
                 }));
               }
-
+              % if not request.session.get("authproysso"):
               if (appConfig['browser'] && appConfig['browser']['interpreter_names'].indexOf('indexes') != -1) {
                 panels.push(new AssistInnerPanel({
                   panelData: new AssistCollectionsPanel({
@@ -1548,7 +1558,8 @@ from notebook.conf import get_ordered_interpreters
                   showNavSearch: false
                 }));
               }
-
+              %endif
+              % if not request.session.get("authproysso"):
               if (appConfig['browser'] && appConfig['browser']['interpreter_names'].indexOf('hbase') != -1) {
                 panels.push(new AssistInnerPanel({
                   panelData: new AssistHBasePanel({
@@ -1562,7 +1573,8 @@ from notebook.conf import get_ordered_interpreters
                   showNavSearch: false
                 }));
               }
-
+              %endif
+              % if not request.session.get("authproysso"):
               panels.push(new AssistInnerPanel({
                 panelData: new AssistDocumentsPanel({
                   user: params.user,
@@ -1576,7 +1588,7 @@ from notebook.conf import get_ordered_interpreters
                 rightAlignIcon: true,
                 visible: params.visibleAssistPanels && params.visibleAssistPanels.indexOf('documents') !== -1
               }));
-
+              %endif
               var vcsKeysLength = ${ len(VCS.keys()) };
               if (vcsKeysLength > 0) {
                 panels.push(new AssistInnerPanel({

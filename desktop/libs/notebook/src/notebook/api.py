@@ -555,21 +555,24 @@ def close_statement(request):
 @api_error_handler
 def autocomplete(request, server=None, database=None, table=None, column=None, nested=None):
   response = {'status': -1}
-
-
-				
+			
   # Passed by check_document_access_permission but unused by APIs
   notebook = json.loads(request.POST.get('notebook', '{}'))
   snippet = json.loads(request.POST.get('snippet', '{}'))
 
   try:
     autocomplete_data = get_api(request, snippet).autocomplete(snippet, database, table, column, nested)
+    # autocomplete_data = get_api(request, snippet).autocomplete(snippet, database, None, None, None)
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>autocomplete_data:")
+    print(autocomplete_data)
     response.update(autocomplete_data)
   except QueryExpired:
     pass
 
   response['status'] = 0
-
+  print("--------------------api.py:autocomplete")
+  print(autocomplete_data)
+  print(JsonResponse(response))
   return JsonResponse(response)
 
 

@@ -1677,12 +1677,12 @@
             <li>
               <span class="widget-label"><span data-bind="visible:$index()==0, text: $root.workflow_properties.SQLServerSP_params.label"></span></span>
               <input type="text" data-bind="value: value" placeholder="${ _('Value, e.g. US') }"/>
-              <a href="#" data-bind="click: function(){ $parent.properties.SQLServerSP_params.remove(this); }">
+              <a href="#" data-bind="click: function(){ debugger;$parent.properties.SQLServerSP_params.remove(this); }">
                 <i class="fa fa-minus"></i>
               </a>
             </li>
           </ul>
-          <a class="pointer" data-bind="click: function(){ properties.SQLServerSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
+          <a class="pointer" data-bind="click: function(){ debugger;properties.SQLServerSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
             <i class="fa fa-plus"></i> ${ _('Add param') }
           </a>
         </div>
