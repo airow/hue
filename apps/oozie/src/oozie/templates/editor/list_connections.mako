@@ -71,6 +71,7 @@ ${ layout.menubar(section='connections') }
     <thead>
       <tr>
         <th width="1%"><div class="hueCheckbox selectAll fa" data-selectables="connectionCheck"></div></th>
+        <th>${ _('Type') }</th>
         <th>${ _('Key') }</th>
         <th>${ _('Value') }</th>
 
@@ -83,7 +84,9 @@ ${ layout.menubar(section='connections') }
           <div class="hueCheckbox connectionCheck fa" data-row-selector-exclude="true"
                   data-delete-id="${ connection.id }"
           ></div>
-          
+          <td onclick='window.location.href="${ url('oozie:edit_connections', connection=connection.id) }"'>
+            ${ connection.Coon_type }
+          </td>
           <td onclick='window.location.href="${ url('oozie:edit_connections', connection=connection.id) }"'>
             ${ connection.Coon_key }
           </td>

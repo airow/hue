@@ -74,8 +74,8 @@ DEFAULT_SLA = [
 ]
 
 class DBConnManager(models.Manager):
-  def new_connection(connkey, connvalue):
-    connection = DBConn(Coon_key=connkey, Coon_value=connvalue)
+  def new_connection(connkey, connvalue, conntype="SQLServer"):
+    connection = DBConn(Coon_type=conntype, Coon_key=connkey, Coon_value=connvalue)
     return connection
   # def can_read(self, user, connection_id):
   #   connection = DBConn.objects.select_related().get(pk=connection_id).get_full_node()
@@ -83,6 +83,7 @@ class DBConnManager(models.Manager):
 
 
 class DBConn(models.Model):
+  Coon_type= models.CharField(max_length=50)
   Coon_key = models.CharField(max_length=30)
   Coon_value = models.TextField()
   objects = DBConnManager()

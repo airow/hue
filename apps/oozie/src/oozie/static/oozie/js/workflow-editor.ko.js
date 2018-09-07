@@ -494,7 +494,7 @@ var Workflow = function (vm, workflow) {
   });
 }
 
-var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
+var WorkflowEditorViewModel = function (mysqlconn_json,dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
   var self = this;
 
   self.isNested = ko.observable(true);

@@ -28,6 +28,7 @@
             return (document.cookie = [
                 encodeURIComponent(key), '=', options.raw ? value : encodeURIComponent(value),
                 options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+                // options.expires ? '; expires=Thu, 01-Jan-1970 00:00:01 GMT' : '',
                 options.path    ? '; path=' + options.path : '',
                 options.domain  ? '; domain=' + options.domain : '',
                 options.secure  ? '; secure' : ''
