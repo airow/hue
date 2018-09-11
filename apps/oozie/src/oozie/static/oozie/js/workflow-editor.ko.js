@@ -505,6 +505,7 @@ var WorkflowEditorViewModel = function (mysqlconn_json,dbconn_json,layout_json, 
   });
  
   self.connection = ko.mapping.fromJS(dbconn_json);
+  self.mysqlconnection=ko.mapping.fromJS(mysqlconn_json);
 
   self.canEdit = ko.mapping.fromJS(can_edit_json);
   self.isEditing = ko.observable(workflow_json.id == null);
