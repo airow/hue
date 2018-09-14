@@ -19,8 +19,8 @@
 
     <action name="${ node['name'] }"${ common.credentials(node['properties']['credentials']) }${ common.retry_max(node['properties']['retry_max']) }${ common.retry_interval(node['properties']['retry_interval']) }>
         <kettlejob xmlns="uri:oozie:kettlejob-action:0.1">
-            <job-tracker>${'${'}jobTracker}</job-tracker>
-            <name-node>${'${'}nameNode}</name-node>
+              <job-tracker>${'${'}jobTracker}</job-tracker>
+              <name-node>${'${'}nameNode}</name-node>
 
             ${ common.prepares(node['properties']['prepares']) }
             % if node['properties']['job_xml']:
@@ -28,25 +28,17 @@
             % endif
             ${ common.configuration(node['properties']['job_properties']) }
 
-            % if node['properties']['kettle_url']:
-              <url>${ node['properties']['kettle_url'] }</url>
-            % endif
-            % if node['properties']['repname']:
-              <repname>${ node['properties']['repname'] }</repname>
-            % endif
             % if node['properties']['jobname']:
               <jobname>${ node['properties']['jobname'] }</jobname>
             % endif
-            % if node['properties']['kettle_username']:
-              <username>${ node['properties']['kettle_username'] }</username>
-            % endif
-            % if node['properties']['kettle_password']:
-              <password>${ node['properties']['kettle_password'] }</password>
-            % endif
+            
             % if node['properties']['jobparam']:
               <jobparam>${ node['properties']['jobparam'] }</jobparam>
             % endif
-
+            
+            % if node['properties']['kettle_DBConn']:
+              <dbconn>${ node['properties']['kettle_DBConn'] }</dbconn>
+            % endif
 
             ${ common.distributed_cache(node['properties']['files'], node['properties']['archives']) }
 

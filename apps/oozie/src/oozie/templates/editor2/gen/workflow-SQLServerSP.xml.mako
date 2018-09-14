@@ -19,8 +19,8 @@
 
     <action name="${ node['name'] }"${ common.credentials(node['properties']['credentials']) }${ common.retry_max(node['properties']['retry_max']) }${ common.retry_interval(node['properties']['retry_interval']) }>
         <SQLServerSP xmlns="uri:oozie:SQLServerSP-action:0.1">
-            <job-tracker>${'${'}jobTracker}</job-tracker>
-            <name-node>${'${'}nameNode}</name-node>
+              <job-tracker>${'${'}jobTracker}</job-tracker>
+              <name-node>${'${'}nameNode}</name-node>
 
             ${ common.prepares(node['properties']['prepares']) }
             % if node['properties']['job_xml']:
@@ -37,9 +37,9 @@
             % endif  
 
             % if node['properties']['SQLServerSP_params']:
-                % for param in node['properties']['SQLServerSP_params']:
-                    <procargs>${ param['value'] }</procargs>
-                % endfor
+              % for param in node['properties']['SQLServerSP_params']:
+              <procargs>${ param['value'] }</procargs>
+              % endfor
             % endif
 
             ${ common.distributed_cache(node['properties']['files'], node['properties']['archives']) }

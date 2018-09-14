@@ -207,7 +207,11 @@
       <!-- ko if: widgetType() == 'SQLServerSP-widget' -->
       <img src="${ static('oozie/art/icon_SQLServerSP_32.png') }" class="widget-icon" alt="${ _('SQLServerSP') }">
       <!-- /ko -->
-
+      
+      <!-- ko if: widgetType() == 'MySQLSP-widget' -->
+      <img src="${ static('oozie/art/icon_MySQLSP_32.png') }" class="widget-icon" alt="${ _('MySQLSP') }">
+      <!-- /ko -->
+      
       <!-- ko if: widgetType() == 'WFLog2ES-widget' -->
       <img src="${ static('oozie/art/icon_WFLog2ES_32.png') }" class="widget-icon" alt="${ _('kettle icon') }">
       <!-- /ko -->
@@ -1457,39 +1461,12 @@
 
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.jobparam.label"></span>
-          <input type="text" class="input-xlarge" data-bind="value: properties.jobparam, attr: { placeholder: $root.workflow_properties.jobparam.help_text }" validate="nonempty"/>
+          <input type="text" class="input-xlarge" data-bind="value: properties.jobparam, attr: { placeholder: $root.workflow_properties.jobparam.help_text }"/>
         </div>
 
         <div class="airy">
-          <span class="widget-label"  data-bind="text: $root.workflow_properties.kettle_url.label"></span>
-          <input type="text" class="filechooser-input input-xlarge" data-bind="value: properties.kettle_url, attr: { placeholder: $root.workflow_properties.kettle_url.help_text }" validate="nonempty"/>
-
-          <span data-bind='foreach: $root.workflow_properties.kettle_url.options'>
-            <button class="btn" data-bind="click:function(){$parent.properties.kettle_url(value())}">
-              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.properties.kettle_url() == value() }" ></i>
-            </button>
-          </span>
-        </div>
-
-        <div class="airy">
-          <span class="widget-label" data-bind="text: $root.workflow_properties.repname.label"></span>
-          <input type="text" class="input-xlarge" data-bind="value: properties.repname, attr: { placeholder: $root.workflow_properties.repname.help_text }" validate="nonempty"/>
-
-          <span data-bind='foreach: $root.workflow_properties.repname.options'>
-            <button class="btn" data-bind="click:function(){$parent.properties.repname(value())}">
-              <i class="fa"  data-bind="text:name, css: { 'fa-check': $parent.properties.repname() == value() }" ></i>
-            </button>
-          </span>
-        </div>
-
-        <div class="airy">
-          <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_username.label"></span>
-          <input type="text" class="input-xlarge" data-bind="value: properties.kettle_username, attr: { placeholder: $root.workflow_properties.kettle_username.help_text }" validate="nonempty"/>
-        </div>
-
-        <div class="airy">
-          <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_password.label"></span>
-          <input type="text" class="input-xlarge" data-bind="value: properties.kettle_password, attr: { placeholder: $root.workflow_properties.kettle_password.help_text }" validate="nonempty"/>
+          <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_DBConn.label"></span>
+          <select data-bind="options: $root.connection,value: properties.kettle_DBConn"></select>
         </div>
 
       </div>
@@ -1609,7 +1586,7 @@
 
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.sg_logpath.label"></span>
-          <input type="text" class="input-xlarge" data-bind="value: properties.sg_logpath, attr: { placeholder: $root.workflow_properties.sg_logpath.help_text }" validate="nonempty"/>
+          <input type="text" class="input-xlarge" data-bind="value: properties.sg_logpath, attr: { placeholder: $root.workflow_properties.sg_logpath.help_text }"/>
         </div>
 
 
@@ -1677,12 +1654,81 @@
             <li>
               <span class="widget-label"><span data-bind="visible:$index()==0, text: $root.workflow_properties.SQLServerSP_params.label"></span></span>
               <input type="text" data-bind="value: value" placeholder="${ _('Value, e.g. US') }"/>
-              <a href="#" data-bind="click: function(){ debugger;$parent.properties.SQLServerSP_params.remove(this); }">
+              <a href="#" data-bind="click: function(){ $parent.properties.SQLServerSP_params.remove(this); }">
                 <i class="fa fa-minus"></i>
               </a>
             </li>
           </ul>
-          <a class="pointer" data-bind="click: function(){ debugger;properties.SQLServerSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
+          <a class="pointer" data-bind="click: function(){ properties.SQLServerSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
+            <i class="fa fa-plus"></i> ${ _('Add param') }
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <div data-bind="visible: $parent.ooziePropertiesExpanded">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-bind="attr: { href: '#sla-' + id()}" href="#sla" data-toggle="tab">${ _('SLA') }</a></li>
+        <li><a data-bind="attr: { href: '#credentials-' + id()}" data-toggle="tab">${ _('Credentials') }</a></li>
+        <li><a data-bind="attr: { href: '#transitions-' + id()}" data-toggle="tab">${ _('Transitions') }</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" data-bind="attr: { id: 'sla-' + id() }">
+          <span data-bind="template: { name: 'common-action-sla' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'credentials-' + id() }">
+          <span data-bind="template: { name: 'common-action-credentials' }"></span>
+        </div>
+
+        <div class="tab-pane" data-bind="attr: { id: 'transitions-' + id() }">
+          <span data-bind="template: { name: 'common-action-transition' }"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /ko -->
+</script>
+
+<script type="text/html" id="MySQLSP-widget">
+  <!-- ko if: $root.workflow.getNodeById(id()) -->
+  <div class="row-fluid" data-bind="with: $root.workflow.getNodeById(id())" style="padding: 10px">
+
+    <div data-bind="visible: ! $root.isEditing()">
+      <span data-bind="template: { name: 'logs-icon' }"></span>
+      exec <span data-bind="text: properties.MySQLSP_procname" /> (
+      <span data-bind="foreach: properties.MySQLSP_params">
+        <span data-bind="visible:$index()!=0">,</span>
+        <span data-bind="text: value"/>
+      </span>
+      )
+    </div>
+
+    <div data-bind="visible: $root.isEditing">
+      <div data-bind="visible: ! $parent.ooziePropertiesExpanded()" class="nowrap">
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.MySQLSP_procname.label"></span>
+          <input type="text" class="input-xlarge" data-bind="value: properties.MySQLSP_procname, attr: { placeholder: $root.workflow_properties.MySQLSP_procname.help_text }" validate="nonempty"/>
+        </div>
+
+        <div class="airy">
+          <span class="widget-label" data-bind="text: $root.workflow_properties.MySQLSP_DBConn.label"></span>
+          <select data-bind="options: $root.connection,value: properties.MySQLSP_DBConn"></select>
+        </div>
+
+        <div class="airy">
+          <ul data-bind="foreach: properties.MySQLSP_params" class="unstyled">
+            <li>
+              <span class="widget-label"><span data-bind="visible:$index()==0, text: $root.workflow_properties.MySQLSP_params.label"></span></span>
+              <input type="text" data-bind="value: value" placeholder="${ _('Value, e.g. US') }"/>
+              <a href="#" data-bind="click: function(){ $parent.properties.MySQLSP_params.remove(this); }">
+                <i class="fa fa-minus"></i>
+              </a>
+            </li>
+          </ul>
+          <a class="pointer" data-bind="click: function(){ properties.MySQLSP_params.push(ko.mapping.fromJS({'name': '', 'value': ''})); }">
             <i class="fa fa-plus"></i> ${ _('Add param') }
           </a>
         </div>
@@ -1720,8 +1766,8 @@
 
     <div data-bind="visible: ! $root.isEditing()">
       <span data-bind="template: { name: 'logs-icon' }"></span>
-      oozie url：<span data-bind="text: properties.wflog2es_url" /><br/>
-      esname：<span data-bind="text: properties.wflog2es_esname" />
+      oozie url锛?span data-bind="text: properties.wflog2es_url" /><br/>
+      esname锛?span data-bind="text: properties.wflog2es_esname" />
     </div>
 
     <div data-bind="visible: $root.isEditing">

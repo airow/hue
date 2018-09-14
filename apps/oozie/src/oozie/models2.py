@@ -1307,50 +1307,25 @@ class TeldOozieAction(Action):
 class KettleJobAction(Action):
   TYPE = 'kettlejob'
   FIELDS = {
-     'kettle_url': {
-          'name': 'kettle_url',
-          'label': 'kettle url',
-          'value': 'http://192.168.2.91:5000',
-          'help_text': 'kettle server addrs',
-          'type': 'help',
-          'width': '50%',
-          'options':[{ 'name':'生产' ,'value':'http://192.168.2.91:5000' },{ 'name': '测试','value':'http://bdpapp.chinacloudapp.cn:5500' }]
-     },
-    'kettle_username': {
-          'name': 'kettle_username',
-          'label': 'kettle usr',
-          'value': 'cluster',
-          'help_text':'kettle username',
-          'type': 'text'
-     },
-     'kettle_password': {
-          'name': 'kettle_password',
-          'label': 'kettle pwd',
-          'value': 'cluster',
-          'help_text': 'kettle password',
-          'type': 'text'
-     },
-     'repname': {
-          'name': 'repname',
-          'label': 'kettle rep',
-          'value': 'ETLRepo',
-          'help_text': 'Pentaho Repository',
-          'type': 'help',
-          'width': '30%',
-          'options':[{ 'name':'ETLRepo' ,'value':'ETLRepo' },{ 'name': 'DataRep','value':'DataRep' }]
+     'kettle_DBConn': {
+          'name': 'kettle_DBConn',
+          'label': 'Kettle DB',
+          'value': [],
+          'help_text': 'kettle server DB Key',
+          'type': ''
      },
      'jobname': {
           'name': 'jobname',
-          'label': 'job name',
+          'label': 'Job name',
           'value': '',
-          'help_text': 'job name',
+          'help_text': 'Job name',
           'type': 'text'
      },
      'jobparam': {
           'name': 'jobparam',
-          'label': 'job param',
-          'value': 'filepath=C:\\kettlework',
-          'help_text': 'Job Param, filepath=xxx',
+          'label': 'Job param',
+          'value': '',
+          'help_text': 'Job param, e.g. arg0=xxx',
           'type': 'text'
      },
      # Common
@@ -1407,14 +1382,14 @@ class KettleJobAction(Action):
 
   @classmethod
   def get_mandatory_fields(cls):
-    return [cls.FIELDS['jobname'], cls.FIELDS['jobparam'], cls.FIELDS['kettle_url'], cls.FIELDS['repname']]
+    return [cls.FIELDS['jobname']]
 
 class ESIndexAction(Action):
   TYPE = 'ESIndex'
   FIELDS = {
     'esindex_type': {
           'name': 'esindex_type',
-          'label': 'op type',
+          'label': 'Op type',
           'value': '',
           'help_text': '操作类型',
           'type': 'helpSel',
@@ -1423,28 +1398,28 @@ class ESIndexAction(Action):
      },
      'esindex_url': {
           'name': 'esindex_url',
-          'label': 'es url',
+          'label': 'ES url',
           'value': '',
           'help_text': 'ES地址',
           'type': 'text',
      },
     'esindex_hdfs': {
           'name': 'esindex_hdfs',
-          'label': 'hdfs path',
+          'label': 'Hdfs path',
           'value': '',
           'help_text':'存储索引文件的HDFS路径',
           'type': ''
      },
      'esindex_index': {
           'name': 'esindex_index',
-          'label': 'index name',
+          'label': 'Index name',
           'value': '',
           'help_text': '索引名称',
           'type': 'text'
      },
      'esindex_confirm': {
           'name': 'esindex_confirm',
-          'label': 'confirm',
+          'label': 'Confirm',
           'value': '',
           'help_text': '确认索引名称',
           'type': 'test'
@@ -1510,14 +1485,21 @@ class HSFAction(Action):
   FIELDS = {
     'sg_url': {
           'name': 'sg_url',
-          'label': _('Sg Url'),
+          'label': _('SG url'),
           'value': '',
-          'help_text': _('sg url.'),
+          'help_text': _('SG url.'),
+          'type': 'text'
+     },
+     'sg_logpath': {
+          'name': 'sg_logpath',
+          'label': _('Log path'),
+          'value': '',
+          'help_text': _('log path. e.g. /mnt/data/log'),
           'type': 'text'
      },
      'sg_date': {
           'name': 'sg_date',
-          'label': _('date'),
+          'label': _('Date'),
           'value': '',
           'help_text': '日期格式 yyyyMMdd',
           'type': 'text'
@@ -1575,28 +1557,28 @@ class HSFAction(Action):
   }
   @classmethod
   def get_mandatory_fields(cls):
-    return [cls.FIELDS['sg_url']]#, cls.FIELDS['sg_logpath']
+    return [cls.FIELDS['sg_url']]
 
 class SQLServerSPAction(Action):
   TYPE = 'SQLServerSP'
   FIELDS = {
      'SQLServerSP_procname': {
           'name': 'SQLServerSP_procname',
-          'label': _('proc name'),
+          'label': _('Proc name'),
           'value': '',
           'help_text': '存储过程名称.',
           'type': 'text'
       },
       'SQLServerSP_params': {
           'name': 'SQLServerSP_params',
-          'label': _('proc para'),
+          'label': _('Proc para'),
           'value': [],
           'help_text': '存储过程所需参数',
           'type': ''
       },
       'SQLServerSP_DBConn': {
           'name': 'SQLServerSP_DBConn',
-          'label': _('proc DB'),
+          'label': _('Proc DB'),
           'value': [],
           'help_text': '存储过程数据库',
           'type': ''
@@ -1657,37 +1639,117 @@ class SQLServerSPAction(Action):
   def get_mandatory_fields(cls):
     return [cls.FIELDS['SQLServerSP_procname']]
 
+class MySQLSPAction(Action):
+  TYPE = 'MySQLSP'
+  FIELDS = {
+     'MySQLSP_procname': {
+          'name': 'MySQLSP_procname',
+          'label': _('Proc name'),
+          'value': '',
+          'help_text': '存储过程名称.',
+          'type': 'text'
+      },
+      'MySQLSP_params': {
+          'name': 'MySQLSP_params',
+          'label': _('Proc para'),
+          'value': [],
+          'help_text': '存储过程所需参数',
+          'type': ''
+      },
+      'MySQLSP_DBConn': {
+          'name': 'MySQLSP_DBConn',
+          'label': _('Proc DB'),
+          'value': [],
+          'help_text': '存储过程数据库',
+          'type': ''
+      },
+     # Common
+     'files': {
+          'name': 'files',
+          'label': _('Files'),
+          'value': [],
+          'help_text': _('Files put in the running directory.'),
+          'type': ''
+     },
+     'archives': {
+          'name': 'archives',
+          'label': _('Archives'),
+          'value': [],
+          'help_text': _('zip, tar and tgz/tar.gz uncompressed into the running directory.'),
+          'type': ''
+     },
+     'job_properties': {
+          'name': 'job_properties',
+          'label': _('Hadoop job properties'),
+          'value': [],
+          'help_text': _('value, e.g. production'),
+          'type': ''
+     },
+     'prepares': {
+          'name': 'prepares',
+          'label': _('Prepares'),
+          'value': [],
+          'help_text': _('Path to manipulate before starting the application.'),
+          'type': ''
+     },
+     'job_xml': {
+          'name': 'job_xml',
+          'label': _('Job XML'),
+          'value': '',
+          'help_text': _('Refer to a Hadoop JobConf job.xml'),
+          'type': ''
+     },
+     'retry_max': {
+          'name': 'retry_max',
+          'label': _('Max retry'),
+          'value': [],
+          'help_text': _('Number of times, default is 3'),
+          'type': ''
+     },
+     'retry_interval': {
+          'name': 'retry_interval',
+          'label': _('Retry interval'),
+          'value': [],
+          'help_text': _('Wait time in minutes, default is 10'),
+          'type': ''
+     }
+  }
+
+  @classmethod
+  def get_mandatory_fields(cls):
+    return [cls.FIELDS['MySQLSP_procname']]
+
 class WFLog2ESAction(Action):
   TYPE = 'WFLog2ES'
   FIELDS = {
      'wflog2es_url': {
           'name': 'wflog2es_url',
-          'label': 'oozie url',
+          'label': 'Oozie url',
           'value': '',
-          'help_text': 'Oozie URL',
+          'help_text': 'Oozie url',
           'type': 'help',
           'width': '50%',
-          'options':[{ 'name':'生产' ,'value':'http://192.168.2.86:11000/oozie/' }]
+          'options':[{'name':'生产' ,'value':'http://192.168.2.86:11000/oozie/'},{'name':'测试' ,'value':'http://jnhpc.chinacloudapp.cn:11111/oozie/'}]
      },
     'wflog2es_esname': {
           'name': 'wflog2es_esname',
-          'label': 'es name',
+          'label': 'ES name',
           'value': '',
           'help_text':'ES集群名称',
           'type': 'text'
      },
      'wflog2es_esip': {
           'name': 'wflog2es_esip',
-          'label': 'es ip',
+          'label': 'ES ip',
           'value': '',
           'help_text': 'ES集群ip地址',
           'type': 'text'
      },
      'wflog2es_port': {
           'name': 'wflog2es_port',
-          'label': 'es port',
-          'value': '12300',
-          'help_text': 'ES集群端口',
+          'label': 'ES port',
+          'value': '',
+          'help_text': 'ES集群端口, e.g. 12300',
           'type': 'text'
      },
      # Common
@@ -3392,6 +3454,7 @@ NODES = {
   'ESIndex-widget': ESIndexAction,
   'HSF-widget': HSFAction,
   'SQLServerSP-widget': SQLServerSPAction,
+  'MySQLSP-widget': MySQLSPAction,
   'WFLog2ES-widget':WFLog2ESAction,
   'hive-widget': HiveAction,
   'hive2-widget': HiveServer2Action,

@@ -834,7 +834,8 @@
 
     [[[default]]]
       # Enter the filesystem uri
-      fs_defaultfs=hdfs://jnhpc01.jnhpc.b4.internal.chinacloudapp.cn:8020
+      #fs_defaultfs=hdfs://jnhpc01.jnhpc.b4.internal.chinacloudapp.cn:8020
+      fs_defaultfs=hdfs://jnhpc.chinacloudapp.cn:9030
 
       # NameNode logical name.
       ## logical_name=
@@ -875,10 +876,12 @@
       ## security_enabled=false
 
       # URL of the ResourceManager API
-      resourcemanager_api_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:8088
+      #resourcemanager_api_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:8088
+      resourcemanager_api_url=http://jnhpc.chinacloudapp.cn:9099
 
       # URL of the ProxyServer API
-      proxy_api_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:8088
+      #proxy_api_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:8088
+      proxy_api_url=http://jnhpc.chinacloudapp.cn:9099
 
       # URL of the HistoryServer API
       history_server_api_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:19888
@@ -1348,7 +1351,9 @@
 [liboozie]
   # The URL where the Oozie service runs on. This is required in order for
   # users to submit jobs. Empty value disables the config check.
-  oozie_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:11000/oozie
+  #oozie_url=http://jnhpc02.jnhpc.b4.internal.chinacloudapp.cn:11000/oozie
+  oozie_url=http://jnhpc.chinacloudapp.cn:11111/oozie
+  
 
   # Requires FQDN in oozie_url if enabled
   ## security_enabled=false

@@ -494,7 +494,7 @@ var Workflow = function (vm, workflow) {
   });
 }
 
-var WorkflowEditorViewModel = function (mysqlconn_json,dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
+var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
   var self = this;
 
   self.isNested = ko.observable(true);
@@ -505,7 +505,6 @@ var WorkflowEditorViewModel = function (mysqlconn_json,dbconn_json,layout_json, 
   });
  
   self.connection = ko.mapping.fromJS(dbconn_json);
-  self.mysqlconnection=ko.mapping.fromJS(mysqlconn_json);
 
   self.canEdit = ko.mapping.fromJS(can_edit_json);
   self.isEditing = ko.observable(workflow_json.id == null);
@@ -1346,6 +1345,7 @@ var WorkflowEditorViewModel = function (mysqlconn_json,dbconn_json,layout_json, 
   self.draggableKettleJobAction = ko.observable(bareWidgetBuilder("Kettle Job", "kettlejob-widget"));
   self.draggableHSFAction = ko.observable(bareWidgetBuilder("HSF", "HSF-widget"));
   self.draggableSQLServerSPAction = ko.observable(bareWidgetBuilder("SQLServerSP", "SQLServerSP-widget"));
+  self.draggableMySQLSPAction = ko.observable(bareWidgetBuilder("MySQLSP", "MySQLSP-widget"));
   self.draggableWFLog2ESAction = ko.observable(bareWidgetBuilder("WFLog2ES", "WFLog2ES-widget"));
   self.draggableMapReduceAction = ko.observable(bareWidgetBuilder("MapReduce job", "mapreduce-widget"));
   self.draggableSubworkflowAction = ko.observable(bareWidgetBuilder("Sub workflow", "subworkflow-widget"));

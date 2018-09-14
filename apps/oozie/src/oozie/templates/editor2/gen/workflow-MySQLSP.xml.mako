@@ -18,9 +18,9 @@
 <%namespace name="common" file="workflow-common.xml.mako" />
 
     <action name="${ node['name'] }"${ common.credentials(node['properties']['credentials']) }${ common.retry_max(node['properties']['retry_max']) }${ common.retry_interval(node['properties']['retry_interval']) }>
-        <SQLServerSP xmlns="uri:oozie:SQLServerSP-action:0.1">
-            <job-tracker>${'${'}jobTracker}</job-tracker>
-            <name-node>${'${'}nameNode}</name-node>
+        <MySQLSP xmlns="uri:oozie:MySQLSP-action:0.1">
+              <job-tracker>${'${'}jobTracker}</job-tracker>
+              <name-node>${'${'}nameNode}</name-node>
 
             ${ common.prepares(node['properties']['prepares']) }
             % if node['properties']['job_xml']:
@@ -28,23 +28,23 @@
             % endif
             ${ common.configuration(node['properties']['job_properties']) }
             
-            % if node['properties']['SQLServerSP_procname']:
-              <procname>${ node['properties']['SQLServerSP_procname'] }</procname>
+            % if node['properties']['MySQLSP_procname']:
+              <procname>${ node['properties']['MySQLSP_procname'] }</procname>
             % endif 
 
-            % if node['properties']['SQLServerSP_DBConn']:
-              <dbconn>${ node['properties']['SQLServerSP_DBConn'] }</dbconn>
+            % if node['properties']['MySQLSP_DBConn']:
+              <dbconn>${ node['properties']['MySQLSP_DBConn'] }</dbconn>
             % endif  
 
-            % if node['properties']['SQLServerSP_params']:
-                % for param in node['properties']['SQLServerSP_params']:
-                    <procargs>${ param['value'] }</procargs>
-                % endfor
+            % if node['properties']['MySQLSP_params']:
+              % for param in node['properties']['MySQLSP_params']:
+              <procargs>${ param['value'] }</procargs>
+              % endfor
             % endif
 
             ${ common.distributed_cache(node['properties']['files'], node['properties']['archives']) }
 
-        </SQLServerSP>
+        </MySQLSP>
         <ok to="${ node_mapping[node['children'][0]['to']].name }"/>
         <error to="${ node_mapping[node['children'][1]['error']].name }"/>
         ${ common.sla(node) }

@@ -448,6 +448,15 @@ ${ layout.menubar(section='workflows', is_editor=True, pullright=buttons, is_emb
           <a class="draggable-icon"><img src="${ static('oozie/art/icon_SQLServerSP_32.png') }" class="app-icon"></a>
       </div>
       <!-- /ko -->
+      
+      <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('MySQLSP') != -1 -->
+      <div data-bind="css: { 'draggable-widget': true },
+                      draggable: {data: draggableMySQLSPAction(), isEnabled: true,
+                      options: {'refreshPositions': true, 'stop': function(){ $root.isDragging(false); }, 'start': function(event, ui){ $root.isDragging(true); $root.currentlyDraggedWidget(draggableMySQLSPAction());}}}"
+          title="MySQLSP" rel="tooltip" data-placement="top">
+          <a class="draggable-icon"><img src="${ static('oozie/art/icon_MySQLSP_32.png') }" class="app-icon"></a>
+      </div>
+      <!-- /ko -->
 
       <!-- ko if: $root.availableActions().length == 0 || $root.availableActions().indexOf('WFLog2ES') != -1 -->
       <div data-bind="css: { 'draggable-widget': true },
@@ -680,7 +689,7 @@ ${ utils.submit_popup_event() }
 
   var apiHelper = ApiHelper.getInstance();
 
-  var viewModel = new WorkflowEditorViewModel(${ mysqlconn_json | n,unicode },${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+  var viewModel = new WorkflowEditorViewModel(${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
   ko.applyBindings(viewModel, $("#oozie_workflowComponents")[0]);
 
   var shareViewModel = initSharing("#documentShareModal");
