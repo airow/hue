@@ -194,11 +194,30 @@ def list_oozie_workflows(request):
     if request.GET.get('startcreatedtime'):
       kwargs['filters'].extend([('startcreatedtime', request.GET.get('startcreatedtime'))])
 
+    tmp_jobs=oozie_api.get_workflows(**kwargs).jobs
+    print(tmp_jobs)
+    print(type(tmp_jobs))
+    if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
+      legal_names=[]
+      tmp_name=request.GET.get('name')
+      for tmp_job in tmp_jobs:
+        if tmp_name in tmp_job.appName:
+          legal_names.append(str(tmp_job.appName))
+      if(legal_names!=[]):
+        kwargs['filters'].extend([('name', legal_name) for legal_name in legal_names])
+      else:
+        kwargs['filters'].append(('name', request.GET.get('name')))
+    
+    print("11111111111111111111111111")
+    print(request.GET.get('name'))
     # if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
-    #   kwargs['filters'].extend([('name', request.GET.get('name'))])
+    #   kwargs['filters'].append(('name', request.GET.get('name')))
 
     if request.GET.get('offset'):
       kwargs['offset'] = request.GET.get('offset')
+
+    # if request.GET.get('name'):
+      
 
     json_jobs = []
     total_jobs = 0
@@ -206,35 +225,35 @@ def list_oozie_workflows(request):
       kwargs['filters'].extend([('status', status) for status in request.GET.getlist('status')])
       wf_list = oozie_api.get_workflows(**kwargs)
       json_jobs = wf_list.jobs
-      print('****************************************')
-      print(json_jobs)
-      # print(json_jobs.type)
-      idx=[]
-      i=0
-      joblength=len(json_jobs)
-      while i<joblength:
-      # for my_job in json_jobs:
-        my_job=json_jobs[i]
-        i=i+1
-        print(my_job)
-        if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get(): #
-          print(request.GET.get('name'))
-          print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-          print(my_job.appName)
-          if str(request.GET.get('name')) not in str(my_job.appName):
-              print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-              print(my_job.appName)
-              # idx=json_jobs.index(my_job)
-              # print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
-              # print(idx)
-              # if idx is not NULL:
-              # del json_jobs[idx]
-              # idx=idx-1
-              i=i-1
-              del json_jobs[i]
-              joblength=len(json_jobs)
-              #print(json_jobs[idx])
-      # print(wf_list.jobs) 
+      # print('****************************************')
+      # print(json_jobs)
+      # # print(json_jobs.type)
+      # idx=[]
+      # i=0
+      # joblength=len(json_jobs)
+      # while i<joblength:
+      # # for my_job in json_jobs:
+      #   my_job=json_jobs[i]
+      #   i=i+1
+      #   print(my_job)
+      #   if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get(): #
+      #     print(request.GET.get('name'))
+      #     print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+      #     print(my_job.appName)
+      #     if str(request.GET.get('name')) not in str(my_job.appName):
+      #         print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+      #         print(my_job.appName)
+      #         # idx=json_jobs.index(my_job)
+      #         # print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+      #         # print(idx)
+      #         # if idx is not NULL:
+      #         # del json_jobs[idx]
+      #         # idx=idx-1
+      #         i=i-1
+      #         del json_jobs[i]
+      #         joblength=len(json_jobs)
+      #         #print(json_jobs[idx])
+      # # print(wf_list.jobs) 
       total_jobs = wf_list.total
 
     if request.GET.get('type') == 'progress':
