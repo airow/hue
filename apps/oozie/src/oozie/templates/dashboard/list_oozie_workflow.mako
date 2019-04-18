@@ -455,7 +455,7 @@ ${ dashboard.import_layout() }
   ko.applyBindings(actionsViewModel, $("#actions")[0]);
 
   % if layout_json != '':
-  var viewModel = new WorkflowEditorViewModel(${ mysqlconn_json | n,unicode },${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+  var viewModel = new WorkflowEditorViewModel(${ kettleconn_json | n,unicode },${ mysqlconn_json | n,unicode },${ sqlserverconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
   ko.applyBindings(viewModel, $("#graph")[0]);
   viewModel.isViewer = ko.observable(true);
   viewModel.init();

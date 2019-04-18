@@ -689,7 +689,7 @@ ${ utils.submit_popup_event() }
 
   var apiHelper = ApiHelper.getInstance();
 
-  var viewModel = new WorkflowEditorViewModel(${ dbconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
+  var viewModel = new WorkflowEditorViewModel(${ kettleconn_json | n,unicode },${ mysqlconn_json | n,unicode },${ sqlserverconn_json | n,unicode },${ layout_json | n,unicode }, ${ workflow_json | n,unicode }, ${ credentials_json | n,unicode }, ${ workflow_properties_json | n,unicode }, ${ subworkflows_json | n,unicode }, ${ can_edit_json | n,unicode });
   ko.applyBindings(viewModel, $("#oozie_workflowComponents")[0]);
 
   var shareViewModel = initSharing("#documentShareModal");

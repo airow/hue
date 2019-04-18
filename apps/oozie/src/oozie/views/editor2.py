@@ -176,23 +176,27 @@ def _edit_workflow(request, doc, workflow):
     'dbconn_json': json.dumps(docs,cls=JSONEncoderForHTML),
   })'''
 
-  Connlist = [];
-  Connmysqllist=[];
+  Connsqlserverlist = [];
+  Connmysqllist = [];
+  Connkettlelist = []
   #dic = dict();
   for obj in DBConn.objects.all():
     #dic.setdefault(obj.Coon_key, []).append(obj.Coon_value)  
     #if isinstance(obj,DBConn)
         print obj.Coon_key;
+        print '-------------------------------------';
         if(obj.Coon_type=="SQLServer"):
-          Connlist.append(obj.Coon_key);
-          print '-------------------------------------';
+          Connsqlserverlist.append(obj.Coon_key);
         #print dic;
-          print json.dumps(Connlist,cls=JSONEncoderForHTML);
+          #print json.dumps(Connsqlserverlist,cls=JSONEncoderForHTML);
         if(obj.Coon_type=="MySQL"):
           Connmysqllist.append(obj.Coon_key);  
+        if(obj.Coon_type=="Kettle"):
+          Connkettlelist.append(obj.Coon_key);
   return render('editor2/workflow_editor.mako', request, {
+      'kettleconn_json':json.dumps(Connkettlelist,cls=JSONEncoderForHTML),
       'mysqlconn_json':json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
-      'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
+      'sqlserverconn_json': json.dumps(Connsqlserverlist,cls=JSONEncoderForHTML),
       'layout_json': json.dumps(workflow_data['layout'], cls=JSONEncoderForHTML),
       'workflow_json': json.dumps(workflow_data['workflow'], cls=JSONEncoderForHTML),
       'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML),

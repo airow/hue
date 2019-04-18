@@ -451,26 +451,30 @@ def list_oozie_workflow(request, job_id):
     }
     return JsonResponse(return_obj, encoder=JSONEncoderForHTML)
 
-  Connlist = [];
+  Connsqlserverlist = [];
+  Connmysqllist = [];
+  Connkettlelist = []
   #dic = dict();
-  Connmysqllist=[];
   for obj in DBConn.objects.all():
     #dic.setdefault(obj.Coon_key, []).append(obj.Coon_value)  
     #if isinstance(obj,DBConn)
         print obj.Coon_key;
+        print '-------------------------------------';
         if(obj.Coon_type=="SQLServer"):
-          Connlist.append(obj.Coon_key);
-          print '-------------------------------------';
+          Connsqlserverlist.append(obj.Coon_key);
         #print dic;
-          print json.dumps(Connlist,cls=JSONEncoderForHTML);
+          #print json.dumps(Connsqlserverlist,cls=JSONEncoderForHTML);
         if(obj.Coon_type=="MySQL"):
-          Connmysqllist.append(obj.Coon_key);
+          Connmysqllist.append(obj.Coon_key);  
+        if(obj.Coon_type=="Kettle"):
+          Connkettlelist.append(obj.Coon_key);
   if request.GET.get('graph'):
     return render('dashboard/list_oozie_workflow_graph.mako', request, {
       'oozie_workflow': oozie_workflow,
       'workflow_graph': workflow_graph,
-      'mysqlconn_json': json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
-      'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
+      'kettleconn_json':json.dumps(Connkettlelist,cls=JSONEncoderForHTML),
+      'mysqlconn_json':json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
+      'sqlserverconn_json': json.dumps(Connsqlserverlist,cls=JSONEncoderForHTML),
       'layout_json': json.dumps(workflow_data.get('layout', ''), cls=JSONEncoderForHTML) if workflow_data else '',
       'workflow_json': json.dumps(workflow_data.get('workflow', ''), cls=JSONEncoderForHTML) if workflow_data else '',
       'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML) if credentials else '',
@@ -502,8 +506,9 @@ def list_oozie_workflow(request, job_id):
     'parameters': dict((var, val) for var, val in parameters.iteritems() if var not in ParameterForm.NON_PARAMETERS and var != 'oozie.use.system.libpath' or var == 'oozie.wf.application.path'),
     'has_job_edition_permission': has_job_edition_permission,
     'workflow_graph': workflow_graph,
-    'mysqlconn_json': json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
-    'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML),
+    'kettleconn_json':json.dumps(Connkettlelist,cls=JSONEncoderForHTML),
+    'mysqlconn_json':json.dumps(Connmysqllist,cls=JSONEncoderForHTML),
+    'sqlserverconn_json': json.dumps(Connsqlserverlist,cls=JSONEncoderForHTML),
     'layout_json': json.dumps(workflow_data.get('layout', ''), cls=JSONEncoderForHTML) if workflow_data else '',
     'workflow_json': json.dumps(workflow_data.get('workflow', ''), cls=JSONEncoderForHTML) if workflow_data else '',
     'credentials_json': json.dumps(credentials.credentials.keys(), cls=JSONEncoderForHTML) if credentials else '',

@@ -494,7 +494,7 @@ var Workflow = function (vm, workflow) {
   });
 }
 
-var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
+var WorkflowEditorViewModel = function (kettleconn_json,mysqlconn_json,sqlserverconn_json,layout_json, workflow_json, credentials_json, workflow_properties_json, subworkflows_json, can_edit_json) {
   var self = this;
 
   self.isNested = ko.observable(true);
@@ -504,7 +504,10 @@ var WorkflowEditorViewModel = function (dbconn_json,layout_json, workflow_json, 
     huePubSub.publish('oozie.draggable.section.change', newVal);
   });
  
-  self.connection = ko.mapping.fromJS(dbconn_json);
+  //self.connection = ko.mapping.fromJS(dbconn_json);
+  self.kettleconn = ko.mapping.fromJS(kettleconn_json);
+  self.mysqlconn = ko.mapping.fromJS(mysqlconn_json);
+  self.sqlserverconn = ko.mapping.fromJS(sqlserverconn_json);
 
   self.canEdit = ko.mapping.fromJS(can_edit_json);
   self.isEditing = ko.observable(workflow_json.id == null);

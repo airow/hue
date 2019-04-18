@@ -1466,7 +1466,7 @@
 
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.kettle_DBConn.label"></span>
-          <select data-bind="options: $root.connection,value: properties.kettle_DBConn"></select>
+          <select data-bind="options: $root.kettleconn,value: properties.kettle_DBConn"></select>
         </div>
 
       </div>
@@ -1646,7 +1646,7 @@
 
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.SQLServerSP_DBConn.label"></span>
-          <select data-bind="options: $root.connection,value: properties.SQLServerSP_DBConn"></select>
+          <select data-bind="options: $root.sqlserverconn,value: properties.SQLServerSP_DBConn"></select>
         </div>
 
         <div class="airy">
@@ -1715,7 +1715,7 @@
 
         <div class="airy">
           <span class="widget-label" data-bind="text: $root.workflow_properties.MySQLSP_DBConn.label"></span>
-          <select data-bind="options: $root.connection,value: properties.MySQLSP_DBConn"></select>
+          <select data-bind="options: $root.mysqlconn,value: properties.MySQLSP_DBConn"></select>
         </div>
 
         <div class="airy">
