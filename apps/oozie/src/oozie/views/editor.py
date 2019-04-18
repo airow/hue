@@ -74,19 +74,10 @@ def list_workflows(request):
   })
 
 def list_connections(request):
-  Connlist = [];
-  for obj in DBConn.objects.all():
-        print obj.Coon_key;
-        if(obj.Coon_type=="SQLServer"):
-          Connlist.append(obj.Coon_key);
-          print '-------------------------------------';
-          print json.dumps(Connlist,cls=JSONEncoderForHTML);
 
-  #'dbconn_json': json.dumps(Connlist,cls=JSONEncoderForHTML)
-  #connection=DBConn()
   data = DBConn.objects.all()
   print data
-  print json.dumps(Connlist,cls=JSONEncoderForHTML)
+  # print json.dumps(Connlist,cls=JSONEncoderForHTML)
 
   return render('editor/list_connections.mako', request, {
     'jobs': data,
@@ -380,17 +371,19 @@ def edit_connections(request, connection):
   if request.method == 'POST':
     connection_form = ConnectionForm(request.POST, instance=conn0)
     if connection_form.is_valid():
+      print(">>>>>>>>>>>>>>>>>>>>type(connection_form):")
+      print(">>>>>>>>>>>>>>>>>>>>>>connection_form.Coon_key:"+str(connection_form.Coon_key))
+      print(">>>>>>>>>>>>>>>>>>>>>>connection_form.Coon_type:"+str(connection_form.Coon_type))
       try:
-        DBConn.objects.get(Coon_key=connection_form.Coon_key) 
-        print(connection_form.Coon_key)    
+        DBConn.objects.get(Coon_key=connection_form.Coon_key,Coon_type=connection_form.Coon_type)
       except:
         conn = connection_form.save()
-        print(conn)
+        print(">>>>>>>>>>>>>>>>>>>>>>Coon:"+str(conn))
         return redirect(reverse('oozie:list_connections'))
       else:
         if (connection_form.Coon_key==old_key):
           conn = connection_form.save()
-          print(conn)
+          print(">>>>>>>>>>>>>>>>>>>>>>Coon2:"+str(conn))
           return redirect(reverse('oozie:list_connections'))          
         else:
           print(connection_form.Coon_key)
@@ -565,7 +558,9 @@ def create_connection(request):
   # connection = DBConn.objects.new_connection('', '')
 
   connection = DBConn()
-
+  print('-----------------------------------------------------')
+  print(connection)
+  print('-----------------------------------------------------')
   if request.method == 'POST':
     connection_form = ConnectionForm(request.POST, instance=connection)
 

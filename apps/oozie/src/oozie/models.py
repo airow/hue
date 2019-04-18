@@ -27,6 +27,7 @@ from datetime import datetime,  timedelta
 from string import Template
 from itertools import chain
 
+from django import forms
 from django.db import models, transaction
 from django.db.models import Q
 from django.core.urlresolvers import reverse
@@ -73,30 +74,23 @@ DEFAULT_SLA = [
     {'key': 'upstream-apps', 'value': ''},
 ]
 
+# class EnumDBConnType(models.Model):
+#   enum_value=models.CharField(max_length=50)
+#   str_value=models.CharField(max_length=50)
+
+
 class DBConnManager(models.Manager):
-  def new_connection(connkey, connvalue, conntype="SQLServer"):
+  def new_connection(connkey, connvalue, conntype):
     connection = DBConn(Coon_type=conntype, Coon_key=connkey, Coon_value=connvalue)
     return connection
-  # def can_read(self, user, connection_id):
-  #   connection = DBConn.objects.select_related().get(pk=connection_id).get_full_node()
-  #   return connection.can_read(user)
 
 
 class DBConn(models.Model):
+
   Coon_type= models.CharField(max_length=50)
-  Coon_key = models.CharField(max_length=30)
-  Coon_value = models.TextField()
+  Coon_key = models.CharField(max_length=50)
+  Coon_value = models.CharField(max_length=180)
   objects = DBConnManager()
-  # owner = models.ForeignKey(User, db_index=True, verbose_name=_t('Owner'), help_text=_t('Person who can modify the job.')) # Deprecated
-  # def is_editable(self, user):
-  #   return user.is_superuser or self.owner == user or self.doc.get().can_write(user)
-  # doc = generic.GenericRelation(Document, related_name='oozie_doc')
-  # def can_read(self, user):
-  #   try:
-  #     return self.doc.get().can_read(user)
-  #   except Exception, e:
-  #     LOG.error('can_read failed because the object has more than one document: %s' % self.doc.all())
-  #     raise e
 
 
 class JobManager(models.Manager):

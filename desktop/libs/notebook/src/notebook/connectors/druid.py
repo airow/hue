@@ -22,6 +22,8 @@ import json
 import sys
 import codecs
 import logging
+import dateutil
+import datetime
 
 from django.utils.translation import ugettext as _
 
@@ -104,15 +106,30 @@ class DruidApi(Api):
       raise AuthenticationRequired()
 
     table = self._execute(notebook, snippet)
+    data = table['data']
+    utcoffset=table['offset']
+    stroffset=table['str_offset']
+    print(stroffset)
+    print utcoffset
     print("++++++++++++++++++++++++++++++++++++")
-    print(table)
-    # data = list(table.rows())
-    data = table
-    print("++++++++++++++++++++++++++++++++++++")
-    print(data)
-    print(type(data))
+
+
     if data:
       has_result_set=True
+      for i,val in enumerate(data):
+        if(val.has_key('__time')):
+          str_time=val['__time']
+          date_time=dateutil.parser.parse(str_time)
+          if(utcoffset!=None):
+            date_time=date_time+utcoffset
+          str_time=date_time.strftime("%Y-%m-%dT%H:%M:%S.%f")
+          str_time=str_time[0:23]
+          if((utcoffset!=None)&(utcoffset!=datetime.timedelta(0,0))):
+            str_time=str_time+stroffset
+            # "+"+str(utcoffset)[0:5]
+          else:
+            str_time=str_time+"+00:00"    
+          val['__time']=str_time
     else:   
       has_result_set=False
     # has_result_set = data is not None
@@ -169,9 +186,6 @@ class DruidApi(Api):
       wr = csv.writer(f, dialect='excel',delimiter=',',escapechar='\\')
       # "word" is a "list" type of data which represents one record from the result set
       for word in mydict: 
-        print("00000000000000000000000000000000000000000000000000\n")
-        print(word)
-        print("\n**************************************************\n") 
         i=len(word)
         temp=word
         # while i>=0:
@@ -186,7 +200,12 @@ class DruidApi(Api):
 
   def download(self, notebook, snippet, format):
     #raise PopupException('Downloading is not supported yet')
+
+    # my own machine
     filepath='result.csv'
+
+    #test and production environment 
+    # filepath='/usr/local/hue/result.csv'
     np.set_printoptions(suppress=True)
     response=self.execute( notebook, snippet)
     os.remove(filepath)

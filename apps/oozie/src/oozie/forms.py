@@ -37,6 +37,11 @@ from oozie.models import Workflow, Node, Java, Mapreduce, Streaming, Coordinator
 
 LOG = logging.getLogger(__name__)
 
+SELVALUE=(
+    ('SQLServer','SQLServer'),
+    ('Kettle','Kettle'),
+    ('MySQL','MySQL')
+    )
 
 class ParameterForm(forms.Form):
   name = forms.CharField(max_length=1024, widget=forms.widgets.HiddenInput())
@@ -87,13 +92,21 @@ class WorkflowForm(forms.ModelForm):
 
 
 class ConnectionForm(forms.ModelForm):
+      
+  Coon_type=forms.ChoiceField(label=u"Coon_Type",required=True, choices=SELVALUE)
+
   class Meta:
     model = DBConn
+    fields = ('Coon_type','Coon_key','Coon_value')
     widgets = {
-      'Coon_type': forms.TextInput(attrs={'class': 'span5'}),
-      'Coon_key': forms.TextInput(attrs={'class': 'span5'}),
+      'Coon_key': forms.TextInput(),
       'Coon_value': forms.TextInput(attrs={'class': 'span5'}),
     }
+
+    def __init__(self, *args, **kwargs):
+        super(ConnectionForm, self).__init__(*args, **kwargs)
+
+
 
   def clean_Coon_value(self):
     connectionvalue=self.cleaned_data['Coon_value']
@@ -150,14 +163,6 @@ class ConnectionForm(forms.ModelForm):
         msg=u"error: No mysql"
         self._errors["Coon_value"] = self.error_class([msg])
         return
-
-      # if re.match(r"(.*databaseName)+?",connectionvalue,re.M|re.I|re.S):
-      #   pass
-      # else:
-      #   msg=u"error: No databaseName"
-      #   self._errors["Coon_value"] = self.error_class([msg])
-      #   return
-
       if re.match(r"(.*user)+?",connectionvalue,re.M|re.I|re.S):
          pass 
       else:
@@ -171,12 +176,39 @@ class ConnectionForm(forms.ModelForm):
         msg=u"error: No password"
         self._errors["Coon_value"] = self.error_class([msg])
         return
+    elif(connectiontype=="Kettle"):
+      if re.match(r"^(http:)+?",connectionvalue,re.M|re.I|re.S):
+        pass 
+      else:
+        msg=u"error: Error: kettle server"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+      if re.match(r"^(.*rep)+?",connectionvalue,re.M|re.I|re.S):
+        pass 
+      else:
+        msg=u"error: No repository"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+      if re.match(r"(.*user)+?",connectionvalue,re.M|re.I|re.S):
+         pass 
+      else:
+        msg=u"error: No user"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
+
+      if re.match(r"(.*pass)+?",connectionvalue,re.M|re.I|re.S):
+        pass
+      else:
+        msg=u"error: No password"
+        self._errors["Coon_value"] = self.error_class([msg])
+        return
     else:
-        msg=u"error: Wrong Type"
+        msg=u"error: Connection Type"
         self._errors["Coon_type"] = self.error_class([msg])
         return      
     self.Coon_value=connectionvalue
     self.Coon_key=connectionkey
+    self.Coon_type=connectiontype
     return connectionvalue  
 
   # def get_Coon_value(self):

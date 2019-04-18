@@ -696,6 +696,22 @@
   [[interpreters]]
     # Define the name and how to connect and execute the language.
 
+    [[[elasticsearch]]]
+      name = Elasticsearch
+      interface=elasticsearch
+      ## Specific options for connecting to the elasticsearch server.
+      ## url: Elasticsearch server address
+      ## queryUrl: Elasticsearch like sql query address
+      options='{"clusters":"ESLog2,ESLog,ESBiz","ESLog2.url": "http://hdpjntest.chinacloudapp.cn:12200", "ESLog2.queryUrl":"http://hdpjntest.chinacloudapp.cn:808/TeldBigData/ES","ESLog.url": "http://hdpjntest.chinacloudapp.cn:12200", "ESLog.queryUrl":"http://hdpjntest.chinacloudapp.cn:808/TeldBigData/ES","ESBiz.url": "http://hdpjntest.chinacloudapp.cn:12200", "ESBiz.queryUrl":"http://hdpjntest.chinacloudapp.cn:808/TeldBigData/ES"}'
+
+    [[[druid]]]
+       name = Druid
+       interface=druid
+       ## Specific options for connecting to the druid server. like sql use plyql
+       ## url: druid restful address
+       ## host: druid like sql query host
+       ## port: druid like sql query port 
+       options='{"clusters":"DruidPro,DruidTest","DruidPro.url": "http://telddruidteal.chinacloudapp.cn:8082/druid/v2/datasources", "DruidPro.host": "telddruidteal.chinacloudapp.cn", "DruidPro.port": "3307","DruidTest.url": "http://telddruidteal.chinacloudapp.cn:8082/druid/v2/datasources", "DruidTest.host": "telddruidteal.chinacloudapp.cn", "DruidTest.port": "3307"}'											
     [[[hive]]]
       # The name of the snippet.
       name=Hive
@@ -1499,6 +1515,40 @@
       ## options={}
 
 
+			 
+							   
+								 
+
+																   
+																			  
+								
+				
+
+											 
+				
+					 
+				 
+				  
+
+													 
+													 
+
+															   
+					  
+						   
+									   
+
+
+																	  
+				
+
+																
+								   
+								
+
+															   
+															
+				   
 ###########################################################################
 # Settings to configure SAML
 ###########################################################################

@@ -210,7 +210,7 @@ def get_api(request, snippet):
   print('get_api-request.user:')  
   print(request.user)
   print('get_api-request.snippet:') 
-  print(snippet)
+  # print(snippet)
   
   if snippet.get('wasBatchExecuted'):
     return OozieApi(user=request.user, request=request)
@@ -221,7 +221,7 @@ def get_api(request, snippet):
   if not interpreter:
     raise PopupException(_('Snippet type %(type)s is not configured in hue.ini') % snippet)
   interpreter = interpreter[0]
-  print('interpreter:')
+  print('-----base.py get_abi interpreter:')
   print(interpreter)					   					
   interface = interpreter['interface']
   print('interface:')
@@ -235,10 +235,13 @@ def get_api(request, snippet):
     interface = 'dataeng'
 
   if interface == 'hiveserver2':
+    # print(">>>>>>>>>>>>>>>>>>>>>>hiveserver2<<<<<<<<<<<<<<<<<<<<<<<<<")
     return HS2Api(user=request.user, request=request)
   elif interface == 'elasticsearch':
+    # print("*****************************elasticsearch<<<<<<<<<<<<<<<<<<<<<<<<<")
     return ElasticsearchApi(request.user, interpreter=interpreter)
   elif interface == 'template':
+    # print(">>>>>>>>>>>>>>>>>>>>>>template<<<<<<<<<<<<<<<<<<<<<<<<<")
     return TemplateApi(request.user, interpreter=interpreter)
   elif interface == 'druid':
     return DruidApi(request.user, interpreter=interpreter)
