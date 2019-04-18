@@ -141,13 +141,13 @@ class TemplateClient():
     # print(requrl)
     req = urllib2.Request(url=requrl)
     print(type(req))
-    print(str(req))
+    # print(str(req))
     res_data = urllib2.urlopen(req)
     print(type(res_data))
-    print(str(res_data))
+    # print(str(res_data))
     res = res_data.read()
     print(type(res))
-    print(str(res))
+    # print(str(res))
     data = json.loads(res);
     # print("-8-8-8-8-------------8888888888888888888888888")
     # print(data)
@@ -162,7 +162,7 @@ class TemplateClient():
     clusters = self.options['clusters']
 
     databases = clusters.split(",")
-    print(databases)
+    # print(databases)
     return databases
 
   def get_tables(self, database):

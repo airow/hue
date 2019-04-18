@@ -95,12 +95,13 @@ class ElasticsearchApi(Api):
 
   @query_error_handler
   def execute(self, notebook, snippet):
+    print("--------------------------------elasticsearch.py----------------------")
     if self.db is None:
       raise AuthenticationRequired()
     
     resultSet = query_and_fetch(self.db, snippet['statement'],snippet['database'],1000)
     print(type(resultSet))
-    print(resultSet)
+    # print(resultSet)
     # while i<len_tuple:
     # has_result_set = resultSet is not None
     data = resultSet[0]
@@ -111,7 +112,7 @@ class ElasticsearchApi(Api):
     # if 'errorMessage' in data[0]:
     #   raise Exception(data[0].get('exceptionStack'))
     print(has_result_set)
-    print(data)
+    # print(data)
     return {
       'sync': True,
       'has_result_set': has_result_set,
@@ -175,13 +176,13 @@ class ElasticsearchApi(Api):
   def dict2csv(self,mydict,file):
       np.set_printoptions(suppress=True)
       print('77777777777777777777777777777777777777777777')
-      print(file)
+      # print(file)
       f=codecs.open(file,'ab','utf_8_sig')
     # with open(file, 'ab') as f:
       wr = csv.writer(f, dialect='excel',delimiter=',',escapechar='\\')    # list=wr.read  ,quoting=csv.QUOTE_NONE
       for word in mydict: 
         print("00000000000000000000000000000000000000000000000000\n")
-        print(word)
+        # print(word)
         print("\n**************************************************\n") 
         i=len(word)
         temp=word
@@ -198,7 +199,7 @@ class ElasticsearchApi(Api):
       os.remove(filepath)
     dictHead=response["result"]["meta"]
     print("------------------------------dict_head-------------------------")
-    print(dictHead)
+    # print(dictHead)
     mylist=[]
     while len(dictHead)>0 :
       temp=dictHead.pop()
@@ -207,10 +208,10 @@ class ElasticsearchApi(Api):
     mylist.reverse()
     mylist=[mylist]
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>mylist<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-    print(mylist)
+    # print(mylist)
     dictData=response["result"]["data"]
     print("-----------------------------dict_data-------------------------------")
-    print(dictData)
+    # print(dictData)
 
     resultData=mylist+dictData
     #dictData.replace("\","\\")
@@ -247,21 +248,26 @@ class ElasticsearchApi(Api):
     assist = Assist(self.db)
     response = {'status': -1}
 
+    # print("--------------------------assist:"+str(assist))
     if database is None:
       response['databases'] = assist.get_databases()
+      # print("--------------------------databases:"+str(database))
     elif table is None:
       tables_meta = []
       for t in assist.get_tables(database):
         tables_meta.append({'name': t, 'type': 'Table', 'comment': ''})
       response['tables_meta'] = tables_meta
+      # print("--------------------------tables_meta:"+str(tables_meta))
     elif column is None:
       columns = assist.get_columns(database, table)
       response['columns'] = [col['name'] for col in columns]
       response['extended_columns'] = columns
+      # print("--------------------------columns:"+str(columns))
     else:
       columns = assist.get_columns(database, table)
       response['name'] = next((col['name'] for col in columns if column == col['name']), '')
       response['type'] = next((col['type'] for col in columns if column == col['name']), '')
+      # print("--------------------------response:"+str(response))
 
     response['status'] = 0
     return response
@@ -295,15 +301,15 @@ class Assist():
     self.db = db
 
   def get_databases(self):
-    print("-------------------elasticsearch.py")
+    print("-------------------elasticsearch.py get_databases------------------")
     databases = self.db.get_databases()
-    print(databases)
+    # print(databases)
     return databases
 
   def get_tables(self, database):
-    print("-------------------elasticsearch.py")
+    print("-------------------elasticsearch.py get tables--------------------")
     tables = self.db.get_tables(database)
-    print(tables)
+    # print(tables)
     return tables
 
   def get_columns(self, database, table):

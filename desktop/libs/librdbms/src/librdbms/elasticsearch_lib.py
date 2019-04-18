@@ -32,7 +32,9 @@ def query_and_fetch(db, statement, database,n=None):
   data = None
   statement = statement.rstrip(';')
   # statement = statement.replace('.','/')
-  print('>>>>>>>>>>>statement:  '+statement)
+  print('>>>>>>>>>>> elaticsearch_lib.py query_and fetch statement:  '+statement)
+  # print("------------------------------type(db):"+str(type(db)))
+  # print(db)
   data = db.execute_statement(statement,database)
   # print data
 				  
@@ -46,24 +48,26 @@ class ElasticsearchClient():
     #self.queryUrl = self.options['queryUrl']
 
   def execute_statement(self, statement, database):
-    print('*********************ES:execute_statement************************************')
-																																													 
-    print(statement)
-    ind_semicolon=statement.find(";")#find("\;")
-    print(ind_semicolon)
-																						  
-    if(ind_semicolon!=-1):
-      lower_statement=statement[0:ind_semicolon]
-      statement=statement[0:ind_semicolon]
-																						
+    print('*********************elasticsearch_lib.py ES:execute_statement************************************')																																												 
+    utf8statement=statement.encode("utf-8")
+    lastcharactor=utf8statement[-1]
+    ind_lastcharactor=len(utf8statement)
+    print("----------------------------ind_lastcharactor:"+str(ind_lastcharactor))
+    print("----------------------------lastcharactor:"+lastcharactor)
+
+    if(lastcharactor==";"):
+      lower_statement=statement[0:(ind_lastcharactor-1)]
+      statement=statement[0:(ind_lastcharactor-1)]																						
       lower_statement=lower_statement.lower()
     else:
       lower_statement=statement.lower()
-
-																						  
+    print(statement)
+    print(lower_statement)
+																			  
     list_lower_statement=lower_statement.split()
     list_statement=statement.split()
-
+    print(">>>>>>>>>>>>>>>>>>>>list_lower_statement:")
+    print(list_lower_statement)
     if(cmp(list_lower_statement[0],"update")==0):
       print('-------------------UPDATE operation is not allowed-----------------')
       return   
@@ -95,6 +99,9 @@ class ElasticsearchClient():
     if(cmp(list_lower_statement[0],"select")==0): 
       ind_limit=list_lower_statement.index("limit")
       limit_value=list_lower_statement[ind_limit+1]
+      ind_comma=limit_value.find(",")
+      if(ind_comma!=-1):
+        limit_value=limit_value[ind_comma+1:]
       print('---------------------limit_value:'+limit_value+'--------------------')
       es_limit_value=10000
       if(int(limit_value)>es_limit_value):
@@ -110,7 +117,8 @@ class ElasticsearchClient():
       res_data = urllib2.urlopen(req)																								 			 
       res = res_data.read()																								 		
       data = json.loads(res);
-
+      # print("-----------------------data:"+str(data))
+      
       return data, res
 
   def catAliases(self,database):
@@ -123,12 +131,12 @@ class ElasticsearchClient():
     parsed = pd.read_table(self.url + '/_cat/indices?v', sep=r'\s+')
     parsed2=pd.read_table(self.url+'/_template')
     print("-3-3-3-3----------------------------33333333333333333")
-    print(parsed)
+    # print(parsed)
     print("<<<<<<<<<<<<<<<<<<<<<<<<<<<^^^^^^^^^^^^^^^^^^^^^^^^^^^^^>>>>>>>>>>>>>>>>>>")
-    print(parsed2)
+    # print(parsed2)
     index = parsed.loc[parsed['status'] == 'open']['index']
     print("-4-4-4-4--------------------------4444444444444444444444")
-    print(index)
+    # print(index)
     return index
 
   def _mappings(self, database, alias):
@@ -147,9 +155,9 @@ class ElasticsearchClient():
     res = res_data.read()
     data = json.loads(res);
     print("-8-8-8-8-------------8888888888888888888888888")
-    print(data)
+    # print(data)
     print("-9-9-9-9----------------------9999999999999999999999999")
-    print(res)
+    # print(res)
     return data, res
 
   def get_databases(self):        
@@ -159,22 +167,22 @@ class ElasticsearchClient():
     clusters = self.options['clusters']
 
     databases = clusters.split(",")
-    print(databases)
+    # print(databases)
     return databases
 
   def get_tables(self, database):
     print("0000000000000000000000000")
     print('database:')
-    print(database)
+    # print(database)
     
     index = self.catAliases(database)
     print("11111111111111111111111")
-    print(index)
+    # print(index)
     temp_tables=[elem for elem in index if str('.') not in str(elem)]
     # tables = list(set(index.tolist()))
     tables =temp_tables
     print("22222222222222222222222222222222222")
-    print(tables)
+    # print(tables)
     return tables
 
 
@@ -182,28 +190,28 @@ class ElasticsearchClient():
     databaseMappings = self._mappings(database,table)
     mappings = databaseMappings[0][table]["mappings"]
     print("3333333333333333333333333333")
-    print(mappings)
+    # print(mappings)
     properties = mappings[mappings.keys()[0]].get("properties")
     print("44444444444444444444444444444444")
-    print(properties)
+    # print(properties)
 
     if names_only:
       columns = [key for key in properties]
     else:
       columns = [dict(name=key, type=properties[key]['type'], comment='') for key in properties]
     print("555555555555555555555555555555")
-    print(columns)
+    # print(columns)
     return columns 
 
 
   def get_sample_data(self, database, table, column=None, limit=100):
     column = '`%s`' % column if column else '*'
     print("6666666666666666666666666666666")
-    print(column)
+    # print(column)
     statement = "SELECT %s FROM `%s` LIMIT %d" % (column, table, limit)
     print("7777777777777777777777777777777777")
-    print(statement)
+    # print(statement)
     print("888888888888888888888888888888888888")
-    print(self.execute_statement(statement,database))
+    # print(self.execute_statement(statement,database))
     return self.execute_statement(statement,database)
 

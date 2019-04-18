@@ -17,9 +17,13 @@
 
 import json
 import logging
+import requests
+import datetime
 
 import sqlparse
 
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
 from django.core.urlresolvers import reverse
 from django.db.models import Q
 from django.utils.translation import ugettext as _
@@ -43,6 +47,7 @@ LOG = logging.getLogger(__name__)
 
 DEFAULT_HISTORY_NAME = ''
 
+url="http://hdpjntest.chinacloudapp.cn:12200/"
 
 @require_POST
 @api_error_handler
@@ -89,6 +94,7 @@ def create_session(request):
 @check_document_access_permission()
 @api_error_handler
 def close_session(request):
+  print("----------------------api.py:close_session---------------------")
   response = {'status': -1}
 
   session = json.loads(request.POST.get('session', '{}'))
@@ -105,13 +111,54 @@ def _execute_notebook(request, notebook, snippet):
   history = None
 
   historify = (notebook['type'] != 'notebook' or snippet.get('wasBatchExecuted')) and not notebook.get('skipHistorify')
+  # # ----------------save user query log to ES--------------
+  # save_statement=snippet['statement']
+  # print("************save_statement:"+save_statement)
+  # now_time=datetime.datetime.now().strftime('%Y%m%d %H:%M:%S')
+  # now_date=str(now_time)[0:6]
+  # print("----------------now_time:"+str(now_time))
+  # print("----------------now_date:"+str(now_date))
+  # save_data={}
+  # save_data['user']=str(request.user)
+  # save_data['time']=str(now_time)
+  # save_data['sql']=save_statement
+  # index_json={"Context":str(save_data)}
+  # print(">>>>>>>>>>>>>>>>>>>>_execute_notebook index_json:"+str(index_json))
+  # index_name="useroplog_"+now_date
+  # index_type="useroplog"
+  # requrl=url+index_name+"/"+index_type
+  # headers={
+  #     'Content-Type':"application/json;charset=UTF-8"
+  #   }
+  # write_es_response = requests.post(requrl,data=json.dumps(index_json),headers=headers)
+  # print(">>>>>>>>>>>>>>>>>>>>>>>>>>write_es_response:"+str(write_es_response.text))
+  # # ----------------save user query log to ES end--------------
+
+  # ----------------save user query log to Kafka--------------
+  # save_statement=snippet['statement']
+  # now_time=datetime.datetime.now().strftime('%Y%m%d %H:%M:%S')
+  # producer = KafkaProducer(bootstrap_servers='telddruidteal.chinacloudapp.cn:9095')
+  # save_data={}
+  # save_data['user']=str(request.user)
+  # save_data['time']=str(now_time)
+  # save_data['sql']=str(save_statement)
+  # index_json={"UserQueryLog":str(save_data)}
+  # msg=json.dumps(index_json)
+  # print("-------------------producer.send()------------------")
+  # producer.send("test_userquerylog",msg,partition=0)
+  # producer.close()
+
+  # ----------------save user query log to Kafka end--------------
 
   try:
     try:
       if historify:
         history = _historify(notebook, request.user)
         notebook = Notebook(document=history).get_data()
-      
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>notebook<<<<<<<<<<<<<<<<<<<<<<")
+        # print(notebook)
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>request.user<<<<<<<<<<<<<<<<<<<<<<<")
+        # print(request.user)
 
       response['handle'] = get_api(request, snippet).execute(notebook, snippet)
 
@@ -121,6 +168,8 @@ def _execute_notebook(request, notebook, snippet):
     finally:
       if historify:
         _snippet = [s for s in notebook['snippets'] if s['id'] == snippet['id']][0]
+        print(">>>>>>>>>>>>>>>>>>>>>>_snippet<<<<<<<<<<<<<<<<<<<<<<<<")
+        # print(_snippet)
         if 'handle' in response: # No failure
           _snippet['result']['handle'] = response['handle']
           _snippet['result']['statements_count'] = response['handle'].get('statements_count', 1)
@@ -130,11 +179,14 @@ def _execute_notebook(request, notebook, snippet):
           _snippet['status'] = 'failed'
 
         if history:  # If _historify failed, history will be None
+          print("------------------------history:"+str(history))
           history.update_data(notebook)
           history.save()
 
           response['history_id'] = history.id
           response['history_uuid'] = history.uuid
+          print("--------------------------history.id:"+str(history.id))
+          print("--------------------------history.uuid:"+str(history.uuid))
           if notebook['isSaved']: # Keep track of history of saved queries
             response['history_parent_uuid'] = history.dependencies.filter(type__startswith='query-').latest('last_modified').uuid
   except QueryError, ex: # We inject the history information from _historify() to the failed queries
@@ -162,8 +214,13 @@ def execute(request, engine=None):
   notebook = json.loads(request.POST.get('notebook', '{}'))
   snippet = json.loads(request.POST.get('snippet', '{}'))
 
+  print("--------------------notebook--------------------")
+  print(notebook)
+  print("--------------------snippet--------------------")
+  print(snippet)
+  
   response = _execute_notebook(request, notebook, snippet)
-
+  print("*************************execute***********************")
   return JsonResponse(response)
 
 
@@ -306,6 +363,12 @@ def get_logs(request):
   response['jobs'] = jobs
   response['isFullLogs'] = isinstance(db, OozieApi)
   response['status'] = 0
+  print("--------------------------logs:-----------------------------")
+  print(str(response['logs']))
+  print(str(response['progress']))
+  print(str(response['jobs']))
+  print(str(response['isFullLogs']))
+  print(str(response['status']))
 
   return JsonResponse(response)
 
@@ -394,6 +457,7 @@ def _historify(notebook, user):
   history_doc.update_data(notebook)
   history_doc.search = _get_statement(notebook)
   history_doc.save()
+  print("---------------------history_doc:"+str(history_doc))
 
   return history_doc
 
@@ -418,6 +482,8 @@ def get_history(request):
 
   doc_type = request.GET.get('doc_type')
   doc_text = request.GET.get('doc_text')
+  print(type(doc_text))
+  print("-----------------------doc_text:"+str(doc_text))
   page = min(int(request.GET.get('page', 1)), 100)
   limit = min(int(request.GET.get('limit', 50)), 100)
   is_notification_manager = request.GET.get('is_notification_manager', 'false') == 'true'
@@ -546,7 +612,8 @@ def close_statement(request):
 
   response['status'] = 0
   response['message'] = _('Statement closed !')
-
+  print('-------------------api.py close_statement----------------------')
+  print(response)
   return JsonResponse(response)
 
 
@@ -561,18 +628,24 @@ def autocomplete(request, server=None, database=None, table=None, column=None, n
   snippet = json.loads(request.POST.get('snippet', '{}'))
 
   try:
+    # print("-------------------request:"+str(request))
+    # print("--------------------------snippet:"+str(snippet))
+    # print("-------------------database:"+str(database))
+    # print("--------------------------table:"+str(table))
+    # print("-------------------column:"+str(column))
+    # print("--------------------------nested:"+str(nested))
     autocomplete_data = get_api(request, snippet).autocomplete(snippet, database, table, column, nested)
     # autocomplete_data = get_api(request, snippet).autocomplete(snippet, database, None, None, None)
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>autocomplete_data:")
-    print(autocomplete_data)
+    # print(autocomplete_data)
     response.update(autocomplete_data)
   except QueryExpired:
     pass
 
   response['status'] = 0
   print("--------------------api.py:autocomplete")
-  print(autocomplete_data)
-  print(JsonResponse(response))
+  # print(autocomplete_data)
+  # print(JsonResponse(response))
   return JsonResponse(response)
 
 

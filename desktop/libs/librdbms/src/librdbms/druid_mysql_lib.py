@@ -22,6 +22,8 @@ import logging
 import urllib2
 import pandas as pd
 
+from dateutil import tz
+
 try:
     import MySQLdb as Database
 except ImportError, e:
@@ -119,14 +121,30 @@ class DruidMySQLClient():
 
     return params
 
-
-
-
-  
   
   def close(self):
     #self.connection.close()
 	print('close');				
+
+
+  def execute_sql(self, sql, database):
+    self.queryUrl = self.options[database+'.queryUrl']                                                      
+    test_data='{"query":"'+ sql+'"}'
+    requrl = self.queryUrl
+    print(requrl)
+    print("data:"+str(test_data));
+    test_data=test_data.encode('utf-8')
+    print(">>>>>>>>>>>>>>>>>>"+sql+"<<<<<<<<<<<<<<<<<<<<<")
+    req = urllib2.Request(url=requrl, data=test_data, headers={'Content-Type' : 'application/json'})
+    
+    res_data = urllib2.urlopen(req)
+    # print(res_data)
+    res = res_data.read()
+    # print(">>>>>>>>>>>>>>>>>>"+res+"<<<<<<<<<<<<<<<<<<<<<")
+    # parsed = pd.read_table(res);
+    resut=json.loads(res)
+    return resut
+
 
   def execute_statement(self, statement, database):
     print('-----------------------------execute_statement-----------------------------')
@@ -168,6 +186,7 @@ class DruidMySQLClient():
     ind_from=list_lower_statement.index("from")
     table_name=list_statement[ind_from+1]
     statement=statement.replace(table_name+".","")
+    list_statement=statement.split()
 
     print('*************************statement:'+statement+'*****************************')
     if(cmp(list_lower_statement[0],"select")==0):  
@@ -178,6 +197,10 @@ class DruidMySQLClient():
 
       ind_limit=list_lower_statement.index("limit")
       limit_value=list_lower_statement[ind_limit+1]
+      ind_comma=limit_value.find(",")
+      if(ind_comma!=-1):
+        limit_value=limit_value[ind_comma+1:]
+      print('---------------------limit_value:'+limit_value+'--------------------')
 																				   
       druid_limit_value=8000
       
@@ -190,20 +213,46 @@ class DruidMySQLClient():
         print("---------len(ind_time):"+str(len(ind_time))+"-----------------")
         print("A time range is needed.")
         return    
-      for idx, e in enumerate(ind_time):
-        print(">>>>>>>>>>>>>>>>>>"+list_statement[e+2]+"<<<<<<<<<<<<<<<")
-        print(e)
+
+      utc=tz.tzutc()
+
+      # get time string from query statement and parse them to date format
       time1=list_statement[ind_time[0]+2]
       time2=list_statement[ind_time[1]+2]
       time1_date=dateutil.parser.parse(time1)
       time2_date=dateutil.parser.parse(time2)
+      print time1_date
+      print time2_date
+      part_time1=time1[10:]
+      ind_plus=time1.find('+')
+      ind_minus=part_time1.find('-')
+      str_utcoffset="+00:00"
+      if(ind_plus!=-1):
+        str_utcoffset=time1[ind_plus:len(time1)-1]
+        print(str_utcoffset)
+      elif(ind_minus!=-1):
+        str_utcoffset=part_time1[ind_minus:len(part_time1)-1]
+        print(str_utcoffset)
 
-      date1=time.strptime(str(time1_date),"%Y-%m-%d %H:%M:%S")
-      date2=time.strptime(str(time2_date),"%Y-%m-%d %H:%M:%S")
-      date_date1=datetime.datetime(date1[0],date1[1],date1[2],date1[3],date1[4],date1[5])
-      date_date2=datetime.datetime(date2[0],date2[1],date2[2],date2[3],date2[4],date2[5])
+      utcoffset= time1_date.utcoffset()
 
-      time_difference=date_date2-date_date1
+      if((time1_date.tzinfo==None)|(time2_date.tzinfo==None)):
+        time1_date=time1_date.replace(tzinfo=utc)
+        time2_date=time2_date.replace(tzinfo=utc)
+
+      time1_date=time1_date.astimezone(utc)
+      time2_date=time2_date.astimezone(utc)
+      print time1_date
+      print time2_date
+
+      # time difference and time range limit
+      time_difference=time2_date-time1_date
+      print('----------------------------time_difference:'+str(time_difference))
+      
+      # use utc time to replace original query time
+      list_statement[ind_time[0]+2]="'"+time1_date.strftime("%Y-%m-%dT%H:%M:%S.%f")+"'"
+      list_statement[ind_time[1]+2]="'"+time2_date.strftime("%Y-%m-%dT%H:%M:%S.%f")+"'"
+   
       time_difference_limit=7
 
       if(time_difference.days>time_difference_limit):
@@ -221,10 +270,18 @@ class DruidMySQLClient():
       # else:
       #   columns = []
       # return self.data_table_cls(cursor, columns)
+
+      # make up a query string
+      list2str_statement=' '.join(list_statement)
+      print('------------------list2str_statement--------------------')
+      print(list2str_statement)
+      print('----------------------statement----------------------')
+      print(statement)
       print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>result<<<<<<<<<<<<<<<<<<")
-      result = self.execute_sql(statement, database)
+      result = self.execute_sql(list2str_statement, database)
       
-      return result								
+      returndata={'data':result,'offset':utcoffset,'str_offset':str_utcoffset}
+      return returndata								
 				   
 
 
@@ -277,20 +334,5 @@ class DruidMySQLClient():
     statement = "SELECT %s FROM `%s`.`%s` LIMIT %d" % (column, database, table, limit)
     return self.execute_statement(statement,database)
 
-  def execute_sql(self, sql, database):
-    self.queryUrl = self.options[database+'.queryUrl']                                                      
-    test_data='{"query":"'+ sql+'"}'
-    requrl = self.queryUrl
-    print(">>>>>>>>>>>>>>>>>>"+sql+"<<<<<<<<<<<<<<<<<<<<<")
-    req = urllib2.Request(url=requrl, data=test_data, headers={'Content-Type' : 'application/json;charset=UTF-8'})
-
-    res_data = urllib2.urlopen(req)
-
-    res = res_data.read()
-    print(">>>>>>>>>>>>>>>>>>"+res+"<<<<<<<<<<<<<<<<<<<<<")
-    # parsed = pd.read_table(res);
-    resut=json.loads(res)
-				 
-
-    return resut
+  
 

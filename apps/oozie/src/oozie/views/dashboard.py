@@ -194,22 +194,30 @@ def list_oozie_workflows(request):
     if request.GET.get('startcreatedtime'):
       kwargs['filters'].extend([('startcreatedtime', request.GET.get('startcreatedtime'))])
 
-    tmp_jobs=oozie_api.get_workflows(**kwargs).jobs
-    print(tmp_jobs)
-    print(type(tmp_jobs))
+#----------------Workflow filter text box fuzzy search-------------------
+
+    tmp_wfs=oozie_api.get_workflows(**kwargs).jobs
+    print(type(tmp_wfs))
     if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
       legal_names=[]
+      legal_jobs=[]
       tmp_name=request.GET.get('name')
-      for tmp_job in tmp_jobs:
+      for tmp_job in tmp_wfs:
         if tmp_name in tmp_job.appName:
-          legal_names.append(str(tmp_job.appName))
-      if(legal_names!=[]):
-        kwargs['filters'].extend([('name', legal_name) for legal_name in legal_names])
+            legal_jobs.append(tmp_job)
+            print(tmp_job.appName)
+      if(legal_jobs!=[]):
+        print("---------------------legal_jobs----------------------")
+        print(legal_jobs)
+        kwargs['filters'].extend([('name', legal_job.appName) for legal_job in legal_jobs])
       else:
         kwargs['filters'].append(('name', request.GET.get('name')))
     
     print("11111111111111111111111111")
     print(request.GET.get('name'))
+
+    #----------------Workflow filter text box fuzzy search end-------------------
+
     # if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
     #   kwargs['filters'].append(('name', request.GET.get('name')))
 
@@ -225,39 +233,25 @@ def list_oozie_workflows(request):
       kwargs['filters'].extend([('status', status) for status in request.GET.getlist('status')])
       wf_list = oozie_api.get_workflows(**kwargs)
       json_jobs = wf_list.jobs
-      # print('****************************************')
-      # print(json_jobs)
-      # # print(json_jobs.type)
-      # idx=[]
-      # i=0
-      # joblength=len(json_jobs)
-      # while i<joblength:
-      # # for my_job in json_jobs:
-      #   my_job=json_jobs[i]
-      #   i=i+1
-      #   print(my_job)
-      #   if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get(): #
-      #     print(request.GET.get('name'))
-      #     print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-      #     print(my_job.appName)
-      #     if str(request.GET.get('name')) not in str(my_job.appName):
-      #         print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-      #         print(my_job.appName)
-      #         # idx=json_jobs.index(my_job)
-      #         # print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
-      #         # print(idx)
-      #         # if idx is not NULL:
-      #         # del json_jobs[idx]
-      #         # idx=idx-1
-      #         i=i-1
-      #         del json_jobs[i]
-      #         joblength=len(json_jobs)
-      #         #print(json_jobs[idx])
-      # # print(wf_list.jobs) 
       total_jobs = wf_list.total
 
     if request.GET.get('type') == 'progress':
       json_jobs = [oozie_api.get_job(job.id) for job in json_jobs]
+
+    # #Workflow filter text box fuzzy search
+    # tmp_wfs=json_jobs
+    # print("-------------------------len(json_jobs): "+str(len(json_jobs)))
+    # if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
+    #   print("----------------fuzzy search of workflow name--------------")
+    #   legal_jobs=[]
+    #   tmp_name=request.GET.get('name')
+    #   for tmp_job in tmp_wfs:
+    #     if tmp_name in tmp_job.appName:
+    #         legal_jobs.append(tmp_job)
+    #   json_jobs=legal_jobs
+    #   total_jobs=len(json_jobs)
+    # print("------------total_jobs: "+str(total_jobs))
+    # #Workflow filter text box fuzzy search end
 
     response = massaged_oozie_jobs_for_json(json_jobs, request.user, just_sla)
     response['total_jobs'] = total_jobs
@@ -282,7 +276,7 @@ def list_oozie_coordinators(request):
   if request.GET.get('format') == 'json':
     if request.GET.get('offset'):
       kwargs['offset'] = request.GET.get('offset')
-
+    
     # if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
     #   kwargs['filters'].extend([('name', request.GET.get('name'))])
 
@@ -292,37 +286,24 @@ def list_oozie_coordinators(request):
       kwargs['filters'].extend([('status', status) for status in request.GET.getlist('status')])
       co_list = oozie_api.get_coordinators(**kwargs)
       json_jobs = co_list.jobs
-      print('****************************************')
-      print(json_jobs)
-      # print(json_jobs.type)
-      idx=[]
-      i=0
-      joblength=len(json_jobs)
-      while i<joblength:
-      # for my_job in json_jobs:
-        my_job=json_jobs[i]
-        i=i+1
-        print(my_job)
-        if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get(): #
-          print(request.GET.get('name'))
-          print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-          print(my_job.appName)
-          if str(request.GET.get('name')) not in str(my_job.appName):
-              print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
-              print(my_job.appName)
-              # idx=json_jobs.index(my_job)
-              # print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
-              # print(idx)
-              # if idx is not NULL:
-              # del json_jobs[idx]
-              # idx=idx-1
-              i=i-1
-              del json_jobs[i]
-              joblength=len(json_jobs)
       total_jobs = co_list.total
 
     if request.GET.get('type') == 'progress':
       json_jobs = [oozie_api.get_coordinator(job.id) for job in json_jobs]
+
+    #Coordinator filter text box fuzzy search
+    tmp_cos=json_jobs
+    if request.GET.get('name') and ENABLE_OOZIE_BACKEND_FILTERING.get():
+      print("----------------fuzzy search of coordinator name--------------")
+      legal_jobs=[]
+      tmp_name=request.GET.get('name')
+      for tmp_job in tmp_cos:
+        if tmp_name in tmp_job.appName:
+            legal_jobs.append(tmp_job)
+      json_jobs=legal_jobs
+      total_jobs=len(json_jobs)
+    print("------------total_jobs: "+str(total_jobs))
+    #Coordinator filter text box fuzzy search end
 
     response = massaged_oozie_jobs_for_json(json_jobs, request.user)
     response['total_jobs'] = total_jobs
